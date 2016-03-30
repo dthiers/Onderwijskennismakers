@@ -11,17 +11,32 @@ var app = angular.module('app', ['ngRoute'])
   // routeProvider.
   .config(function($routeProvider, $locationProvider) {
     $routeProvider
-      .when('/person/:id', {
-        templateUrl: 'partials/profile.html',
-        controller: 'profileCtrl'    
-      })
-      .when('/search_result', {
-        templateUrl: 'partials/search_result.html'
-      })
+      // Web routes
       .when('/web', {
         templateUrl: 'partials/web.html',
         controller: 'webCtrl'
       })
+
+      // Profile routes
+      .when('/person/:id', {
+        templateUrl: 'partials/profile.html',
+        controller: 'profileCtrl'    
+      })
+      .when('/school_overview', {
+        templateUrl: 'partials/school_overview.html',
+        controller: 'schoolProfileCtrl'    
+      })
+
+      // Search routes
+      .when('/search', {
+        templateUrl: 'partials/search.html',
+        controller: 'searchCtrl'
+      })
+      .when('/search_result', {
+        templateUrl: 'partials/search_result.html'
+      })
+
+      // Unused routes      
       .when('/news', {
         templateUrl: 'partials/news.html',
         controller: 'newsCtrl',
