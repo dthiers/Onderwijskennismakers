@@ -1,0 +1,234 @@
+@import "resources/removeDefaultCss.css";
+@import "resources/elements.less";
+@import "resources/variables.less";
+
+html,body{
+	background-color: #FFF;
+	height: 100%;
+	width: 100%;
+	font-family: "Open Sans", "Myriad Pro", arial;
+	font-size: 100%;
+
+	color: @text_color_dark;
+}
+//grid
+#wrapper{
+	height: 100%;
+	width: 100%;
+
+	h1, h2, h3{
+	    font-weight: 300;
+	}
+	h1{
+		font-size: 2.5em;
+	}
+	h2{
+		font-size: 2em;
+	}
+	h3{
+		font-size: 1.5em;
+	}
+	p{
+		font-size: 1em;
+	}
+}
+
+button{
+    background-color: #FFFFFF;
+    border: 1px solid #dcdcdc;
+    color: #1389E0;
+    min-width: 100px;
+    min-height: 30px;
+    cursor: pointer;
+    padding: 10px;
+    font-weight: 700;
+    .transition(0.2s, ease);
+    &:focus{
+    	background: #1389E0;
+	    color: #FFFFFF;
+	    outline: none !important;
+    }
+    &:hover{
+    	border: 1px solid #1389E0;
+    }
+}
+
+input[type="text"]{
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid #dcdcdc;
+    background-color: #fff;
+    padding: 10px; 
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    color: #1C1C1C;
+
+    &:focus{
+    	border-left: 2px solid #1397E7;
+    	outline: none !important;
+    }
+}
+
+select{
+    width: 100%;
+    max-width: 300px;
+    height: 30px;
+    border: 1px solid #dcdcdc;
+    background: #FFFFFF;
+    color: #1C1C1C;
+
+    &:focus{
+    	border-left: 2px solid #1397E7;
+    	outline: none !important;
+    }
+}
+
+label{
+	color: #1C1C1C;
+    font-style: italic;
+    padding-left: 3px;
+}
+
+textarea{
+	resize: vertical;
+    width: 100%;
+    max-width: 400px;
+    min-height: 100px;
+    border: 1px solid #dcdcdc;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: "Myriad Pro";
+    color: #1C1C1C;
+
+    &:focus{
+    	border-left: 2px solid #1397E7;
+    	outline: none !important;
+    }
+}
+
+//SIDEBAR
+.fixed_sidebar{
+	position: fixed;
+	background-color: @color_main1;
+	padding: 20px;
+	height: 100%;
+	width: 15%;
+	&.left{
+		left: 0px;
+	}
+	&.right{
+		right: 0px;
+	}
+}
+//SIDEBAR
+
+//TOPBAR
+.top_bar{
+	position: relative;
+	top: 0px;
+	left: 0px;
+	height: 110px;
+	width: ~'calc(100% - 40px)';
+	padding: 20px;
+}
+//TOPBAR
+//BOTTOMBAR
+.bottom_bar{
+	position: relative;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	height: 200px;
+}
+//BOTTOMBAR
+
+.content_container{
+	overflow: hidden;
+	margin: 20px;
+	width: auto;
+    height: auto;
+
+	&.scrollabley{
+		overflow-y: hidden;
+		overflow-x: auto;
+		white-space: nowrap;
+	}
+	&.scrollablex{
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+}
+
+.content_block{
+	display: inline-block;
+	padding: 20px;
+}
+
+//COLORS
+.color1{
+	background-color: @color_main1 !important;;
+	color: @text_color_light;
+	&.lighten{
+		background-color: lighten(@color_main1, 10%) !important;;
+	}
+	&.extra_lighten{
+		background-color: lighten(@color_main1, 20%) !important;;
+	}
+	&.darken{
+		background-color: darken(@color_main1, 10%) !important;;
+	}
+	&.extra_darken{
+		background-color: darken(@color_main1, 20%) !important;;
+	}
+}
+.color2{
+	background-color: @color_main2 !important;;
+	color: @text_color_dark;
+	&.lighten{
+		background-color: lighten(@color_main2, 10%) !important;;
+	}
+	&.extra_lighten{
+		background-color: lighten(@color_main2, 20%) !important;;
+	}
+	&.darken{
+		background-color: darken(@color_main2, 10%) !important;;
+	}
+	&.extra_darken{
+		background-color: darken(@color_main2, 20%) !important;;
+	}
+}
+
+.text_color_light{
+	color: @text_color_light !important;
+	&.lighten{
+		color: lighten(@text_color_light, 10%) !important;;
+	}
+	&.extra_lighten{
+		color: lighten(@text_color_light, 20%) !important;;
+	}
+	&.darken{
+		color: darken(@text_color_light, 10%) !important;;
+	}
+	&.extra_darken{
+		color: darken(@text_color_light, 20%) !important;;
+	}
+}
+.text_color_dark{
+	color: @text_color_dark !important;
+	&.lighten{
+		color: lighten(@text_color_dark, 10%) !important;;
+	}
+	&.extra_lighten{
+		color: lighten(@text_color_dark, 20%) !important;;
+	}
+	&.darken{
+		color: darken(@text_color_dark, 10%) !important;;
+	}
+	&.extra_darken{
+		color: darken(@text_color_dark, 20%) !important;;
+	}
+}
+//COLORS

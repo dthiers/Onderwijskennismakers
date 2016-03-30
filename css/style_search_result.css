@@ -1,0 +1,89 @@
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+.top_menu {
+  font-size: 0.9em;
+}
+.top_container {
+  position: absolute;
+  bottom: 0;
+  width: calc(100% - 40px);
+}
+.top_container .searchBlock {
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  height: 40px;
+  width: calc(33% - 10px);
+  margin: 0.02%;
+  padding: 5px;
+  font-size: 1.1em;
+  text-align: center;
+  line-height: 40px;
+  position: relative;
+  display: inline-block;
+  background-color: #494949;
+}
+.top_container .searchBlock:hover {
+  cursor: normal;
+  background-color: #1d1d1d;
+}
+.top_container .searchBlock.active {
+  background-color: #e6e6e6;
+}
+.top_container .searchBlock.active:hover {
+  cursor: normal;
+}
+.top_container .searchBlock:hover {
+  cursor: pointer;
+}
+.result_container {
+  background-color: #e6e6e6;
+  height: calc(100% - 150px);
+  padding: 20px;
+  width: auto;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+.result_container .block {
+  width: 300px;
+  height: 100%;
+  margin: 0 10px;
+  display: inline-table;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.result_container .block .description_short {
+  white-space: normal;
+  margin: 25px 0;
+}
+.result_container .block .stats {
+  white-space: normal;
+  margin: 25px 0;
+}
+.result_container .block .stats .labels {
+  font-weight: bold;
+  width: 50%;
+  float: left;
+}
+.result_container .block .viewButton {
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  background-color: #494949;
+  text-align: center;
+  color: #e6e6e6;
+  height: 40px;
+  line-height: 40px;
+}
+.result_container .block .viewButton:hover {
+  background-color: #626262;
+  cursor: pointer;
+}
