@@ -66,7 +66,7 @@ var data;
 
 $(document).ready(function(){
 
-    web = new web();
+    //web = new web();
     //Zooming
     // setTimeout(function(){ 
     //     network.focus(12, {

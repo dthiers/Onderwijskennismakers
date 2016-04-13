@@ -1,5 +1,5 @@
 // The start of our Angular App. Modules can be injected in the array (like ng-route)
-var app = angular.module('app', ['ngRoute'])
+var app = angular.module('app', ['ngRoute','ngVis'])
 
   // This removes the templateCaching. During development this might get you into trouble
   .run(function($rootScope, $templateCache) {
