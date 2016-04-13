@@ -1,3 +1,15 @@
+<script>
+    function initialize() {
+      var mapProp = {
+        center:new google.maps.LatLng(51.69401, 5.29129),
+        zoom:9,
+        mapTypeId:google.maps.MapTypeId.ROADMAP
+      };
+      var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
 <div id="wrapper" class="color2">
 
     <div class="divHalf color1" >
@@ -8,14 +20,6 @@
                     <h2>De Viersprong</h2>
                     <h3>Basisschool</h3>
                 </td>
-            </tr>
-            <tr>
-                <td>
-                    <b>Ons Aanbod</b><br/><br/>
-                    rondleiding<br/>
-                    workshops<br/>
-                    even sparren<br/>
-                </td>
                 <td>
                     <div class="divRating">
                         <div class="divImgRating"></div>
@@ -24,13 +28,6 @@
                         <div class="divImgRating"></div>
                         <div class="divImgRating"></div>
                     </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <b>Onze Experts</b>
-                </td>
-                <td>
                     <div class="divSocial">
                         <img src="images/fb.png" class="imgSocial"/>
                         <img src="images/twitter.png" class="imgSocial"/>
@@ -39,92 +36,22 @@
                 </td>
             </tr>
             <tr>
-                <td class="tdExperts" colspan="2">
+                <td>
+                    <b>Ons Aanbod</b><br/><br/>
+                    rondleiding<br/>
+                    workshops<br/>
+                    even sparren<br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <b>Onze Experts</b>
+                </td>
+                <td id="googleMap" style="width:400px;height:280px;" colspan="2"></td>
+            </tr>
+            <tr>
+                <td class="tdExperts" colspan="3">
                     <div id="divExperts">
-                        <div class="divExpert" style="background: url('images/person1.jpg'); background-size: contain">
-                            <div class="divExpertOverflow"></div>
-                            <div class="divExpertTag">
-                                <p class="pExpertTagTitle">Jan Derks</p>
-                                <p class="pExpertTagSubTitle">Leerkracht</p>
-                            </div>
-                        </div>
-                        <div class="divExpert" style="background: url('images/person2.jpg'); background-size: contain">
-                            <div class="divExpertOverflow"></div>
-                            <div class="divExpertTag">
-                                <p class="pExpertTagTitle">Berry Jansen</p>
-                                <p class="pExpertTagSubTitle">Mentor</p>
-                            </div>
-                        </div>
-                        <div class="divExpert" style="background: url('images/person3.jpg'); background-size: contain">
-                            <div class="divExpertOverflow"></div>
-                            <div class="divExpertTag">
-                                <p class="pExpertTagTitle">Dirk van Dal</p>
-                                <p class="pExpertTagSubTitle">Leerkracht</p>
-                            </div>
-                        </div>
-                        <div class="divExpert" style="background: url('images/person1.jpg'); background-size: contain">
-                            <div class="divExpertOverflow"></div>
-                            <div class="divExpertTag">
-                                <p class="pExpertTagTitle">Jan Derks</p>
-                                <p class="pExpertTagSubTitle">Leerkracht</p>
-                            </div>
-                        </div>
-                        <div class="divExpert" style="background: url('images/person2.jpg'); background-size: contain">
-                            <div class="divExpertOverflow"></div>
-                            <div class="divExpertTag">
-                                <p class="pExpertTagTitle">Berry Jansen</p>
-                                <p class="pExpertTagSubTitle">Mentor</p>
-                            </div>
-                        </div>
-                        <div class="divExpert" style="background: url('images/person3.jpg'); background-size: contain">
-                            <div class="divExpertOverflow"></div>
-                            <div class="divExpertTag">
-                                <p class="pExpertTagTitle">Dirk van Dal</p>
-                                <p class="pExpertTagSubTitle">Leerkracht</p>
-                            </div>
-                        </div>
-                        <div class="divExpert" style="background: url('images/person1.jpg'); background-size: contain">
-                            <div class="divExpertOverflow"></div>
-                            <div class="divExpertTag">
-                                <p class="pExpertTagTitle">Jan Derks</p>
-                                <p class="pExpertTagSubTitle">Leerkracht</p>
-                            </div>
-                        </div>
-                        <div class="divExpert" style="background: url('images/person2.jpg'); background-size: contain">
-                            <div class="divExpertOverflow"></div>
-                            <div class="divExpertTag">
-                                <p class="pExpertTagTitle">Berry Jansen</p>
-                                <p class="pExpertTagSubTitle">Mentor</p>
-                            </div>
-                        </div>
-                        <div class="divExpert" style="background: url('images/person3.jpg'); background-size: contain">
-                            <div class="divExpertOverflow"></div>
-                            <div class="divExpertTag">
-                                <p class="pExpertTagTitle">Dirk van Dal</p>
-                                <p class="pExpertTagSubTitle">Leerkracht</p>
-                            </div>
-                        </div>
-                        <div class="divExpert" style="background: url('images/person1.jpg'); background-size: contain">
-                            <div class="divExpertOverflow"></div>
-                            <div class="divExpertTag">
-                                <p class="pExpertTagTitle">Jan Derks</p>
-                                <p class="pExpertTagSubTitle">Leerkracht</p>
-                            </div>
-                        </div>
-                        <div class="divExpert" style="background: url('images/person2.jpg'); background-size: contain">
-                            <div class="divExpertOverflow"></div>
-                            <div class="divExpertTag">
-                                <p class="pExpertTagTitle">Berry Jansen</p>
-                                <p class="pExpertTagSubTitle">Mentor</p>
-                            </div>
-                        </div>
-                        <div class="divExpert" style="background: url('images/person3.jpg'); background-size: contain">
-                            <div class="divExpertOverflow"></div>
-                            <div class="divExpertTag">
-                                <p class="pExpertTagTitle">Dirk van Dal</p>
-                                <p class="pExpertTagSubTitle">Leerkracht</p>
-                            </div>
-                        </div>
                         <div class="divExpert" style="background: url('images/person1.jpg'); background-size: contain">
                             <div class="divExpertOverflow"></div>
                             <div class="divExpertTag">
