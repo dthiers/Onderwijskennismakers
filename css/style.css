@@ -5,7 +5,6 @@
     A set of useful LESS mixins
     More info at: http://lesselements.com
   ---------------------------------------------------*/
-
 html,
 body {
   background-color: #FFF;
@@ -139,7 +138,7 @@ textarea:focus {
   overflow: hidden;
   margin: 20px;
   width: auto;
-  height: auto;
+  height: inherit;
 }
 .content_container.scrollabley {
   overflow-y: hidden;
