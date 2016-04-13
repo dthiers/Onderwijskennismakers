@@ -1,14 +1,34 @@
-app.controller('webCtrl', ['$scope', 'profileService', '$routeParams', function (sc, profileService, routeParams) {
+app.controller('webCtrl', ['$scope', 'profileService', '$routeParams', 'VisDataSet', function (sc, profileService, routeParams, VisDataSet) {
 
+    sc.nodeCount = 18;
     sc.$on('$viewContentLoaded', function (event) {
+        sc.options = {}
         sc.options = {
+            width: '85%',
             physics: {
-                enabled: false
+
+            },
+            interaction: {
+                dragNodes: false,
+                dragView: false
             }
         }
 
+        sc.test = function() {
+            sc.nodeCount++;
+            sc.data.nodes.add(
+                {
+                    id: sc.nodeCount,
+                    label: 'sadkmklsadfklasdkmlfdskmla \n Stichting Digidact \n managing director & oprichter',
+                    shape: 'circularImage',
+                    image: "images/Personen/persoon1.png"
+                }
+            )
+            sc.data.edges.add({from: 12, to: sc.nodeCount})
+        }
+
         sc.data = {
-            "nodes": [
+            "nodes": VisDataSet([
                 {
                     id: 1,
                     label: 'Theo Brinkman \n Stichting Digidact \n managing director & oprichter',
@@ -98,8 +118,8 @@ app.controller('webCtrl', ['$scope', 'profileService', '$routeParams', function 
                 {id: 15, label: 'Professionalisering', shape: 'box'},
                 {id: 16, label: 'Kwaliteitszorg', shape: 'box'},
                 {id: 17, label: 'Zelfregulering', shape: 'box'}
-            ],
-            "edges": [
+            ]),
+            "edges": VisDataSet([
 
                 //eportfolio
                 {from: 12, to: 14},
@@ -125,7 +145,7 @@ app.controller('webCtrl', ['$scope', 'profileService', '$routeParams', function 
                 {from: 17, to: 9},
                 {from: 17, to: 10},
                 {from: 17, to: 11}
-            ]
+            ])
         }
     });
 }]);
