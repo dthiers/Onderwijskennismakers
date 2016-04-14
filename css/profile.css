@@ -32,7 +32,7 @@
   position: absolute;
   bottom: 0;
   height: 200px;
-  width: calc(100% - 40px);
+  width: 100%;
 }
 .profile-sidebar-bottom-icons {
   margin-left: 15%;
@@ -87,6 +87,14 @@
 .profile-item-text {
   width: 100%;
   font-size: 0.9em;
+  line-height: 19px;
+  letter-spacing: 0.8px;
+  margin-top: 20px;
+}
+.profile-item-description {
+  width: 100%;
+  font-size: 0.8em;
+  font-weight: bold;
   line-height: 19px;
   letter-spacing: 0.8px;
   margin-top: 20px;
