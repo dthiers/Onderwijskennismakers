@@ -1,18 +1,35 @@
 app.controller('webCtrl', ['$scope', 'profileService', '$routeParams', 'VisDataSet', function (sc, profileService, routeParams, VisDataSet) {
 
     sc.nodeCount = 18;
+
     sc.$on('$viewContentLoaded', function (event) {
-        sc.options = {}
         sc.options = {
             width: '85%',
+            layout: {
+                randomSeed:1
+            },
             physics: {
-
+                solver: 'forceAtlas2Based',
+                maxVelocity: 1000,
+                forceAtlas2Based: {
+                    springLength: 150
+                    //,springConstant: 0.2
+                }
             },
             interaction: {
                 dragNodes: false,
                 dragView: false
             }
-        }
+        };
+
+        sc.events = {};
+        sc.events.hoverNode = function(nodeId) {
+            alert(nodeId);
+        };
+
+        sc.events.selectNode = function(click) {
+            alert(click.nodes);
+        };
 
         sc.test = function() {
             sc.nodeCount++;
@@ -23,93 +40,93 @@ app.controller('webCtrl', ['$scope', 'profileService', '$routeParams', 'VisDataS
                     shape: 'circularImage',
                     image: "images/Personen/persoon1.png"
                 }
-            )
+            );
             sc.data.edges.add({from: 12, to: sc.nodeCount})
-        }
+        };
 
         sc.data = {
             "nodes": VisDataSet([
                 {
                     id: 1,
-                    label: 'Theo Brinkman \n Stichting Digidact \n managing director & oprichter',
+                    label: 'Theo Brinkman',
                     shape: 'circularImage',
                     image: "images/Personen/persoon1.png"
                 },
                 {
                     id: 2,
-                    label: 'Marita van den Heuvel \n Wittering.nl \n regisseur, ICT coördinator',
+                    label: 'Marita van den Heuvel',
                     shape: 'circularImage',
                     image: "images/Personen/persoon6.png"
                 },
                 {
                     id: 3,
-                    label: 'Theo Mensen \n Stichting e-Portfolio Support \n secretaris',
+                    label: 'Theo Mensen',
                     shape: 'circularImage',
                     image: "images/Personen/persoon7.png"
                 },
                 {
                     id: 4,
-                    label: 'Els van der Pol \n Signum \n directeur Onderwijs en Ontwikkeling',
+                    label: 'Els van der Pol',
                     shape: 'circularImage',
                     image: "images/Personen/persoon8.png"
                 },
                 {
                     id: 5,
-                    label: 'Angela Horsten \n XPect Primair \n manager Schoolontwikkeling',
+                    label: 'Angela Horsten',
                     shape: 'circularImage',
                     image: "images/Personen/persoon9.png"
                 },
                 {
                     id: 6,
-                    label: 'Hans van Daelen \n XPect Primair \n voorzitter College van Bestuur',
+                    label: 'Hans van Daelen',
                     shape: 'circularImage',
                     image: "images/Personen/persoon10.png"
                 },
                 {
                     id: 7,
-                    label: 'Stef van Wickeren \n Campus Columbus \n directeur',
+                    label: 'Stef van Wickeren',
                     shape: 'circularImage',
                     image: "images/Personen/persoon11.png"
                 },
                 {
                     id: 8,
-                    label: 'Karin van Zutphen \n Wittering.nl \n directeur',
+                    label: 'Karin van Zutphen',
                     shape: 'circularImage',
                     image: "images/Personen/persoon2.png"
                 },
                 {
                     id: 9,
-                    label: 'Siebrand Konst \n Stichting Flore \n Algemeen directeur Onderwijs en Personeel',
+                    label: 'Siebrand Konst',
                     shape: 'circularImage',
                     image: "images/Personen/persoon3.png"
                 },
                 {
                     id: 10,
-                    label: 'Koen Oosterbaan \n SKO Flevoland en Veluwe \n voorzitter College van Bestuur',
+                    label: 'Koen Oosterbaan',
                     shape: 'circularImage',
                     image: "images/Personen/persoon20.png"
                 },
                 {
                     id: 11,
-                    label: 'Jan Timmers \n Signum \n voorzitter College van Bestuur',
+                    label: 'Jan Timmers',
                     shape: 'circularImage',
                     image: "images/Personen/persoon5.png"
                 },
                 {
                     id: 12,
-                    label: 'Kristian van den Berg \n SKO Flevoland en Veluwe \n projectmanager Onderwijsinnovatie en ICT',
+                    label: 'Kristian van den Berg',
                     shape: 'circularImage',
                     image: "images/Personen/persoon13.png"
                 },
                 {
                     id: 13,
-                    label: 'Marianne Rongen \n Wittering.nl \n regisseur, innovator',
+                    label: 'Marianne Rongen',
                     shape: 'circularImage',
                     image: "images/Personen/persoon12.png"
                 },
                 {
                     id: 18,
-                    label: 'Annelies Verbeek \n SKO Flevoland en Veluwe \n lid College van Bestuur',
+                    label: 'Annelies Verbeek    ',
                     shape: 'circularImage',
                     image: "images/Personen/persoon18.png"
                 },

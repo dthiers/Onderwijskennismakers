@@ -1,6 +1,7 @@
 app.factory('profileService', function profileService() {
 
   var profiles = [{
+    "id": 1,
     "first_name" : "Erik",
     "last_name" : "van Dijk",
 
@@ -15,6 +16,7 @@ app.factory('profileService', function profileService() {
       {title: "Some random article 5", image:"images/classroom.jpg", description:"Pellentesque mattis vehicula neque, sit amet interdum dui condimentum non. Nullam purus sapien, consequat sed porttitor eget, lacinia sed nisi. Proin luctus nulla quis augue vestibulum, nec elementum ligula condimentum. Morbi accumsan mi turpis. Morbi eu ultricies lorem, a porta sapien. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquam pharetra tortor, sit amet tincidunt dolor rhoncus eu. In euismod magna non sapien finibus rutrum.", text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque varius neque sit amet nulla euismod, nec porttitor elit bibendum. Nam ultricies gravida tincidunt. Integer vitae pharetra eros. Mauris ut enim dapibus, tincidunt odio sit amet, luctus sem. Pellentesque eleifend cursus ante, vitae faucibus dui luctus in. In diam ipsum, hendrerit nec justo nec, malesuada pulvinar nisl. Vestibulum suscipit pulvinar dui pellentesque maximus. Pellentesque congue fermentum nunc quis interdum.</br></br>Aliquam efficitur, risus id blandit aliquet, dolor dolor tristique velit, quis dignissim nibh magna in leo. Quisque velit mauris, ultrices at vestibulum quis, eleifend elementum lorem. Duis in placerat lectus. Maecenas sagittis volutpat eleifend. Nulla tortor felis, ultrices vel ipsum vestibulum, placerat imperdiet dui. Praesent lobortis hendrerit maximus."}
     ]
   }, {
+    "id": 2,
     "first_name" : "Erika",
     "last_name" : "Terpstra",
 
@@ -29,6 +31,7 @@ app.factory('profileService', function profileService() {
       {title: "Some random article 5", image:"images/classroom.jpg", description:"Pellentesque mattis vehicula neque, sit amet interdum dui condimentum non. Nullam purus sapien, consequat sed porttitor eget, lacinia sed nisi. Proin luctus nulla quis augue vestibulum, nec elementum ligula condimentum. Morbi accumsan mi turpis. Morbi eu ultricies lorem, a porta sapien. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquam pharetra tortor, sit amet tincidunt dolor rhoncus eu. In euismod magna non sapien finibus rutrum.", text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque varius neque sit amet nulla euismod, nec porttitor elit bibendum. Nam ultricies gravida tincidunt. Integer vitae pharetra eros. Mauris ut enim dapibus, tincidunt odio sit amet, luctus sem. Pellentesque eleifend cursus ante, vitae faucibus dui luctus in. In diam ipsum, hendrerit nec justo nec, malesuada pulvinar nisl. Vestibulum suscipit pulvinar dui pellentesque maximus. Pellentesque congue fermentum nunc quis interdum.</br></br>Aliquam efficitur, risus id blandit aliquet, dolor dolor tristique velit, quis dignissim nibh magna in leo. Quisque velit mauris, ultrices at vestibulum quis, eleifend elementum lorem. Duis in placerat lectus. Maecenas sagittis volutpat eleifend. Nulla tortor felis, ultrices vel ipsum vestibulum, placerat imperdiet dui. Praesent lobortis hendrerit maximus."}
     ]
   }, {
+    "id": 3,
     "first_name" : "first_name",
     "last_name" : "last_name",
 
