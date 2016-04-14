@@ -147,7 +147,7 @@ body {
   transition: background-color 0.15s ease;
   display: inline-block;
   margin: 10px;
-  width: calc(33.33% - 60px);
+  width: calc(50% - 60px);
   padding: 20px;
   white-space: nowrap;
 }
@@ -159,19 +159,22 @@ body {
 }
 .content-header h4 {
   display: inline-block;
-  width: 75%;
+  width: 45%;
   vertical-align: top;
+}
+.short_description {
+  width: 200px;
+  word-break: normal;
 }
 .content-header img {
   display: inline-block;
-  width: 20%;
 }
 .content-author {
   text-align: center;
   margin-bottom: 10px;
 }
 .content-rating {
-  display: block;
+  display: inline;
   text-align: center;
   margin-bottom: 10px;
 }

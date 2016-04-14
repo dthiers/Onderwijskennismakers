@@ -2,7 +2,15 @@ app.controller('schoolProfileCtrl', ['$scope', '$routeParams', function(sc, rout
 
   sc.$on('$viewContentLoaded', function(event) {
     	for(var i = 0; i < 90; i++){
-		$('#content-box').append('<div class="content-container color2 darken"><div class="content-header"><h4>ICT In Bedrijf</h4><img src="images/document.png"></div><div class="content-author"><p>Auteur: Patrick Duffy</p><p>Datum: 29/03/2016</p></div><div class="content-rating"><img src="images/star-filled.png" width="25" height="25"><img src="images/star-filled.png" width="25" height="25"><img src="images/star-filled.png" width="25" height="25"><img src="images/star-half-filled.png" width="25" height="25"><img src="images/star-empty.png" width="25" height="25"><p>Beoordeling</p></div></div>');
+    		var desc = '';
+    		desc += '<div class="content-container color2 darken">';
+    		desc += '<div class="content-header"><h4>ICT In Bedrijf</h4>';
+    		desc += '<div class="content-rating">';
+    		desc += '<img src="images/star-filled.png" width="20" height="20"><img src="images/star-filled.png" width="20" height="20"><img src="images/star-filled.png" width="20" height="20"><img src="images/star-half-filled.png" width="20" height="20"><img src="images/star-empty.png" width="20" height="20">';
+    		desc += '</div><img src="images/document.png"></div>';
+    		desc += '<div class="short_description">Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc.</div><div class="content-author"><p>Auteur: Patrick Duffy</p><p>Datum: 29/03/2016</p></div></div>';
+
+		$('#content-box').append(desc);
 	}
   });
 }]);
