@@ -23,27 +23,7 @@ app.controller('webCtrl', ['$scope', 'profileService', '$routeParams', 'VisDataS
         };
 
         sc.events = {};
-        sc.events.hoverNode = function(nodeId) {
-            alert(nodeId);
-        };
-
-        sc.events.selectNode = function(click) {
-            alert(click.nodes);
-        };
-
-        sc.test = function() {
-            sc.nodeCount++;
-            sc.data.nodes.add(
-                {
-                    id: sc.nodeCount,
-                    label: 'sadkmklsadfklasdkmlfdskmla \n Stichting Digidact \n managing director & oprichter',
-                    shape: 'circularImage',
-                    image: "images/Personen/persoon1.png"
-                }
-            );
-            sc.data.edges.add({from: 12, to: sc.nodeCount})
-        };
-
+        
         sc.data = {
             "nodes": VisDataSet([
                 {

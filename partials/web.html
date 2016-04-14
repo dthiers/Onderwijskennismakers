@@ -1,20 +1,28 @@
 <div id="wrapper" class="color2">
-	<div class="search_button" ng-click="test()"></div>
-
-	<div class="fixed_sidebar right">
-		<div class="heading">
-			<div class="rounded_image">
-				<img src="images/Personen/persoon13.png">
-			</div>
-			<span>Kristian van den Berg</span>
-		</div>
-		<div class="balk_school">Basisschool de Regenboog</div>
-		<div class="sidebar_infotext">
-			<h3>Iets over mij + mijn CV</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et tempor est, ac porttitor nibh. Nulla suscipit laoreet metus vitae luctus. Donec facilisis quis leo quis bibendum. Donec pharetra metus enim, quis accumsan tortor pulvinar sit amet. Aenean ullamcorper libero eu pharetra convallis. Cras a purus ex. Nam nec ligula eget arcu mollis semper sit amet ac lorem. Sed bibendum a metus a condimentum.</p>
-		</div>
-		<button class="button_follow">Volg Kristian</button>
-	</div>
+    <a href="#/search">
+        <div class="search_button" ng-click=""></div>
+    </a>
+    <div class="fixed_sidebar right">
+        <div class="heading">
+            <div class="rounded_image">
+                <img src="images/Personen/persoon13.png">
+            </div>
+            <a href="#/person/0">
+                <span>Kristian van den Berg</span>
+            </a>
+        </div>
+        <a href="#/school_overview">
+            <div class="balk_school">Basisschool de Regenboog</div>
+        </a>
+        <div class="sidebar_infotext">
+            <h3>Iets over mij + mijn CV</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et tempor est, ac porttitor nibh. Nulla suscipit
+                laoreet metus vitae luctus. Donec facilisis quis leo quis bibendum. Donec pharetra metus enim, quis accumsan
+                tortor pulvinar sit amet. Aenean ullamcorper libero eu pharetra convallis. Cras a purus ex. Nam nec ligula
+                eget arcu mollis semper sit amet ac lorem. Sed bibendum a metus a condimentum.</p>
+        </div>
+        <button class="button_follow">Volg Kristian</button>
+    </div>
 
 	<vis-network data="data" options="options" events="events"></vis-network>
 </div>
