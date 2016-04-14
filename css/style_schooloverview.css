@@ -25,7 +25,7 @@ body {
   font-weight: normal;
 }
 #tableSchoolInfo tr .tdExperts {
-  height: 60%;
+  height: 35%;
   vertical-align: top;
 }
 #tableSchoolInfo tr .tdExperts #divExperts {
@@ -174,4 +174,7 @@ body {
   display: block;
   text-align: center;
   margin-bottom: 10px;
+}
+.imgDirector {
+  width: 100%;
 }

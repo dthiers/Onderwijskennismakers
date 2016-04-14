@@ -1,17 +1,4 @@
-<script>
-    function initialize() {
-      var mapProp = {
-        center:new google.maps.LatLng(51.69401, 5.29129),
-        zoom:9,
-        mapTypeId:google.maps.MapTypeId.ROADMAP
-      };
-      var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
-</script>
-
 <div id="wrapper" class="color2">
-
     <div class="divHalf color1" >
         <table id="tableSchoolInfo">
             <tr>
@@ -45,12 +32,24 @@
                     <br/>
                     <br/>
                     <br/>
-                    <b>Onze Experts</b>
                 </td>
-                <td id="googleMap" style="width:400px;height:280px;" colspan="2"></td>
+                <td colspan="2">
+                    <iframe
+                        width="400"
+                        height="280"
+                        frameborder="0" style="border:0"
+                        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDRyxC49-Ev-Tl0oIOuxwCjyhA_Am6iwQ4
+                        &q=wijchen de viersprong" allowfullscreen>
+                    </iframe>
+                </td>
             </tr>
             <tr>
-                <td class="tdExperts" colspan="3">
+                <td>
+                    <b>Directeur</b>
+                    <img src="images/person2.jpg" class="imgDirector"/>
+                </td>
+                <td class="tdExperts" colspan="2">
+                    <b>Onze experts</b>
                     <div id="divExperts">
                         <div class="divExpert" style="background: url('images/person1.jpg'); background-size: contain">
                             <div class="divExpertOverflow"></div>
@@ -141,8 +140,6 @@
             </tr>
         </table>
     </div>
-
-
     <div class="divHalf color2" >
         <div class="page-header">
             <h3>Onze Expertise</h3>
@@ -150,4 +147,4 @@
         <div id="content-box">
         </div>
     </div>
-</div> 
+</div>
