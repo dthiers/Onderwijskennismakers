@@ -23,6 +23,7 @@ app.controller('webCtrl', ['$scope', 'profileService', '$routeParams', 'VisDataS
         };
 
         sc.events = {};
+<<<<<<< HEAD
 
         sc.events.selectNode = function(click) {
             $("#divInfoPopup").css("top", click.pointer.DOM.y - 20);
@@ -43,6 +44,9 @@ app.controller('webCtrl', ['$scope', 'profileService', '$routeParams', 'VisDataS
             sc.data.edges.add({from: 12, to: sc.nodeCount})
         };
 
+=======
+        
+>>>>>>> origin/feature/web
         sc.data = {
             "nodes": VisDataSet([
                 {
