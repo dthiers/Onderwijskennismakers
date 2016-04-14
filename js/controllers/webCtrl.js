@@ -23,12 +23,11 @@ app.controller('webCtrl', ['$scope', 'profileService', '$routeParams', 'VisDataS
         };
 
         sc.events = {};
-        sc.events.hoverNode = function(nodeId) {
-            alert(nodeId);
-        };
 
         sc.events.selectNode = function(click) {
-            alert(click.nodes);
+            $("#divInfoPopup").css("top", click.pointer.DOM.y - 20);
+            $("#divInfoPopup").css("left", click.pointer.DOM.x + 20);
+            $("#divInfoPopup").css("display", "block");
         };
 
         sc.test = function() {
