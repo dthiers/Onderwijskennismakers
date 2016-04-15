@@ -166,9 +166,15 @@ body {
   display: inline-block;
   width: 20%;
 }
+.content-description {
+  text-align: center;
+  margin-bottom: 10px;
+  white-space: pre-wrap;
+}
 .content-author {
   text-align: center;
   margin-bottom: 10px;
+  white-space: pre-wrap;
 }
 .content-rating {
   display: block;
