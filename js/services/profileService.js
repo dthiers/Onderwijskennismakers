@@ -3,7 +3,6 @@ app.factory('profileService', function profileService() {
   var profiles = [{
       "first_name" : "Kristian",
       "last_name" : "van den Berg",
-
       "profile_image" : "images/Personen/persoon13.png",
       "titles" : ["Moderator community School en Samenleving", "Expert community School en Samenleving"],
       "rating" : 5,

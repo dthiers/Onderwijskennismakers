@@ -76,85 +76,127 @@ app.controller('webCtrl', ['$scope', '$location', 'profileService', '$routeParam
                 id: 1,
                 label: 'Theo Brinkman',
                 shape: 'circularImage',
-                image: "images/Personen/persoon1.png"
+                image: "images/Personen/persoon1.png",
+                font: {
+                    color: '#ffffff'
+                }
             },
             {
                 id: 2,
                 label: 'Marita van den Heuvel',
                 shape: 'circularImage',
-                image: "images/Personen/persoon6.png"
+                image: "images/Personen/persoon6.png",
+                font: {
+                    color: '#ffffff'
+                }
             },
             {
                 id: 3,
                 label: 'Theo Mensen',
                 shape: 'circularImage',
-                image: "images/Personen/persoon7.png"
+                image: "images/Personen/persoon7.png",
+                font: {
+                    color: '#ffffff'
+                }
             },
             {
                 id: 4,
                 label: 'Els van der Pol',
                 shape: 'circularImage',
-                image: "images/Personen/persoon8.png"
+                image: "images/Personen/persoon8.png",
+                font: {
+                    color: '#ffffff'
+                }
             },
             {
                 id: 5,
                 label: 'Angela Horsten',
                 shape: 'circularImage',
-                image: "images/Personen/persoon9.png"
+                image: "images/Personen/persoon9.png",
+                font: {
+                    color: '#ffffff'
+                }
             },
             {
                 id: 6,
                 label: 'Hans van Daelen',
                 shape: 'circularImage',
-                image: "images/Personen/persoon10.png"
+                image: "images/Personen/persoon10.png",
+                font: {
+                    color: '#ffffff'
+                }
             },
             {
                 id: 7,
                 label: 'Stef van Wickeren',
                 shape: 'circularImage',
-                image: "images/Personen/persoon11.png"
+                image: "images/Personen/persoon11.png",
+                font: {
+                    color: '#ffffff'
+                }
             },
             {
                 id: 8,
                 label: 'Karin van Zutphen',
                 shape: 'circularImage',
-                image: "images/Personen/persoon2.png"
+                image: "images/Personen/persoon2.png",
+                font: {
+                    color: '#ffffff'
+                }
             },
             {
                 id: 9,
                 label: 'Siebrand Konst',
                 shape: 'circularImage',
-                image: "images/Personen/persoon3.png"
+                image: "images/Personen/persoon3.png",
+                font: {
+                    color: '#ffffff'
+                }
             },
             {
                 id: 10,
                 label: 'Koen Oosterbaan',
                 shape: 'circularImage',
-                image: "images/Personen/persoon20.png"
+                image: "images/Personen/persoon20.png",
+                font: {
+                    color: '#ffffff'
+                }
             },
             {
                 id: 11,
                 label: 'Jan Timmers',
                 shape: 'circularImage',
-                image: "images/Personen/persoon5.png"
+                image: "images/Personen/persoon5.png",
+                font: {
+                    color: '#ffffff'
+                }
             },
             {
                 id: 12,
                 label: 'Kristian van den Berg',
                 shape: 'circularImage',
-                image: "images/Personen/persoon13.png"
+                image: "images/Personen/persoon13.png",
+                font: {
+                    color: '#ffffff'
+                }
             },
             {
                 id: 13,
                 label: 'Marianne Rongen',
                 shape: 'circularImage',
-                image: "images/Personen/persoon12.png"
+                image: "images/Personen/persoon12.png",
+                font: {
+                    color: '#ffffff'
+                }
             },
             {
                 id: 14,
                 label: 'Annelies Verbeek',
                 shape: 'circularImage',
-                image: "images/Personen/persoon18.png"
+                image: "images/Personen/persoon18.png",
+                font: {
+                    color: '#ffffff'
+                }
             },
 
             {id: 101, label: 'E-portfolio', shape: 'box'},
@@ -194,6 +236,9 @@ app.controller('webCtrl', ['$scope', '$location', 'profileService', '$routeParam
 
     sc.$on('$viewContentLoaded', function (event) {
         sc.options = {
+            font: {
+                color: '#ffffff'
+            },
             width: '85%',
             layout: {
                 randomSeed: 1
