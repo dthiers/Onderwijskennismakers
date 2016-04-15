@@ -105,4 +105,14 @@
   position: fixed;
   display: none;
   border-radius: 5px;
+  text-align: center;
+}
+.divInfoPopup {
+  text-align: center;
+}
+.divInfoPopup.title {
+  font-size: 1.0em;
+}
+.divInfoPopup.subtitle {
+  font-size: 0.9em;
 }

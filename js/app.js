@@ -12,11 +12,10 @@ var app = angular.module('app', ['ngRoute','ngVis'])
   .config(function($routeProvider, $locationProvider) {
     $routeProvider
       // Web routes
-      .when('/web', {
+      .when('/', {
         templateUrl: 'partials/web.html',
         controller: 'webCtrl'
       })
-
       // Profile routes
       .when('/person/:id', {
         templateUrl: 'partials/profile.html',
@@ -26,7 +25,6 @@ var app = angular.module('app', ['ngRoute','ngVis'])
         templateUrl: 'partials/school_overview.html',
         controller: 'schoolProfileCtrl'    
       })
-
       // Search routes
       .when('/search', {
         templateUrl: 'partials/search.html',
