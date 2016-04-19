@@ -33,6 +33,10 @@ var app = angular.module('app', ['ngRoute','ngVis'])
       .when('/search_result', {
         templateUrl: 'partials/search_result.html'
       })
+      .when('/dashboard', {
+        templateUrl: 'partials/dashboard.html',
+        controller: 'dashboardCtrl'
+      })
 
       // Unused routes      
       .when('/news', {

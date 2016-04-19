@@ -59,7 +59,6 @@ body {
 #txtQuery {
   width: 80%;
   height: 100%;
-  max-width: none !important;
   float: left;
   border-right: none;
   margin-top: 10px;
@@ -69,9 +68,6 @@ body {
   height: 100%;
   float: right;
   margin-top: 10px;
-}
-#divSearch h3 {
-  width: 100%;
 }
 #divSearchCompletionWrapper {
   width: 100%;
