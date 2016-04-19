@@ -36,7 +36,7 @@ var app = angular.module('app', ['ngRoute','ngVis'])
       // menu route
       .when('/menu', {
         templateUrl: 'partials/menusample.html',
-        controller: 'menuCtrl.js'
+        controller: 'menuCtrl'
       })
 
       // Unused routes      
