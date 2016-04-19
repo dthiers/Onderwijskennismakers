@@ -1,0 +1,109 @@
+body {
+  overflow: hidden;
+}
+#menubutton {
+  float: left;
+}
+#menu {
+  float: left;
+  background-color: #ffffff;
+  width: 200px;
+  height: 100%;
+}
+#menu ul li {
+  padding: 20px;
+}
+#divSearchFilters {
+  width: 100%;
+  height: 50%;
+  background: #2f2f2f;
+  position: fixed;
+  top: calc(100% - 60px);
+}
+#btnFilters {
+  margin: 10px;
+}
+#divSearch {
+  min-width: 600px;
+  width: 50%;
+  height: 50px;
+  margin: auto;
+  margin-top: 50px;
+  padding: 20px;
+}
+#divSearch h3 {
+  margin-bottom: 20px;
+  float: left;
+}
+#divSearch #divTagWrapper {
+  float: right;
+  height: 30px;
+  width: auto;
+}
+#divSearch #divTagWrapper .divTag {
+  height: 100%;
+  width: auto;
+  background: #494949;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  float: right;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+#divSearch #divTagWrapper .divTag p {
+  height: 100%;
+  width: auto;
+  color: #ffffff;
+  font-size: 0.7em;
+  float: left;
+}
+#divSearch #divTagWrapper .divTag .imgDeleteTag {
+  float: left;
+  height: 80%;
+  margin-top: -3px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+#txtQuery {
+  width: 80%;
+  height: 100%;
+  max-width: none !important;
+  float: left;
+  border-right: none;
+  margin-top: 10px;
+}
+#btnSearch {
+  width: 20%;
+  height: 100%;
+  float: right;
+  margin-top: 10px;
+}
+#divSearch h3 {
+  width: 100%;
+}
+#divSearchCompletionWrapper {
+  width: 100%;
+  height: auto;
+  background: #FFFFFF;
+}
+#divSearchCompletionWrapper .divSearchCompletion {
+  width: 100%;
+  height: 50px;
+  float: left;
+  border-left: 1px solid #dcdcdc;
+  border-right: 1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+#divSearchCompletionWrapper .divSearchCompletion:hover {
+  background: #1389E0;
+  color: #FFFFFF;
+}
