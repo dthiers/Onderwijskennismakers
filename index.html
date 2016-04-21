@@ -21,13 +21,14 @@
   <body>
 
     <!-- Menu -->
-    <div id="divMenu">
+    <div id="divMenu" ng-style="menuStyle" ng-controller="menuCtrl">
       <span class="spanHamburger"></span>
-      <ul class="divMenuSelected">
-        <li>Zoeken</li>
-        <li>School toevoegen</li>
-        <li>Content aanmaken</li>
-        <li>Mijn update</li>
+      <ul class="divMenuSelected" ng-style="subMenuStyle">
+        <li ng-style="subMenuChildrenStyle" ng-click="moveMenu()"><i id="spanMoveMenu" ng-style="arrowStyle" class="fa fa-arrow-right" aria-hidden="true"></i></li>
+        <li ng-style="subMenuChildrenStyle">Zoeken</li>
+        <li ng-style="subMenuChildrenStyle">School toevoegen</li>
+        <li ng-style="subMenuChildrenStyle">Content aanmaken</li>
+        <li ng-style="subMenuChildrenStyle">Mijn update</li>
       </ul>
     </div>
 
@@ -51,6 +52,7 @@
     <script src="js/controllers/searchCtrl.js"></script>
     <script src="js/controllers/webCtrl.js"></script>
     <script src="js/controllers/dashboardCtrl.js"></script>
+    <script src="js/controllers/menuCtrl.js"></script>
 
     <!-- Services -->
     <script src="js/services/testService.js"></script>

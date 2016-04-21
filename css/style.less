@@ -25,12 +25,14 @@ html,body{
 	border-radius: 30px;
 	cursor: pointer;
 	overflow: visible;
+	-webkit-transition: left 0.5s; /* Safari */
+	transition: left 0.5s;
 
 	ul{
 		list-style-type: none;
 		position: absolute;
 		bottom: 60px;
-		margin-left: 18px;
+		left: 18px;
 		visibility: hidden;
 		opacity: 0.0;
 		-webkit-transition: all 0.5s; /* Safari */
@@ -48,6 +50,7 @@ html,body{
 			margin-top: 10px;
 			border-radius: 5px;
 			color: #FFFFFF;
+			clear: both;
 		}
 
 		li:nth-last-of-type(1){
@@ -92,6 +95,10 @@ html,body{
 	&:after{
 		margin-top: 8px;
 	}
+}
+
+#spanMoveMenu{
+
 }
 
 // //grid
