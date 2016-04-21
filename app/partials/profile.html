@@ -1,0 +1,55 @@
+<div id="wrapper" class="color2 darken">
+    <div class="fixed_sidebar color1 left">
+        <div class="profile-sidebar-picture">
+            <img ng-src="{{ profile.profile_image }}">
+        </div>
+
+        <p class="profile-sidebar-header">{{ profile.first_name }} {{ profile.last_name}}</p>
+
+        <div ng-repeat="title in profile.titles" class="profile-sidebar-block"> {{ title }}</div>
+        <!-- <div class="profile-sidebar-block">Expert community </br> School en Samenleving</div> -->
+
+        <div class="profile-sidebar-bottom">
+            <div class="profile-sidebar-bottom-icons">
+                <img class="profile-sidebar-social-icon" src="images/icon_facebook.png" />
+                <img class="profile-sidebar-social-icon" src="images/icon_twitter.png" />
+                <img class="profile-sidebar-social-icon" src="images/icon_mail.png" />
+            </div>
+
+            <div class="profile-sidebar-bottom-icons profile-sideba r-rating-icons">
+                <img class="profile-sidebar-rating-icon" index=1 src="images/rating.png" />
+                <img class="profile-sidebar-rating-icon" index=2 src="images/rating.png" />
+                <img class="profile-sidebar-rating-icon" index=3 src="images/rating.png" />
+                <img class="profile-sidebar-rating-icon" index=4 src="images/rating.png" />
+                <img class="profile-sidebar-rating-icon" index=5 src="images/rating.png" />
+            </div>
+
+            <div class="profile-sidebar-block"><a href="#/">Bekijk web</a></div>
+        </div>
+    </div>
+
+    <div class="content_container profile scrollablex">
+        <h3 class="text_color_dark lighten heading_title">Laatste updates van {{ profile.first_name }}</h3>
+
+        <div class="profile-content color darken">
+            <div ng-repeat="item in profile.items" class="profile-item color2">
+
+                <div class="profile-item-title text_color_dark lighten">
+                    <img class="profile-item-profile-image" ng-src="{{ profile.profile_image }}">
+                </div>
+                <div class="profile-item-title text_color_dark lighten">
+                    {{ item.title }}
+                </div>
+
+                <img class="profile-item-image" ng-src="{{ item.image }}" />
+
+                <div class="profile-item-description text_color_dark extra_lighten">
+                    {{ item.description }}
+                </div>
+                <div class="profile-item-text text_color_dark darken">
+                    {{ item.text }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
