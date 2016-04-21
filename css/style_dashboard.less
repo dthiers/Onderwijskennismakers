@@ -227,18 +227,21 @@ body{
 
 .dashboard_container{
   margin: 3%;
+  height: ~'calc(88% - 70px)';
 
   .web_content{
-      width: 60%;
+      width: ~'calc(97% - 550px)';
       margin-right: 3%;
       float: left;
-      background-color: gray;
-      height: 500px;
+      height: 100%;
+      canvas:focus{
+        outline: 0;
+      }
   }
 
   .side_content{
       float: left;
-      width: 37%; 
+      width: 550px; 
 
       .search_container{
           position: relative;
@@ -314,9 +317,31 @@ body{
           }
 
           .doc{
-              width: ~'calc(50% - 3px)';
+              color: #A5A5A5;
+              width: ~'calc(50% - 2px)';
               float: left;
-              
+              background-color: #fff;
+              padding: 4%;
+              box-sizing: border-box;
+              margin-bottom: 4px;
+              &:nth-child(odd){
+                margin-right: 4px;
+              }
+
+              h3{
+                font-size: 16px;
+                font-weight: bold;
+                margin-bottom: 15px;
+              }
+              p{
+                font-size: 13px;
+                margin-bottom: 10px;
+              }
+              .stars{
+                img{
+                  width: 20px;
+                }
+              }
           }
       }
   }

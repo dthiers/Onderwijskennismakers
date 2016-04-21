@@ -196,17 +196,20 @@ body {
 }
 .dashboard_container {
   margin: 3%;
+  height: calc(88% - 70px);
 }
 .dashboard_container .web_content {
-  width: 60%;
+  width: calc(97% - 550px);
   margin-right: 3%;
   float: left;
-  background-color: gray;
-  height: 500px;
+  height: 100%;
+}
+.dashboard_container .web_content canvas:focus {
+  outline: 0;
 }
 .dashboard_container .side_content {
   float: left;
-  width: 37%;
+  width: 550px;
 }
 .dashboard_container .side_content .search_container {
   position: relative;
@@ -279,6 +282,26 @@ body {
   display: inline-block;
 }
 .dashboard_container .side_content .documents_container .doc {
-  width: calc(50% - 3px);
+  color: #A5A5A5;
+  width: calc(50% - 2px);
   float: left;
+  background-color: #fff;
+  padding: 4%;
+  box-sizing: border-box;
+  margin-bottom: 4px;
+}
+.dashboard_container .side_content .documents_container .doc:nth-child(odd) {
+  margin-right: 4px;
+}
+.dashboard_container .side_content .documents_container .doc h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.dashboard_container .side_content .documents_container .doc p {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.dashboard_container .side_content .documents_container .doc .stars img {
+  width: 20px;
 }
