@@ -13,8 +13,8 @@ var app = angular.module('app', ['ngRoute','ngVis'])
     $routeProvider
       // Web routes
       .when('/', {
-        templateUrl: 'partials/web.html',
-        controller: 'webCtrl'
+        templateUrl: 'partials/dashboard.html',
+        controller: 'dashboardCtrl'
       })
       // Profile routes
       .when('/person/:id', {

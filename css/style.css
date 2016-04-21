@@ -29,6 +29,9 @@ body {
   /* Safari */
   transition: left 0.5s;
 }
+#divMenu .fa {
+  margin-right: 10px;
+}
 #divMenu ul {
   list-style-type: none;
   position: absolute;
