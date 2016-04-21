@@ -201,7 +201,7 @@ body {
   height: calc(88% - 70px);
 }
 .dashboard_container .web_content {
-  width: calc(97% - 550px);
+  width: 67%;
   margin-right: 3%;
   float: left;
   height: 100%;
@@ -211,7 +211,7 @@ body {
 }
 .dashboard_container .side_content {
   float: left;
-  width: 550px;
+  width: 30%;
 }
 .dashboard_container .side_content .search_container {
   position: relative;
