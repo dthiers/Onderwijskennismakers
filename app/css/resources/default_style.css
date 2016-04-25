@@ -1,0 +1,233 @@
+@import "removeDefaultCss.css";
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+html,
+body {
+  background-color: #fff;
+  height: 100%;
+  width: 100%;
+  font-family: Lato-Light;
+  font-size: 100%;
+  color: #4a4a4a;
+}
+#wrapper {
+  height: 100%;
+  width: 100%;
+}
+#wrapper h1,
+#wrapper h2,
+#wrapper h3 {
+  font-weight: 300;
+}
+#wrapper h1 {
+  font-size: 2.5em;
+}
+#wrapper h2 {
+  font-size: 2em;
+}
+#wrapper h3 {
+  font-size: 1.5em;
+}
+#wrapper p {
+  font-size: 1em;
+}
+#wrapper a {
+  color: #979797;
+  text-decoration: none;
+}
+.loading_image {
+  display: none;
+  position: absolute;
+  left: 50%;
+  width: 50px;
+  margin-left: -25px;
+  top: 60%;
+}
+button {
+  background-color: #FFFFFF;
+  border: 1px solid #dcdcdc;
+  color: #1389E0;
+  min-width: 100px;
+  min-height: 30px;
+  cursor: pointer;
+  padding: 10px;
+  font-weight: 700;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+button:focus {
+  background: #1389E0;
+  color: #FFFFFF;
+  outline: none !important;
+}
+button:hover {
+  border: 1px solid #1389E0;
+}
+input[type="text"],
+input[type="password"],
+input[type="checkbox"] {
+  width: 100%;
+  border: 1px solid #dcdcdc;
+  background-color: #fff;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #1C1C1C;
+}
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="checkbox"]:focus {
+  border-left: 2px solid #1397E7;
+  outline: none !important;
+}
+select {
+  width: 100%;
+  max-width: 300px;
+  height: 30px;
+  border: 1px solid #dcdcdc;
+  background: #FFFFFF;
+  color: #1C1C1C;
+}
+select:focus {
+  border-left: 2px solid #1397E7;
+  outline: none !important;
+}
+label {
+  color: #b8eadc;
+  font-style: italic;
+}
+textarea {
+  resize: vertical;
+  width: 100%;
+  max-width: 400px;
+  min-height: 100px;
+  border: 1px solid #dcdcdc;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #b8eadc;
+}
+textarea:focus {
+  border-left: 2px solid #1397E7;
+  outline: none !important;
+}
+.fixed_sidebar {
+  position: fixed;
+  background-color: #69d3b6;
+  padding: 20px;
+  height: 100%;
+  width: 15%;
+}
+.fixed_sidebar.left {
+  left: 0px;
+}
+.fixed_sidebar.right {
+  right: 0px;
+}
+.top_bar {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  height: 110px;
+  width: calc(100% - 40px);
+  padding: 20px;
+}
+.bottom_bar {
+  position: relative;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 200px;
+}
+.content_container {
+  overflow: visible;
+  margin: 20px;
+  width: auto;
+  height: auto;
+}
+.content_container.scrollabley {
+  overflow-y: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.content_container.scrollablex {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.content_block {
+  display: inline-block;
+  padding: 20px;
+}
+.color1 {
+  background-color: #69d3b6 !important;
+  color: #e4e4e4;
+}
+.color1.lighten {
+  background-color: #90dfc9 !important;
+}
+.color1.extra_lighten {
+  background-color: #b8eadc !important;
+}
+.color1.darken {
+  background-color: #42c7a3 !important;
+}
+.color1.extra_darken {
+  background-color: #31a585 !important;
+}
+.color2 {
+  background-color: #ffffff !important;
+  color: #4a4a4a;
+}
+.color2.lighten {
+  background-color: #ffffff !important;
+}
+.color2.extra_lighten {
+  background-color: #ffffff !important;
+}
+.color2.darken {
+  background-color: #e6e6e6 !important;
+}
+.color2.extra_darken {
+  background-color: #cccccc !important;
+}
+.text_color_light {
+  color: #e4e4e4 !important;
+}
+.text_color_light.lighten {
+  color: #fefefe !important;
+}
+.text_color_light.extra_lighten {
+  color: #ffffff !important;
+}
+.text_color_light.darken {
+  color: #cbcbcb !important;
+}
+.text_color_light.extra_darken {
+  color: #b1b1b1 !important;
+}
+.text_color_dark {
+  color: #4a4a4a !important;
+}
+.text_color_dark.lighten {
+  color: #646464 !important;
+}
+.text_color_dark.extra_lighten {
+  color: #7d7d7d !important;
+}
+.text_color_dark.darken {
+  color: #313131 !important;
+}
+.text_color_dark.extra_darken {
+  color: #171717 !important;
+}
+.clearer {
+  clear: both;
+}
