@@ -2,10 +2,10 @@ body {
   overflow: hidden;
 }
 ::-webkit-scrollbar {
-  background: #626262;
+  background: #b8eadc;
 }
 ::-webkit-scrollbar-thumb {
-  background: #7c7c7c;
+  background: #dff6f0;
 }
 .divHalf {
   position: relative;
@@ -68,7 +68,7 @@ body {
   padding: 5px;
   padding-left: 10px;
   min-width: 130px;
-  background: #494949;
+  background: #90dfc9;
   z-index: -1;
   -webkit-transition: all 0.8s;
   transition: all 0.8s;
@@ -141,7 +141,7 @@ body {
   cursor: pointer;
 }
 .imgSocial:hover {
-  background: #3c3c3c;
+  background: #7dd9c0;
 }
 .page-header {
   padding: 10px;

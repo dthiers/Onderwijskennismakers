@@ -4,7 +4,7 @@ body {
 #divSearchFilters {
   width: 100%;
   height: 50%;
-  background: #2f2f2f;
+  background: #69d3b6;
   position: fixed;
   top: calc(100% - 60px);
 }
@@ -31,7 +31,7 @@ body {
 #divSearch #divTagWrapper .divTag {
   height: 100%;
   width: auto;
-  background: #494949;
+  background: #90dfc9;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -59,7 +59,6 @@ body {
 #txtQuery {
   width: 80%;
   height: 100%;
-  max-width: none !important;
   float: left;
   border-right: none;
   margin-top: 10px;
@@ -69,9 +68,6 @@ body {
   height: 100%;
   float: right;
   margin-top: 10px;
-}
-#divSearch h3 {
-  width: 100%;
 }
 #divSearchCompletionWrapper {
   width: 100%;

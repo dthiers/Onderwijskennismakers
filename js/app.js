@@ -13,8 +13,8 @@ var app = angular.module('app', ['ngRoute','ngVis'])
     $routeProvider
       // Web routes
       .when('/', {
-        templateUrl: 'partials/web.html',
-        controller: 'webCtrl'
+        templateUrl: 'partials/dashboard.html',
+        controller: 'dashboardCtrl'
       })
       // Profile routes
       .when('/person/:id', {
@@ -33,10 +33,9 @@ var app = angular.module('app', ['ngRoute','ngVis'])
       .when('/search_result', {
         templateUrl: 'partials/search_result.html'
       })
-      // menu route
-      .when('/menu', {
-        templateUrl: 'partials/menusample.html',
-        controller: 'menuCtrl'
+      .when('/dashboard', {
+        templateUrl: 'partials/dashboard.html',
+        controller: 'dashboardCtrl'
       })
 
       // Unused routes      

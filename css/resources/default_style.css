@@ -10,7 +10,7 @@ body {
   background-color: #fff;
   height: 100%;
   width: 100%;
-  font-family: "Myriad Pro";
+  font-family: Lato-Light;
   font-size: 100%;
   color: #4a4a4a;
 }
@@ -100,7 +100,7 @@ select:focus {
   outline: none !important;
 }
 label {
-  color: #626262;
+  color: #b8eadc;
   font-style: italic;
 }
 textarea {
@@ -113,8 +113,7 @@ textarea {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  font-family: "Myriad Pro";
-  color: #626262;
+  color: #b8eadc;
 }
 textarea:focus {
   border-left: 2px solid #1397E7;
@@ -122,7 +121,7 @@ textarea:focus {
 }
 .fixed_sidebar {
   position: fixed;
-  background-color: #2f2f2f;
+  background-color: #69d3b6;
   padding: 20px;
   height: 100%;
   width: 15%;
@@ -168,20 +167,20 @@ textarea:focus {
   padding: 20px;
 }
 .color1 {
-  background-color: #2f2f2f !important;
+  background-color: #69d3b6 !important;
   color: #e4e4e4;
 }
 .color1.lighten {
-  background-color: #494949 !important;
+  background-color: #90dfc9 !important;
 }
 .color1.extra_lighten {
-  background-color: #626262 !important;
+  background-color: #b8eadc !important;
 }
 .color1.darken {
-  background-color: #161616 !important;
+  background-color: #42c7a3 !important;
 }
 .color1.extra_darken {
-  background-color: #000000 !important;
+  background-color: #31a585 !important;
 }
 .color2 {
   background-color: #ffffff !important;

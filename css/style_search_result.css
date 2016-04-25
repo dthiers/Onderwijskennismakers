@@ -26,11 +26,11 @@
   line-height: 40px;
   position: relative;
   display: inline-block;
-  background-color: #494949;
+  background-color: #90dfc9;
 }
 .top_container .searchBlock:hover {
   cursor: normal;
-  background-color: #1d1d1d;
+  background-color: #4dcba9;
 }
 .top_container .searchBlock.active {
   background-color: #e6e6e6;
@@ -77,13 +77,13 @@
   -moz-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
-  background-color: #494949;
+  background-color: #90dfc9;
   text-align: center;
   color: #e6e6e6;
   height: 40px;
   line-height: 40px;
 }
 .result_container .block .viewButton:hover {
-  background-color: #626262;
+  background-color: #b8eadc;
   cursor: pointer;
 }
