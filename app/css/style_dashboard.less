@@ -1,9 +1,9 @@
 @import 'resources/variables.less';
 
-body{
+html,body{
   margin: 0px;
   background: #f5f5f5;
-  padding-top: 70px;
+  padding-top: 45px;
 }
 
 .divTopBar{
@@ -17,7 +17,7 @@ body{
   -webkit-transition: top 1000ms cubic-bezier(0.695, 0.010, 0.225, 0.985); 
    -moz-transition: top 1000ms cubic-bezier(0.695, 0.010, 0.225, 0.985); 
      -o-transition: top 1000ms cubic-bezier(0.695, 0.010, 0.225, 0.985); 
-        transition: top 1000ms cubic-bezier(0.695, 0.010, 0.225, 0.985); /* custom */
+        transition: top 1000ms cubic-bezierf(0.695, 0.010, 0.225, 0.985); /* custom */
   z-index: 999;
 }
 
@@ -81,9 +81,19 @@ body{
   box-sizing: border-box;
   padding-top: 100px;
 
+  @media screen and (max-width: 1100px) {
+      padding-top: 0px;
+  }
+
   .wrapper{
     margin: 0 auto;
     width: 60%;
+    @media screen and (max-width: 1500px) {
+        width: 80%;
+    }
+    @media screen and (max-width: 1100px) {
+        width: 90%;
+    }
   }
 }
 
@@ -182,6 +192,8 @@ body{
     height: auto;
     float: left;
     margin-top: 40px;
+    height: 350px;
+    overflow: auto;
 
     .title{
       font-family: Lato-Light;
@@ -202,19 +214,6 @@ body{
     }
   }
 }
-
-// #tablePerson{
-//   position: relative;
-//   height: 100px;
-//   vertical-align: top !important;
-//   border-collapse: separate;
-//   border-spacing: 20px 20px;
-
-//   td{
-
-//   }
-// }
-
 
 
 
@@ -240,6 +239,7 @@ body{
   }
 
   .doc{
+    cursor: pointer;
     background-color: #F7F7F7;
     padding: 30px;
     text-align: left;
@@ -316,7 +316,7 @@ body{
 
 .dashboard_container{
   margin: 3%;
-  height: ~'calc(88% - 70px)';
+  height: ~'calc(88% - 90px)';
 
   .web_content{
       width: 67%;
@@ -406,6 +406,7 @@ body{
           }
 
           .doc{
+              cursor: pointer;
               color: #A5A5A5;
               width: ~'calc(50% - 2px)';
               float: left;
@@ -430,6 +431,10 @@ body{
                 img{
                   width: 20px;
                 }
+              }
+              @media screen and (max-width: 1500px) {
+                  width: 100%;
+                  margin-right: 0px !important;
               }
           }
       }
