@@ -201,8 +201,10 @@ module.exports = function ($scope, VisDataSet) {
 
                 //Trefwoorden
                 keywords: {
+                    labelHighlightBold: false,
                     borderWidth: 15,
                     borderWidthSelected: 15,
+                    shadow: false,
                     color: {
                       border: '#73a1ee',
                       background: '#73a1ee',
