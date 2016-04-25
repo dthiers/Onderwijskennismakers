@@ -1,6 +1,6 @@
 <div class="divTopBar" ng-style="topBarStyle" ng-click="slideDown()">
     <div class="divTopBarContent">
-        Tony Klaasen
+        {{user.firstName}} {{user.lastName}}
     </div>
     <img src="./images/arrow_down.png" class="imgTopBarArrow" />
     <div class="divUserImage"></div>
@@ -28,7 +28,7 @@
 
         <!-- ZOEKEN -->
         <div class="documents_container">
-            <div class="header">Bronnen van Tony Klaassen</div> <!-- Naam moet dynamisch toegevoegd worden -->
+            <div class="header">Bronnen van {{user.firstName}} {{user.lastName}}</div> <!-- Naam moet dynamisch toegevoegd worden -->
             <button class="btn_addDocument">Bron maken <i class="fa fa-plus" aria-hidden="true"></i></button>
 
             <!-- DOCUMENTS -->
@@ -123,7 +123,7 @@
                     <div class="nameRatingSchool_container">
 
                         <div class="name_flex_container">
-                            <p class="title">Tony Klaassen</p>
+                            <p class="title">{{user.firstName}} {{user.lastName}}</p>
                             <div class="rating_container">
                                 <img src="./images/star-filled.png"/>
                                 <img src="./images/star-filled.png"/>
