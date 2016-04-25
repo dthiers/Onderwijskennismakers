@@ -1,34 +1,31 @@
 {
-  "name": "mahjongmayhem",
+  "name": "onderwijskennismakers",
   "version": "1.0.0",
-  "description": "Mahjong Mayhem for webs6",
-  "main": "index.js",
+  "description": "mevolution",
+  "main": "Gruntfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "mahjong",
-    "mayhem",
-    "webs6",
-    "javascript",
-    "advanced"
-  ],
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com/dthiers/Onderwijskennismakers.git"
   },
-  "author": "Dion Thiers",
+  "author": "groep k",
   "license": "ISC",
-  "devDependencies": {
+  "bugs": {
+    "url": "https://github.com/dthiers/Onderwijskennismakers/issues"
+  },
+  "homepage": "https://github.com/dthiers/Onderwijskennismakers#readme",
+  "dependencies": {
     "angular": "^1.5.5",
     "angular-ui-router": "^0.2.18",
-    "browserify": "^13.0.0",
-    "grunt": "~0.4.5",
+    "jquery": "^2.2.3",
+    "ng-storage": "^0.3.2"
+  },
+  "devDependencies": {
     "grunt-browserify": "^5.0.0",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0",
-    "grunt-http-server": "^1.16.0",
-    "jquery": "^2.2.3",
-    "ng-storage": "^0.3.2"
+    "grunt-http-server": "^1.16.0"
   }
 }
