@@ -12,6 +12,18 @@
 </head>
 
 <body>
+<!-- Menu -->
+<div id="divMenu" ng-style="menuStyle" ng-controller="MenuCtrl">
+  <span class="spanHamburger"></span>
+  <ul class="divMenuSelected" ng-style="subMenuStyle">
+    <li ng-style="subMenuChildrenStyle" ng-click="moveMenu()"><i id="spanMoveMenu" ng-style="arrowStyle" class="fa fa-arrow-right" aria-hidden="true"></i></li>
+    <li ng-style="subMenuChildrenStyle"><i class="fa fa-search" aria-hidden="true"></i> Zoeken</li>
+    <li ng-style="subMenuChildrenStyle"><i class="fa fa-building" aria-hidden="true"></i> School aanmelden</li>
+    <li ng-style="subMenuChildrenStyle"><i class="fa fa-file-o" aria-hidden="true"></i> Bijdragen</li>
+    <li ng-style="subMenuChildrenStyle"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Mijn updates</li>
+  </ul>
+</div>
+
 <div ui-view class="wrapper"></div>
 
 <script src="js/app.js"></script>

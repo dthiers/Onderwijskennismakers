@@ -174,6 +174,7 @@ module.exports = function ($scope, VisDataSet) {
                 persons: {
                     borderWidth: 0,
                     size: 40,
+                    borderWidthSelected: 0,
                     color: {
                         border: '#F5F5F5'
                     },
@@ -203,10 +204,10 @@ module.exports = function ($scope, VisDataSet) {
                     borderWidth: 15,
                     borderWidthSelected: 15,
                     color: {
-                      border: '#69D3B6',
-                      background: '#69D3B6',
+                      border: '#73a1ee',
+                      background: '#73a1ee',
                       highlight: {
-                        border: '#69D3B6',
+                        border: '#73a1ee',
                       }
                     },
                     font: {
