@@ -172,9 +172,10 @@ body {
   float: left;
 }
 #person_container .aboutMe_container {
-  width: 80%;
+  width: 90%;
   height: auto;
   float: left;
+  padding-right: 20px;
   margin-top: 40px;
   height: 350px;
   overflow: auto;
@@ -333,7 +334,7 @@ body {
 .dashboard_container .side_content .search_container .search_button {
   height: calc(100% - 30px);
   width: 50px;
-  background-color: #5b8fe4;
+  background-color: #B1B5BD;
   background-image: url('../images/magnifier.png');
   background-size: 50%;
   background-position: center;
