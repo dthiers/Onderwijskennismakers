@@ -3,7 +3,7 @@ module.exports = function ($http) {
     var urlBase = 'http://api-onderwijskennismakers.herokuapp.com/user/';
     var dataFactory = {};
     
-    dataFactory.getUsers = function () {
+    dataFactory.getAll = function () {
         return $http.get(urlBase);
     };
 
