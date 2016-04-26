@@ -3,7 +3,7 @@
 html,body{
   margin: 0px;
   background: #f5f5f5;
-  padding-top: 45px;
+  //padding-top: 45px;
 }
 
 .divTopBar{
@@ -33,7 +33,6 @@ html,body{
   width: 60px;
   background: #f5f5f5;
   border-radius: 30px;
-  background-image: url('../images/Personen/persoon13.png');
   background-size: contain;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -72,6 +71,7 @@ html,body{
   height: 100%;
   background: #FFFFFF;
   top: -100%;
+  z-index: 998;
   -webkit-transition: top 1000ms cubic-bezier(0.695, 0.010, 0.225, 0.985); 
    -moz-transition: top 1000ms cubic-bezier(0.695, 0.010, 0.225, 0.985); 
      -o-transition: top 1000ms cubic-bezier(0.695, 0.010, 0.225, 0.985); 
@@ -85,7 +85,7 @@ html,body{
       padding-top: 0px;
   }
 
-  .wrapper{
+  .content_wrapper{
     margin: 0 auto;
     width: 60%;
     @media screen and (max-width: 1500px) {
@@ -162,7 +162,7 @@ html,body{
 
       .rating_container{
         img{
-          height: 20px;
+          height: 26px;
           float: left;
         }
       }
@@ -316,8 +316,10 @@ html,body{
 
 
 .dashboard_container{
-  margin: 3%;
-  height: ~'calc(88% - 90px)';
+  padding: 3%;
+  /* height: calc(88% - 90px); */
+  height: 100%;
+  box-sizing: border-box;
 
   .web_content{
       width: 67%;
@@ -329,9 +331,17 @@ html,body{
       }
   }
 
-  .side_content{
+  .side_content_scrollWrapper{
+      width: 30%;
+      height: 100%;
+      overflow: hidden;
+      .side_content{
       float: left;
-      width: 30%; 
+      width: 100%;
+      overflow: auto;
+      padding-right: 20px;
+      height: 100%;
+      padding-top: 10px;
 
       .search_container{
           position: relative;
@@ -439,6 +449,8 @@ html,body{
               }
           }
       }
+    }
   }
+  
 }
 // dashboard style

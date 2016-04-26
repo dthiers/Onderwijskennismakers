@@ -11,6 +11,9 @@ global.$ = require('jquery');
 // Include Routing
 require('./config/router.js')(app)
 
+// Include Routing
+require('./config/directive.js')(app)
+
 // Include Config
 require('./config/config.js')(app);
 
