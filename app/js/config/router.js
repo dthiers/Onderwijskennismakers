@@ -24,6 +24,27 @@ module.exports = function (app) {
                 }
             })
 
+            .state('login', {
+                url: '/login',
+                views: {
+
+                    '': { templateUrl: '../partials/home.html'},
+
+                    'profile@login': {
+                        templateUrl: '../partials/profile/profile.html',
+                        controller: 'ProfileCtrl'
+                    },
+                    'dashboard@login': {
+                        templateUrl: '../partials/dashboard/dashboard.html',
+                        controller: 'DashboardCtrl'
+                    },
+                    'login@login': {
+                        templateUrl: '../partials/login/login.html',
+                        controller: 'LoginCtrl'
+                    }
+                }
+            })
+
 
     });
 }
