@@ -113,139 +113,103 @@
 <!-- Dynamic content -->
 <div class="divTopContent" ng-style="topContentStyle">
 
-    <div id="divPerson">
-        <table id="tablePerson">
-            <tr>
-                <td rowspan="2">
-                    <img src="./images/personen/persoon13.png" id="imgPersonPic" />
-                </td>
-                <td>
-                    <p class="pTopContentTitle">Tony Klaassen</p>
-                </td>
-                <td>
-                    <div class="divRatingWrapper">
-                        <img src="./images/star-filled.png" class="imgStar" />
-                        <img src="./images/star-filled.png" class="imgStar" />
-                        <img src="./images/star-filled.png" class="imgStar" />
-                        <img src="./images/star-half-filled.png" class="imgStar" />
-                        <img src="./images/star-empty.png" class="imgStar" />
+    <div class="wrapper">
+        <div id="person_container">
+            <div class="personInfo_container">
+                <!-- PROFILE IMAGE -->
+                <img src="./images/personen/persoon13.png" id="profile_image" />
+
+                <div class="flex_container">
+                    <div class="nameRatingSchool_container">
+
+                        <div class="name_flex_container">
+                            <p class="title">Tony Klaassen</p>
+                            <div class="rating_container">
+                                <img src="./images/star-filled.png"/>
+                                <img src="./images/star-filled.png"/>
+                                <img src="./images/star-filled.png"/>
+                                <img src="./images/star-half-filled.png"/>
+                                <img src="./images/star-empty.png"/>
+                            </div>
+                        </div>
+                        <div class="school_flex_container">
+                            <div class="school_block"></div>
+                            <p class="schoolName">De Viersprong Basisschool</p>
+                        </div>
                     </div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <div class="divBlock"></div>
-                    <p class="pTopContentSubTitle">De Viersprong Basisschool</p>
-                </td>
-            </tr>
-        </table>
-    </div>
+                </div>
+                
+            </div>
 
-    <div id="divRecent">
-        <p class="pTitle">Recente bronnen</p>
-        <div class="divExpertise">
-            <table class="tableExpertise">
-                <tr>
-                    <td>
-                        <p class="pSmallTitle">Samenleving document</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p class="pItalic">03-04-2016</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p class="pItalic">Auteur: Niels Snakenborg</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="divRatingWrapper">
-                            <img src="./images/star-filled.png" class="imgStar" />
-                            <img src="./images/star-filled.png" class="imgStar" />
-                            <img src="./images/star-filled.png" class="imgStar" />
-                            <img src="./images/star-half-filled.png" class="imgStar" />
-                            <img src="./images/star-empty.png" class="imgStar" />
-                        </div>
-                    </td>
-                </tr>
-            </table>
+            <div class="aboutMe_container">
+                <p class="title">Over mij</p>
+                <p class="description">
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.
+                </p>
+            </div>
+
         </div>
-        <div class="divExpertise">
-            <table class="tableExpertise">
-                <tr>
-                    <td>
-                        <p class="pSmallTitle">Samenleving document</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p class="pItalic">03-04-2016</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p class="pItalic">Auteur: Niels Snakenborg</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="divRatingWrapper">
-                            <img src="./images/star-filled.png" class="imgStar" />
-                            <img src="./images/star-filled.png" class="imgStar" />
-                            <img src="./images/star-filled.png" class="imgStar" />
-                            <img src="./images/star-half-filled.png" class="imgStar" />
-                            <img src="./images/star-empty.png" class="imgStar" />
-                        </div>
-                    </td>
-                </tr>
-            </table>
+
+        
+
+        <div id="profile_docs_container">
+            <div class="header">
+                <p class="title">Recente bronnen</p>
+            </div>
+
+            <div class="documents">
+
+                <!-- DOCUMENT -->
+                <div class="doc">
+                    <h3>Samenleving document</h3>
+                    <p>22-04-2016</p>
+                    <span>Auteur:</span><span>Ryan Smith</span>
+                    <div class="rating_container">
+                        <img src="./images/star-filled.png"/>
+                        <img src="./images/star-filled.png"/>
+                        <img src="./images/star-filled.png"/>
+                        <img src="./images/star-half-filled.png"/>
+                        <img src="./images/star-empty.png"/>
+                    </div>
+                </div>
+
+                <!-- DOCUMENT -->
+                <div class="doc">
+                    <h3>Samenleving document</h3>
+                    <p>22-04-2016</p>
+                    <span>Auteur:</span><span>Ryan Smith</span>
+                    <div class="rating_container">
+                        <img src="./images/star-filled.png"/>
+                        <img src="./images/star-filled.png"/>
+                        <img src="./images/star-filled.png"/>
+                        <img src="./images/star-half-filled.png"/>
+                        <img src="./images/star-empty.png"/>
+                    </div>
+                </div>
+
+                <!-- DOCUMENT -->
+                <div class="doc">
+                    <h3>Samenleving document</h3>
+                    <p>22-04-2016</p>
+                    <span>Auteur:</span><span>Ryan Smith</span>
+                    <div class="rating_container">
+                        <img src="./images/star-filled.png"/>
+                        <img src="./images/star-filled.png"/>
+                        <img src="./images/star-filled.png"/>
+                        <img src="./images/star-half-filled.png"/>
+                        <img src="./images/star-empty.png"/>
+                    </div>
+                </div>
+
+
+            </div>
         </div>
-        <div class="divExpertise">
-            <table class="tableExpertise">
-                <tr>
-                    <td>
-                        <p class="pSmallTitle">Samenleving document</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p class="pItalic">03-04-2016</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p class="pItalic">Auteur: Niels Snakenborg</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="divRatingWrapper">
-                            <img src="./images/star-filled.png" class="imgStar" />
-                            <img src="./images/star-filled.png" class="imgStar" />
-                            <img src="./images/star-filled.png" class="imgStar" />
-                            <img src="./images/star-half-filled.png" class="imgStar" />
-                            <img src="./images/star-empty.png" class="imgStar" />
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
-
-    <div class="divTextWrapper">
-        <p class="pTitleUnderline">Over mij</p>
-        <p class="pText">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.
-        </p>
-    </div>
 
 
-    <div class="divTopContentFooter">
-        <div class="divTopContentFooterButton" ng-click="slideUp()">
-            <img src="./images/arrow_down_white.png" class="imgTopContentFooterArrow" />
+        <div class="divTopContentFooter">
+            <div class="divTopContentFooterButton" ng-click="slideUp()">
+                <img src="./images/arrow_down_white.png" class="imgTopContentFooterArrow" />
+            </div>
         </div>
     </div>
 </div>

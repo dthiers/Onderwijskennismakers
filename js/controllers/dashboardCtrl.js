@@ -178,7 +178,7 @@ app.controller('dashboardCtrl', ['$scope', 'VisDataSet', function(sc, VisDataSet
 	          			border: '#F5F5F5'
         			},
         			font: {
-	                    color: '#949494'
+	                    color: '#b6b6b6'
 	                },
 
 	                //Scaling options
@@ -201,11 +201,13 @@ app.controller('dashboardCtrl', ['$scope', 'VisDataSet', function(sc, VisDataSet
 			    //Trefwoorden
 			    keywords: {
 			    	borderWidth: 15,
-
+			    	borderWidthSelected: 15,
 			    	color: {
 			          border: '#69D3B6',
 			          background: '#69D3B6',
-			          
+			          highlight: {
+			          	border: '#69D3B6',
+			          }
 		        	},
 		        	font: {
 			          color: '#ffffff',
