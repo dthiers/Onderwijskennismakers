@@ -1,5 +1,5 @@
 module.exports = function (app) {
-    console.log('Word ik gerequired');
+    
     app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
         $urlRouterProvider.otherwise('/');
@@ -9,8 +9,21 @@ module.exports = function (app) {
         $stateProvider
             .state('dashboard', {
                 url: '/',
-                templateUrl: '../partials/dashboard.html',
-                controller: 'DashboardCtrl'
+                views: {
+
+                    '': { templateUrl: '../partials/home.html'},
+
+                    'profile@dashboard': {
+                        templateUrl: '../partials/profile/profile.html',
+                        controller: 'ProfileCtrl'
+                    },
+                    'dashboard@dashboard': {
+                        templateUrl: '../partials/dashboard/dashboard.html',
+                        controller: 'DashboardCtrl'
+                    }
+                }
             })
+
+
     });
 }

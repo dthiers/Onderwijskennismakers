@@ -13,16 +13,6 @@ module.exports = function ($scope, $stateParams, VisDataSet, ProfileService) {
             });
     }
     
-    
-    
-    $scope.slideDown = function(){
-        $scope.topBarStyle = {top: '100%'};
-        $scope.topContentStyle = {top: '0%'};
-    }
-    $scope.slideUp = function(){
-        $scope.topBarStyle = {top: '0%'};
-        $scope.topContentStyle = {top: '-100%'};
-    }
 
     $scope.data = {
         "nodes": VisDataSet([
@@ -217,8 +207,10 @@ module.exports = function ($scope, $stateParams, VisDataSet, ProfileService) {
 
                 //Trefwoorden
                 keywords: {
+                    labelHighlightBold: false,
                     borderWidth: 15,
                     borderWidthSelected: 15,
+                    shadow: false,
                     color: {
                       border: '#73a1ee',
                       background: '#73a1ee',
