@@ -18,6 +18,9 @@ module.exports = function ($scope, AuthService) {
         if(validate){
             AuthService.loginServer({ email: email, password: password}, {
                 onSuccess: function(result){
+                  $scope.message = "";
+                  $('#divLogin').hide();
+                  $('#divLoginBackgroundOverlay').hide();
                     // Go To dashboard
                 },
                 onError: function(err){
