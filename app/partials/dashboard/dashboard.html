@@ -1,5 +1,5 @@
-<div ng-if="type == 'person'" data-content="user" user_directive></div>
-<div ng-if="type == 'school'" data-content="school" school_directive></div>
+<div class="dynamic_content" ng-if="type == 'person'" data-content="user" user_directive></div>
+<div class="dynamic_content" ng-if="type == 'school'" data-content="school" school_directive></div>
 
 <!-- DASHBOARD -->
 <div class="dashboard_container">
@@ -24,7 +24,7 @@
 
             <!-- ZOEKEN -->
             <div class="documents_container">
-                <div class="header">Bronnen van Tony Klaassen</div> <!-- Naam moet dynamisch toegevoegd worden -->
+                <div class="header">Bronnen van {{user.firstName}}</div> <!-- Naam moet dynamisch toegevoegd worden -->
                 <button class="btn_addDocument">Bron maken <i class="fa fa-plus" aria-hidden="true"></i></button>
 
                 <!-- DOCUMENTS -->
@@ -34,49 +34,7 @@
                     <div class="doc">
                         <h3>Samenleving document</h3>
                         <p>03-04-2016</p>
-                        <p>Auteur: Ryan Smith</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur risus quam, tempor nec massa quis, pretium tincidunt magna. Aenean at bibendum ipsum. Phasellus a urna vitae tortor finibus malesuada. Vivamus pretium finibus pharetra. lees meer</p>
-                        <div class="stars">
-                            <img src="images/star-filled.png"></img>
-                            <img src="images/star-filled.png"></img>
-                            <img src="images/star-filled.png"></img>
-                            <img src="images/star-filled.png"></img>
-                            <img src="images/star-half-filled.png"></img>
-                        </div>
-                    </div>
-                    <!-- Doc -->
-                    <div class="doc">
-                        <h3>Samenleving document</h3>
-                        <p>03-04-2016</p>
-                        <p>Auteur: Ryan Smith</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur risus quam, tempor nec massa quis, pretium tincidunt magna. Aenean at bibendum ipsum. Phasellus a urna vitae tortor finibus malesuada. Vivamus pretium finibus pharetra. lees meer</p>
-                        <div class="stars">
-                            <img src="images/star-filled.png"></img>
-                            <img src="images/star-filled.png"></img>
-                            <img src="images/star-filled.png"></img>
-                            <img src="images/star-filled.png"></img>
-                            <img src="images/star-half-filled.png"></img>
-                        </div>
-                    </div>
-                    <!-- Doc -->
-                    <div class="doc">
-                        <h3>Samenleving document</h3>
-                        <p>03-04-2016</p>
-                        <p>Auteur: Ryan Smith</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur risus quam, tempor nec massa quis, pretium tincidunt magna. Aenean at bibendum ipsum. Phasellus a urna vitae tortor finibus malesuada. Vivamus pretium finibus pharetra. lees meer</p>
-                        <div class="stars">
-                            <img src="images/star-filled.png"></img>
-                            <img src="images/star-filled.png"></img>
-                            <img src="images/star-filled.png"></img>
-                            <img src="images/star-filled.png"></img>
-                            <img src="images/star-half-filled.png"></img>
-                        </div>
-                    </div>
-                    <!-- Doc -->
-                    <div class="doc">
-                        <h3>Samenleving document</h3>
-                        <p>03-04-2016</p>
-                        <p>Auteur: Ryan Smith</p>
+                        <p>Auteur: Kristian</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur risus quam, tempor nec massa quis, pretium tincidunt magna. Aenean at bibendum ipsum. Phasellus a urna vitae tortor finibus malesuada. Vivamus pretium finibus pharetra. lees meer</p>
                         <div class="stars">
                             <img src="images/star-filled.png"></img>
@@ -87,11 +45,11 @@
                         </div>
                     </div>
 
-                     <!-- Doc -->
+                    <!-- Doc -->
                     <div class="doc">
                         <h3>Samenleving document</h3>
                         <p>03-04-2016</p>
-                        <p>Auteur: Ryan Smith</p>
+                        <p>Auteur: Kristian</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur risus quam, tempor nec massa quis, pretium tincidunt magna. Aenean at bibendum ipsum. Phasellus a urna vitae tortor finibus malesuada. Vivamus pretium finibus pharetra. lees meer</p>
                         <div class="stars">
                             <img src="images/star-filled.png"></img>
@@ -102,11 +60,11 @@
                         </div>
                     </div>
 
-                     <!-- Doc -->
+                    <!-- Doc -->
                     <div class="doc">
                         <h3>Samenleving document</h3>
                         <p>03-04-2016</p>
-                        <p>Auteur: Ryan Smith</p>
+                        <p>Auteur: Kristian</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur risus quam, tempor nec massa quis, pretium tincidunt magna. Aenean at bibendum ipsum. Phasellus a urna vitae tortor finibus malesuada. Vivamus pretium finibus pharetra. lees meer</p>
                         <div class="stars">
                             <img src="images/star-filled.png"></img>
@@ -117,11 +75,11 @@
                         </div>
                     </div>
 
-                     <!-- Doc -->
+                    <!-- Doc -->
                     <div class="doc">
                         <h3>Samenleving document</h3>
                         <p>03-04-2016</p>
-                        <p>Auteur: Ryan Smith</p>
+                        <p>Auteur: Kristian</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur risus quam, tempor nec massa quis, pretium tincidunt magna. Aenean at bibendum ipsum. Phasellus a urna vitae tortor finibus malesuada. Vivamus pretium finibus pharetra. lees meer</p>
                         <div class="stars">
                             <img src="images/star-filled.png"></img>
@@ -131,6 +89,127 @@
                             <img src="images/star-half-filled.png"></img>
                         </div>
                     </div>
+
+                    <!-- Doc -->
+                    <div class="doc">
+                        <h3>Samenleving document</h3>
+                        <p>03-04-2016</p>
+                        <p>Auteur: Kristian</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur risus quam, tempor nec massa quis, pretium tincidunt magna. Aenean at bibendum ipsum. Phasellus a urna vitae tortor finibus malesuada. Vivamus pretium finibus pharetra. lees meer</p>
+                        <div class="stars">
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-half-filled.png"></img>
+                        </div>
+                    </div>
+
+                    <!-- Doc -->
+                    <div class="doc">
+                        <h3>Samenleving document</h3>
+                        <p>03-04-2016</p>
+                        <p>Auteur: Kristian</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur risus quam, tempor nec massa quis, pretium tincidunt magna. Aenean at bibendum ipsum. Phasellus a urna vitae tortor finibus malesuada. Vivamus pretium finibus pharetra. lees meer</p>
+                        <div class="stars">
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-half-filled.png"></img>
+                        </div>
+                    </div>
+
+                    <!-- Doc -->
+                    <div class="doc">
+                        <h3>Samenleving document</h3>
+                        <p>03-04-2016</p>
+                        <p>Auteur: Kristian</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur risus quam, tempor nec massa quis, pretium tincidunt magna. Aenean at bibendum ipsum. Phasellus a urna vitae tortor finibus malesuada. Vivamus pretium finibus pharetra. lees meer</p>
+                        <div class="stars">
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-half-filled.png"></img>
+                        </div>
+                    </div>
+
+                    <!-- Doc -->
+                    <div class="doc">
+                        <h3>Samenleving document</h3>
+                        <p>03-04-2016</p>
+                        <p>Auteur: Kristian</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur risus quam, tempor nec massa quis, pretium tincidunt magna. Aenean at bibendum ipsum. Phasellus a urna vitae tortor finibus malesuada. Vivamus pretium finibus pharetra. lees meer</p>
+                        <div class="stars">
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-half-filled.png"></img>
+                        </div>
+                    </div>
+
+                    <!-- Doc -->
+                    <div class="doc">
+                        <h3>Samenleving document</h3>
+                        <p>03-04-2016</p>
+                        <p>Auteur: Kristian</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur risus quam, tempor nec massa quis, pretium tincidunt magna. Aenean at bibendum ipsum. Phasellus a urna vitae tortor finibus malesuada. Vivamus pretium finibus pharetra. lees meer</p>
+                        <div class="stars">
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-half-filled.png"></img>
+                        </div>
+                    </div>
+
+                    <!-- Doc -->
+                    <div class="doc">
+                        <h3>Samenleving document</h3>
+                        <p>03-04-2016</p>
+                        <p>Auteur: Kristian</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur risus quam, tempor nec massa quis, pretium tincidunt magna. Aenean at bibendum ipsum. Phasellus a urna vitae tortor finibus malesuada. Vivamus pretium finibus pharetra. lees meer</p>
+                        <div class="stars">
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-half-filled.png"></img>
+                        </div>
+                    </div>
+
+                    <!-- Doc -->
+                    <div class="doc">
+                        <h3>Samenleving document</h3>
+                        <p>03-04-2016</p>
+                        <p>Auteur: Kristian</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur risus quam, tempor nec massa quis, pretium tincidunt magna. Aenean at bibendum ipsum. Phasellus a urna vitae tortor finibus malesuada. Vivamus pretium finibus pharetra. lees meer</p>
+                        <div class="stars">
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-half-filled.png"></img>
+                        </div>
+                    </div>
+
+                    <!-- Doc -->
+                    <div class="doc">
+                        <h3>Samenleving document</h3>
+                        <p>03-04-2016</p>
+                        <p>Auteur: Kristian</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur risus quam, tempor nec massa quis, pretium tincidunt magna. Aenean at bibendum ipsum. Phasellus a urna vitae tortor finibus malesuada. Vivamus pretium finibus pharetra. lees meer</p>
+                        <div class="stars">
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-filled.png"></img>
+                            <img src="images/star-half-filled.png"></img>
+                        </div>
+                    </div>
+                    
 
 
                 </div>

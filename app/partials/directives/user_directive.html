@@ -1,9 +1,9 @@
 <div class="divTopBar" ng-style="topBarStyle" ng-click="slideDown()">
     <div class="divTopBarContent">
-        Tony Klaasen
+        {{user.firstName}} {{user.lastName}}
     </div>
     <img src="./images/arrow_down.png" class="imgTopBarArrow" />
-    <div class="divUserImage"></div>
+    <div class="divUserImage" style="background-image: url('../images/Personen/Tj.png');"></div>
 </div>
 
 <!-- PROFILE -->
@@ -14,13 +14,13 @@
         <div id="person_container">
             <div class="personInfo_container">
                 <!-- PROFILE IMAGE -->
-                <img src="./images/personen/persoon13.png" id="profile_image" />
+                <img src="./images/personen/Tj.png" class="profile_image person" />
 
                 <div class="flex_container">
                     <div class="nameRatingSchool_container">
 
                         <div class="name_flex_container">
-                            <p class="title">Tony Klaassen</p>
+                            <p class="title">{{user.firstName}} {{user.lastName}}</p>
                             <div class="rating_container">
                                 <img src="./images/star-filled.png"/>
                                 <img src="./images/star-filled.png"/>
@@ -31,7 +31,7 @@
                         </div>
                         <div class="school_flex_container">
                             <div class="school_block"></div>
-                            <p class="schoolName">De Viersprong Basisschool</p>
+                            <p class="schoolName" ng-click="loadSchool()">De Viersprong Basisschool</p>
                         </div>
                     </div>
                 </div>
@@ -41,7 +41,9 @@
             <div class="aboutMe_container">
                 <p class="title">Over mij</p>
                 <p class="description">
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.
+                    People find me to be an upbeat, self-motivated team player with excellent communication skills. For the past several years I have worked in lead qualification, telemarketing, and customer service in the technology industry. My experience includes successfully calling people in director-level positions of technology departments and developing viable leads. I have a track record of maintaining a consistent call and activity volume and consistently achieving the top 10 percent in sales, and I can do the same thing for your company.<br><br>
+
+                    I am a dedicated person with a family of four. I enjoy reading, and the knowledge and perspective that my reading gives me has strengthened my teaching skills and presentation abilities. I have been successful at raising a family, and I attribute this success to my ability to plan, schedule, and handle many different tasks at once. This flexibility will help me in the classroom, where there are many different personalities and learning styles.
                 </p>
             </div>
 
@@ -60,7 +62,7 @@
                 <div class="doc">
                     <h3>Samenleving document</h3>
                     <p>22-04-2016</p>
-                    <span>Auteur:</span><span>Ryan Smith</span>
+                    <span>Auteur:</span><span>Kristian</span>
                     <div class="rating_container">
                         <img src="./images/star-filled.png"/>
                         <img src="./images/star-filled.png"/>
@@ -74,7 +76,7 @@
                 <div class="doc">
                     <h3>Samenleving document</h3>
                     <p>22-04-2016</p>
-                    <span>Auteur:</span><span>Ryan Smith</span>
+                    <span>Auteur:</span><span>Kristian</span>
                     <div class="rating_container">
                         <img src="./images/star-filled.png"/>
                         <img src="./images/star-filled.png"/>
@@ -88,7 +90,7 @@
                 <div class="doc">
                     <h3>Samenleving document</h3>
                     <p>22-04-2016</p>
-                    <span>Auteur:</span><span>Ryan Smith</span>
+                    <span>Auteur:</span><span>Kristian</span>
                     <div class="rating_container">
                         <img src="./images/star-filled.png"/>
                         <img src="./images/star-filled.png"/>

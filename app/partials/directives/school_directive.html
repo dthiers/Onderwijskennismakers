@@ -1,9 +1,9 @@
 <div class="divTopBar" ng-style="topBarStyle" ng-click="slideDown()">
     <div class="divTopBarContent">
-        De waterschool
+        De Aventurijn
     </div>
     <img src="./images/arrow_down.png" class="imgTopBarArrow" />
-    <div class="divUserImage" style="background-image: url('../images/Personen/persoon13.png');"></div>
+    <div class="divUserImage" style="background-image: url('../images/scholen/deaventurijn.jpg');"></div>
 </div>
 
 <!-- PROFILE -->
@@ -12,36 +12,32 @@
 
     <div class="content_wrapper">
         <div id="person_container">
-            <div class="personInfo_container">
+            <div class="profileInfo_container">
                 <!-- PROFILE IMAGE -->
-                <img src="./images/scholen/deaventurijn.jpg" id="profile_image" />
+                <img src="./images/scholen/deaventurijn.jpg" class="profile_image" />
 
-                <div class="flex_container">
-                    <div class="nameRatingSchool_container">
-
-                        <div class="name_flex_container">
-                            <p class="title">Tony Klaassen</p>
-                            <div class="rating_container">
-                                <img src="./images/star-filled.png"/>
-                                <img src="./images/star-filled.png"/>
-                                <img src="./images/star-filled.png"/>
-                                <img src="./images/star-half-filled.png"/>
-                                <img src="./images/star-empty.png"/>
-                            </div>
-                        </div>
-                        <div class="school_flex_container">
-                            <div class="school_block"></div>
-                            <p class="schoolName">De Viersprong Basisschool</p>
-                        </div>
+                <div class="flex_container school">
+                    <div class="experts_container">
+                        <h1>Directeur: <span>Freek de Jong</span></h1>
+                        <h1>Onze experts:</h1>
+                        <div class="expert" ng-click="loadUser()" style="background-image: url('../images/Personen/ryan.png');"></div>
+                        <div class="expert" ng-click="loadUser()" style="background-image: url('../images/Personen/niels.png');"></div>
+                        <div class="expert" ng-click="loadUser()" style="background-image: url('../images/Personen/tj.png');"></div>
                     </div>
                 </div>
                 
             </div>
 
-            <div class="aboutMe_container">
-                <p class="title">Over mij</p>
+            <div class="aboutMe_container school">
+                <p class="title">Wat hebben wij te bieden</p>
                 <p class="description">
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.
+                    De Aventurijn wil een school zijn waar iedereen welkom is. Waar leerlingen met plezier naar school gaan en zich veilig voelen. En een school waar leerlingen de mogelijkheid krijgen zich individueel te ontwikkelen dat vervolgens leidt tot goede resultaten en opbrengsten.<br><br>
+
+                    Voordat De Schakel en De Zevensprong samengingen tot de Aventurijn waren zij beide bezig met hun eigen schoolontwikkeling.  De Schakel was op weg een gecertificeerde Daltonschool te worden. De Zevensprong hanteerde ook al een aantal principes van dit concept, maar was vooral bezig met coöperatief leren en het team gaf les volgens Marzano.  (Duidelijke lesdoelen voorafgaand aan iedere les, gemotiveerde instructie en feedback aan het einde van de les op die doelen).<br><br>
+
+                    In het schooljaar 2014/2015 worden door het team de uitgangspunten en onderwijsvisie van beide scholen verkend middels studiedagen. Van daaruit  wordt een nieuwe visie voor het onderwijs op de Aventurijn vastgesteld.  Het goede van beide scholen wordt zoveel als haalbaar en wenselijk behouden.<br><br>
+
+                    Elke school hoort een schoolplan te hebben waar voor vier jaar in staat wat de plannen zijn en welke onderwerpen er zullen worden aangepakt. In het huidige schooljaar schrijven wij het schoolplan 2015-2019.
                 </p>
             </div>
 
@@ -60,7 +56,7 @@
                 <div class="doc">
                     <h3>Samenleving document</h3>
                     <p>22-04-2016</p>
-                    <span>Auteur:</span><span>Ryan Smith</span>
+                    <span>Auteur:</span><span>TJ van Os</span>
                     <div class="rating_container">
                         <img src="./images/star-filled.png"/>
                         <img src="./images/star-filled.png"/>
@@ -88,7 +84,7 @@
                 <div class="doc">
                     <h3>Samenleving document</h3>
                     <p>22-04-2016</p>
-                    <span>Auteur:</span><span>Ryan Smith</span>
+                    <span>Auteur:</span><span>Niels Snakenborg</span>
                     <div class="rating_container">
                         <img src="./images/star-filled.png"/>
                         <img src="./images/star-filled.png"/>
