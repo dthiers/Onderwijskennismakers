@@ -2,13 +2,16 @@
 <div id="divLogin">
 
     <p id="pLoginTitle">Inloggen</p>
-    <input type="text" class="inputLogin" placeholder="Email" />
-    <input type="password" class="inputLogin" placeholder="Password" />
+    <input type="text" class="inputLogin" placeholder="Email" ng-model="email" />
+    <input type="password" class="inputLogin" placeholder="Password" ng-model="password" />
     <div id="divLinkWrapper">
         <a href="#">registreren</a>
         <a href="#">wachtwoord vergeten</a>
     </div>
-    <button id="buttonLogin">Inloggen</button>
+    <button id="buttonLogin" ng-click="login()">Inloggen</button>
+    <div>
+        {{message}}
+    </div>
     <div id="divLoginColorWrapper">
         <div class="divLoginColor blue"></div>
         <div class="divLoginColor yellow"></div>
