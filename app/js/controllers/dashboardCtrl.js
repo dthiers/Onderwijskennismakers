@@ -1,4 +1,35 @@
-module.exports = function ($scope, VisDataSet) {
+module.exports = function ($scope, VisDataSet, ProfileService) {
+
+    $scope.type = "person";
+
+    $scope.slideDown = function(){
+        $scope.topBarStyle = {top: '100%'};
+        $scope.topContentStyle = {top: '0%'};
+    }
+    $scope.slideUp = function(){
+        $scope.topBarStyle = {top: '0%'};
+        $scope.topContentStyle = {top: '-100%'};
+    }
+
+    $scope.loadSchool = function(){
+        $scope.type = "school";
+    }
+    $scope.loadUser = function(){
+        $scope.type = "person";
+    }
+
+    getUser();
+
+    function getUser() {//based on route param
+        ProfileService.getUser(2)//call to service
+            .then(function (response) {
+                $scope.user=response.data.data[0];//set response to scope
+                console.dir($scope);
+            }, function (error) {
+                $scope.status = 'Unable to load customer data: ' + error.message;
+            });
+    }
+
 
     $scope.data = {
         "nodes": VisDataSet([
@@ -81,10 +112,10 @@ module.exports = function ($scope, VisDataSet) {
             },
             {
                 id: 12,
-                label: 'Kristian van den Berg',
+                label: 'TJ van Os',
                 group: 'persons',
                 shape: 'circularImage',
-                image: "images/Personen/persoon13.png",
+                image: "images/Personen/Tj.png",
             },
             {
                 id: 13,
