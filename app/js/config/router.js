@@ -13,6 +13,23 @@ module.exports = function (app) {
                 controller: 'DashboardCtrl'
             })
 
+            .state('login', {
+                url: '/login',
+                views: {
+
+                    '': { templateUrl: '../partials/home.html'},
+
+                    'dashboard@login': {
+                        templateUrl: '../partials/dashboard/dashboard.html',
+                        controller: 'DashboardCtrl'
+                    },
+                    'login@login': {
+                        templateUrl: '../partials/login/login.html',
+                        controller: 'LoginCtrl'
+                    }
+                }
+            })
+
 
            // .state('dashboard.profile', {
            //      url: '/profile',
