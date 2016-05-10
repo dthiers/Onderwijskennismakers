@@ -215,7 +215,7 @@ module.exports = function ($scope, VisDataSet, ProfileService) {
                           return 0.5;
                         }
                         else {
-                          let scale = 1 / (max - min);
+                          var scale = 1 / (max - min);
                           return Math.max(0,(value - min)*scale);
                         }
                       }
