@@ -1,5 +1,6 @@
 module.exports = function (app) {
     app.factory('ProfileService', require('../services/profileService'));
     app.factory('KeywordService', require('../services/keywordService'));
+    app.factory('SchoolService', require('../services/schoolService'));
     app.factory('AuthService', require('../services/authService'));
 }
