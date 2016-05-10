@@ -80,3 +80,9 @@
     opacity: 1;
     transform: translate(0, 0);
 }
+
+.fa-picture-o{
+    float: right;
+    color: white;
+    margin: 5px;
+}
