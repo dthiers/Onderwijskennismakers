@@ -21,7 +21,8 @@ module.exports = function ($scope, VisDataSet, ProfileService) {
     getUser();
 
     function getUser() {//based on route param
-        ProfileService.getUser(2)//call to service
+        debugger;
+        ProfileService.profileService.getById(2)//call to service
             .then(function (response) {
                 $scope.user=response.data.data[0];//set response to scope
                 console.dir($scope);
