@@ -1,5 +1,5 @@
 module.exports = function ($http) {
-    var profileService = require('../services/baseService')("user");
+    var profileService = require('../services/baseService')("user",$http);
     
     //custom call
     profileService.customCall=function(){
