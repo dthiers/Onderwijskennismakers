@@ -14,6 +14,14 @@ module.exports = function (app) {
 		};
 	};
 
+	var keyword_directive = function(){
+		return{
+			restrict: "A",
+			templateUrl: "partials/directives/keyword_directive.html"
+		};
+	};
+
 	app.directive('userDirective', user_directive);
 	app.directive('schoolDirective', school_directive);
+	app.directive('keywordDirective', keyword_directive);
 }

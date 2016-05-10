@@ -1,6 +1,7 @@
+
 module.exports = function ($scope, VisDataSet, ProfileService) {
 
-    $scope.type = "person";
+    $scope.type = "keyword";
 
     $scope.slideDown = function(){
         $scope.topBarStyle = {top: '100%'};

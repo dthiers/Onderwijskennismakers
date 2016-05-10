@@ -331,36 +331,142 @@ body {
   height: 20px;
   display: inline-block;
 }
-.pTitle {
-  color: #a0a0a0;
-  font-size: 18px;
-  margin-bottom: 20px;
+#keyword_container {
+  float: left;
+  width: calc(100% - 260px);
+  height: auto;
 }
-.divExpertise {
-  width: 100%;
+#keyword_container .profile_image {
   height: 150px;
-  background: #f9f9f9;
+  margin-right: 30px;
+  margin-bottom: -50px;
+  float: left;
+  border-radius: 300px;
+}
+#keyword_container .flex_container {
+  height: 150px;
+  display: flex;
+  align-items: center;
+}
+#keyword_container .flex_container.school {
+  align-items: flex-end;
+}
+#keyword_container .flex_container .name_flex_container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+#keyword_container .flex_container .name_flex_container p.title {
+  font-family: Lato-Light;
+  font-size: 34px;
+  color: #a0a0a0;
+  margin-right: 15px;
+  float: left;
+}
+#keyword_container .flex_container .editor_flex_container {
+  display: flex;
+  align-items: center;
+}
+#keyword_container .flex_container .editor_flex_container .editor_block {
+  width: 15px;
+  height: 15px;
+  background: #73a1ee;
+  margin-right: 15px;
+}
+#keyword_container .flex_container .editor_flex_container p {
+  cursor: pointer;
+  font-family: Lato-Light;
+  font-size: 21px;
+  color: #C3C3C3;
+  float: left;
+}
+#keyword_container .keyword_wiki_container {
+  width: 90%;
+  height: auto;
+  float: left;
+  margin-top: 40px;
+}
+#keyword_container .keyword_wiki_container .title {
+  font-family: Lato-Light;
+  font-size: 24px;
+  color: #a0a0a0;
+  float: left;
+  padding-bottom: 7px;
+  border-bottom: 1px solid #F1F1F1;
   margin-bottom: 20px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding: 20px;
-  text-align: left;
 }
-.tableExpertise {
-  position: relative;
+#keyword_container .keyword_wiki_container .description {
   width: 100%;
-  height: 100%;
-}
-.pSmallTitle {
+  line-height: 20px;
+  float: left;
   color: #a0a0a0;
+  line-height: 24px;
+}
+#keyword_container .associated_tags {
+  float: left;
+  margin-top: 40px;
+}
+#keyword_container .associated_tags span {
+  margin-right: 6px;
+  float: left;
+  margin-bottom: 10px;
+  padding: 14px;
+  border-radius: 5px;
+  color: #90A2BF;
   font-size: 14px;
-  font-family: Lato-Semibold;
+  background-color: #D7E4F9;
 }
-.pItalic {
-  color: #a0a0a0;
-  font-size: 13px;
-  font-family: Lato-Italic;
+#profile_docs_container {
+  position: relative;
+  right: 0px;
+  width: 260px;
+  height: auto;
+  text-align: right;
+  max-height: 90%;
+  overflow: hidden;
+}
+#profile_docs_container .header {
+  width: 100%;
+  height: 50px;
+}
+#profile_docs_container .header .title {
+  font-family: Lato-Light;
+  color: #D2D2D2;
+  width: 100%;
+  line-height: 50px;
+  text-align: center;
+}
+#profile_docs_container .doc {
+  cursor: pointer;
+  background-color: #F7F7F7;
+  padding: 30px;
+  text-align: left;
+  margin-bottom: 5px;
+}
+#profile_docs_container .doc h3 {
+  color: #9C9C9C;
+  margin-bottom: 15px;
+  font-size: 17px;
+  font-family: Lato-Regular;
+}
+#profile_docs_container .doc p {
+  color: #A0A0A0;
+  margin-bottom: 15px;
+  display: block;
+  font-size: 15px;
+  font-family: Lato-light-italic;
+}
+#profile_docs_container .doc span {
+  display: inline-block;
+  color: #A0A0A0;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-family: Lato-light-italic;
+  margin-right: 5px;
+}
+#profile_docs_container .rating_container img {
+  height: 20px;
+  display: inline-block;
 }
 .dashboard_container {
   padding: 3%;
