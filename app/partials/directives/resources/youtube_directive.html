@@ -1,0 +1,17 @@
+<div ng-controller="ResourcesCtrl">
+  <b>Youtube</b>
+  <input type="text" id="txtYoutubeSearch" class="inputResource" placeholder="Zoek Video" ng-model="inputYoutube" ng-change="searchYoutube()" />
+  <div id="divYoutubeResult">
+    <div class="divSearhResult" ng-repeat="(key, value) in results">
+      <table class="tableResult">
+        <tr>
+          <td rowspan="2"><img src="{{value.snippet.thumbnails.default.url}}" /></td>
+          <td><p class="pResultTitle">{{value.snippet.title}}</p></td>
+        </tr>
+        <tr>
+          <td><button>Toevoegen</button></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
