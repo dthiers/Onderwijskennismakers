@@ -18,6 +18,9 @@ module.exports = function ($scope, VisDataSet, ProfileService) {
     $scope.loadUser = function(){
         $scope.type = "person";
     }
+    $scope.loadKeyword = function(){
+        $scope.type = "keyword";
+    }
 
     getUser();
 
