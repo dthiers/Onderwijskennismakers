@@ -21,7 +21,15 @@ module.exports = function (app) {
 		};
 	};
 
+	var youtube_preview = function () {
+		return {
+			restrict: "A",
+			templateUrl: "partials/directives/previews/youtube_preview.html"
+		};
+	};
+
 	app.directive('userDirective', user_directive);
 	app.directive('schoolDirective', school_directive);
 	app.directive('imagePreview', image_preview);
+	app.directive('youtubePreview', youtube_preview);
 }

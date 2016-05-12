@@ -1,3 +1,4 @@
+/* image preview */
 .item {
     display: block;
     overflow: hidden;
@@ -83,6 +84,62 @@
 
 .fa-picture-o{
     float: right;
-    color: white;
-    margin: 5px;
+    color: #73a1ee;
+    margin: 5px; 
+}
+
+/* youtube preview */
+
+.video_thumbnail{
+    height: 200px;
+    width: 100%;
+    
+    display: block;
+    overflow: hidden;
+    position: relative;
+    margin: 10px 0px;
+    background-size: auto 100%;
+    background-position: center center;
+    
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.video_thumbnail .bgOverlay {
+    background-image: url('../images/youtube_play.png');
+    width: 40%;
+    height: 40%;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    opacity:0.8;
+    
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+
+.video_thumbnail:hover .bgOverlay {
+    opacity:1;
+    
+}
+
+.fa-play{
+    float: right;
+    color: #73a1ee;
+    margin: 5px; 
+    transform: translate(10px, -10px);
+}
+
+.fa-file-text-o{
+    float: right;
+    color: #73a1ee;
+    margin: 5px; 
+    transform: translate(10px, -10px);
 }
