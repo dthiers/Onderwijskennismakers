@@ -1,176 +1,109 @@
-
-module.exports = function ($scope, VisDataSet, ProfileService) {
+module.exports = function ($scope, $http, VisDataSet, ProfileService) {
 
     $scope.type = "keyword";
 
-    $scope.slideDown = function(){
+    $scope.slideDown = function () {
         $scope.topBarStyle = {top: '100%'};
         $scope.topContentStyle = {top: '0%'};
     }
-    $scope.slideUp = function(){
+    $scope.slideUp = function () {
         $scope.topBarStyle = {top: '0%'};
         $scope.topContentStyle = {top: '-100%'};
     }
 
-    $scope.loadSchool = function(){
+    $scope.loadSchool = function () {
         $scope.type = "school";
     }
-    $scope.loadUser = function(){
+    $scope.loadUser = function () {
         $scope.type = "person";
     }
-    $scope.loadKeyword = function(){
+    $scope.loadKeyword = function () {
         $scope.type = "keyword";
     }
 
     getUser();
 
+    getWeb(1);
+
     function getUser() {//based on route param
         ProfileService.profileService.getById(2)//call to service
             .then(function (response) {
-                $scope.user=response.data.data[0];//set response to scope
+                $scope.user = response.data.data[0];//set response to scope
                 console.dir($scope);
             }, function (error) {
                 $scope.status = 'Unable to load customer data: ' + error.message;
             });
     }
 
+    function getWeb(id) {
+        $http.get('https://onderwijskennismakers.herokuapp.com/user/' + id + '/web').then(function (response) {
+            var nodes = new VisDataSet();
+            var edges = new VisDataSet();
 
-    $scope.data = {
-        "nodes": VisDataSet([
-            {
-                id: 1,
-                label: 'Theo Brinkman',
-                group: 'persons',
-                shape: 'circularImage',
-                image: "images/Personen/persoon1.png",
-            },
-            {
-                id: 2,
-                label: 'Marita van den Heuvel',
-                group: 'persons',
-                shape: 'circularImage',
-                image: "images/Personen/persoon6.png",
-            },
-            {
-                id: 3,
-                label: 'Theo Mensen',
-                group: 'persons',
-                shape: 'circularImage',
-                image: "images/Personen/persoon7.png",
-            },
-            {
-                id: 4,
-                label: 'Els van der Pol',
-                group: 'persons',
-                shape: 'circularImage',
-                image: "images/Personen/persoon8.png",
-            },
-            {
-                id: 5,
-                label: 'Angela Horsten',
-                group: 'persons',
-                shape: 'circularImage',
-                image: "images/Personen/persoon9.png",
-            },
-            {
-                id: 6,
-                label: 'Hans van Daelen',
-                group: 'persons',
-                shape: 'circularImage',
-                image: "images/Personen/persoon10.png",
-            },
-            {
-                id: 7,
-                label: 'Stef van Wickeren',
-                group: 'persons',
-                shape: 'circularImage',
-                image: "images/Personen/persoon11.png",
-            },
-            {
-                id: 8,
-                label: 'Karin van Zutphen',
-                group: 'persons',
-                shape: 'circularImage',
-                image: "images/Personen/persoon2.png",
-            },
-            {
-                id: 9,
-                label: 'Siebrand Konst',
-                group: 'persons',
-                shape: 'circularImage',
-                image: "images/Personen/persoon3.png",
-            },
-            {
-                id: 10,
-                label: 'Koen Oosterbaan',
-                group: 'persons',
-                shape: 'circularImage',
-                image: "images/Personen/persoon20.png",
-            },
-            {
-                id: 11,
-                label: 'Jan Timmers',
-                group: 'persons',
-                shape: 'circularImage',
-                image: "images/Personen/persoon5.png",
-            },
-            {
-                id: 12,
+            var nodeCounter = 1;
+            var userNodeCounter = 100;
+
+            nodes.add({
+                id: 0,
                 label: 'TJ van Os',
                 group: 'persons',
                 shape: 'circularImage',
                 image: "images/Personen/Tj.png",
-            },
-            {
-                id: 13,
-                label: 'Marianne Rongen',
-                group: 'persons',
-                shape: 'circularImage',
-                image: "images/Personen/persoon12.png",
-            },
-            {
-                id: 14,
-                label: 'Annelies Verbeek',
-                group: 'persons',
-                shape: 'circularImage',
-                image: "images/Personen/persoon18.png",
-                
-            },
+            });
 
-            {id: 101, label: 'E-portfolio', shape: 'box', group: 'keywords'},
-            {id: 102, label: 'Professionalisering', shape: 'box', group: 'keywords'},
-            {id: 103, label: 'Kwaliteitszorg', shape: 'box', group: 'keywords'},
-            {id: 104, label: 'Zelfregulering', shape: 'box', group: 'keywords'}
-        ]),
-        "edges": VisDataSet([
+            angular.forEach(response.data.data, function (value, key) {
+                nodes.add({
+                    id: nodeCounter,
+                    label: value.keyword,
+                    group: 'keywords',
+                    shape: 'box'
+                });
 
-            //eportfolio
-            {from: 12, to: 101},
-            {from: 101, to: 13},
-            {from: 101, to: 1},
-            {from: 101, to: 2},
-            {from: 101, to: 3},
+                edges.add({
+                    from: 0,
+                    to: nodeCounter
+                });
 
-            //professionalisering
-            {from: 12, to: 102},
-            {from: 102, to: 4},
-            {from: 102, to: 5},
-            {from: 102, to: 18},
+                angular.forEach(value.users, function (userValue, userKey) {
+                    nodes.add({
+                        id: userNodeCounter,
+                        label: userValue.firstname,
+                        group: 'persons',
+                        shape: 'circularImage',
+                        image: "images/Personen/Tj.png",
+                        userId: userValue.userId
+                    });
 
-            //zelfregulering
-            {from: 12, to: 103},
-            {from: 103, to: 6},
-            {from: 103, to: 7},
-            {from: 103, to: 8},
+                    edges.add({
+                        from: userNodeCounter,
+                        to: nodeCounter
+                    });
 
-            //kwaliteitszorg
-            {from: 12, to: 104},
-            {from: 104, to: 9},
-            {from: 104, to: 10},
-            {from: 104, to: 11},
-            {from: 104, to: 14}
-        ])
+                    userNodeCounter++;
+                });
+
+                nodeCounter++;
+            });
+
+            $scope.data = {
+                "nodes": nodes,
+                "edges": edges
+            };
+
+        }, function (error) {
+            alert("error");
+        });
     }
+
+    $scope.events = {};
+
+    $scope.events.selectNode = function (click) {
+        // Only handle clicks on user nodes
+        if (click.nodes >= 100) {
+            var node = $scope.data.nodes.get(click.nodes[0]);
+            getWeb(node.userId);
+        }
+    };
 
     $scope.$on('$viewContentLoaded', function (event) {
         $scope.options = {
@@ -211,18 +144,18 @@ module.exports = function ($scope, VisDataSet, ProfileService) {
 
                     //Scaling options
                     scaling: {
-                      label: {
-                        enabled: true,
-                      },
-                      customScalingFunction: function (min,max,total,value) {
-                        if (max === min) {
-                          return 0.5;
+                        label: {
+                            enabled: true,
+                        },
+                        customScalingFunction: function (min, max, total, value) {
+                            if (max === min) {
+                                return 0.5;
+                            }
+                            else {
+                                var scale = 1 / (max - min);
+                                return Math.max(0, (value - min) * scale);
+                            }
                         }
-                        else {
-                          var scale = 1 / (max - min);
-                          return Math.max(0,(value - min)*scale);
-                        }
-                      }
                     },
                 },
 
@@ -233,22 +166,22 @@ module.exports = function ($scope, VisDataSet, ProfileService) {
                     borderWidthSelected: 15,
                     shadow: false,
                     color: {
-                      border: '#73a1ee',
-                      background: '#73a1ee',
-                      highlight: {
                         border: '#73a1ee',
-                      }
+                        background: '#73a1ee',
+                        highlight: {
+                            border: '#73a1ee',
+                        }
                     },
                     font: {
-                      color: '#ffffff',
-                      size: 14, // px
-                      face: 'arial',
-                      background: 'none',
+                        color: '#ffffff',
+                        size: 14, // px
+                        face: 'arial',
+                        background: 'none',
                     },
                 }
             },
-    
-            nodes:{
+
+            nodes: {
                 hidden: false,
                 level: undefined,
                 mass: 1,
@@ -258,7 +191,7 @@ module.exports = function ($scope, VisDataSet, ProfileService) {
                 length: 100,
                 color: '#d3d3d3'
             },
-            
+
         };
     });
 };
