@@ -27,6 +27,11 @@ module.exports = function (app) {
 			restrict: "A",
 			templateUrl: "partials/directives/resources/youtube_directive.html",
 			controller: "ResourcesCtrl"
+
+	var keyword_directive = function(){
+		return{
+			restrict: "A",
+			templateUrl: "partials/directives/keyword_directive.html"
 		};
 	};
 

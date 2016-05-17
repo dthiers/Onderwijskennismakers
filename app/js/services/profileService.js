@@ -1,16 +1,12 @@
 module.exports = function ($http) {
-
-    var urlBase = 'http://api-onderwijskennismakers.herokuapp.com/user/';
-    var dataFactory = {};
+    var profileService = require('../services/baseService')("user",$http);
     
-    dataFactory.getAll = function () {
-        return $http.get(urlBase);
-    };
-
-    dataFactory.getUser = function (id) {
-        return $http.get(urlBase + id);
-    };
-
-    return dataFactory;
-
+    //custom call
+    profileService.customCall=function(){
+        //do something custom with $http
+    }
+    
+    return {
+        profileService
+    }
 }

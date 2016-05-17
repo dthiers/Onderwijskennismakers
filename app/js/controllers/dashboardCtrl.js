@@ -1,6 +1,7 @@
-module.exports = function ($scope, VisDataSet, ProfileService) {
 
-    $scope.type = "person";
+module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService) {
+
+    $scope.type = "keyword";
 
     $scope.slideDown = function(){
         $scope.topBarStyle = {top: '100%'};
@@ -11,22 +12,55 @@ module.exports = function ($scope, VisDataSet, ProfileService) {
         $scope.topContentStyle = {top: '-100%'};
     }
 
+    //LOAD DIRECTIVES
     $scope.loadSchool = function(){
         $scope.type = "school";
     }
     $scope.loadUser = function(){
         $scope.type = "person";
     }
+    $scope.loadKeyword = function(){
+        $scope.type = "keyword";
+    }
 
     getUser();
+    getKeyword();
+    //getSchool();
 
     function getUser() {//based on route param
-        ProfileService.getUser(2)//call to service
+        ProfileService.profileService.getById(2)//call to service
             .then(function (response) {
                 $scope.user=response.data.data[0];//set response to scope
-                console.dir($scope);
             }, function (error) {
-                $scope.status = 'Unable to load customer data: ' + error.message;
+                $scope.status = 'Er is iets misgegaan met het laden van de gebruiker: ';
+                console.log(error.message);
+            });
+    }
+    
+    function getKeyword() {//based on route param
+        KeywordService.keywordService.getById(1)//call to service
+            .then(function (response) {
+                $scope.keyword=response.data.data[0];//set response to scope
+                ProfileService.profileService.getById($scope.keyword.User_id)//call to service
+                    .then(function (response) {
+                        $scope.editor=response.data.data[0];//set response to scope
+                    }, function (error) {
+                        $scope.status = 'Er is iets misgegaan met het laden van de gebruiker: ';
+                        console.log(error.message);
+                    });
+            }, function (error) {
+                $scope.status = 'Er is iets misgegaan met het laden van het trefwoord: ';
+                console.log(error.message);
+            });
+    }
+
+    function getSchool() {//based on route param
+        SchoolService.schoolService.getById(1)//call to service
+            .then(function (response) {
+                $scope.school=response.data.data[0];//set response to scope
+            }, function (error) {
+                $scope.status = 'Er is iets misgegaan met het laden van de school: ';
+                console.log(error.message);
             });
     }
 
@@ -215,7 +249,7 @@ module.exports = function ($scope, VisDataSet, ProfileService) {
                           return 0.5;
                         }
                         else {
-                          let scale = 1 / (max - min);
+                          var scale = 1 / (max - min);
                           return Math.max(0,(value - min)*scale);
                         }
                       }
