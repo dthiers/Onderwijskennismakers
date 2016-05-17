@@ -137,9 +137,112 @@
     transform: translate(10px, -10px);
 }
 
+/*text item preview*/
+
 .fa-file-text-o{
     float: right;
     color: #73a1ee;
     margin: 5px; 
     transform: translate(10px, -10px);
 }
+
+/*pdf preview*/
+
+.pdf_thumbnail{
+    height: 200px;
+    width: 100%;
+    
+    display: block;
+    overflow: hidden;
+    position: relative;
+    margin: 10px 0px;
+    background-size: auto 130%;
+    background-position: center center;
+    
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.pdf_thumbnail .bgOverlay {
+    background-image: url('../images/pdf.png');
+    width: 30%;
+    height: 45%;
+    
+    background-size: 100% 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    opacity:0.6;
+    
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+
+.pdf_thumbnail:hover .bgOverlay {
+    opacity:1;
+}
+
+.fa-file-pdf-o{
+    float: right;
+    color: #73a1ee;
+    margin: 5px; 
+    transform: translate(10px, -10px);
+}
+
+.pdfcontainer #frame {
+    width: 100%;
+    height: 700px;
+    border: none;
+    float: left;
+    
+    -moz-transform: scale(0.4);
+    -moz-transform-origin: 0 0;
+    -o-transform: scale(0.4);
+    -o-transform-origin: 0 0;
+    -webkit-transform: scale(1.0);
+    -webkit-transform-origin: 0 0;
+}
+
+.pdfcontainer{
+    width:100%;
+    height: 200px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/*webpage preview*/
+
+.websitecontainer #frame {
+    width: 250%;
+    height: 700px;
+    border: none;
+    float: left;
+    
+    -moz-transform: scale(0.4);
+    -moz-transform-origin: 0 0;
+    -o-transform: scale(0.4);
+    -o-transform-origin: 0 0;
+    -webkit-transform: scale(0.4);
+    -webkit-transform-origin: 0 0;
+}
+
+.websitecontainer{
+    width:100%;
+    height: 200px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.fa-globe{
+    float: right;
+    color: #73a1ee;
+    margin: 5px; 
+    transform: translate(10px, -10px);
+}
+
