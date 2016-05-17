@@ -156,6 +156,8 @@ html,body{
   transition: margin-top 0.2s;
 }
 
+
+// USER AND SCHOOL DIRECTIVES ====================================================================================================
 #person_container{
   float: left;
   width: ~'calc(100% - 260px)';
@@ -344,44 +346,179 @@ html,body{
     }
   }
 }
+// END USER AND SCHOOL DIRECTIVES ====================================================================================================
 
-.pTitle{
-  color: #a0a0a0;
-  font-size: 18px;
-  margin-bottom: 20px;
+// KEYWORD DIRECTIVE ====================================================================================================
+#keyword_container{
+  float: left;
+  width: ~'calc(100% - 260px)';
+  height: auto;
+
+  .profile_image{
+    height: 150px;
+    margin-right: 30px;
+    margin-bottom: -50px;
+    float: left;
+    border-radius: 300px;
+  }
+
+  .flex_container{
+    height: 150px;
+    display: flex;
+    align-items: center;
+
+    &.school{
+      align-items: flex-end;
+    }
+
+    .name_flex_container{
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+
+      p.title{
+        font-family: Lato-Light;
+        font-size: 34px;
+        color: #a0a0a0;
+        margin-right: 15px;
+        float: left;
+      }
+    }
+    
+    .editor_flex_container{
+      display: flex;
+      align-items: center;
+      .editor_block{
+        width: 15px;
+        height: 15px;
+        background: @color_main1_light;
+        margin-right: 15px;
+      }
+
+      p{
+        cursor: pointer;
+        font-family: Lato-Light;
+        font-size: 21px;
+        color: #C3C3C3;
+        float: left;
+      }
+    }
+  }
+
+  .keyword_wiki_container{
+    width: 90%;
+    height: auto;
+    float: left;
+    margin-top: 40px;
+
+    .title{
+      font-family: Lato-Light;
+      font-size: 24px;
+      color: #a0a0a0;
+      float: left;
+      padding-bottom: 7px;
+      border-bottom: 1px solid #F1F1F1;
+      margin-bottom: 20px;
+    }
+
+    .description{
+      width: 100%;
+      line-height: 20px;
+      float: left;
+      color: #a0a0a0;
+      line-height: 24px;
+    }
+    .edit_icon{
+      color: green;
+      float: left;
+    }
+  }
+
+  .associated_tags{
+    float: left;
+    margin-top: 40px;
+
+    span{
+      margin-right: 6px;
+      float: left;
+      margin-bottom: 10px;
+      padding: 14px;
+      border-radius: 5px;
+      color: #90A2BF;
+      font-size: 14px;
+      background-color: #D7E4F9;
+    }
+  }
 }
 
-.divExpertise{
-  width: 100%;
-  height: 150px;
-  background: #f9f9f9;
-  margin-bottom: 20px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding: 20px;
-  text-align: left;
-}
 
-.tableExpertise{
+
+#profile_docs_container{
   position: relative;
-  width: 100%;
-  height: 100%;
+  right: 0px;
+  width: 260px;
+  height: auto;
+  text-align: right;
+  max-height: 90%;
+  overflow: hidden;
+
+  .header{
+    width: 100%;
+    height: 50px;
+    .title{
+      font-family: Lato-Light;
+      color: #D2D2D2;
+      width: 100%;
+      line-height: 50px;
+      text-align: center;
+    }
+  }
+
+  .doc{
+    cursor: pointer;
+    background-color: #F7F7F7;
+    padding: 30px;
+    text-align: left;
+    margin-bottom: 5px;
+
+    h3{
+      //font-weight: bold;
+      color: #9C9C9C;
+      margin-bottom: 15px;
+      font-size: 17px;
+      font-family: Lato-Regular;
+    }
+    p{
+      color: #A0A0A0;
+      margin-bottom: 15px;
+      display: block;
+      font-size: 15px;
+      font-family: Lato-light-italic;
+    }
+    span{
+      display: inline-block;
+      color: #A0A0A0;
+      margin-bottom: 10px;
+      font-size: 15px;
+      font-family: Lato-light-italic;
+      margin-right: 5px;
+    }
+  }
+
+  .rating_container{
+    img{
+      height: 20px;
+      display: inline-block;
+    }
+  }
 }
-
-.pSmallTitle{
-  color: #a0a0a0;
-  font-size: 14px;
-  font-family: Lato-Semibold;
-}
-
-.pItalic{
-  color: #a0a0a0;
-  font-size: 13px;
-  font-family: Lato-Italic;
-}
+// END KEYWORD DIRECTIVE ====================================================================================================
 
 
+
+
+
+// DASHBOARD ====================================================================================================
 .dashboard_container{
   padding: 3%;
   /* height: calc(88% - 90px); */
@@ -520,4 +657,4 @@ html,body{
   }
   
 }
-// dashboard style
+// END DASHBOARD ====================================================================================================

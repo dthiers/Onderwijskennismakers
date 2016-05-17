@@ -41,11 +41,19 @@ module.exports = function (app) {
 			templateUrl: "partials/directives/previews/text_preview.html"
 		};
 	};
-	
-		var webpage_preview = function () {
+
+	var webpage_preview = function () {
 		return {
 			restrict: "A",
 			templateUrl: "partials/directives/previews/webpage_preview.html"
+		};
+	};
+
+	var keyword_directive = function () {
+		return {
+			restrict: "A",
+			templateUrl: "partials/directives/keyword_directive.html"
+
 		};
 	};
 
@@ -56,4 +64,6 @@ module.exports = function (app) {
 	app.directive('pdfPreview', pdf_preview);
 	app.directive('textPreview', text_preview);
 	app.directive('webpagePreview', webpage_preview);
+	app.directive('keywordDirective', keyword_directive);
+
 }

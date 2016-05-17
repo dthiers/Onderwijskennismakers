@@ -1,9 +1,8 @@
 <div class="divTopBar" ng-style="topBarStyle" ng-click="slideDown()">
     <div class="divTopBarContent">
-        {{user.firstName}} {{user.lastName}}
+        {{keyword.keyword}}
     </div>
     <img src="./images/arrow_down.png" class="imgTopBarArrow" />
-    <div class="divUserImage" style="background-image: url('./{{user.profileImage}}');"></div>
 </div>
 
 <!-- PROFILE -->
@@ -11,38 +10,41 @@
 <div class="divTopContent" ng-style="topContentStyle">
 
     <div class="content_wrapper">
-        <div id="person_container">
-            <div class="personInfo_container">
+        <div id="keyword_container">
+            <div class="keywordInfo_container">
                 <!-- PROFILE IMAGE -->
-                <img src="./{{user.profileImage}}" class="profile_image person" />
+                <img src="./{{editor.profileImage}}" class="profile_image" />
 
                 <div class="flex_container">
-                    <div class="nameRatingSchool_container">
+                    <div class="nameTitel_container">
 
                         <div class="name_flex_container">
-                            <p class="title">{{user.firstName}} {{user.lastName}}</p>
-                            <div class="rating_container">
-                                <img src="./images/star-filled.png"/>
-                                <img src="./images/star-filled.png"/>
-                                <img src="./images/star-filled.png"/>
-                                <img src="./images/star-half-filled.png"/>
-                                <img src="./images/star-empty.png"/>
-                            </div>
+                            <p class="title">{{keyword.keyword}}</p>
                         </div>
-                        <div class="school_flex_container">
-                            <div class="school_block"></div>
-                            <p class="schoolName" ng-click="loadSchool()">De Viersprong Basisschool</p>
+                        <div class="editor_flex_container">
+                            <div class="editor_block"></div>
+                            <p>Eindredacteur: {{editor.firstName}} {{editor.lastName}}</p>
                         </div>
                     </div>
                 </div>
                 
             </div>
 
-            <div class="aboutMe_container">
-                <p class="title">Over mij</p>
+            <div class="keyword_wiki_container">
+                <p class="title">Wiki</p>
                 <p class="description">
-                    {{user.functionDescription}}
+                    {{keyword.description}}
                 </p>
+                <!--<i class="fa fa-pencil edit_icon" aria-hidden="true"></i>-->
+            </div>
+
+            <div class="associated_tags">
+                <span>Toetsing</span>
+                <span>Formatief</span>
+                <span>Summatief</span>
+                <span>Assessment</span>
+                <span>Toetsing</span>
+                <span>Toetsing</span>
             </div>
 
         </div>
