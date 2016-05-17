@@ -43,16 +43,18 @@ module.exports = function ($scope, $http, VisDataSet, ProfileService) {
             var nodeCounter = 1;
             var userNodeCounter = 100;
 
+            var data = response.data.data;
+
             nodes.add({
                 id: 0,
-                label: 'TJ van Os',
+                label: data.user.name,
                 group: 'persons',
                 shape: 'circularImage',
-                image: "images/Personen/Tj.png",
+                image: data.user.profileImage
             });
 
             // Add keywords
-            angular.forEach(response.data.data, function (value, key) {
+            angular.forEach(data.keywords, function (value, key) {
                 nodes.add({
                     id: nodeCounter,
                     label: value.keyword,
@@ -69,10 +71,10 @@ module.exports = function ($scope, $http, VisDataSet, ProfileService) {
                 angular.forEach(value.users, function (userValue, userKey) {
                     nodes.add({
                         id: userNodeCounter,
-                        label: userValue.firstname,
+                        label: userValue.name,
                         group: 'persons',
                         shape: 'circularImage',
-                        image: "images/Personen/Tj.png",
+                        image: userValue.profileImage,
                         userId: userValue.userId
                     });
 
