@@ -1,5 +1,5 @@
 
-module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService) {
+module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService, $http) {
 
     $scope.type = "keyword";
 
