@@ -140,12 +140,20 @@ module.exports = function ($scope, $http, VisDataSet, ProfileService) {
                     borderWidth: 0,
                     size: 40,
                     borderWidthSelected: 0,
+                    shadow:{
+                      enabled: true,
+                      color: 'rgba(0,0,0,0.4)',
+                      size:7,
+                      x:5,
+                      y:5
+                    },
                     color: {
                         border: '#F5F5F5'
                     },
                     font: {
                         color: '#b6b6b6'
                     },
+
 
                     //Scaling options
                     scaling: {
@@ -169,7 +177,13 @@ module.exports = function ($scope, $http, VisDataSet, ProfileService) {
                     labelHighlightBold: false,
                     borderWidth: 15,
                     borderWidthSelected: 15,
-                    shadow: false,
+                    shadow:{
+                      enabled: true,
+                      color: 'rgba(0,0,0,0.5)',
+                      size:7,
+                      x:5,
+                      y:5
+                    },
                     color: {
                         border: '#73a1ee',
                         background: '#73a1ee',
