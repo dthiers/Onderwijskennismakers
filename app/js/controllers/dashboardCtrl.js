@@ -51,6 +51,7 @@ module.exports = function ($scope, $http, VisDataSet, ProfileService) {
                 image: "images/Personen/Tj.png",
             });
 
+            // Add keywords
             angular.forEach(response.data.data, function (value, key) {
                 nodes.add({
                     id: nodeCounter,
@@ -64,6 +65,7 @@ module.exports = function ($scope, $http, VisDataSet, ProfileService) {
                     to: nodeCounter
                 });
 
+                // Add users to keywords
                 angular.forEach(value.users, function (userValue, userKey) {
                     nodes.add({
                         id: userNodeCounter,
@@ -98,9 +100,10 @@ module.exports = function ($scope, $http, VisDataSet, ProfileService) {
     $scope.events = {};
 
     $scope.events.selectNode = function (click) {
+        var node = $scope.data.nodes.get(click.nodes[0]);
+
         // Only handle clicks on user nodes
-        if (click.nodes >= 100) {
-            var node = $scope.data.nodes.get(click.nodes[0]);
+        if(node.group == 'persons') {
             getWeb(node.userId);
         }
     };
