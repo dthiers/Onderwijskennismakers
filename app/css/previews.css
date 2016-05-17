@@ -200,6 +200,7 @@
     height: 700px;
     border: none;
     float: left;
+    z-index: -1;
     
     -moz-transform: scale(0.4);
     -moz-transform-origin: 0 0;
@@ -246,3 +247,13 @@
     transform: translate(10px, -10px);
 }
 
+#iContainer {position: relative;}
+#protector {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 700px;
+    z-index: 1;
+    background: transparent;
+}
