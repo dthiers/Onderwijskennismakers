@@ -407,6 +407,10 @@ body {
   color: #a0a0a0;
   line-height: 24px;
 }
+#keyword_container .keyword_wiki_container .edit_icon {
+  color: green;
+  float: left;
+}
 #keyword_container .associated_tags {
   float: left;
   margin-top: 40px;

@@ -1,4 +1,6 @@
-module.exports = function ($scope, $http, VisDataSet, ProfileService) {
+
+module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService) {
+
     $scope.type = "keyword";
 
     $scope.slideDown = function () {
@@ -11,7 +13,8 @@ module.exports = function ($scope, $http, VisDataSet, ProfileService) {
         $scope.topContentStyle = {top: '-100%'};
     };
 
-    $scope.loadSchool = function () {
+    //LOAD DIRECTIVES
+    $scope.loadSchool = function(){
         $scope.type = "school";
     };
     $scope.loadUser = function () {
@@ -22,6 +25,8 @@ module.exports = function ($scope, $http, VisDataSet, ProfileService) {
     };
 
     getUser();
+    getKeyword();
+    //getSchool();
 
     // Initialize the web for the current user
     getWebForUser(1);
@@ -29,10 +34,41 @@ module.exports = function ($scope, $http, VisDataSet, ProfileService) {
     function getUser() {//based on route param
         ProfileService.profileService.getById(2)//call to service
             .then(function (response) {
+                
                 $scope.user = response.data.data[0];//set response to scope
                 console.dir($scope);
+                $scope.user=response.data.data[0];//set response to scope
+
             }, function (error) {
-                $scope.status = 'Unable to load customer data: ' + error.message;
+                $scope.status = 'Er is iets misgegaan met het laden van de gebruiker: ';
+                console.log(error.message);
+            });
+    }
+    
+    function getKeyword() {//based on route param
+        KeywordService.keywordService.getById(1)//call to service
+            .then(function (response) {
+                $scope.keyword=response.data.data[0];//set response to scope
+                ProfileService.profileService.getById($scope.keyword.User_id)//call to service
+                    .then(function (response) {
+                        $scope.editor=response.data.data[0];//set response to scope
+                    }, function (error) {
+                        $scope.status = 'Er is iets misgegaan met het laden van de gebruiker: ';
+                        console.log(error.message);
+                    });
+            }, function (error) {
+                $scope.status = 'Er is iets misgegaan met het laden van het trefwoord: ';
+                console.log(error.message);
+            });
+    }
+
+    function getSchool() {//based on route param
+        SchoolService.schoolService.getById(1)//call to service
+            .then(function (response) {
+                $scope.school=response.data.data[0];//set response to scope
+            }, function (error) {
+                $scope.status = 'Er is iets misgegaan met het laden van de school: ';
+                console.log(error.message);
             });
     }
 
