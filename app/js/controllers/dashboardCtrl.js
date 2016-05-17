@@ -1,29 +1,30 @@
 module.exports = function ($scope, $http, VisDataSet, ProfileService) {
-
     $scope.type = "keyword";
 
     $scope.slideDown = function () {
         $scope.topBarStyle = {top: '100%'};
         $scope.topContentStyle = {top: '0%'};
-    }
+    };
+
     $scope.slideUp = function () {
         $scope.topBarStyle = {top: '0%'};
         $scope.topContentStyle = {top: '-100%'};
-    }
+    };
 
     $scope.loadSchool = function () {
         $scope.type = "school";
-    }
+    };
     $scope.loadUser = function () {
         $scope.type = "person";
-    }
+    };
     $scope.loadKeyword = function () {
         $scope.type = "keyword";
-    }
+    };
 
     getUser();
 
-    getWeb(1);
+    // Initialize the web for the current user
+    getWebForUser(1);
 
     function getUser() {//based on route param
         ProfileService.profileService.getById(2)//call to service
@@ -35,33 +36,24 @@ module.exports = function ($scope, $http, VisDataSet, ProfileService) {
             });
     }
 
-    function getWeb(id) {
+    /* Web Creation */
+
+    // Creates the web for the user with the given id
+    function getWebForUser(id) {
         $http.get('https://onderwijskennismakers.herokuapp.com/user/' + id + '/web').then(function (response) {
             var nodes = new VisDataSet();
             var edges = new VisDataSet();
 
             var nodeCounter = 1;
             var userNodeCounter = 100;
-
             var data = response.data.data;
 
-            nodes.add({
-                id: 0,
-                label: data.user.name,
-                group: 'persons',
-                shape: 'circularImage',
-                image: data.user.profileImage
-            });
+            // Create node for center user
+            nodes.add(createUserNode(0, data.user));
 
             // Add keywords
             angular.forEach(data.keywords, function (value, key) {
-                nodes.add({
-                    id: nodeCounter,
-                    label: value.keyword,
-                    group: 'keywords',
-                    shape: 'box'
-                });
-
+                nodes.add(createKeywordNode(nodeCounter, value));
                 edges.add({
                     from: 0,
                     to: nodeCounter
@@ -69,15 +61,7 @@ module.exports = function ($scope, $http, VisDataSet, ProfileService) {
 
                 // Add users to keywords
                 angular.forEach(value.users, function (userValue, userKey) {
-                    nodes.add({
-                        id: userNodeCounter,
-                        label: userValue.name,
-                        group: 'persons',
-                        shape: 'circularImage',
-                        image: userValue.profileImage,
-                        userId: userValue.userId
-                    });
-
+                    nodes.add(createUserNode(userNodeCounter, userValue));
                     edges.add({
                         from: userNodeCounter,
                         to: nodeCounter
@@ -89,24 +73,83 @@ module.exports = function ($scope, $http, VisDataSet, ProfileService) {
                 nodeCounter++;
             });
 
+            // Set data on scope
             $scope.data = {
                 "nodes": nodes,
                 "edges": edges
             };
-
         }, function (error) {
-            alert("error");
+            alert("Error loading user web");
+            console.log(error);
         });
     }
 
-    $scope.events = {};
+    // Creates the web for the keyword with the given id
+    function getWebForKeyword(id) {
+        $http.get('https://onderwijskennismakers.herokuapp.com/keyword/' + id + '/web').then(function (response) {
+            var nodes = new VisDataSet();
+            var edges = new VisDataSet();
 
+            var nodeCounter = 1;
+            var data = response.data.data;
+
+            // Create node for center keyword
+            nodes.add(createKeywordNode(0, data.keyword));
+
+            // Add users for keyword
+            angular.forEach(data.users, function (value, key) {
+                nodes.add(createUserNode(nodeCounter, value));
+                edges.add({
+                    from: 0,
+                    to: nodeCounter
+                });
+
+                nodeCounter++;
+            });
+
+            // Set data on scope
+            $scope.data = {
+                "nodes": nodes,
+                "edges": edges
+            };
+        }, function (error) {
+            alert("Error loading keyword web");
+            console.log(error);
+        });
+    }
+
+    // Creates a user node
+    function createUserNode(id, data) {
+        return {
+            id: id,
+            label: data.name,
+            group: 'persons',
+            shape: 'circularImage',
+            image: data.profileImage,
+            userId: data.id
+        }
+    }
+
+    // Creates a keyword node
+    function createKeywordNode(id, data) {
+        return {
+            id: id,
+            label: data.keyword,
+            group: 'keywords',
+            shape: 'box',
+            keywordId: data.id
+        }
+    }
+
+    /* Web events */
+    $scope.events = {};
     $scope.events.selectNode = function (click) {
         var node = $scope.data.nodes.get(click.nodes[0]);
 
-        // Only handle clicks on user nodes
         if(node.group == 'persons') {
-            getWeb(node.userId);
+            getWebForUser(node.userId);
+        } else if(node.group == 'keywords') {
+            getWebForKeyword(node.keywordId)
         }
     };
 
@@ -150,7 +193,7 @@ module.exports = function ($scope, $http, VisDataSet, ProfileService) {
                     //Scaling options
                     scaling: {
                         label: {
-                            enabled: true,
+                            enabled: true
                         },
                         customScalingFunction: function (min, max, total, value) {
                             if (max === min) {
@@ -174,14 +217,14 @@ module.exports = function ($scope, $http, VisDataSet, ProfileService) {
                         border: '#73a1ee',
                         background: '#73a1ee',
                         highlight: {
-                            border: '#73a1ee',
+                            border: '#73a1ee'
                         }
                     },
                     font: {
                         color: '#ffffff',
                         size: 14, // px
                         face: 'arial',
-                        background: 'none',
+                        background: 'none'
                     },
                 }
             },
@@ -190,12 +233,12 @@ module.exports = function ($scope, $http, VisDataSet, ProfileService) {
                 hidden: false,
                 level: undefined,
                 mass: 1,
-                physics: true,
+                physics: true
             },
             edges: {
                 length: 100,
                 color: '#d3d3d3'
-            },
+            }
 
         };
     });
