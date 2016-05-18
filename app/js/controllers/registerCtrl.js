@@ -1,5 +1,27 @@
-module.exports = function ($scope, AuthService) {
-    
+module.exports = function ($scope, AuthService, ResourcesService) {
+
+    $scope.imgLoadingPreviewHidden = true;
+    $scope.file_changed = function (element) {
+        $scope.$apply(function (scope) {
+            $scope.imgLoadingPreviewHidden = false;
+            var photofile = element.files[0];
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                ResourcesService.postImage(photofile, {
+                    onSuccess: function (result) {
+                        $scope.image = result.data.data.link;
+                        $scope.imgLoadingPreviewHidden = true;
+                    },
+                    onError: function (err) {
+                        console.log(err);
+                        $scope.imgLoadingPreviewHidden = true;
+                    }
+                });
+            };
+            reader.readAsDataURL(photofile);
+        });
+    };
+
     $scope.register = function () {
         var email = $scope.email;
         var password = $scope.password;
@@ -7,8 +29,14 @@ module.exports = function ($scope, AuthService) {
         var firstName = $scope.firstName;
         var lastName = $scope.lastName;
         var job = $scope.job;
+        var image = $scope.image;
         var validate = true;
-
+        
+        if (image == "" || angular.isUndefined(image)) {
+            $scope.message = "Kies een afbeelding";
+            validate = false;
+        }
+        
         if (job == "" || angular.isUndefined(job)) {
             $scope.message = "Voer een baan in";
             validate = false;
@@ -45,8 +73,7 @@ module.exports = function ($scope, AuthService) {
             $scope.message = "Voer een email in";
             validate = false;
         }
-
-
+        debugger;
         if (validate) {
             AuthService.registerServer({
                 "firstName": firstName,
@@ -54,7 +81,7 @@ module.exports = function ($scope, AuthService) {
                 "email": email,
                 "password": password,
                 "functionDescription": job,
-                "profileImage": "images/personen/tj.png",
+                "profileImage": image,
                 "facebook": null,
                 "skype": null,
                 "phoneNumber": null,
@@ -63,7 +90,7 @@ module.exports = function ($scope, AuthService) {
             }, {
                     onSuccess: function (result) {
                         $scope.message = "";
-                        $('#divregister').hide();
+                        $('#divregister2').hide();
                         $('#divLoginBackgroundOverlay').hide();
                         // Go To dashboard
                     },

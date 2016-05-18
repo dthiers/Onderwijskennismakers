@@ -8,8 +8,11 @@
     <input type="text" class="inputLogin" placeholder="Voornaam" ng-model="firstName" />
     <input type="text" class="inputLogin" placeholder="Achternaam" ng-model="lastName" />
     <input type="text" class="inputLogin" placeholder="Functie" ng-model="job" />
-    
-    
+    <input ng-model="photo" onchange="angular.element(this).scope().file_changed(this)" type="file" accept="image/*" id="inputImage"/>
+
+    <img src="{{image}}" id="imgPreview2" />
+    <img src="../images/loading.gif" id="imgLoadingPreview2" ng-hide="imgLoadingPreviewHidden" />
+
     <div id="divLinkWrapper">
         <a href="#/login">Ik heb al een account</a>
     </div>
