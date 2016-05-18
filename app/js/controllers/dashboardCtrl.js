@@ -86,6 +86,14 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
             // Create node for center user
             nodes.add(createUserNode(0, data.user));
+            nodes.add({
+                id: 0,
+                label: data.user.name,
+                group: 'mainPerson',
+                shape: 'circularImage',
+                image: data.user.profileImage,
+                userId: data.user.id
+            });
 
             // Add keywords
             angular.forEach(data.keywords, function (value, key) {
@@ -213,7 +221,42 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
             //GROUPS FOR SPECIFIC STYLING -----------------------------
             groups: {
+                //Main person
+                mainPerson: {
+                    borderWidth: 0,
+                    size: 80,
+                    borderWidthSelected: 0,
+                    shadow:{
+                        enabled: true,
+                        color: 'rgba(0,0,0,0.4)',
+                        size:7,
+                        x:5,
+                        y:5
+                    },
+                    color: {
+                        border: '#F5F5F5'
+                    },
+                    font: {
+                        color: '#b6b6b6'
+                    },
 
+
+                    //Scaling options
+                    scaling: {
+                        label: {
+                            enabled: true
+                        },
+                        customScalingFunction: function (min, max, total, value) {
+                            if (max === min) {
+                                return 0.5;
+                            }
+                            else {
+                                var scale = 1 / (max - min);
+                                return Math.max(0, (value - min) * scale);
+                            }
+                        }
+                    },
+                },
                 //Personen
                 persons: {
                     borderWidth: 0,
