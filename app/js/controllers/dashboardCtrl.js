@@ -164,7 +164,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
                 group: 'persons',
                 shape: 'circularImage',
                 image: "images/Personen/persoon18.png",
-                
+
             },
 
             {id: 101, label: 'E-portfolio', shape: 'box', group: 'keywords'},
@@ -277,7 +277,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
                     },
                 }
             },
-    
+
             nodes:{
                 hidden: false,
                 level: undefined,
@@ -288,8 +288,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
                 length: 100,
                 color: '#d3d3d3'
             },
-            
+
         };
     });
 };
-

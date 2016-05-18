@@ -1,0 +1,10 @@
+<div ng-controller="ResourcesCtrl">
+  <b>Afbeelding</b>
+  <input ng-model="photo"
+       onchange="angular.element(this).scope().file_changed(this)"
+       type="file" accept="image/*" id="inputImage" />
+
+  <img src="{{image}}" id="imgPreview" />
+  <img src="../images/loading.gif" id="imgLoadingPreview" ng-hide="imgLoadingPreviewHidden" />
+  <button ng-click="addResource('details', image )" data-ng-hide="!image" id="btnAddImage">Toevoegen</button>
+</div>

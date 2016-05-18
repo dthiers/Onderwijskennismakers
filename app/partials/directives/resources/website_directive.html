@@ -1,0 +1,5 @@
+<div ng-controller="ResourcesCtrl">
+  <b>Website</b>
+  <input type="text" id="txtWebsiteUrl" class="inputResource" placeholder="Website url" ng-model="inputWebsite" />
+  <button  id="btnAddPdf" data-ng-hide="!inputWebsite" ng-click="addResource('details', inputWebsite )">Toevoegen</button>
+</div>
