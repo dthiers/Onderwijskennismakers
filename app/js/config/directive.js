@@ -45,7 +45,21 @@ module.exports = function (app) {
 	var webpage_preview = function () {
 		return {
 			restrict: "A",
-			templateUrl: "partials/directives/previews/webpage_preview.html"
+			templateUrl: "partials/directives/previews/webpage_preview.html",
+			controller: function ($scope) {
+
+				$(window).on('load', function () {
+					// blur the iframe
+					document.getElementById("frame").blur();
+					// set focus on #foo
+					$(".btn_addDocument").focus();
+					// when iframe tries to focus, focus #foo
+					$(".btn_addDocument").onblur = function () {
+						this.focus();
+					};
+					// setInterval(function () { $(".btn_addDocument").focus() }, 100);
+				})
+			}
 		};
 	};
 
@@ -53,7 +67,6 @@ module.exports = function (app) {
 		return {
 			restrict: "A",
 			templateUrl: "partials/directives/keyword_directive.html"
-
 		};
 	};
 
