@@ -9,6 +9,8 @@ module.exports = function ($scope, ResourcesService) {
       $scope.wrapperStyle = { "margin-top":"20px" }
       $scope.imgLoadingPreviewHidden = true;
 
+      ResourcesService.setResourceLink("");
+      
       switch(type) {
           case "youtube":
               $scope.type = "addYoutube";
