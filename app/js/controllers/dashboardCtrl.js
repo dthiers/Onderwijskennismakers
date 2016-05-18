@@ -1,206 +1,306 @@
 
-module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService) {
+module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService, $http) {
 
-    $scope.type = "keyword";
+    var self = this;
 
-    $scope.slideDown = function(){
+    $scope.hidePopup = true;
+
+    $scope.type = "person";
+
+    $scope.slideDown = function () {
         $scope.topBarStyle = {top: '100%'};
         $scope.topContentStyle = {top: '0%'};
-    }
-    $scope.slideUp = function(){
+    };
+
+    $scope.slideUp = function () {
         $scope.topBarStyle = {top: '0%'};
         $scope.topContentStyle = {top: '-100%'};
-    }
+    };
 
     //LOAD DIRECTIVES
-    $scope.loadSchool = function(){
+    $scope.loadSchool = function(id){
+        getSchool(id);
         $scope.type = "school";
-    }
-    $scope.loadUser = function(){
+    };
+    $scope.loadUser = function (id, reloadWeb) {
+        if(reloadWeb)
+            getWebForUser(id);
+        getUserDetails(id);
         $scope.type = "person";
-    }
-    $scope.loadKeyword = function(){
-        $scope.type = "keyword";
-    }
+    };
+    $scope.loadKeyword = function (id, reloadWeb) {
+        if(reloadWeb)
+            getWebForKeyword(id);
 
-    getUser();
-    getKeyword();
+        getKeyword(id);
+        $scope.type = "keyword";
+    };
+
+    //getUser(1);
+    //getKeyword();
     //getSchool();
 
-    function getUser() {//based on route param
-        ProfileService.profileService.getById(2)//call to service
+    // Initialize the web for the current user
+    getWebForUser(1);
+
+    function getUser(id) {//based on route param
+        ProfileService.profileService.getById(id)//call to service
             .then(function (response) {
-                $scope.user=response.data.data[0];//set response to scope
+                
+                $scope.user = response.data.data[0];//set response to scope
+
+            }, function (error) {
+                $scope.status = 'Er is iets misgegaan met het laden van de gebruiker: ';
+                console.log(error.message);
+            });
+    }
+
+    function getUserDetails(id) {//based on route param
+        ProfileService.profileService.getUserDetails(id)//call to service
+            .then(function (response) {
+                
+                $scope.user = response.data.data[0];//set response to scope
+
+            }, function (error) {
+                $scope.status = 'Er is iets misgegaan met het laden van de gebruiker: ';
+                console.log(error.message);
+            });
+    }
+
+    function getPopupDetails(id) {//based on route param
+        ProfileService.profileService.getUserDetails(id)//call to service
+            .then(function (response) {
+                
+                $scope.popup = response.data.data[0];//set response to scope
+
             }, function (error) {
                 $scope.status = 'Er is iets misgegaan met het laden van de gebruiker: ';
                 console.log(error.message);
             });
     }
     
-    function getKeyword() {//based on route param
-        KeywordService.keywordService.getById(1)//call to service
+    function getKeyword(id) {//based on route param
+        KeywordService.keywordService.getById(id)//call to service
             .then(function (response) {
                 $scope.keyword=response.data.data[0];//set response to scope
+                console.log($scope.keyword);
                 ProfileService.profileService.getById($scope.keyword.User_id)//call to service
                     .then(function (response) {
                         $scope.editor=response.data.data[0];//set response to scope
                     }, function (error) {
-                        $scope.status = 'Er is iets misgegaan met het laden van de gebruiker: ';
+                        $scope.status = 'Er is iets misgegaan met het laden van de gebruiker';
                         console.log(error.message);
                     });
             }, function (error) {
-                $scope.status = 'Er is iets misgegaan met het laden van het trefwoord: ';
+                $scope.status = 'Er is iets misgegaan met het laden van het trefwoord';
+                console.log(error.message);
+            });
+
+        KeywordService.keywordService.getTagsByKeyword(id)//call to service
+            .then(function (response) {
+                
+                $scope.tags = response.data.data;//set response to scope
+                console.log($scope.tags);
+
+            }, function (error) {
+                $scope.status = 'Er is iets misgegaan met het laden van de tags ';
                 console.log(error.message);
             });
     }
 
-    function getSchool() {//based on route param
-        SchoolService.schoolService.getById(1)//call to service
+    function getSchool(id) {//based on route param
+        SchoolService.schoolService.getById(id)//call to service
             .then(function (response) {
                 $scope.school=response.data.data[0];//set response to scope
+
+                //get experts of school
+                SchoolService.schoolService.getExpertsBySchool(id)
+                    .then(function (response){
+                        $scope.experts = response.data.data;
+                    }, function (error){
+                        $scope.status = "Er is iets misgegaan met het ophalen van de experts";
+                    });
             }, function (error) {
-                $scope.status = 'Er is iets misgegaan met het laden van de school: ';
+                $scope.status = 'Er is iets misgegaan met het laden van de school';
                 console.log(error.message);
             });
     }
 
+    /* Web Creation */
 
-    $scope.data = {
-        "nodes": VisDataSet([
-            {
-                id: 1,
-                label: 'Theo Brinkman',
-                group: 'persons',
-                shape: 'circularImage',
-                image: "images/Personen/persoon1.png",
-            },
-            {
-                id: 2,
-                label: 'Marita van den Heuvel',
-                group: 'persons',
-                shape: 'circularImage',
-                image: "images/Personen/persoon6.png",
-            },
-            {
-                id: 3,
-                label: 'Theo Mensen',
-                group: 'persons',
-                shape: 'circularImage',
-                image: "images/Personen/persoon7.png",
-            },
-            {
-                id: 4,
-                label: 'Els van der Pol',
-                group: 'persons',
-                shape: 'circularImage',
-                image: "images/Personen/persoon8.png",
-            },
-            {
-                id: 5,
-                label: 'Angela Horsten',
-                group: 'persons',
-                shape: 'circularImage',
-                image: "images/Personen/persoon9.png",
-            },
-            {
-                id: 6,
-                label: 'Hans van Daelen',
-                group: 'persons',
-                shape: 'circularImage',
-                image: "images/Personen/persoon10.png",
-            },
-            {
-                id: 7,
-                label: 'Stef van Wickeren',
-                group: 'persons',
-                shape: 'circularImage',
-                image: "images/Personen/persoon11.png",
-            },
-            {
-                id: 8,
-                label: 'Karin van Zutphen',
-                group: 'persons',
-                shape: 'circularImage',
-                image: "images/Personen/persoon2.png",
-            },
-            {
-                id: 9,
-                label: 'Siebrand Konst',
-                group: 'persons',
-                shape: 'circularImage',
-                image: "images/Personen/persoon3.png",
-            },
-            {
-                id: 10,
-                label: 'Koen Oosterbaan',
-                group: 'persons',
-                shape: 'circularImage',
-                image: "images/Personen/persoon20.png",
-            },
-            {
-                id: 11,
-                label: 'Jan Timmers',
-                group: 'persons',
-                shape: 'circularImage',
-                image: "images/Personen/persoon5.png",
-            },
-            {
-                id: 12,
-                label: 'TJ van Os',
-                group: 'persons',
-                shape: 'circularImage',
-                image: "images/Personen/Tj.png",
-            },
-            {
-                id: 13,
-                label: 'Marianne Rongen',
-                group: 'persons',
-                shape: 'circularImage',
-                image: "images/Personen/persoon12.png",
-            },
-            {
-                id: 14,
-                label: 'Annelies Verbeek',
-                group: 'persons',
-                shape: 'circularImage',
-                image: "images/Personen/persoon18.png",
+    // Creates the web for the user with the given id
+    function getWebForUser(id) {
+        $scope.hidePopup = true;
+        $http.get('https://onderwijskennismakers.herokuapp.com/user/' + id + '/web').then(function (response) {
+            var nodes = new VisDataSet();
+            var edges = new VisDataSet();
 
-            },
+            var nodeCounter = 1;
+            var userNodeCounter = 100;
+            var data = response.data.data;
 
-            {id: 101, label: 'E-portfolio', shape: 'box', group: 'keywords'},
-            {id: 102, label: 'Professionalisering', shape: 'box', group: 'keywords'},
-            {id: 103, label: 'Kwaliteitszorg', shape: 'box', group: 'keywords'},
-            {id: 104, label: 'Zelfregulering', shape: 'box', group: 'keywords'}
-        ]),
-        "edges": VisDataSet([
+            // Create node for center user
+            nodes.add({
+                id: 0,
+                label: data.user.name,
+                group: 'mainPerson',
+                shape: 'circularImage',
+                image: data.user.profileImage,
+                userId: data.user.id
+            });
 
-            //eportfolio
-            {from: 12, to: 101},
-            {from: 101, to: 13},
-            {from: 101, to: 1},
-            {from: 101, to: 2},
-            {from: 101, to: 3},
+            // Add keywords
+            angular.forEach(data.keywords, function (value, key) {
+                nodes.add(createKeywordNode(nodeCounter, value));
+                edges.add({
+                    from: 0,
+                    to: nodeCounter
+                });
 
-            //professionalisering
-            {from: 12, to: 102},
-            {from: 102, to: 4},
-            {from: 102, to: 5},
-            {from: 102, to: 18},
+                // Add users to keywords
+                angular.forEach(value.users, function (userValue, userKey) {
+                    nodes.add(createUserNode(userNodeCounter, userValue));
+                    edges.add({
+                        from: userNodeCounter,
+                        to: nodeCounter
+                    });
 
-            //zelfregulering
-            {from: 12, to: 103},
-            {from: 103, to: 6},
-            {from: 103, to: 7},
-            {from: 103, to: 8},
+                    userNodeCounter++;
+                });
 
-            //kwaliteitszorg
-            {from: 12, to: 104},
-            {from: 104, to: 9},
-            {from: 104, to: 10},
-            {from: 104, to: 11},
-            {from: 104, to: 14}
-        ])
+                nodeCounter++;
+            });
+
+            // Set data on scope
+            $scope.data = {
+                "nodes": nodes,
+                "edges": edges
+            };
+        }, function (error) {
+            alert("Error loading user web");
+            console.log(error);
+        });
+    
+
+        //LOAD DETAIL WINDOW
+        $scope.loadUser(id, false);
     }
+
+    // Creates the web for the keyword with the given id
+    function getWebForKeyword(id) {
+        $scope.hidePopup = true;
+        $http.get('https://onderwijskennismakers.herokuapp.com/keyword/' + id + '/web').then(function (response) {
+            var nodes = new VisDataSet();
+            var edges = new VisDataSet();
+
+            var nodeCounter = 1;
+            var data = response.data.data;
+
+            // Create node for center keyword
+            nodes.add(createKeywordNode(0, data.keyword));
+
+            // Add users for keyword
+            angular.forEach(data.users, function (value, key) {
+                nodes.add(createUserNode(nodeCounter, value));
+                edges.add({
+                    from: 0,
+                    to: nodeCounter
+                });
+
+                nodeCounter++;
+            });
+
+            // Set data on scope
+            $scope.data = {
+                "nodes": nodes,
+                "edges": edges
+            };
+        }, function (error) {
+            alert("Error loading keyword web");
+            console.log(error);
+        });
+
+        //LOAD DETAIL WINDOW
+        $scope.loadKeyword(id, false);
+    }
+
+    // Creates a user node
+    function createUserNode(id, data) {
+        return {
+            id: id,
+            label: data.name,
+            group: 'persons',
+            shape: 'circularImage',
+            image: data.profileImage,
+            userId: data.id
+        }
+    }
+
+    // Creates a keyword node
+    function createKeywordNode(id, data) {
+        return {
+            id: id,
+            label: data.keyword,
+            group: 'keywords',
+            shape: 'box',
+            keywordId: data.id
+        }
+    }
+
+
+    //SELECT NODE NEW
+    // $scope.events.selectNode = function (click) {
+    //     $scope.selectClick = true;
+    //     var xMid = window.innerWidth * 0.83 / 2;
+
+    //     var profile = ProfileService.getProfile(click.nodes);
+
+    //     if (profile == null) {
+    //         console.log("Profile not found");
+    //         $("#divInfoPopup").css("display", "none");
+    //         return;
+    //     }
+
+    //     $("#divInfoPopup").css("top", click.pointer.DOM.y - 30);
+
+    //     if (click.pointer.DOM.x < xMid) {
+    //         $("#divInfoPopup").css("left", click.pointer.DOM.x - 160);
+    //     } else {
+    //         $("#divInfoPopup").css("left", click.pointer.DOM.x + 40);
+    //     }
+
+    //     $("#infoName").text(profile.first_name + " " + profile.last_name);
+    //     $("#infoTitle1").text(profile.titles[0]);
+    //     $("#infoTitle2").text(profile.titles[1]);
+
+    //     $("#divInfoPopup").css("display", "block");
+    // };
+
+    /* Web events */
+    $scope.events = {};
+    $scope.events.selectNode = function (click) {
+        var node = $scope.data.nodes.get(click.nodes[0]);
+
+        if(node.group == 'persons') {
+            //getWebForUser(node.userId);
+
+            getPopupDetails(node.userId);
+
+            var xMid = window.innerWidth * 0.83 / 2;
+
+            $(".web_popup").css("top", click.pointer.DOM.y - 30);
+            if (click.pointer.DOM.x < xMid) {
+                $(".web_popup").css("left", click.pointer.DOM.x - 160);
+            } else {
+                $(".web_popup").css("left", click.pointer.DOM.x + 40);
+            }
+            $scope.hidePopup = false;
+
+        } else if(node.group == 'keywords') {
+            $scope.hidePopup = true;
+            getWebForKeyword(node.keywordId)
+        }
+    };
 
     $scope.$on('$viewContentLoaded', function (event) {
         $scope.options = {
@@ -226,12 +326,18 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
             //GROUPS FOR SPECIFIC STYLING -----------------------------
             groups: {
-
-                //Personen
-                persons: {
+                //Main person
+                mainPerson: {
                     borderWidth: 0,
-                    size: 40,
+                    size: 80,
                     borderWidthSelected: 0,
+                    shadow:{
+                        enabled: true,
+                        color: 'rgba(0,0,0,0.4)',
+                        size:7,
+                        x:5,
+                        y:5
+                    },
                     color: {
                         border: '#F5F5F5'
                     },
@@ -239,20 +345,57 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
                         color: '#b6b6b6'
                     },
 
+
                     //Scaling options
                     scaling: {
-                      label: {
-                        enabled: true,
-                      },
-                      customScalingFunction: function (min,max,total,value) {
-                        if (max === min) {
-                          return 0.5;
+                        label: {
+                            enabled: true
+                        },
+                        customScalingFunction: function (min, max, total, value) {
+                            if (max === min) {
+                                return 0.5;
+                            }
+                            else {
+                                var scale = 1 / (max - min);
+                                return Math.max(0, (value - min) * scale);
+                            }
                         }
-                        else {
-                          var scale = 1 / (max - min);
-                          return Math.max(0,(value - min)*scale);
+                    },
+                },
+                //Personen
+                persons: {
+                    borderWidth: 0,
+                    size: 40,
+                    borderWidthSelected: 0,
+                    shadow:{
+                      enabled: true,
+                      color: 'rgba(0,0,0,0.4)',
+                      size:7,
+                      x:5,
+                      y:5
+                    },
+                    color: {
+                        border: '#F5F5F5'
+                    },
+                    font: {
+                        color: '#b6b6b6'
+                    },
+
+
+                    //Scaling options
+                    scaling: {
+                        label: {
+                            enabled: true
+                        },
+                        customScalingFunction: function (min, max, total, value) {
+                            if (max === min) {
+                                return 0.5;
+                            }
+                            else {
+                                var scale = 1 / (max - min);
+                                return Math.max(0, (value - min) * scale);
+                            }
                         }
-                      }
                     },
                 },
 
@@ -261,33 +404,40 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
                     labelHighlightBold: false,
                     borderWidth: 15,
                     borderWidthSelected: 15,
-                    shadow: false,
+                    shadow:{
+                      enabled: true,
+                      color: 'rgba(0,0,0,0.5)',
+                      size:7,
+                      x:5,
+                      y:5
+                    },
                     color: {
-                      border: '#73a1ee',
-                      background: '#73a1ee',
-                      highlight: {
                         border: '#73a1ee',
-                      }
+                        background: '#73a1ee',
+                        highlight: {
+                            border: '#73a1ee'
+                        }
                     },
                     font: {
-                      color: '#ffffff',
-                      size: 14, // px
-                      face: 'arial',
-                      background: 'none',
+                        color: '#ffffff',
+                        size: 14, // px
+                        face: 'arial',
+                        background: 'none'
                     },
                 }
             },
 
-            nodes:{
+            nodes: {
+
                 hidden: false,
                 level: undefined,
                 mass: 1,
-                physics: true,
+                physics: true
             },
             edges: {
                 length: 100,
                 color: '#d3d3d3'
-            },
+            }
 
         };
     });
