@@ -138,7 +138,6 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
             var data = response.data.data;
 
             // Create node for center user
-            nodes.add(createUserNode(0, data.user));
             nodes.add({
                 id: 0,
                 label: data.user.name,
