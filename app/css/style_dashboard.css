@@ -173,8 +173,13 @@ body {
   width: calc(100% - 260px);
   height: auto;
 }
+#person_container .profileInfo_container {
+  display: flex;
+  align-items: center;
+}
 #person_container .profile_image {
-  height: 150px;
+  max-height: 150px;
+  max-width: 350px;
   margin-right: 30px;
   margin-bottom: -50px;
   float: left;
@@ -585,15 +590,12 @@ body {
 .dashboard_container .side_content_scrollWrapper .side_content .documents_container .doc {
   cursor: pointer;
   color: #A5A5A5;
-  width: calc(50% - 2px);
+  width: 100%;
   float: left;
   background-color: #fff;
   padding: 4%;
   box-sizing: border-box;
   margin-bottom: 4px;
-}
-.dashboard_container .side_content_scrollWrapper .side_content .documents_container .doc:nth-child(odd) {
-  margin-right: 4px;
 }
 .dashboard_container .side_content_scrollWrapper .side_content .documents_container .doc h3 {
   font-size: 16px;
@@ -606,10 +608,4 @@ body {
 }
 .dashboard_container .side_content_scrollWrapper .side_content .documents_container .doc .stars img {
   width: 20px;
-}
-@media screen and (max-width: 1500px) {
-  .dashboard_container .side_content_scrollWrapper .side_content .documents_container .doc {
-    width: 100%;
-    margin-right: 0px !important;
-  }
 }

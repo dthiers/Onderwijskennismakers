@@ -1,9 +1,11 @@
 module.exports = function ($http) {
     var keywordService = require('../services/baseService')("keyword", $http);
     
-    //custom call
-    keywordService.customCall=function(){
-        //do something custom with $http
+    var urlBase = 'https://onderwijskennismakers.herokuapp.com/';
+
+    //get Tags
+    keywordService.getTagsByKeyword = function(id){
+        return $http.get(urlBase + 'keyword/' + id + '/tags');
     }
     
     return {

@@ -1,7 +1,9 @@
 
 module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService, $http) {
 
-    $scope.type = "keyword";
+    var self = this;
+
+    $scope.type = "person";
 
     $scope.slideDown = function () {
         $scope.topBarStyle = {top: '100%'};
@@ -14,30 +16,47 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     };
 
     //LOAD DIRECTIVES
-    $scope.loadSchool = function(){
+    $scope.loadSchool = function(id){
+        getSchool(id);
         $scope.type = "school";
     };
-    $scope.loadUser = function () {
+    $scope.loadUser = function (id, reloadWeb) {
+        if(reloadWeb)
+            getWebForUser(id);
+        getUserDetails(id);
         $scope.type = "person";
     };
-    $scope.loadKeyword = function () {
+    $scope.loadKeyword = function (id, reloadWeb) {
+        if(reloadWeb)
+            getWebForKeyword(id);
+        getKeyword(id);
         $scope.type = "keyword";
     };
 
-    getUser();
-    getKeyword();
+    //getUser(1);
+    //getKeyword();
     //getSchool();
 
     // Initialize the web for the current user
     getWebForUser(1);
 
-    function getUser() {//based on route param
-        ProfileService.profileService.getById(2)//call to service
+    function getUser(id) {//based on route param
+        ProfileService.profileService.getById(id)//call to service
             .then(function (response) {
                 
                 $scope.user = response.data.data[0];//set response to scope
-                console.dir($scope);
-                $scope.user=response.data.data[0];//set response to scope
+
+            }, function (error) {
+                $scope.status = 'Er is iets misgegaan met het laden van de gebruiker: ';
+                console.log(error.message);
+            });
+    }
+
+    function getUserDetails(id) {//based on route param
+        ProfileService.profileService.getUserDetails(id)//call to service
+            .then(function (response) {
+                
+                $scope.user = response.data.data[0];//set response to scope
 
             }, function (error) {
                 $scope.status = 'Er is iets misgegaan met het laden van de gebruiker: ';
@@ -45,29 +64,48 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
             });
     }
     
-    function getKeyword() {//based on route param
-        KeywordService.keywordService.getById(1)//call to service
+    function getKeyword(id) {//based on route param
+        KeywordService.keywordService.getById(id)//call to service
             .then(function (response) {
                 $scope.keyword=response.data.data[0];//set response to scope
                 ProfileService.profileService.getById($scope.keyword.User_id)//call to service
                     .then(function (response) {
                         $scope.editor=response.data.data[0];//set response to scope
                     }, function (error) {
-                        $scope.status = 'Er is iets misgegaan met het laden van de gebruiker: ';
+                        $scope.status = 'Er is iets misgegaan met het laden van de gebruiker';
                         console.log(error.message);
                     });
             }, function (error) {
-                $scope.status = 'Er is iets misgegaan met het laden van het trefwoord: ';
+                $scope.status = 'Er is iets misgegaan met het laden van het trefwoord';
+                console.log(error.message);
+            });
+
+        KeywordService.keywordService.getTagsByKeyword(id)//call to service
+            .then(function (response) {
+                
+                $scope.tags = response.data.data;//set response to scope
+                console.log($scope.tags);
+
+            }, function (error) {
+                $scope.status = 'Er is iets misgegaan met het laden van de tags ';
                 console.log(error.message);
             });
     }
 
-    function getSchool() {//based on route param
-        SchoolService.schoolService.getById(1)//call to service
+    function getSchool(id) {//based on route param
+        SchoolService.schoolService.getById(id)//call to service
             .then(function (response) {
                 $scope.school=response.data.data[0];//set response to scope
+
+                //get experts of school
+                SchoolService.schoolService.getExpertsBySchool(id)
+                    .then(function (response){
+                        $scope.experts = response.data.data;
+                    }, function (error){
+                        $scope.status = "Er is iets misgegaan met het ophalen van de experts";
+                    });
             }, function (error) {
-                $scope.status = 'Er is iets misgegaan met het laden van de school: ';
+                $scope.status = 'Er is iets misgegaan met het laden van de school';
                 console.log(error.message);
             });
     }
@@ -118,6 +156,9 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
             alert("Error loading user web");
             console.log(error);
         });
+
+        //LOAD DETAIL WINDOW
+        $scope.loadUser(id, false);
     }
 
     // Creates the web for the keyword with the given id
@@ -152,6 +193,9 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
             alert("Error loading keyword web");
             console.log(error);
         });
+
+        //LOAD DETAIL WINDOW
+        $scope.loadKeyword(id, false);
     }
 
     // Creates a user node
@@ -184,6 +228,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
         if(node.group == 'persons') {
             getWebForUser(node.userId);
+
         } else if(node.group == 'keywords') {
             getWebForKeyword(node.keywordId)
         }
