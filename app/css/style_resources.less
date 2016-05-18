@@ -57,15 +57,18 @@
   margin-top: 5px;
 }
 
-.dynamic_content{
-  width: 100%;
-  margin-top: 10px;
-  text-align: left;
-  float: left;
-  border-top: 2px solid #B1B5BD;
-  padding-top: 20px;
-  box-sizing: border-box;
+.divResourcesPopup{
+  .dynamic_content{
+    width: 100%;
+    margin-top: 10px;
+    text-align: left;
+    float: left;
+    border-top: 2px solid #B1B5BD;
+    padding-top: 20px;
+    box-sizing: border-box;
+  }
 }
+
 
 .inputResource{
   width: 100%;
@@ -117,4 +120,78 @@
   padding-left: 20px;
   box-sizing: border-box;
   font-weight: bold;
+}
+
+#inputImage{
+  width: 100%;
+  margin-top: 10px;
+}
+
+#imgPreview{
+  max-width: 100%;
+  max-height: 210px;
+  border: 2px solid #dcdcdc;
+  margin-top: 10px;
+}
+
+#imgLoadingPreview{
+  display: block;
+  width: 50px;
+  position: absolute;
+  right: 0px;
+  top: 200px;
+}
+
+#txtName, #selectComunity{
+  width: 100%;
+  height: 35px;
+  float: left;
+  margin: 0px;
+  margin-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-sizing: border-box;
+  outline: 0;
+}
+
+#txtName{
+  margin-top: 10px;
+}
+
+#txtDescription{
+  width: 100%;
+  height: 110px;
+  float: left;
+  margin-top: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+  font-family: Lato-Regular;
+  resize: none;
+  outline: 0;
+}
+
+#pMessage{
+  width: 100%;
+  margin-top: 10px !important;
+}
+
+#btnSave, #btnAddImage, #btnAddPdf{
+  width: 80px;
+  height: 30px;
+  color: #FFFFFF;
+  background: @color_main1;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#btnAddImage{
+    position: absolute;
+    top: 210px;
+    right: 20px;
+}
+
+#btnAddPdf{
+    position: absolute;
+    top: 260px;
+    left: 20px;
 }

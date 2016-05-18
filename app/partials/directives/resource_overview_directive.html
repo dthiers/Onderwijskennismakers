@@ -7,4 +7,8 @@
     <img src="./images/website.png" id="imgResourceWebsite" class="imgResource" ng-click="addResource('website')" />
   </div>
   <div class="dynamic_content" ng-if="type == 'addYoutube'" resource_youtube_directive></div>
+  <div class="dynamic_content" ng-if="type == 'addImage'" resource_image_directive></div>
+  <div class="dynamic_content" ng-if="type == 'addDetails'" resource_details_directive></div>
+  <div class="dynamic_content" ng-if="type == 'addPdf'" resource_pdf_directive></div>
+  <div class="dynamic_content" ng-if="type == 'addWebsite'" resource_website_directive></div>
 </div>
