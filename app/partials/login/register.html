@@ -1,0 +1,26 @@
+<div id="divLoginBackgroundOverlay"></div>
+<div id="divRegister">
+
+    <p id="pLoginTitle">Registreren</p>
+    <input type="text" class="inputLogin" placeholder="Email" ng-model="email" />
+    <input type="password" class="inputLogin" placeholder="Password" ng-model="password" />
+    <input type="password" class="inputLogin" placeholder="Password(check)" ng-model="password2" />
+    <input type="text" class="inputLogin" placeholder="Voornaam" ng-model="firstName" />
+    <input type="text" class="inputLogin" placeholder="Achternaam" ng-model="lastName" />
+    <input type="text" class="inputLogin" placeholder="Functie" ng-model="job" />
+    
+    
+    <div id="divLinkWrapper">
+        <a href="#/login">Ik heb al een account</a>
+    </div>
+    <button id="buttonLogin" ng-click="register()">Registreren</button>
+    <div>
+        {{message}}
+    </div>
+    <div id="divLoginColorWrapper">
+        <div class="divLoginColor blue"></div>
+        <div class="divLoginColor yellow"></div>
+        <div class="divLoginColor red"></div>
+        <div class="divLoginColor green"></div>
+    </div>
+</div>

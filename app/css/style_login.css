@@ -95,3 +95,17 @@
   float: left;
   margin-bottom: 5px;
 }
+
+#divRegister {
+  width: 300px;
+  height: 400px;
+  background: #FFFFFF;
+  position: fixed;
+  top: calc(50% - 250px);
+  left: calc(50% - 150px);
+  z-index: 99999999;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
