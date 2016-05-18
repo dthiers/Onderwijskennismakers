@@ -501,6 +501,7 @@ body {
   padding: 20px;
   position: absolute;
   z-index: 996;
+  max-width: 200px;
   background-color: white;
   box-shadow: 2px 2px 10px 0px #D8D8D8;
   -webkit-transition: all 0.2s ease ease-out;

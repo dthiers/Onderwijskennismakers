@@ -9,7 +9,7 @@
         <div class="web_popup" ng-hide="hidePopup">
             <span>{{popup.firstName}} {{popup.lastName}}</span>
             <span>{{popup.name}}</span>
-            <span>{{popup.functionDescription}}</span>
+            <span>{{popup.functionDescription | limitTo: 50}} {{popup.functionDescription.length > 50 ? '...' : ''}}</span>
             <button ng-click="loadUser(popup.id, true)">Bekijk gebruiker</button>
         </div>
 

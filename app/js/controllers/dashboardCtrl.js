@@ -31,6 +31,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     $scope.loadKeyword = function (id, reloadWeb) {
         if(reloadWeb)
             getWebForKeyword(id);
+
         getKeyword(id);
         $scope.type = "keyword";
     };
@@ -82,6 +83,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         KeywordService.keywordService.getById(id)//call to service
             .then(function (response) {
                 $scope.keyword=response.data.data[0];//set response to scope
+                console.log($scope.keyword);
                 ProfileService.profileService.getById($scope.keyword.User_id)//call to service
                     .then(function (response) {
                         $scope.editor=response.data.data[0];//set response to scope
