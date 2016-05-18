@@ -30,6 +30,12 @@ module.exports = function (app) {
                 }
             })
 
+            .state('register', {
+              url: '/register',
+              templateUrl: '../partials/register',
+              controller: 'RegisterCtrl'
+            })
+
 
            // .state('dashboard.profile', {
            //      url: '/profile',
