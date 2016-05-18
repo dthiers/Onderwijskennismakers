@@ -1,7 +1,11 @@
 
 module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService, $http) {
 
-    $scope.type = "keyword";
+    var self = this;
+
+    $scope.hidePopup = true;
+
+    $scope.type = "person";
 
     $scope.slideDown = function () {
         $scope.topBarStyle = {top: '100%'};
@@ -14,30 +18,59 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     };
 
     //LOAD DIRECTIVES
-    $scope.loadSchool = function(){
+    $scope.loadSchool = function(id){
+        getSchool(id);
         $scope.type = "school";
     };
-    $scope.loadUser = function () {
+    $scope.loadUser = function (id, reloadWeb) {
+        if(reloadWeb)
+            getWebForUser(id);
+        getUserDetails(id);
         $scope.type = "person";
     };
-    $scope.loadKeyword = function () {
+    $scope.loadKeyword = function (id, reloadWeb) {
+        if(reloadWeb)
+            getWebForKeyword(id);
+        getKeyword(id);
         $scope.type = "keyword";
     };
 
-    getUser();
-    getKeyword();
+    //getUser(1);
+    //getKeyword();
     //getSchool();
 
     // Initialize the web for the current user
     getWebForUser(1);
 
-    function getUser() {//based on route param
-        ProfileService.profileService.getById(2)//call to service
+    function getUser(id) {//based on route param
+        ProfileService.profileService.getById(id)//call to service
             .then(function (response) {
                 
                 $scope.user = response.data.data[0];//set response to scope
-                console.dir($scope);
-                $scope.user=response.data.data[0];//set response to scope
+
+            }, function (error) {
+                $scope.status = 'Er is iets misgegaan met het laden van de gebruiker: ';
+                console.log(error.message);
+            });
+    }
+
+    function getUserDetails(id) {//based on route param
+        ProfileService.profileService.getUserDetails(id)//call to service
+            .then(function (response) {
+                
+                $scope.user = response.data.data[0];//set response to scope
+
+            }, function (error) {
+                $scope.status = 'Er is iets misgegaan met het laden van de gebruiker: ';
+                console.log(error.message);
+            });
+    }
+
+    function getPopupDetails(id) {//based on route param
+        ProfileService.profileService.getUserDetails(id)//call to service
+            .then(function (response) {
+                
+                $scope.popup = response.data.data[0];//set response to scope
 
             }, function (error) {
                 $scope.status = 'Er is iets misgegaan met het laden van de gebruiker: ';
@@ -45,29 +78,48 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
             });
     }
     
-    function getKeyword() {//based on route param
-        KeywordService.keywordService.getById(1)//call to service
+    function getKeyword(id) {//based on route param
+        KeywordService.keywordService.getById(id)//call to service
             .then(function (response) {
                 $scope.keyword=response.data.data[0];//set response to scope
                 ProfileService.profileService.getById($scope.keyword.User_id)//call to service
                     .then(function (response) {
                         $scope.editor=response.data.data[0];//set response to scope
                     }, function (error) {
-                        $scope.status = 'Er is iets misgegaan met het laden van de gebruiker: ';
+                        $scope.status = 'Er is iets misgegaan met het laden van de gebruiker';
                         console.log(error.message);
                     });
             }, function (error) {
-                $scope.status = 'Er is iets misgegaan met het laden van het trefwoord: ';
+                $scope.status = 'Er is iets misgegaan met het laden van het trefwoord';
+                console.log(error.message);
+            });
+
+        KeywordService.keywordService.getTagsByKeyword(id)//call to service
+            .then(function (response) {
+                
+                $scope.tags = response.data.data;//set response to scope
+                console.log($scope.tags);
+
+            }, function (error) {
+                $scope.status = 'Er is iets misgegaan met het laden van de tags ';
                 console.log(error.message);
             });
     }
 
-    function getSchool() {//based on route param
-        SchoolService.schoolService.getById(1)//call to service
+    function getSchool(id) {//based on route param
+        SchoolService.schoolService.getById(id)//call to service
             .then(function (response) {
                 $scope.school=response.data.data[0];//set response to scope
+
+                //get experts of school
+                SchoolService.schoolService.getExpertsBySchool(id)
+                    .then(function (response){
+                        $scope.experts = response.data.data;
+                    }, function (error){
+                        $scope.status = "Er is iets misgegaan met het ophalen van de experts";
+                    });
             }, function (error) {
-                $scope.status = 'Er is iets misgegaan met het laden van de school: ';
+                $scope.status = 'Er is iets misgegaan met het laden van de school';
                 console.log(error.message);
             });
     }
@@ -76,6 +128,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
     // Creates the web for the user with the given id
     function getWebForUser(id) {
+        $scope.hidePopup = true;
         $http.get('https://onderwijskennismakers.herokuapp.com/user/' + id + '/web').then(function (response) {
             var nodes = new VisDataSet();
             var edges = new VisDataSet();
@@ -126,10 +179,14 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
             alert("Error loading user web");
             console.log(error);
         });
+
+        //LOAD DETAIL WINDOW
+        $scope.loadUser(id, false);
     }
 
     // Creates the web for the keyword with the given id
     function getWebForKeyword(id) {
+        $scope.hidePopup = true;
         $http.get('https://onderwijskennismakers.herokuapp.com/keyword/' + id + '/web').then(function (response) {
             var nodes = new VisDataSet();
             var edges = new VisDataSet();
@@ -160,6 +217,9 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
             alert("Error loading keyword web");
             console.log(error);
         });
+
+        //LOAD DETAIL WINDOW
+        $scope.loadKeyword(id, false);
     }
 
     // Creates a user node
@@ -185,14 +245,57 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         }
     }
 
+
+    //SELECT NODE NEW
+    // $scope.events.selectNode = function (click) {
+    //     $scope.selectClick = true;
+    //     var xMid = window.innerWidth * 0.83 / 2;
+
+    //     var profile = ProfileService.getProfile(click.nodes);
+
+    //     if (profile == null) {
+    //         console.log("Profile not found");
+    //         $("#divInfoPopup").css("display", "none");
+    //         return;
+    //     }
+
+    //     $("#divInfoPopup").css("top", click.pointer.DOM.y - 30);
+
+    //     if (click.pointer.DOM.x < xMid) {
+    //         $("#divInfoPopup").css("left", click.pointer.DOM.x - 160);
+    //     } else {
+    //         $("#divInfoPopup").css("left", click.pointer.DOM.x + 40);
+    //     }
+
+    //     $("#infoName").text(profile.first_name + " " + profile.last_name);
+    //     $("#infoTitle1").text(profile.titles[0]);
+    //     $("#infoTitle2").text(profile.titles[1]);
+
+    //     $("#divInfoPopup").css("display", "block");
+    // };
+
     /* Web events */
     $scope.events = {};
     $scope.events.selectNode = function (click) {
         var node = $scope.data.nodes.get(click.nodes[0]);
 
         if(node.group == 'persons') {
-            getWebForUser(node.userId);
+            //getWebForUser(node.userId);
+
+            getPopupDetails(node.userId);
+
+            var xMid = window.innerWidth * 0.83 / 2;
+
+            $(".web_popup").css("top", click.pointer.DOM.y - 30);
+            if (click.pointer.DOM.x < xMid) {
+                $(".web_popup").css("left", click.pointer.DOM.x - 160);
+            } else {
+                $(".web_popup").css("left", click.pointer.DOM.x + 40);
+            }
+            $scope.hidePopup = false;
+
         } else if(node.group == 'keywords') {
+            $scope.hidePopup = true;
             getWebForKeyword(node.keywordId)
         }
     };
