@@ -67,6 +67,7 @@ body {
   width: 60px;
   background: #f5f5f5;
   border-radius: 30px;
+  background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -175,13 +176,12 @@ body {
 }
 #person_container .profileInfo_container {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
 }
 #person_container .profile_image {
   max-height: 150px;
   max-width: 350px;
   margin-right: 30px;
-  margin-bottom: -50px;
   float: left;
 }
 #person_container .profile_image.person {
@@ -496,6 +496,40 @@ body {
 }
 .dashboard_container .web_content canvas:focus {
   outline: 0;
+}
+.dashboard_container .web_content .web_popup {
+  padding: 20px;
+  position: absolute;
+  z-index: 996;
+  background-color: white;
+  box-shadow: 2px 2px 10px 0px #D8D8D8;
+  -webkit-transition: all 0.2s ease ease-out;
+  -moz-transition: all 0.2s ease ease-out;
+  -o-transition: all 0.2s ease ease-out;
+  transition: all 0.2s ease ease-out;
+}
+.dashboard_container .web_content .web_popup span {
+  width: 100%;
+  text-align: center;
+  display: block;
+  margin-bottom: 5px;
+  color: #A5A5A5;
+  font-weight: 500;
+  font-size: 13px;
+}
+.dashboard_container .web_content .web_popup span:first-child {
+  font-size: 15px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.dashboard_container .web_content .web_popup button {
+  padding: 12px;
+  background-color: #73A1EE;
+  width: 100%;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 5px;
 }
 .dashboard_container .search_side_content {
   float: left;

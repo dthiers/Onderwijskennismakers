@@ -3,6 +3,8 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
     var self = this;
 
+    $scope.hidePopup = true;
+
     $scope.type = "person";
 
     $scope.slideDown = function () {
@@ -63,6 +65,18 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
                 console.log(error.message);
             });
     }
+
+    function getPopupDetails(id) {//based on route param
+        ProfileService.profileService.getUserDetails(id)//call to service
+            .then(function (response) {
+                
+                $scope.popup = response.data.data[0];//set response to scope
+
+            }, function (error) {
+                $scope.status = 'Er is iets misgegaan met het laden van de gebruiker: ';
+                console.log(error.message);
+            });
+    }
     
     function getKeyword(id) {//based on route param
         KeywordService.keywordService.getById(id)//call to service
@@ -114,6 +128,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
     // Creates the web for the user with the given id
     function getWebForUser(id) {
+        $scope.hidePopup = true;
         $http.get('https://onderwijskennismakers.herokuapp.com/user/' + id + '/web').then(function (response) {
             var nodes = new VisDataSet();
             var edges = new VisDataSet();
@@ -163,6 +178,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
     // Creates the web for the keyword with the given id
     function getWebForKeyword(id) {
+        $scope.hidePopup = true;
         $http.get('https://onderwijskennismakers.herokuapp.com/keyword/' + id + '/web').then(function (response) {
             var nodes = new VisDataSet();
             var edges = new VisDataSet();
@@ -221,15 +237,57 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         }
     }
 
+
+    //SELECT NODE NEW
+    // $scope.events.selectNode = function (click) {
+    //     $scope.selectClick = true;
+    //     var xMid = window.innerWidth * 0.83 / 2;
+
+    //     var profile = ProfileService.getProfile(click.nodes);
+
+    //     if (profile == null) {
+    //         console.log("Profile not found");
+    //         $("#divInfoPopup").css("display", "none");
+    //         return;
+    //     }
+
+    //     $("#divInfoPopup").css("top", click.pointer.DOM.y - 30);
+
+    //     if (click.pointer.DOM.x < xMid) {
+    //         $("#divInfoPopup").css("left", click.pointer.DOM.x - 160);
+    //     } else {
+    //         $("#divInfoPopup").css("left", click.pointer.DOM.x + 40);
+    //     }
+
+    //     $("#infoName").text(profile.first_name + " " + profile.last_name);
+    //     $("#infoTitle1").text(profile.titles[0]);
+    //     $("#infoTitle2").text(profile.titles[1]);
+
+    //     $("#divInfoPopup").css("display", "block");
+    // };
+
     /* Web events */
     $scope.events = {};
     $scope.events.selectNode = function (click) {
         var node = $scope.data.nodes.get(click.nodes[0]);
 
         if(node.group == 'persons') {
-            getWebForUser(node.userId);
+            //getWebForUser(node.userId);
+
+            getPopupDetails(node.userId);
+
+            var xMid = window.innerWidth * 0.83 / 2;
+
+            $(".web_popup").css("top", click.pointer.DOM.y - 30);
+            if (click.pointer.DOM.x < xMid) {
+                $(".web_popup").css("left", click.pointer.DOM.x - 160);
+            } else {
+                $(".web_popup").css("left", click.pointer.DOM.x + 40);
+            }
+            $scope.hidePopup = false;
 
         } else if(node.group == 'keywords') {
+            $scope.hidePopup = true;
             getWebForKeyword(node.keywordId)
         }
     };
