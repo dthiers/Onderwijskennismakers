@@ -178,6 +178,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
             alert("Error loading user web");
             console.log(error);
         });
+    
 
         //LOAD DETAIL WINDOW
         $scope.loadUser(id, false);
@@ -425,6 +426,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
             },
 
             nodes: {
+
                 hidden: false,
                 level: undefined,
                 mass: 1,
@@ -438,4 +440,3 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         };
     });
 };
-
