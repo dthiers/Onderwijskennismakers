@@ -10,7 +10,9 @@ module.exports = function ($scope, ResourcesService) {
       $scope.imgLoadingPreviewHidden = true;
 
       ResourcesService.setResourceLink("");
-      
+      ResourcesService.setResourceType("");
+      ResourcesService.setResourceDetails("", "", "");
+
       switch(type) {
           case "youtube":
               $scope.type = "addYoutube";
@@ -45,6 +47,10 @@ module.exports = function ($scope, ResourcesService) {
           }
       });
   }
+
+  $scope.closeResources = function(){
+      ResourcesService.setProperty("");
+  };
 
   $scope.savePdf = function(){
       var url = $scope.inputPDF;

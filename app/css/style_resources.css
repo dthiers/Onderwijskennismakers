@@ -168,3 +168,10 @@
   top: 260px;
   left: 20px;
 }
+#imgCloseResourcesPopup {
+  position: absolute;
+  width: 40px;
+  cursor: pointer;
+  top: 20px;
+  right: 20px;
+}
