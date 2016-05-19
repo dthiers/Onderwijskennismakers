@@ -3,7 +3,7 @@ module.exports = function ($scope, AuthService, ResourcesService) {
     $scope.imgLoadingPreviewHidden = true;
     $scope.file_changed = function (element) {
         $scope.$apply(function (scope) {
-            $scope.imgLoadingPreviewHidden = false;
+            $scope.imgLoadingPreviewHidden = true;
             var photofile = element.files[0];
             var reader = new FileReader();
             reader.onload = function (e) {
@@ -31,11 +31,6 @@ module.exports = function ($scope, AuthService, ResourcesService) {
         var job = $scope.job;
         var image = $scope.image;
         var validate = true;
-        
-        if (image == "" || angular.isUndefined(image)) {
-            $scope.message = "Kies een afbeelding";
-            validate = false;
-        }
         
         if (job == "" || angular.isUndefined(job)) {
             $scope.message = "Voer een baan in";
@@ -73,7 +68,6 @@ module.exports = function ($scope, AuthService, ResourcesService) {
             $scope.message = "Voer een email in";
             validate = false;
         }
-        debugger;
         if (validate) {
             AuthService.registerServer({
                 "firstName": firstName,
@@ -87,10 +81,10 @@ module.exports = function ($scope, AuthService, ResourcesService) {
                 "phoneNumber": null,
                 "twitter": null,
                 "linkedIn": null
-            }, {
+            }, {    
                     onSuccess: function (result) {
                         $scope.message = "";
-                        $('#divregister2').hide();
+                        $('#divRegister').hide();
                         $('#divLoginBackgroundOverlay').hide();
                         // Go To dashboard
                     },

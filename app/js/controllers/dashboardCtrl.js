@@ -1,5 +1,5 @@
 
-module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService, $http) {
+module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService, $http, ResourcesService) {
 
     var self = this;
 
@@ -35,6 +35,10 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         getKeyword(id);
         $scope.type = "keyword";
     };
+
+    $scope.openResources = function(){
+      ResourcesService.setProperty("addResource");
+    }
 
     //getUser(1);
     //getKeyword();
