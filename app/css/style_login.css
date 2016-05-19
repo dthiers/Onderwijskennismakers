@@ -95,3 +95,36 @@
   float: left;
   margin-bottom: 5px;
 }
+
+/*register*/
+
+#divRegister {
+  width: 300px;
+  height: 450px;
+  background: #FFFFFF;
+  position: fixed;
+  top: calc(50% - 250px);
+  left: calc(50% - 150px);
+  z-index: 99999999;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#imgPreview2 {
+  max-width: 100%;
+  max-height: 210px;
+  border: 2px solid #dcdcdc;
+  margin-top: 10px;    
+  right: 100px;
+  top: 200px;
+  position: fixed;
+}
+#imgLoadingPreview2 {
+  display: block;
+  width: 50px;
+  right: 100px;
+  top: 200px;
+  position: fixed;
+}

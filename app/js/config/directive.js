@@ -14,6 +14,13 @@ module.exports = function (app) {
 		};
 	};
 
+	var keyword_directive = function () {
+		return {
+			restrict: "A",
+			templateUrl: "partials/directives/keyword_directive.html"
+		};
+	};
+
 	var resource_overview_directive = function(){
 		return{
 			restrict: "A",
@@ -122,13 +129,6 @@ module.exports = function (app) {
 		};
 	};
 
-	var keyword_directive = function () {
-		return {
-			restrict: "A",
-			templateUrl: "partials/directives/keyword_directive.html"
-		};
-	};
-
 	app.directive('userDirective', user_directive);
 	app.directive('schoolDirective', school_directive);
 	app.directive('resourceOverviewDirective', resource_overview_directive);
@@ -137,7 +137,6 @@ module.exports = function (app) {
   	app.directive('resourceImageDirective', resource_image_directive);
 	app.directive('resourceWebsiteDirective', resource_website_directive);
   	app.directive('resourceDetailsDirective', resource_details_directive);
-	app.directive('keywordDirective', keyword_directive);
 	app.directive('imagePreview', image_preview);
 	app.directive('youtubePreview', youtube_preview);
 	app.directive('pdfPreview', pdf_preview);
