@@ -35,7 +35,6 @@ module.exports = function ($http) {
             );
         },
         addResource: function(options){
-            console.log(newRescource);
             $http.post("http://onderwijskennismakers.herokuapp.com/content", {
                 Type: newRescource.type,
                 name: newRescource.name,
