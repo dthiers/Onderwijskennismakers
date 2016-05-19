@@ -9,10 +9,6 @@ module.exports = function ($scope, ResourcesService) {
       $scope.wrapperStyle = { "margin-top":"20px" }
       $scope.imgLoadingPreviewHidden = true;
 
-      ResourcesService.setResourceLink("");
-      ResourcesService.setResourceType("");
-      ResourcesService.setResourceDetails("", "", "");
-
       switch(type) {
           case "youtube":
               $scope.type = "addYoutube";
@@ -32,7 +28,8 @@ module.exports = function ($scope, ResourcesService) {
               break;
           case "details":
               $scope.$parent.$parent.type = "addDetails";
-              ResourcesService.setResourceLink("https://www.youtube.com/watch?v=" + link);
+              ResourcesService.setResourceLink(link);
+
               break;
       }
 
