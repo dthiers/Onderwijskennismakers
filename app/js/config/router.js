@@ -9,7 +9,7 @@ module.exports = function (app) {
         $stateProvider
             .state('dashboard', {
                 url: '/dashboard',
-                templateUrl: '../partials/dashboard/dashboard',
+                templateUrl: '../partials/dashboard/dashboard.html',
                 controller: 'DashboardCtrl'
             })
             .state('register', {
@@ -51,7 +51,7 @@ module.exports = function (app) {
         //      url: '/profile',
         //      templateUrl: '../partials/profile/profile',
         //      controller: 'ProfileCtrl'
-        //  }) 
+        //  })
         // .state('dashboard.school', {
         //      url: '/school',
         //      templateUrl: '../partials/school/school',
