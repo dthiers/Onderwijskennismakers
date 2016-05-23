@@ -6,28 +6,37 @@
 <div class="dashboard_container">
 
     <div class="web_content">
+        <div class="web_popup" ng-hide="hidePopup">
+            <span>{{popup.firstName}} {{popup.lastName}}</span>
+            <span>{{popup.name}}</span>
+            <span>{{popup.functionDescription | limitTo: 50}} {{popup.functionDescription.length > 50 ? '...' : ''}}</span>
+            <button ng-click="loadUser(popup.id, true)">Bekijk gebruiker</button>
+        </div>
+
         <vis-network id="web" data="data" options="options" events="events">
         </vis-network>
+    </div>
+
+    <!-- ZOEKEN -->
+    <div class="search_side_content">
+        <div class="search_container">
+            <div class="tag_container">
+                <span>School</span>
+                <span>Samenleving</span>
+            </div>
+            <input class="search_bar" type="text" placeholder="School en samenleving" autofocus></input>
+            <button class="search_button"></button>
+        </div>
     </div>
 
     <div class="side_content_scrollWrapper">
         <div class="side_content" id="side_content">
 
             <!-- ZOEKEN -->
-            <div class="search_container">
-                <div class="tag_container">
-                    <span>School</span>
-                    <span>Samenleving</span>
-                </div>
-                <input class="search_bar" type="text" placeholder="School en samenleving"></input>
-                <button class="search_button"></button>
-            </div>
-
-            <!-- ZOEKEN -->
             <div class="documents_container">
                 <div class="header">Bronnen van {{user.firstName}}</div>
                 <!-- Naam moet dynamisch toegevoegd worden -->
-                <button class="btn_addDocument">Bron maken <i class="fa fa-plus" aria-hidden="true"></i></button>
+                <button class="btn_addDocument" ng-click="openResources()">Bron maken <i class="fa fa-plus" aria-hidden="true"></i></button>
 
                 <!-- DOCUMENTS -->
                 <div class="documents">

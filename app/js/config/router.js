@@ -1,5 +1,5 @@
 module.exports = function (app) {
-    
+
     app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
         $urlRouterProvider.otherwise('/dashboard');
@@ -12,12 +12,28 @@ module.exports = function (app) {
                 templateUrl: '../partials/dashboard/dashboard',
                 controller: 'DashboardCtrl'
             })
+            .state('register', {
+                url: '/register',
+                views: {
+
+                    '': { templateUrl: '../partials/home.html' },
+
+                    'dashboard@register': {
+                        templateUrl: '../partials/dashboard/dashboard.html',
+                        controller: 'DashboardCtrl'
+                    },
+                    'register@register': {
+                        templateUrl: '../partials/login/register.html',
+                        controller: 'RegisterCtrl'
+                    }
+                }
+            })
 
             .state('login', {
                 url: '/login',
                 views: {
 
-                    '': { templateUrl: '../partials/home.html'},
+                    '': { templateUrl: '../partials/home.html' },
 
                     'dashboard@login': {
                         templateUrl: '../partials/dashboard/dashboard.html',
@@ -31,34 +47,34 @@ module.exports = function (app) {
             })
 
 
-           // .state('dashboard.profile', {
-           //      url: '/profile',
-           //      templateUrl: '../partials/profile/profile',
-           //      controller: 'ProfileCtrl'
-           //  }) 
-           // .state('dashboard.school', {
-           //      url: '/school',
-           //      templateUrl: '../partials/school/school',
-           //      controller: 'SchoolCtrl'
-           // })
+        // .state('dashboard.profile', {
+        //      url: '/profile',
+        //      templateUrl: '../partials/profile/profile',
+        //      controller: 'ProfileCtrl'
+        //  }) 
+        // .state('dashboard.school', {
+        //      url: '/school',
+        //      templateUrl: '../partials/school/school',
+        //      controller: 'SchoolCtrl'
+        // })
 
 
-           // .state('dashboard.profile', {
-            //     url: '/profile',
-            //     views: {
+        // .state('dashboard.profile', {
+        //     url: '/profile',
+        //     views: {
 
-            //         '': { templateUrl: '../partials/profile_view.html'},
+        //         '': { templateUrl: '../partials/profile_view.html'},
 
-            //         'profile@dashboard': {
-            //             templateUrl: '../partials/profile/profile.html',
-            //             controller: 'ProfileCtrl'
-            //         },
-            //         'dashboard@dashboard': {
-            //             templateUrl: '../partials/dashboard/dashboard.html',
-            //             controller: 'DashboardCtrl'
-            //         }
-            //     }
-            // })
+        //         'profile@dashboard': {
+        //             templateUrl: '../partials/profile/profile.html',
+        //             controller: 'ProfileCtrl'
+        //         },
+        //         'dashboard@dashboard': {
+        //             templateUrl: '../partials/dashboard/dashboard.html',
+        //             controller: 'DashboardCtrl'
+        //         }
+        //     }
+        // })
 
 
     });

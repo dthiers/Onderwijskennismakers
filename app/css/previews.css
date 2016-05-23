@@ -195,7 +195,7 @@
     transform: translate(10px, -10px);
 }
 
-.pdfcontainer #frame {
+.pdfcontainer .frame {
     width: 100%;
     height: 700px;
     border: none;
@@ -219,7 +219,7 @@
 
 /*webpage preview*/
 
-.websitecontainer #frame {
+.websitecontainer .frame {
     width: 250%;
     height: 700px;
     border: none;

@@ -10,18 +10,19 @@
 }
 #divLogin {
   width: 300px;
-  height: 250px;
   background: #FFFFFF;
   position: fixed;
   top: calc(50% - 250px);
   left: calc(50% - 150px);
   z-index: 99999999;
-  padding: 20px;
+  padding: 30px;
+  border-radius: 5px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 #divLoginColorWrapper {
+  display: none;
   width: 300px;
   height: 10px;
   background: #dcdcdc;
@@ -49,10 +50,10 @@
 }
 #pLoginTitle {
   width: 100%;
-  text-align: left;
+  color: #ABABAB;
+  text-align: center;
   font-size: 25px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #CECECE;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -63,7 +64,10 @@
   height: 40px;
   margin-bottom: 5px;
   border: none;
-  background: #dcdcdc;
+  text-align: center;
+  border-radius: 5px;
+  background: #FFFFFF;
+  border-bottom: 1px solid #F1F1F1;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -73,7 +77,8 @@
   color: #484848;
 }
 #buttonLogin {
-  width: 100px;
+  width: 100%;
+  border-radius: 5px;
   background: #5b8fe4;
   color: #FFFFFF;
   height: 35px;
@@ -84,14 +89,39 @@
   opacity: 0.8;
 }
 #divLinkWrapper {
+  margin-top: 10px;
+  margin-bottom: 10px;
   width: 150px;
   height: auto;
   float: left;
 }
 #divLinkWrapper a {
-  color: #5b8fe4;
+  color: #969696;
+  text-decoration: none;
   font-size: 90%;
   width: 100%;
   float: left;
   margin-bottom: 5px;
+}
+::-webkit-input-placeholder {
+  color: #D2D2D2;
+  font-weight: 200;
+  font-size: 13px;
+}
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #D2D2D2;
+  font-weight: 200;
+  font-size: 14px;
+}
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #D2D2D2;
+  font-weight: 200;
+  font-size: 14px;
+}
+:-ms-input-placeholder {
+  color: #D2D2D2;
+  font-weight: 200;
+  font-size: 14px;
 }

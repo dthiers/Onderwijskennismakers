@@ -23,7 +23,7 @@
                         </div>
                         <div class="editor_flex_container">
                             <div class="editor_block"></div>
-                            <p>Eindredacteur: {{editor.firstName}} {{editor.lastName}}</p>
+                            <p ng-click="loadUser(editor.id, true)">Eindredacteur: {{editor.firstName}} {{editor.lastName}}</p>
                         </div>
                     </div>
                 </div>
@@ -39,12 +39,7 @@
             </div>
 
             <div class="associated_tags">
-                <span>Toetsing</span>
-                <span>Formatief</span>
-                <span>Summatief</span>
-                <span>Assessment</span>
-                <span>Toetsing</span>
-                <span>Toetsing</span>
+                <span ng-repeat="tag in tags">{{tag.name}}</span>
             </div>
 
         </div>

@@ -1,4 +1,4 @@
-module.exports = function ($scope) {
+module.exports = function ($scope, ResourcesService) {
     var isLeft = true;
     $scope.moveMenu = function(){
         if(isLeft){
@@ -14,5 +14,9 @@ module.exports = function ($scope) {
             $scope.arrowStyle = {'-ms-transform': 'rotate(0deg)', '-webkit-transform': 'rotate(0deg)', 'transform': 'rotate(0deg)'}
             isLeft = true;
         }
+    }
+
+    $scope.openResources = function(){
+      ResourcesService.setProperty("addResource");
     }
 };
