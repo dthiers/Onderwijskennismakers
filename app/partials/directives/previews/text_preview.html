@@ -1,17 +1,16 @@
 <!-- Doc -->
 <div class="doc">
     <div class="type"><i class="fa fa-file-text-o"></i></div>
-    <h3>Samenleving document</h3>
-    <p>03-04-2016</p>
-    <p>Auteur: Kristian</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur risus quam, tempor nec massa quis, pretium tincidunt
-        magna. Aenean at bibendum ipsum. Phasellus a urna vitae tortor finibus malesuada. Vivamus pretium finibus pharetra.
-        lees meer</p>
+    <h3>{{preview.name}}</h3>
+    <p>{{preview.createdAt}}</p>
+    <p>{{preview.author}}</p>
+    <p>{{preview.shortDescription}}</p>
     <div class="stars">
         <img src="images/star-filled.png"></img>
         <img src="images/star-filled.png"></img>
         <img src="images/star-filled.png"></img>
         <img src="images/star-filled.png"></img>
         <img src="images/star-half-filled.png"></img>
+        {{ getSteppedRating(preview.rating) }}
     </div>
 </div>

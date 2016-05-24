@@ -1,13 +1,37 @@
 <!-- Doc -->
 <div class="doc">
     <div class="type"><i class="fa fa-play"></i></div>
-    <h3>Video over Mevolution</h3>
-    <p>Kort maar krachtig: Wat is Mevolution?</p>
-    <a href="https://www.youtube.com/watch?v=jRlrojsmn6U" target="top">
-        <div class="video_thumbnail" style="background-image:url('http://img.youtube.com/vi/jRlrojsmn6U/maxresdefault.jpg');">
+    <h3>{{preview.name}}</h3>
+    <p>{{preview.shortDescription}}</p>
+    <a href="https://www.youtube.com/watch?v={{preview.link}}" target="top">
+        <div class="video_thumbnail" style="background-image:url('http://img.youtube.com/vi/{{preview.link}}/maxresdefault.jpg');">
             <div class="bgOverlay">
-
+              <!-- Youtube Icon -->
             </div>
         </div>
     </a>
+    <!-- TODO: beoordelingen dynamisch inladen -->
+
+<!--
+TODO: score algoritm
+var getScore = function(){
+	var value = ($("#number").val());
+    if((value / 0.5) % 0,5 === 0){
+    	alert("Score is " + value);
+    } else {
+    	var score = (Math.round(value * 2)) / 2;
+        alert("Score is " + score);
+    }
+}
+
+ -->
+
+    <div class="stars">
+        <img src="images/star-filled.png"></img>
+        <img src="images/star-filled.png"></img>
+        <img src="images/star-filled.png"></img>
+        <img src="images/star-filled.png"></img>
+        <img src="images/star-half-filled.png"></img>
+        {{ getSteppedRating(preview.rating) }}
+    </div>
 </div>

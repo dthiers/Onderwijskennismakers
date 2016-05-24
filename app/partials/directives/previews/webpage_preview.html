@@ -2,16 +2,22 @@
 <a href="https://www.leraar24.nl/dossier/5987/ict-toepassingen-in-de-les#tab=0" target="top">
     <div class="doc">
         <div class="type"><i class="fa fa-globe"></i></div>
-        <h3>Leraar24</h3>
-        <p>Een geweldige site met heel veel informatie!</p>
+        <h3>{{ preview.name }}</h3>
+        <p>{{ preview.shortDescription }}</p>
 
         <div class="websitecontainer">
             <div id="iContainer">
-                <iframe class="frame" src="https://www.leraar24.nl/dossier/5987/ict-toepassingen-in-de-les#tab=0" onfocus="parent.document.focus();"></iframe>
+                <iframe class="frame" ng-src="{{ trustSrc(preview.link) }}" onfocus="parent.document.focus();"></iframe>
                 <div id="protector"></div>
             </div>
         </div>
-        <!--http://www.viersprongwijchen.nl/-->
-
+        <div class="stars">
+            <img src="images/star-filled.png"></img>
+            <img src="images/star-filled.png"></img>
+            <img src="images/star-filled.png"></img>
+            <img src="images/star-filled.png"></img>
+            <img src="images/star-half-filled.png"></img>
+            {{ getSteppedRating(preview.rating) }}
+        </div>
     </div>
 </a>
