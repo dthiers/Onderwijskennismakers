@@ -1,0 +1,17 @@
+<div id="divRegister">
+
+    <p id="pLoginTitle">Registreren</p>
+    <form name="register_form">
+        {{message}}
+        <input type="text" class="inputLogin" placeholder="Email" ng-model="register.email" required/>
+        <input type="password" class="inputLogin" placeholder="Password" ng-model="register.password" required/>
+        <input type="password" class="inputLogin" placeholder="Password(check)" ng-model="register.password2" required/>
+        <input type="text" class="inputLogin" placeholder="Voornaam" ng-model="register.firstName" required/>
+        <input type="text" class="inputLogin" placeholder="Achternaam" ng-model="register.lastName" required/>
+        <input type="text" class="inputLogin" placeholder="Functie" ng-model="register.job" />
+        <span class="fotoLabel">Voeg een foto toe</span>
+        <input ng-model="register.photo" onchange="angular.element(this).scope().file_changed(this)" type="file" accept="image/*" id="inputImage"/>
+
+        <button id="buttonLogin" ng-disabled="register_form.$invalid" ng-click="register()">Registreren</button>
+    </form>
+</div>

@@ -4,20 +4,21 @@
   position: fixed;
   width: 100%;
   height: 100%;
-  background: #000000;
-  top: 0px !important;
-  opacity: 0.7;
-  filter: alpha(opacity=70);
-  z-index: 9999999;
+  background-image: url('../images/background.jpg');
+  z-index: 9999;
+  background-size: cover;
+  top: 0px;
 }
 
 #divLogin{
+  opacity: 1;
   width: 300px;
   background: #FFFFFF;
+  box-shadow: 3px 3px 10px 0px #CACACA;
   position: fixed;
-  top: ~"calc(50% - 250px)";
+  top: 20%;
   left: ~"calc(50% - 150px)";
-  z-index: 99999999;
+  z-index: 99999;
   padding: 30px;
   border-radius: 5px;
   -webkit-box-sizing: border-box;
@@ -95,11 +96,14 @@
   color: #FFFFFF;
   height: 35px;
   float: right;
-  cursor: pointer;
+  &:disabled{
+    background-color: #D4D4D4;
+  }
 }
 
-#buttonLogin:hover{
+#buttonLogin:hover:enabled{
   opacity: 0.8;
+  cursor: pointer;
 }
 
 #divLinkWrapper{
@@ -117,28 +121,183 @@
   width: 100%;
   float: left;
   margin-bottom: 5px;
+  &:first-child{
+    color: #5B8FE4;
+    font-weight: 900;
+    padding-bottom: 5px;
+  }
 }
 
 ::-webkit-input-placeholder {
-   color: #D2D2D2;
+   color: #D4D4D4;
    font-weight: 200;
-   font-size: 13px;
+   font-size: 15px;
 }
 
 :-moz-placeholder { /* Firefox 18- */
-   color: #D2D2D2;
+   color: #D4D4D4;
    font-weight: 200;
-   font-size: 14px;
+   font-size: 15px;
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-   color: #D2D2D2;
+   color: #D4D4D4;
    font-weight: 200;
-   font-size: 14px;
+   font-size: 15px;
 }
 
 :-ms-input-placeholder {  
-   color: #D2D2D2;
+   color: #D4D4D4;
    font-weight: 200;
-   font-size: 14px;
+   font-size: 15px;
 }
+
+a{
+  cursor: pointer;
+}
+
+/*register*/
+
+#divRegister {
+  opacity: 0;
+  width: 400px;
+  background: #FFFFFF;
+  box-shadow: 3px 3px 10px 0px #CACACA;
+  position: fixed;
+  top: 20%;
+  left: ~"calc(50%)";
+  z-index: 99999;
+  padding: 30px;
+  border-radius: 5px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#imgPreview2 {
+  max-width: 100%;
+  max-height: 210px;
+  border: 2px solid #dcdcdc;
+  margin-top: 10px;    
+  right: 100px;
+  top: 200px;
+  position: fixed;
+}
+#imgLoadingPreview2 {
+  display: block;
+  width: 50px;
+  right: 100px;
+  top: 200px;
+  position: fixed;
+}
+
+.fotoLabel{
+    color: #ABABAB;
+    font-weight: 200;
+    font-size: 14px;
+    margin-top: 17px;
+    display: block;
+}
+
+
+#inputImage::-webkit-file-upload-button {
+  visibility: hidden;
+}
+#inputImage::before {
+  content: 'Selecteer je profielfoto';
+  display: inline-block;
+  background: #5B8FE4;
+  /* border: 1px solid #C6DAF9; */
+  border-radius: 5px;
+  padding: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  outline: none;
+  color: #FFFFFF;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  /* text-shadow: 1px 1px #fff; */
+  font-weight: 200;
+  font-size: 13px;
+}
+#inputImage:hover::before {
+  border-color: black;
+}
+#inputImage:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+.hide{
+  -webkit-animation: hide 0.5s forwards; /* Safari 4+ */
+  -moz-animation:    hide 0.5s forwards; /* Safari 4+ */
+  -o-animation:      hide 0.5s forwards; /* Safari 4+ */
+  animation:         hide 0.5s forwards; /* Safari 4+ */
+}
+
+.show{
+  -webkit-animation: show 0.5s forwards; /* Safari 4+ */
+  -moz-animation:    show 0.5s forwards; /* Safari 4+ */
+  -o-animation:      show 0.5s forwards; /* Safari 4+ */
+  animation:         show 0.5s forwards; /* Safari 4+ */
+}
+
+.toLeft{
+   -webkit-animation: toLeft 0.5s forwards; /* Safari 4+ */
+  -moz-animation:    toLeft 0.5s forwards; /* Safari 4+ */
+  -o-animation:      toLeft 0.5s forwards; /* Safari 4+ */
+  animation:         toLeft 0.5s forwards; /* Safari 4+ */
+}
+
+@-webkit-keyframes show {
+  0%   { opacity: 0; top: 10%;}
+  100% { opacity: 1; top: 20%;}
+}
+@-moz-keyframes show {
+  0%   { opacity: 0; top: 10%;}
+  100% { opacity: 1; top: 20%;}
+}
+@-o-keyframes show {
+  0%   { opacity: 0; top: 10%;}
+  100% { opacity: 1; top: 20%;}
+}
+@keyframes show {
+  0%   { opacity: 0; top: 10%;}
+  100% { opacity: 1; top: 20%;}
+}
+
+
+@-webkit-keyframes hide {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+@-moz-keyframes hide {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+@-o-keyframes hide {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes hide {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@-webkit-keyframes toLeft {
+  0%   { left: ~"calc(50% - 150px)";}
+  100%   { left: ~"calc(50% - 330px)";}
+}
+@-moz-keyframes toLeft {
+  0%   { left: ~"calc(50% - 150px)";}
+  100%   { left: ~"calc(50% - 330px)";}
+}
+@-o-keyframes toLeft {
+  0%   { left: ~"calc(50% - 150px)";}
+  100%   { left: ~"calc(50% - 330px)";}
+}
+@keyframes toLeft {
+  0%   { left: ~"calc(50% - 150px)";}
+  100%   { left: ~"calc(50% - 330px)";}
+} 
