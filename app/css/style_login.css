@@ -2,18 +2,18 @@
   position: fixed;
   width: 100%;
   height: 100%;
-  background: #000000;
-  top: 0px !important;
-  opacity: 0.7;
-  filter: alpha(opacity=70);
+  background-image: url('../images/background.jpg');
   z-index: 9999;
+  background-size: cover;
+  top: 0px;
 }
 #divLogin {
-  opacity: 0;
+  opacity: 1;
   width: 300px;
   background: #FFFFFF;
+  box-shadow: 3px 3px 10px 0px #CACACA;
   position: fixed;
-  top: 10%;
+  top: 20%;
   left: calc(50% - 150px);
   z-index: 99999;
   padding: 30px;
@@ -134,14 +134,18 @@
   font-weight: 200;
   font-size: 15px;
 }
+a {
+  cursor: pointer;
+}
 /*register*/
 #divRegister {
   opacity: 0;
   width: 400px;
   background: #FFFFFF;
+  box-shadow: 3px 3px 10px 0px #CACACA;
   position: fixed;
-  top: 10%;
-  left: calc(50% - 200px);
+  top: 20%;
+  left: calc(50%);
   z-index: 99999;
   padding: 30px;
   border-radius: 5px;
@@ -220,6 +224,16 @@
   animation: show 0.5s forwards;
   /* Safari 4+ */
 }
+.toLeft {
+  -webkit-animation: toLeft 0.5s forwards;
+  /* Safari 4+ */
+  -moz-animation: toLeft 0.5s forwards;
+  /* Safari 4+ */
+  -o-animation: toLeft 0.5s forwards;
+  /* Safari 4+ */
+  animation: toLeft 0.5s forwards;
+  /* Safari 4+ */
+}
 @-webkit-keyframes show {
   0% {
     opacity: 0;
@@ -290,5 +304,37 @@
   }
   100% {
     opacity: 0;
+  }
+}
+@-webkit-keyframes toLeft {
+  0% {
+    left: calc(50% - 150px);
+  }
+  100% {
+    left: calc(50% - 330px);
+  }
+}
+@-moz-keyframes toLeft {
+  0% {
+    left: calc(50% - 150px);
+  }
+  100% {
+    left: calc(50% - 330px);
+  }
+}
+@-o-keyframes toLeft {
+  0% {
+    left: calc(50% - 150px);
+  }
+  100% {
+    left: calc(50% - 330px);
+  }
+}
+@keyframes toLeft {
+  0% {
+    left: calc(50% - 150px);
+  }
+  100% {
+    left: calc(50% - 330px);
   }
 }

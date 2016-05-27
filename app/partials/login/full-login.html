@@ -1,0 +1,19 @@
+<div class="popup_message">
+    {{message}}
+</div>
+
+<div id="divLoginBackgroundOverlay"></div>
+<div id="divLogin">
+
+    <p id="pLoginTitle">Login</p>
+    <form name="login_form">
+        <input type="text" class="inputLogin" placeholder="Email" ng-model="email" required/>
+        <input type="password" class="inputLogin" placeholder="Password" ng-model="password" required/>
+        <div id="divLinkWrapper">
+            <a ng-click="openRegister()">Registreren</a>
+            <a>Wachtwoord vergeten?</a>
+        </div>
+        <button id="buttonLogin" ng-click="login()" ng-disabled="login_form.$invalid">Inloggen</button>
+    </form>
+</div>
+<div class="dynamic_content" ng-if="type == 'register'" data-content="register" register_directive></div>

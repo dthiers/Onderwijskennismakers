@@ -6,6 +6,9 @@
 <div class="dashboard_container">
 
     <div class="web_content">
+        <div class="breadcrumbs">
+            <span ng-repeat="b in breadcrumbs" ng-click="loadFromBreadcrumbs(b.type, b.id)">{{b.name}}</span>
+        </div>
         <div class="web_popup" ng-hide="hidePopup">
             <span>{{popup.firstName}} {{popup.lastName}}</span>
             <span>{{popup.name}}</span>

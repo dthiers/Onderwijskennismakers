@@ -1,11 +1,14 @@
 
-module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService, $http, ResourcesService) {
+module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService, $http, ResourcesService, ModalService, $localStorage) {
 
     var self = this;
 
     $scope.hidePopup = true;
-
     $scope.type = "person";
+    $scope.breadcrumbs = new Array();
+
+    // Initialize the web for the current user
+    //getWebForUser(1);
 
     $scope.slideDown = function () {
         $scope.topBarStyle = {top: '100%'};
@@ -44,8 +47,40 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     //getKeyword();
     //getSchool();
 
-    // Initialize the web for the current user
-    getWebForUser(1);
+    getWebForUser(parseInt($localStorage.user));
+
+    /**
+    *   ---------------------------------------------------------------------------------------------------------------
+    *   POPUP DIE JE KUNT AANROEPEN MET EEN MESSAGE ERIN
+    *   HTML CODE: 
+    *
+    *   <div class="popup_message">{{message}}</div>
+    *   ---------------------------------------------------------------------------------------------------------------
+    **/
+    function popupMessage(message){
+        $scope.message = message;
+        $(".popup_message").addClass("flash_popup"); 
+        $timeout(function(){
+            $(".popup_message").removeClass("flash_popup"); 
+        }, 3000);  
+    }
+
+    $scope.loadFromBreadcrumbs = function(type, id){
+
+        for(var i = 0; i < $scope.breadcrumbs.length; i++){
+
+            if($scope.breadcrumbs[i].id == id){
+                $scope.breadcrumbs.splice(i + 1, $scope.breadcrumbs.length - i);
+            }
+        }
+        console.log($scope.breadcrumbs);
+        if(type == "keyword"){
+            $scope.loadKeyword(id, true);
+        }
+        else{
+            $scope.loadUser(id, true);
+        }
+    }
 
     function getUser(id) {//based on route param
         ProfileService.profileService.getById(id)//call to service
@@ -134,6 +169,8 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
     // Creates the web for the user with the given id
     function getWebForUser(id) {
+
+
         $scope.hidePopup = true;
         $http.get('https://onderwijskennismakers.herokuapp.com/user/' + id + '/web').then(function (response) {
             var nodes = new VisDataSet();
@@ -142,6 +179,16 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
             var nodeCounter = 1;
             var userNodeCounter = 100;
             var data = response.data.data;
+
+            var add = true;
+            for(var i = 0; i < $scope.breadcrumbs.length; i++){
+                if($scope.breadcrumbs[i].id == data.user.id){
+                    $scope.breadcrumbs.splice(i + 1, $scope.breadcrumbs.length - i);
+                    add = false;
+                }
+            }
+            if(add)
+                $scope.breadcrumbs.push({id: data.user.id, name: data.user.name, type: "user"});
 
             // Create node for center user
             nodes.add({
@@ -199,6 +246,18 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
             var nodeCounter = 1;
             var data = response.data.data;
+
+            var add = true;
+            for(var i = 0; i < $scope.breadcrumbs.length; i++){
+                if($scope.breadcrumbs[i].id == data.keyword.id){
+                    $scope.breadcrumbs.splice(i + 1, $scope.breadcrumbs.length - i);
+                    add = false;
+                }
+            }
+            if(add)
+                $scope.breadcrumbs.push({id: data.keyword.id, name: data.keyword.keyword, type: "keyword"});
+
+            
 
             // Create node for center keyword
             nodes.add(createKeywordNode(0, data.keyword));
@@ -292,7 +351,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
             var xMid = window.innerWidth * 0.83 / 2;
 
-            $(".web_popup").css("top", click.pointer.DOM.y - 30);
+            $(".web_popup").css("top", click.pointer.DOM.y + 50);
             if (click.pointer.DOM.x < xMid) {
                 $(".web_popup").css("left", click.pointer.DOM.x - 160);
             } else {
