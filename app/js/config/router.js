@@ -63,7 +63,7 @@ module.exports = function (app) {
         //      url: '/profile',
         //      templateUrl: '../partials/profile/profile',
         //      controller: 'ProfileCtrl'
-        //  }) 
+        //  })
         // .state('dashboard.school', {
         //      url: '/school',
         //      templateUrl: '../partials/school/school',
