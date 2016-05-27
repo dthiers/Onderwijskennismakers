@@ -5,12 +5,10 @@
     <p>{{preview.createdAt}}</p>
     <p>{{preview.author}}</p>
     <p>{{preview.shortDescription}}</p>
-    <div class="stars">
-        <img src="images/star-filled.png"></img>
-        <img src="images/star-filled.png"></img>
-        <img src="images/star-filled.png"></img>
-        <img src="images/star-filled.png"></img>
-        <img src="images/star-half-filled.png"></img>
-        {{ getSteppedRating(preview.rating) }}
+    <div class="stars" ng-if="preview.rating">
+        <img ng-repeat="i in getTimes(getSteppedRating(preview.rating)) track by $index" src="images/star-filled.png"></img>
+        <img ng-if="steppendRatingIsFull(preview.rating) == false" src="images/star-half-filled.png"></img>
+
+        {{getSteppedRating(preview.rating)}}
     </div>
 </div>
