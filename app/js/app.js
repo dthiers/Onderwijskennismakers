@@ -1,9 +1,10 @@
 require('angular/angular');
 require('ng-storage/ngStorage.min');
 require('angular-ui-router/release/angular-ui-router');
+require('angular-modal-service');
 
 // Create your app
-var app = angular.module('app', ['ui.router', 'ngStorage', 'ngVis']);
+var app = angular.module('app', ['ui.router', 'ngStorage', 'ngVis', 'angularModalService']);
 
 // Include jQuery
 global.$ = require('jquery');

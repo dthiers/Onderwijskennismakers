@@ -3,5 +3,16 @@ module.exports = function (app) {
 	app.controller('MenuCtrl', require('../controllers/menuCtrl'));
 	app.controller('LoginCtrl', require('../controllers/loginCtrl'));
 	app.controller('RegisterCtrl', require('../controllers/registerCtrl'));
-	app.controller('ResourcesCtrl', require('../controllers/resourcesCtrl'));
+	/**
+	* Resources
+	**/
+	app.controller('ResourcesCtrl', require('../controllers/resources/resourcesCtrl'));
+	app.controller('PdfCtrl', require('../controllers/resources/pdfCtrl'));
+	app.controller('YoutubeCtrl', require('../controllers/resources/youtubeCtrl'));
+	app.controller('ImageCtrl', require('../controllers/resources/imageCtrl'));
+	app.controller('WebpageCtrl', require('../controllers/resources/webpageCtrl'));
+	app.controller('ResourceDetailCtrl', require('../controllers/resources/resourceDetailCtrl'));
+	/**
+	* Resources
+	**/
 }

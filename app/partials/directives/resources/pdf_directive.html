@@ -1,5 +1,5 @@
-<div ng-controller="ResourcesCtrl">
+<div>
   <b>PDF</b>
-  <input type="text" id="txtPdfUrl" class="inputResource" placeholder="PDF url" ng-model="inputPDF" />
-  <button  id="btnAddPdf" data-ng-hide="!inputPDF" ng-click="addResource('details', inputPDF )">Toevoegen</button>
+  <input type="text" id="txtPdfUrl" class="inputResource" placeholder="PDF url" ng-model="pdfLink" />
+  <button  id="btnAddPdf" data-ng-hide="!pdfLink" ng-click="setResourceLink(pdfLink)">Toevoegen</button>
 </div>

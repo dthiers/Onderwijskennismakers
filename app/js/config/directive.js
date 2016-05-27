@@ -33,9 +33,9 @@ module.exports = function (app) {
 	var resource_youtube_directive = function(){
 		return{
 			restrict: "A",
-			scope: false,
+			// scope: false,
 			templateUrl: "partials/directives/resources/youtube_directive.html",
-			controller: "ResourcesCtrl"
+			controller: "YoutubeCtrl"
 
 		};
 	};
@@ -45,37 +45,37 @@ module.exports = function (app) {
 			restrict: "A",
 			scope: false,
 			templateUrl: "partials/directives/resources/pdf_directive.html",
-			controller: "ResourcesCtrl"
+			controller: "PdfCtrl"
 
 		};
 	};
 
-	var resource_website_directive = function(){
+	var resource_webpage_directive = function(){
 		return{
 			restrict: "A",
 			scope: false,
-			templateUrl: "partials/directives/resources/website_directive.html",
-			controller: "ResourcesCtrl"
+			templateUrl: "partials/directives/resources/webpage_directive.html",
+			controller: "WebpageCtrl"
 
 		};
 	};
 
   var resource_image_directive = function(){
-		return{
-			restrict: "A",
-			scope: false,
-			templateUrl: "partials/directives/resources/image_directive.html",
-			controller: "ResourcesCtrl"
+	return{
+		restrict: "A",
+		scope: false,
+		templateUrl: "partials/directives/resources/image_directive.html",
+		controller: "ImageCtrl"
 
-		};
 	};
+};
 
   var resource_details_directive = function(){
 		return{
 			restrict: "A",
 			scope: false,
 			templateUrl: "partials/directives/resources/resource_details_directive.html",
-			controller: "ResourcesCtrl"
+			controller: "ResourceDetailCtrl"
 
 		};
 	};
@@ -129,13 +129,26 @@ module.exports = function (app) {
 		};
 	};
 
+	var image_select = function() {
+		console.log('Im here from the directive');
+		return {
+			link: function($scope,el){
+				el.bind("change", function(e){
+
+					$scope.file = (e.srcElement || e.target).files[0];
+					$scope.getFile();
+				})
+			}
+		}
+	}
+
 	app.directive('userDirective', user_directive);
 	app.directive('schoolDirective', school_directive);
 	app.directive('resourceOverviewDirective', resource_overview_directive);
 	app.directive('resourceYoutubeDirective', resource_youtube_directive);
 	app.directive('resourcePdfDirective', resource_pdf_directive);
   	app.directive('resourceImageDirective', resource_image_directive);
-	app.directive('resourceWebsiteDirective', resource_website_directive);
+	app.directive('resourceWebpageDirective', resource_webpage_directive);
   	app.directive('resourceDetailsDirective', resource_details_directive);
 	app.directive('imagePreview', image_preview);
 	app.directive('youtubePreview', youtube_preview);
@@ -143,5 +156,7 @@ module.exports = function (app) {
 	app.directive('textPreview', text_preview);
 	app.directive('webpagePreview', webpage_preview);
 	app.directive('keywordDirective', keyword_directive);
+
+	app.directive('ngFileSelect', image_select);
 
 }
