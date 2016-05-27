@@ -1,21 +1,24 @@
+<div class="popup_message">
+    {{message}}
+</div>
+
 <div id="divLoginBackgroundOverlay"></div>
 <div id="divLogin">
 
     <p id="pLoginTitle">Login</p>
-    <input type="text" class="inputLogin" placeholder="Email" ng-model="email" />
-    <input type="password" class="inputLogin" placeholder="Password" ng-model="password" />
-    <div id="divLinkWrapper">
-        <a href="#/register">registreren</a>
-        <a href="#">wachtwoord vergeten</a>
-    </div>
-    <button id="buttonLogin" ng-click="login()">Inloggen</button>
-    <div>
-        {{message}}
-    </div>
-    <div id="divLoginColorWrapper">
-        <div class="divLoginColor blue"></div>
-        <div class="divLoginColor yellow"></div>
-        <div class="divLoginColor red"></div>
-        <div class="divLoginColor green"></div>
-    </div>
+    <form name="login_form">
+        <input type="text" class="inputLogin" placeholder="Email" ng-model="email" required/>
+        <input type="password" class="inputLogin" placeholder="Password" ng-model="password" required/>
+        <div id="divLinkWrapper">
+            <a href="#/register">Registreren</a>
+            <a href="#">Wachtwoord vergeten?</a>
+        </div>
+        <button id="buttonLogin" ng-click="login()" ng-disabled="login_form.$invalid">Inloggen</button>
+        <div id="divLoginColorWrapper">
+            <div class="divLoginColor blue"></div>
+            <div class="divLoginColor yellow"></div>
+            <div class="divLoginColor red"></div>
+            <div class="divLoginColor green"></div>
+        </div>
+    </form>
 </div>
