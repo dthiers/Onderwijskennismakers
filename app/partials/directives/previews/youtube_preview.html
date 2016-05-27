@@ -12,26 +12,10 @@
     </a>
     <!-- TODO: beoordelingen dynamisch inladen -->
 
-<!--
-TODO: score algoritm
-var getScore = function(){
-	var value = ($("#number").val());
-    if((value / 0.5) % 0,5 === 0){
-    	alert("Score is " + value);
-    } else {
-    	var score = (Math.round(value * 2)) / 2;
-        alert("Score is " + score);
-    }
-}
+    <div class="stars" ng-if="preview.rating">
+        <img ng-repeat="i in getTimes(getSteppedRating(preview.rating)) track by $index" src="images/star-filled.png"></img>
+        <img ng-if="steppendRatingIsFull(preview.rating) == false" src="images/star-half-filled.png"></img>
 
- -->
-
-    <div class="stars">
-        <img src="images/star-filled.png"></img>
-        <img src="images/star-filled.png"></img>
-        <img src="images/star-filled.png"></img>
-        <img src="images/star-filled.png"></img>
-        <img src="images/star-half-filled.png"></img>
-        {{ getSteppedRating(preview.rating) }}
+        {{getSteppedRating(preview.rating)}}
     </div>
 </div>

@@ -64,7 +64,17 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
       } else {
         stepped = (Math.round(value * 2)) / 2;
       }
+
       return stepped;
+    }
+
+    $scope.steppendRatingIsFull = function(rating){
+        return rating % 1 === 0;
+    }
+
+    $scope.getTimes=function(n){
+        var round = Math.floor(n);
+        return new Array(round);
     }
 
     //getUser(1);
