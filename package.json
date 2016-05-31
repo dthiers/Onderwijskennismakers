@@ -23,6 +23,7 @@
     "ng-storage": "^0.3.2"
   },
   "devDependencies": {
+    "angular-modal-service": "^0.6.10",
     "grunt-browserify": "^5.0.0",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0",
