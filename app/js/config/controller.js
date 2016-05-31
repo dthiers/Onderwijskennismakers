@@ -6,12 +6,12 @@ module.exports = function (app) {
 	/**
 	* Resources
 	**/
-	app.controller('ResourcesCtrl', require('../controllers/resources/resourcesCtrl'));
-	app.controller('PdfCtrl', require('../controllers/resources/pdfCtrl'));
-	app.controller('YoutubeCtrl', require('../controllers/resources/youtubeCtrl'));
-	app.controller('ImageCtrl', require('../controllers/resources/imageCtrl'));
-	app.controller('WebpageCtrl', require('../controllers/resources/webpageCtrl'));
-	app.controller('ResourceDetailCtrl', require('../controllers/resources/resourceDetailCtrl'));
+	app.controller('ResourcesCtrl', require('../controllers/contentResources/resourcesCtrl'));
+	app.controller('PdfCtrl', require('../controllers/contentResources/pdfCtrl'));
+	app.controller('YoutubeCtrl', require('../controllers/contentResources/youtubeCtrl'));
+	app.controller('ImageCtrl', require('../controllers/contentResources/imageCtrl'));
+	app.controller('WebpageCtrl', require('../controllers/contentResources/webpageCtrl'));
+	app.controller('ResourceDetailCtrl', require('../controllers/contentResources/resourceDetailCtrl'));
 	/**
 	* Resources
 	**/
