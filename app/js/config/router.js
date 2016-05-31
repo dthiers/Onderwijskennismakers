@@ -2,7 +2,7 @@ module.exports = function (app) {
 
     app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
-        $urlRouterProvider.otherwise('/dashboard');
+        //$urlRouterProvider.otherwise('/login');
 
         //$locationProvider.html5Mode(true);
 
@@ -13,15 +13,47 @@ module.exports = function (app) {
                 controller: 'DashboardCtrl',
                 data: {
                     requireLogin: true
+                },
+                resolve: {
+                    user: function($q, $localStorage){
+                        var defer;
+
+                        defer = $q.defer();
+
+                        console.log($localStorage.user)
+
+                        defer.resolve($localStorage.user);
+
+                        return defer.promise;
+                        //return "pennis"
+                    }
                 }
             })
             .state('login', {
                 url: '/login',
                 templateUrl: '../partials/login/full-login.html',
-                controller: 'LoginCtrl',
+                controller: 'LoginCtrl'
                 // data: {
                 //     requireLogin: false
                 // }
+            })
+            .state('logout', {
+                url: '/logout',
+                controller: function($localStorage, $state){
+                    delete $localStorage.user;
+
+                    $state.go('login');
+                }
+            })
+            .state("otherwise", {
+                url: "*path",
+                template: "Invalid Location",
+                controller: function($timeout, $state){
+                    console.log('In otherwise');
+                    $timeout(function(){
+                        $state.go('login')
+                    }, 2000);
+                }
             })
 
             // .state('register', {
