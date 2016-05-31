@@ -2,7 +2,6 @@ module.exports = function ($http) {
 
     var type = 'undefined';
     var newRescource = { name: "", community: "", description: "", type: "", link: "" }
-
     return {
         getProperty: function () {
             return type;
@@ -46,10 +45,10 @@ module.exports = function ($http) {
                 isFrozen: 0
             } ).then( options.onSuccess, options.onError );
         },
-        setResourceDetails: function(name, community, description) {
-            newRescource.name = name;
-            newRescource.community = community;
-            newRescource.description = description;
+        setResourceDetails: function(obj) {
+            newRescource.name = obj.name;
+            newRescource.community = obj.community;
+            newRescource.description = obj.description;
         },
         setResourceType: function(type) {
             newRescource.type = type;
