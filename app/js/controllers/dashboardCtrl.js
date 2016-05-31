@@ -1,13 +1,16 @@
 
-module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService, $http, ResourcesService) {
+module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService, $http, ResourcesService, ModalService, $localStorage, $sce) {
 
     var self = this;
     
     $scope.image="images/image_preview.jpg";
 
     $scope.hidePopup = true;
-
     $scope.type = "person";
+    $scope.breadcrumbs = new Array();
+
+    // Initialize the web for the current user
+    //getWebForUser(1);
 
     $scope.slideDown = function () {
         $scope.topBarStyle = {top: '100%'};
@@ -42,17 +45,86 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
       ResourcesService.setProperty("addResource");
     }
 
+    /**
+    *
+    * Function to trust source.
+    *
+    **/
+
+    $scope.trustSrc = function(src) {
+      return $sce.trustAsResourceUrl(src);
+    }
+
+    /**
+    *
+    * Function to convert score to 0.5 steps.
+    *
+    **/
+
+    $scope.getSteppedRating = function(rating){
+      var stepped;
+
+      if(rating / 0.5 % 0.5 === 0){
+        stepped = rating;
+      } else {
+        stepped = (Math.round(value * 2)) / 2;
+      }
+
+      return stepped;
+    }
+
+    $scope.steppendRatingIsFull = function(rating){
+        return rating % 1 === 0;
+    }
+
+    $scope.getTimes=function(n){
+        var round = Math.floor(n);
+        return new Array(round);
+    }
+
     //getUser(1);
     //getKeyword();
     //getSchool();
 
-    // Initialize the web for the current user
-    getWebForUser(1);
+    getWebForUser(parseInt($localStorage.user));
+
+    /**
+    *   ---------------------------------------------------------------------------------------------------------------
+    *   POPUP DIE JE KUNT AANROEPEN MET EEN MESSAGE ERIN
+    *   HTML CODE: 
+    *
+    *   <div class="popup_message">{{message}}</div>
+    *   ---------------------------------------------------------------------------------------------------------------
+    **/
+    function popupMessage(message){
+        $scope.message = message;
+        $(".popup_message").addClass("flash_popup"); 
+        $timeout(function(){
+            $(".popup_message").removeClass("flash_popup"); 
+        }, 3000);  
+    }
+
+    $scope.loadFromBreadcrumbs = function(type, id){
+
+        for(var i = 0; i < $scope.breadcrumbs.length; i++){
+
+            if($scope.breadcrumbs[i].id == id){
+                $scope.breadcrumbs.splice(i + 1, $scope.breadcrumbs.length - i);
+            }
+        }
+        console.log($scope.breadcrumbs);
+        if(type == "keyword"){
+            $scope.loadKeyword(id, true);
+        }
+        else{
+            $scope.loadUser(id, true);
+        }
+    }
 
     function getUser(id) {//based on route param
         ProfileService.profileService.getById(id)//call to service
             .then(function (response) {
-                
+
                 $scope.user = response.data.data[0];//set response to scope
 
             }, function (error) {
@@ -64,7 +136,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     function getUserDetails(id) {//based on route param
         ProfileService.profileService.getUserDetails(id)//call to service
             .then(function (response) {
-                
+
                 $scope.user = response.data.data[0];//set response to scope
 
             }, function (error) {
@@ -76,7 +148,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     function getPopupDetails(id) {//based on route param
         ProfileService.profileService.getUserDetails(id)//call to service
             .then(function (response) {
-                
+
                 $scope.popup = response.data.data[0];//set response to scope
 
             }, function (error) {
@@ -84,7 +156,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
                 console.log(error.message);
             });
     }
-    
+
     function getKeyword(id) {//based on route param
         KeywordService.keywordService.getById(id)//call to service
             .then(function (response) {
@@ -104,7 +176,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
         KeywordService.keywordService.getTagsByKeyword(id)//call to service
             .then(function (response) {
-                
+
                 $scope.tags = response.data.data;//set response to scope
                 console.log($scope.tags);
 
@@ -136,6 +208,8 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
     // Creates the web for the user with the given id
     function getWebForUser(id) {
+
+
         $scope.hidePopup = true;
         $http.get('https://onderwijskennismakers.herokuapp.com/user/' + id + '/web').then(function (response) {
             var nodes = new VisDataSet();
@@ -144,6 +218,16 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
             var nodeCounter = 1;
             var userNodeCounter = 100;
             var data = response.data.data;
+
+            var add = true;
+            for(var i = 0; i < $scope.breadcrumbs.length; i++){
+                if($scope.breadcrumbs[i].id == data.user.id){
+                    $scope.breadcrumbs.splice(i + 1, $scope.breadcrumbs.length - i);
+                    add = false;
+                }
+            }
+            if(add)
+                $scope.breadcrumbs.push({id: data.user.id, name: data.user.name, type: "user"});
 
             // Create node for center user
             nodes.add({
@@ -182,11 +266,15 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
                 "nodes": nodes,
                 "edges": edges
             };
+
+            $scope.content = data.content;
+
+            console.log($scope.content);
         }, function (error) {
             alert("Error loading user web");
             console.log(error);
         });
-    
+
 
         //LOAD DETAIL WINDOW
         $scope.loadUser(id, false);
@@ -201,6 +289,18 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
             var nodeCounter = 1;
             var data = response.data.data;
+
+            var add = true;
+            for(var i = 0; i < $scope.breadcrumbs.length; i++){
+                if($scope.breadcrumbs[i].id == data.keyword.id){
+                    $scope.breadcrumbs.splice(i + 1, $scope.breadcrumbs.length - i);
+                    add = false;
+                }
+            }
+            if(add)
+                $scope.breadcrumbs.push({id: data.keyword.id, name: data.keyword.keyword, type: "keyword"});
+
+            
 
             // Create node for center keyword
             nodes.add(createKeywordNode(0, data.keyword));
@@ -294,7 +394,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
             var xMid = window.innerWidth * 0.83 / 2;
 
-            $(".web_popup").css("top", click.pointer.DOM.y - 30);
+            $(".web_popup").css("top", click.pointer.DOM.y + 50);
             if (click.pointer.DOM.x < xMid) {
                 $(".web_popup").css("left", click.pointer.DOM.x - 160);
             } else {

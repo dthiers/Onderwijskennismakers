@@ -1,18 +1,25 @@
 <!-- Doc -->
-<div class="item" ng-style="imagePreviewStyle" >
-    <!--<div class="item" style="background-image:url('{{image}}');">-->
+
+<div class="item" style="background-image:url('{{preview.link}}');">
  <div class="bgOverlay">
 
     </div>
     <div class="type"><i class="fa fa-picture-o"></i></div>
     <div class="title">
-        ICT op Basisscholen
+        {{ preview.name }}
     </div>
 
     <div class="popover">
 
         <div class="subtitle">
-            Wat is de invloed van ict op het basisonderwijs
+            {{ preview.shortDescription }}
         </div>
+    </div>
+
+    <div class="stars" ng-if="preview.rating">
+        <img ng-repeat="i in getTimes(getSteppedRating(preview.rating)) track by $index" src="images/star-filled.png"></img>
+        <img ng-if="steppendRatingIsFull(preview.rating) == false" src="images/star-half-filled.png"></img>
+
+        {{getSteppedRating(preview.rating)}}
     </div>
 </div>

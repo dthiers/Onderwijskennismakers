@@ -21,8 +21,16 @@ module.exports = function (app) {
 		};
 	};
 
-	var resource_overview_directive = function () {
+	var register_directive = function () {
 		return {
+			restrict: "A",
+			templateUrl: "partials/directives/register_directive.html"
+		};
+	};
+
+	var resource_overview_directive = function(){
+		return{
+
 			restrict: "A",
 			scope: true,
 			templateUrl: "partials/directives/resource_overview_directive.html",
@@ -145,6 +153,7 @@ module.exports = function (app) {
 
 	app.directive('userDirective', user_directive);
 	app.directive('schoolDirective', school_directive);
+	app.directive('registerDirective', register_directive);
 	app.directive('resourceOverviewDirective', resource_overview_directive);
 	app.directive('resourceYoutubeDirective', resource_youtube_directive);
 	app.directive('resourcePdfDirective', resource_pdf_directive);

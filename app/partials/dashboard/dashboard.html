@@ -6,6 +6,9 @@
 <div class="dashboard_container">
 
     <div class="web_content">
+        <div class="breadcrumbs">
+            <span ng-repeat="b in breadcrumbs" ng-click="loadFromBreadcrumbs(b.type, b.id)">{{b.name}}</span>
+        </div>
         <div class="web_popup" ng-hide="hidePopup">
             <span>{{popup.firstName}} {{popup.lastName}}</span>
             <span>{{popup.name}}</span>
@@ -40,11 +43,21 @@
 
                 <!-- DOCUMENTS -->
                 <div class="documents">
-                    <div text_preview></div>
+
+                  <span ng-repeat="preview in content">
+                    <div ng-if="preview.Type === 'internal'" data-content="preview" text_preview></div>
+                    <div ng-if="preview.Type === 'youtube'" data-content="preview" youtube_preview></div>
+                    <div ng-if="preview.Type === 'website'" data-content="preview" webpage_preview></div>
+                    <div ng-if="preview.Type === 'pdf'" data-content="preview" pdf_preview></div>
+                    <div ng-if="preview.Type === 'image'" data-content="preview" image_preview></div>
+
+                  </span>
+
+                    <!-- <div text_preview></div>
                     <div image_preview></div>
                     <div youtube_preview></div>
                     <div webpage_preview></div>
-                    <div pdf_preview></div>
+                    <div pdf_preview></div> -->
 
 
                 </div>
