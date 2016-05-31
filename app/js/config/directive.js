@@ -34,7 +34,7 @@ module.exports = function (app) {
 		return{
 			restrict: "A",
 			// scope: false,
-			templateUrl: "partials/directives/resources/youtube_directive.html",
+			templateUrl: "partials/directives/contentResources/youtube_directive.html",
 			controller: "YoutubeCtrl"
 
 		};
@@ -44,7 +44,7 @@ module.exports = function (app) {
 		return{
 			restrict: "A",
 			scope: false,
-			templateUrl: "partials/directives/resources/pdf_directive.html",
+			templateUrl: "partials/directives/contentResources/pdf_directive.html",
 			controller: "PdfCtrl"
 
 		};
@@ -54,7 +54,7 @@ module.exports = function (app) {
 		return{
 			restrict: "A",
 			scope: false,
-			templateUrl: "partials/directives/resources/webpage_directive.html",
+			templateUrl: "partials/directives/contentResources/webpage_directive.html",
 			controller: "WebpageCtrl"
 
 		};
@@ -64,7 +64,7 @@ module.exports = function (app) {
 	return{
 		restrict: "A",
 		scope: false,
-		templateUrl: "partials/directives/resources/image_directive.html",
+		templateUrl: "partials/directives/contentResources/image_directive.html",
 		controller: "ImageCtrl"
 
 	};
@@ -74,7 +74,7 @@ module.exports = function (app) {
 		return{
 			restrict: "A",
 			scope: false,
-			templateUrl: "partials/directives/resources/resource_details_directive.html",
+			templateUrl: "partials/directives/contentResources/resource_details_directive.html",
 			controller: "ResourceDetailCtrl"
 
 		};
