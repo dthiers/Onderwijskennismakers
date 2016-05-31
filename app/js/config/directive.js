@@ -21,6 +21,13 @@ module.exports = function (app) {
 		};
 	};
 
+	var content_directive = function () {
+		return {
+			restrict: "A",
+			templateUrl: "partials/directives/content_directive.html"
+		};
+	};
+
 	var register_directive = function () {
 		return {
 			restrict: "A",
@@ -151,6 +158,9 @@ module.exports = function (app) {
 
 	app.directive('userDirective', user_directive);
 	app.directive('schoolDirective', school_directive);
+	app.directive('keywordDirective', keyword_directive);
+	app.directive('contentDirective', content_directive);
+
 	app.directive('registerDirective', register_directive);
 	app.directive('resourceOverviewDirective', resource_overview_directive);
 	app.directive('resourceYoutubeDirective', resource_youtube_directive);
@@ -163,7 +173,6 @@ module.exports = function (app) {
 	app.directive('pdfPreview', pdf_preview);
 	app.directive('textPreview', text_preview);
 	app.directive('webpagePreview', webpage_preview);
-	app.directive('keywordDirective', keyword_directive);
 
 	app.directive('ngFileSelect', image_select);
 

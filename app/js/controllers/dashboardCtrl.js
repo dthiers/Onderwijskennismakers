@@ -1,10 +1,14 @@
 
-module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService, $http, ResourcesService, ModalService, $localStorage, $sce) {
+module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService, $http, ResourcesService, ModalService, $localStorage, $sce, $timeout, user) {
+
+    $scope.testUser = user;
+
+    console.log($scope.testUser);
 
     var self = this;
 
     $scope.hidePopup = true;
-    $scope.type = "person";
+    $scope.type = "content";
     $scope.breadcrumbs = new Array();
 
     // Initialize the web for the current user
@@ -13,11 +17,13 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     $scope.slideDown = function () {
         $scope.topBarStyle = {top: '100%'};
         $scope.topContentStyle = {top: '0%'};
+        $scope.bottomBarStyle = {bottom: '0%'};
     };
 
     $scope.slideUp = function () {
         $scope.topBarStyle = {top: '0%'};
         $scope.topContentStyle = {top: '-100%'};
+        $scope.bottomBarStyle = {bottom: '100%'};
     };
 
     //LOAD DIRECTIVES
@@ -84,7 +90,9 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     //getKeyword();
     //getSchool();
 
-    getWebForUser(parseInt($localStorage.user));
+    $timeout(function(){
+        getWebForUser(parseInt($localStorage.user.id));
+    }, 1500)
 
     /**
     *   ---------------------------------------------------------------------------------------------------------------
@@ -207,7 +215,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     // Creates the web for the user with the given id
     function getWebForUser(id) {
 
-
+        console.log('Were in getWebForUser');
         $scope.hidePopup = true;
         $http.get('https://onderwijskennismakers.herokuapp.com/user/' + id + '/web').then(function (response) {
             var nodes = new VisDataSet();
@@ -275,7 +283,9 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
 
         //LOAD DETAIL WINDOW
-        $scope.loadUser(id, false);
+
+        //VOOR TESTEN WEGGEHAALD
+        //$scope.loadUser(id, false);
     }
 
     // Creates the web for the keyword with the given id
