@@ -12,4 +12,10 @@
   <div class="dynamic_content" ng-if="type == 'addDetails'" resource_details_directive></div>
   <div class="dynamic_content" ng-if="type == 'addPdf'" resource_pdf_directive></div>
   <div class="dynamic_content" ng-if="type == 'addWebsite'" resource_website_directive></div>
+  
+  <div class="preview_content" data-content="newRescource" ng-if="type == 'addYoutube'" youtube_preview></div>
+  <div class="preview_content" data-content="newRescource" ng-if="type == 'addImage'" image_preview></div>
+  <div class="preview_content" ng-show="showPDF" pdf_preview_create></div>
+  <div class="preview_content" data-content="newRescource" ng-if="type == 'addWebsite'" webpage_preview></div>
+
 </div>

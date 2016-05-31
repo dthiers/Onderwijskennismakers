@@ -1,12 +1,12 @@
 <div ng-controller="ResourcesCtrl">
   <b>Maak uw bron compleet</b>
-  <input type="text" placeholder="Naam" id="txtName" ng-model="newRescource.name" />
+  <input type="text" placeholder="Naam" id="txtName" ng-model="data.newResourcePreview.name" />
   <div data-ng-hide="!communities">
     <select id="selectComunity" ng-model="newRescource.community">
       <option value="{{c.id}}" ng-repeat="c in communities">{{c.name}}</option>
     </select>
   </div>
-  <textarea maxlength="512" placeholder="Omschrijving" id="txtDescription" ng-model="newRescource.description"></textarea>
+  <textarea maxlength="512" placeholder="Omschrijving" id="txtDescription" ng-model="data.newResourcePreview.description"></textarea>
   <p id="pMessage">{{message}}</p>
   <button id="btnSave" ng-click="saveResource()">Opslaan</button>
 </div>

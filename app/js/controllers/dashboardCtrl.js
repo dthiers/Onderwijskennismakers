@@ -2,6 +2,8 @@
 module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService, $http, ResourcesService) {
 
     var self = this;
+    
+    $scope.image="images/image_preview.jpg";
 
     $scope.hidePopup = true;
 
