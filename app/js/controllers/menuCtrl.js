@@ -1,4 +1,4 @@
-module.exports = function ($scope, ResourcesService) {
+module.exports = function ($scope, ResourcesService, ModalService, $timeout) {
     var isLeft = true;
     $scope.moveMenu = function(){
         if(isLeft){
@@ -16,7 +16,21 @@ module.exports = function ($scope, ResourcesService) {
         }
     }
 
+    // $scope.openResources = function(){
+    //   ResourcesService.setProperty("addResource");
+    // }
+
     $scope.openResources = function(){
-      ResourcesService.setProperty("addResource");
+        ModalService.showModal({
+            templateUrl: "../partials/directives/resource_overview_directive.html",
+            controller: "ResourcesCtrl"
+        }).then(function(modal) {
+            //   modal.close.then(function(result) {
+            //     $scope.message = result ? "You said Yes" : "You said No";
+            //   });
+            modal.close.then(function(result) {
+                console.log(result);
+            });
+        });
     }
 };
