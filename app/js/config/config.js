@@ -14,19 +14,13 @@ module.exports = function (app) {
 
             // On every stateChange
             $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options) {
-                //event.preventDefault();
 
-               
-                //$localStorage.user = "Ryan Tietjes";
-                if(($localStorage.user === undefined || $localStorage.user === null) ) {
-                    var toLogin = toState === 'login';
-                    if(toLogin) {
-                        if(fromState.name !== toState.name) {
-                            $state.go(toState.name);
-                        }
-                        return;
-                    } 
-                } 
+                if(toState.name != 'login'){
+                    if(($localStorage.user === undefined || $localStorage.user === null) ) {
+                         event.preventDefault();
+                        $state.go('login');
+                    }
+                }
             })
         })
 }

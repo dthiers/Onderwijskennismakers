@@ -47,12 +47,8 @@ module.exports = function (app) {
             })
             .state("otherwise", {
                 url: "*path",
-                template: "Invalid Location",
                 controller: function($timeout, $state){
-                    console.log('In otherwise');
-                    $timeout(function(){
-                        $state.go('login')
-                    }, 2000);
+                    $state.go('login');
                 }
             })
 
