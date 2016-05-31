@@ -1,26 +1,25 @@
+<div class="popup_message">
+    {{message}}
+</div>
+
 <div id="divLoginBackgroundOverlay"></div>
 <div id="divRegister">
 
     <p id="pLoginTitle">Registreren</p>
-    <input type="text" class="inputLogin" placeholder="Email" ng-model="email" />
-    <input type="password" class="inputLogin" placeholder="Password" ng-model="password" />
-    <input type="password" class="inputLogin" placeholder="Password(check)" ng-model="password2" />
-    <input type="text" class="inputLogin" placeholder="Voornaam" ng-model="firstName" />
-    <input type="text" class="inputLogin" placeholder="Achternaam" ng-model="lastName" />
-    <input type="text" class="inputLogin" placeholder="Functie" ng-model="job" />
-    <input ng-model="photo" onchange="angular.element(this).scope().file_changed(this)" type="file" accept="image/*" id="inputImage"/>
-
-    <div id="divLinkWrapper">
-        <a href="#/login">Ik heb al een account</a>
-    </div>
-    <button id="buttonLogin" ng-click="register()">Registreren</button>
-    <div>
+    <form name="register_form">
         {{message}}
-    </div>
-    <div id="divLoginColorWrapper">
-        <div class="divLoginColor blue"></div>
-        <div class="divLoginColor yellow"></div>
-        <div class="divLoginColor red"></div>
-        <div class="divLoginColor green"></div>
-    </div>
+        <input type="text" class="inputLogin" placeholder="Email" ng-model="email" required/>
+        <input type="password" class="inputLogin" placeholder="Password" ng-model="password" required/>
+        <input type="password" class="inputLogin" placeholder="Password(check)" ng-model="password2" required/>
+        <input type="text" class="inputLogin" placeholder="Voornaam" ng-model="firstName" required/>
+        <input type="text" class="inputLogin" placeholder="Achternaam" ng-model="lastName" required/>
+        <input type="text" class="inputLogin" placeholder="Functie" ng-model="job" />
+        <span class="fotoLabel">Voeg een foto toe</span>
+        <input ng-model="photo" onchange="angular.element(this).scope().file_changed(this)" type="file" accept="image/*" id="inputImage"/>
+
+        <div id="divLinkWrapper">
+            <a href="#/login">Ik heb al een account</a>
+        </div>
+        <button id="buttonLogin" ng-disabled="register_form.$invalid" ng-click="register()">Registreren</button>
+    </form>
 </div>

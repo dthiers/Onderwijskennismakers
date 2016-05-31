@@ -10,41 +10,53 @@ module.exports = function (app) {
             .state('dashboard', {
                 url: '/dashboard',
                 templateUrl: '../partials/dashboard/dashboard.html',
-                controller: 'DashboardCtrl'
-            })
-            .state('register', {
-                url: '/register',
-                views: {
-
-                    '': { templateUrl: '../partials/home.html' },
-
-                    'dashboard@register': {
-                        templateUrl: '../partials/dashboard/dashboard.html',
-                        controller: 'DashboardCtrl'
-                    },
-                    'register@register': {
-                        templateUrl: '../partials/login/register.html',
-                        controller: 'RegisterCtrl'
-                    }
+                controller: 'DashboardCtrl',
+                data: {
+                    requireLogin: true
                 }
             })
-
             .state('login', {
                 url: '/login',
-                views: {
-
-                    '': { templateUrl: '../partials/home.html' },
-
-                    'dashboard@login': {
-                        templateUrl: '../partials/dashboard/dashboard.html',
-                        controller: 'DashboardCtrl'
-                    },
-                    'login@login': {
-                        templateUrl: '../partials/login/login.html',
-                        controller: 'LoginCtrl'
-                    }
-                }
+                templateUrl: '../partials/login/full-login.html',
+                controller: 'LoginCtrl',
+                // data: {
+                //     requireLogin: false
+                // }
             })
+
+            // .state('register', {
+            //     url: '/register',
+            //     views: {
+
+            //         '': { templateUrl: '../partials/home.html' },
+
+            //         'dashboard@register': {
+            //             templateUrl: '../partials/dashboard/dashboard.html',
+            //             controller: 'DashboardCtrl'
+            //         },
+            //         'register@register': {
+            //             templateUrl: '../partials/login/register.html',
+            //             controller: 'RegisterCtrl'
+            //         }
+            //     }
+            // })
+
+            // .state('login', {
+            //     url: '/login',
+            //     views: {
+
+            //         '': { templateUrl: '../partials/home.html' },
+
+            //         'dashboard@login': {
+            //             templateUrl: '../partials/dashboard/dashboard.html',
+            //             controller: 'DashboardCtrl'
+            //         },
+            //         'login@login': {
+            //             templateUrl: '../partials/login/login.html',
+            //             controller: 'LoginCtrl'
+            //         }
+            //     }
+            // })
 
 
         // .state('dashboard.profile', {
