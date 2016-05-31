@@ -394,9 +394,9 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
             $(".web_popup").css("top", click.pointer.DOM.y + 50);
             if (click.pointer.DOM.x < xMid) {
-                $(".web_popup").css("left", click.pointer.DOM.x - 160);
+                $(".web_popup").css("left", click.pointer.DOM.x - 140);
             } else {
-                $(".web_popup").css("left", click.pointer.DOM.x + 40);
+                $(".web_popup").css("left", click.pointer.DOM.x + 90);
             }
             $scope.hidePopup = false;
 
