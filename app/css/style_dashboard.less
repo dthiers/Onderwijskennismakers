@@ -771,28 +771,59 @@ html,body{
     h1{
       font-family: Lato-Light;
       font-size: 34px;
-      color: #a0a0a0;
-      margin-bottom: 10px;
+      color: #73A1EE;
+      margin-bottom: 17px;
+      float: left;  
     }
     .subtitle{
+      float: right;
+      span{
+          float: left;
+          color: #B3B3B3;
+          font-size: 16px;
+          margin-bottom: 7px;
+          margin-right: 10px;
+          &.head{
+            clear: both;
+            /* font-weight: bold; */
+            /* font-size: 14px; */
+            margin-right: 10px;
+            width: 137px;
+          } 
+          &.user{
+              cursor: pointer;
+              border-bottom: 1px solid #EFEFEF;
+              padding-bottom: 2px;
+          }
+      }
+    }
+    .short_description{
+        clear: both;
+        float: left;
+        width: 60%;
+        color: #9E9E9E;
+        line-height: 22px;
+        margin-top: 10px;
+    }
+    .description_title{
+      clear: both;
+      float: left;
       display: flex;
       align-items: center;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #EFEFEF;
+
       .color_block{
-      width: 15px;
-      height: 15px;
-      background: @color_main1_light;
-      margin-right: 15px;
-      float: left;
-    }
-    span{
-      color: #B3B3B3;
-      margin-right: 10px;
-      &.head{
-        font-weight: bold;
-        font-size: 14px;
-        margin-right: 10px;
-      } 
-    }
+        width: 15px;
+        height: 15px;
+        background: @color_main1_light;
+        margin-right: 15px;
+        float: left;
+      }
+      h2{
+        font-size: 20px;
+        color: #A2A2A2;
+      }
     }
     
   }

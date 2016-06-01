@@ -708,28 +708,58 @@ body {
 .content_directive .header_content h1 {
   font-family: Lato-Light;
   font-size: 34px;
-  color: #a0a0a0;
-  margin-bottom: 10px;
+  color: #73A1EE;
+  margin-bottom: 17px;
+  float: left;
 }
 .content_directive .header_content .subtitle {
+  float: right;
+}
+.content_directive .header_content .subtitle span {
+  float: left;
+  color: #B3B3B3;
+  font-size: 16px;
+  margin-bottom: 7px;
+  margin-right: 10px;
+}
+.content_directive .header_content .subtitle span.head {
+  clear: both;
+  /* font-weight: bold; */
+  /* font-size: 14px; */
+  margin-right: 10px;
+  width: 137px;
+}
+.content_directive .header_content .subtitle span.user {
+  cursor: pointer;
+  border-bottom: 1px solid #EFEFEF;
+  padding-bottom: 2px;
+}
+.content_directive .header_content .short_description {
+  clear: both;
+  float: left;
+  width: 60%;
+  color: #9E9E9E;
+  line-height: 22px;
+  margin-top: 10px;
+}
+.content_directive .header_content .description_title {
+  clear: both;
+  float: left;
   display: flex;
   align-items: center;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #EFEFEF;
 }
-.content_directive .header_content .subtitle .color_block {
+.content_directive .header_content .description_title .color_block {
   width: 15px;
   height: 15px;
   background: #73a1ee;
   margin-right: 15px;
   float: left;
 }
-.content_directive .header_content .subtitle span {
-  color: #B3B3B3;
-  margin-right: 10px;
-}
-.content_directive .header_content .subtitle span.head {
-  font-weight: bold;
-  font-size: 14px;
-  margin-right: 10px;
+.content_directive .header_content .description_title h2 {
+  font-size: 20px;
+  color: #A2A2A2;
 }
 .content_directive .custom_content {
   margin-top: 30px;

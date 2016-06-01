@@ -14,10 +14,18 @@
         	    <h1 class="title">{{singleContent.name}}</h1>
 
                 <div class="subtitle">
-            	    <div class="color_block"></div>
             	    <span class="head">Aangemaakt op: </span><span>{{singleContent.createdAt}}</span>
-            	    <span class="head">Aangemaakt door: </span><span>{{user.firstName}} {{user.lastName}}</span>
+            	    <span class="head">Aangemaakt door: </span><span class="user" ng-click="loadUser(user.id, true)">{{user.firstName}} {{user.lastName}}</span>
+                    <div style="clear: both"></div>
                 </div>
+                <div class="description_title">
+                    <div class="color_block"></div>
+                    <h2>Omschrijving</h2>
+                </div>
+                <p ng-if="singleContent.Type != 'internal'" class="short_description">
+                    {{singleContent.shortDescription}}
+                </p>
+                <div style="clear: both"></div>
             </div>	
 
             <div class="custom_content">
@@ -38,9 +46,6 @@
                 <!-- PDF -->
                 <div ng-if="singleContent.Type == 'pdf'">
                     <div class="pdf">
-                        <h3>{{ singleContent.name }}</h3>
-                        <p>{{ singleContent.author }}</p>
-                        <p>{{ singleContent.shortDescription }}</p>
                         <div class="pdfcontainer">
                             <iframe class="pdfFrame" width="100%" height="600px" src="{{trustSrc(singleContent.link)}}"></iframe>
                         </div>
@@ -52,9 +57,6 @@
 
                 	<a href="" target="top"></a>
                     <div class="website">
-                        <h3>{{ singleContent.name }}</h3>
-                        <p>{{ singleContent.shortDescription }}</p>
-
                         <div id="websiteContainer">
                             <iframe class="websiteFrame" width="100%" ng-src="{{ trustSrc(singleContent.link) }}" onfocus="parent.document.focus();"></iframe>
                         </div>
