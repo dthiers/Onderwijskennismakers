@@ -28,8 +28,8 @@ module.exports = function (app) {
 		};
 	};
 
-	var resource_overview_directive = function(){
-		return{
+	var resource_overview_directive = function () {
+		return {
 			restrict: "A",
 			scope: true,
 			templateUrl: "partials/directives/resource_overview_directive.html",
@@ -37,8 +37,8 @@ module.exports = function (app) {
 		};
 	};
 
-	var resource_youtube_directive = function(){
-		return{
+	var resource_youtube_directive = function () {
+		return {
 			restrict: "A",
 			// scope: false,
 			templateUrl: "partials/directives/contentResources/youtube_directive.html",
@@ -47,18 +47,21 @@ module.exports = function (app) {
 		};
 	};
 
-	var resource_pdf_directive = function(){
-		return{
+	var resource_pdf_directive = function (ResourcesService) {
+		return {
 			restrict: "A",
 			scope: false,
 			templateUrl: "partials/directives/contentResources/pdf_directive.html",
-			controller: "PdfCtrl"
+			controller: "PdfCtrl",
+			link: function (scope, elem, attr) {
+				scope.data = ResourcesService;
+			}
 
 		};
 	};
 
-	var resource_webpage_directive = function(){
-		return{
+	var resource_webpage_directive = function () {
+		return {
 			restrict: "A",
 			scope: false,
 			templateUrl: "partials/directives/contentResources/webpage_directive.html",
@@ -67,22 +70,25 @@ module.exports = function (app) {
 		};
 	};
 
-  var resource_image_directive = function(){
-	return{
-		restrict: "A",
-		scope: false,
-		templateUrl: "partials/directives/contentResources/image_directive.html",
-		controller: "ImageCtrl"
+	var resource_image_directive = function () {
+		return {
+			restrict: "A",
+			scope: false,
+			templateUrl: "partials/directives/contentResources/image_directive.html",
+			controller: "ImageCtrl"
 
+		};
 	};
-};
 
-  var resource_details_directive = function(){
-		return{
+	var resource_details_directive = function (ResourcesService) {
+		return {
 			restrict: "A",
 			scope: false,
 			templateUrl: "partials/directives/contentResources/resource_details_directive.html",
-			controller: "ResourceDetailCtrl"
+			controller: "ResourceDetailCtrl",
+			link: function (scope, elem, attr) {
+				scope.data = ResourcesService;
+			}
 
 		};
 	};
@@ -105,6 +111,17 @@ module.exports = function (app) {
 		return {
 			restrict: "A",
 			templateUrl: "partials/directives/previews/pdf_preview.html"
+		};
+	};
+
+	var pdf_preview_create = function (ResourcesService) {
+		return {
+			restrict: "A",
+			templateUrl: "partials/directives/previews/pdf_preview_create.html",
+			scope: false,
+			link: function (scope, elem, attr) {
+				scope.data = ResourcesService;
+			}
 		};
 	};
 
@@ -136,11 +153,11 @@ module.exports = function (app) {
 		};
 	};
 
-	var image_select = function() {
+	var image_select = function () {
 		console.log('Im here from the directive');
 		return {
-			link: function($scope,el){
-				el.bind("change", function(e){
+			link: function ($scope, el) {
+				el.bind("change", function (e) {
 
 					$scope.file = (e.srcElement || e.target).files[0];
 					$scope.getFile();
@@ -155,12 +172,13 @@ module.exports = function (app) {
 	app.directive('resourceOverviewDirective', resource_overview_directive);
 	app.directive('resourceYoutubeDirective', resource_youtube_directive);
 	app.directive('resourcePdfDirective', resource_pdf_directive);
-  	app.directive('resourceImageDirective', resource_image_directive);
+	app.directive('resourceImageDirective', resource_image_directive);
 	app.directive('resourceWebpageDirective', resource_webpage_directive);
-  	app.directive('resourceDetailsDirective', resource_details_directive);
+	app.directive('resourceDetailsDirective', resource_details_directive);
 	app.directive('imagePreview', image_preview);
 	app.directive('youtubePreview', youtube_preview);
 	app.directive('pdfPreview', pdf_preview);
+	app.directive('pdfPreviewCreate', pdf_preview_create);
 	app.directive('textPreview', text_preview);
 	app.directive('webpagePreview', webpage_preview);
 	app.directive('keywordDirective', keyword_directive);

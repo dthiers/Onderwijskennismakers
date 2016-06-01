@@ -1,15 +1,20 @@
-<div class="divResourcesPopup" ng-style="popupStyle">
+<div class="divResourcesPopup" ng-style="resourcesService.popupStyle">
+  <div class="popup_message">{{message}}</div>
   <img src="./images/close.png" id="imgCloseResourcesPopup" ng-click="closeResources('Cancel')" />
   <b>Nieuwe bron toevoegen</b>
   <div id="imgResourceWrapper" ng-style="wrapperStyle">
-     <img src="./images/pdf.png" id="imgResourcePdf" class="imgResource" ng-click="addResource('pdf')" />
+    <img src="./images/pdf.png" id="imgResourcePdf" class="imgResource" ng-click="addResource('pdf')" />
     <img src="./images/image.png" id="imgResourceImage" class="imgResource" ng-click="addResource('image')" />
     <img src="./images/youtube.png" id="imgResourceYoutube" class="imgResource" ng-click="addResource('youtube')" />
     <img src="./images/website.png" id="imgResourceWebsite" class="imgResource" ng-click="addResource('webpage')" />
   </div>
+  
   <div class="dynamic_content" ng-if="type == 'addYoutube'" resource_youtube_directive></div>
   <div class="dynamic_content" ng-if="type == 'addImage'" resource_image_directive></div>
   <div class="dynamic_content" ng-if="type == 'addDetails'" resource_details_directive></div>
   <div class="dynamic_content" ng-if="type == 'addPdf'" resource_pdf_directive></div>
   <div class="dynamic_content" ng-if="type == 'addWebpage'" resource_webpage_directive></div>
+
+  <div class="preview_content" ng-show="resourcesService.showPDF" pdf_preview_create></div>
+
 </div>

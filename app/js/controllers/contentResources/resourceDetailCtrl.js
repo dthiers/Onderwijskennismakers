@@ -5,7 +5,7 @@
 *
 **/
 
-module.exports = function($scope, ResourcesService) {
+module.exports = function ($scope, ResourcesService) {
     console.log('Were in resourceDetailCtrl');
 
     /**
@@ -21,10 +21,10 @@ module.exports = function($scope, ResourcesService) {
     * Load available communities on $scope
     **/
     ResourcesService.getCommunities({
-        onSuccess:function(result){
+        onSuccess: function (result) {
             $scope.communities = result.data.data;
         },
-        onError:function(err){
+        onError: function (err) {
             console.log(err);
         }
     });
@@ -35,17 +35,28 @@ module.exports = function($scope, ResourcesService) {
     *
     * @param: name, description, community
     **/
-    $scope.saveResource = function(newResource) {
-        console.log(newResource);
-        ResourcesService.setResourceDetails(newResource);
+    $scope.saveResource = function () {
+        ResourcesService.setResourceDetails($scope.data.newResourcePreview.name, $scope.data.newResourcePreview.community, $scope.data.newResourcePreview.description);
 
-        ResourcesService.addResource({
-            onSuccess:function(result){
+        ResourcesService.addResource(
+            function () {
+                popupMessage("Bron succesvol toegevoegd!")
+                //todo: variables resetten en de boel closen!
                 ResourcesService.setProperty("");
             },
-            onError:function(err){
+            function () {
+                popupMessage("Bron toevoegen is gefaald!")
                 console.log(err);
             }
-        });
+        );
+    }
+
+    function popupMessage(message) {
+        $scope.message = message;
+        $(".popup_message").addClass("flash_popup");
+        $timeout(function () {
+            $(".popup_message").removeClass("flash_popup");
+        }, 3000);
+
     }
 }
