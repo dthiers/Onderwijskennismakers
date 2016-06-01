@@ -28,8 +28,13 @@
                 <span>School</span>
                 <span>Samenleving</span>
             </div>
-            <input class="search_bar" type="text" ng-model="searchQuery" ng-change="search()" placeholder="Zoeken naar trefwoorden" autofocus/>
-            <button class="search_button"></button>
+            <input class="search_bar" type="text"
+              ng-model="searchQuery"
+              ng-model-options="{ debounce: 800 }"
+              ng-change="search(searchQuery)"
+              placeholder="Zoeken naar trefwoorden" autofocus
+            />
+            <button class="search_button" ng-click="search(searchQuery)"></button>
         </div>
     </div>
 
