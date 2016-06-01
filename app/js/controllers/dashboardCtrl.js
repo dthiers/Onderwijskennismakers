@@ -1,14 +1,11 @@
 
-module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService, $http, ResourcesService, ModalService, $localStorage, $sce, $timeout, user) {
+module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService, ContentService, ResourcesService, $http, ModalService, $localStorage, $sce, $timeout, user) {
 
     $scope.testUser = user;
-
-    console.log($scope.testUser);
 
     var self = this;
 
     $scope.hidePopup = true;
-    $scope.type = "content";
     $scope.breadcrumbs = new Array();
 
     // Initialize the web for the current user
@@ -40,15 +37,17 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     $scope.loadKeyword = function (id, reloadWeb) {
         if(reloadWeb)
             getWebForKeyword(id);
-
         getKeyword(id);
         $scope.type = "keyword";
+    };
+    $scope.loadContent = function(id){
+        getContent(id);
+        $scope.type = "content";
     };
 
     $scope.openResources = function(){
       ResourcesService.setProperty("addResource");
     }
-
     /**
     *
     * Function to trust source.
@@ -86,13 +85,8 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         return new Array(round);
     }
 
-    //getUser(1);
-    //getKeyword();
-    //getSchool();
-
-    $timeout(function(){
-        getWebForUser(parseInt($localStorage.user.id));
-    }, 1500)
+    //GET WEB FOR CURRENT USER
+    getWebForUser(parseInt($localStorage.user.id));
 
     /**
     *   ---------------------------------------------------------------------------------------------------------------
@@ -210,6 +204,20 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
             });
     }
 
+    function getContent(id) {//based on route param
+        console.log("GET CONTENT WITH ID " + id);
+        ContentService.contentService.getById(id)//call to service
+            .then(function (response) {
+
+                $scope.content = response.data.data[0];//set response to scope
+                getUser($scope.content.User_id);
+
+            }, function (error) {
+                $scope.status = 'Er is iets misgegaan met het laden van de content: ';
+                console.log(error.message);
+            });
+    }
+
     /* Web Creation */
 
     // Creates the web for the user with the given id
@@ -285,7 +293,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         //LOAD DETAIL WINDOW
 
         //VOOR TESTEN WEGGEHAALD
-        //$scope.loadUser(id, false);
+        $scope.loadUser(id, false);
     }
 
     // Creates the web for the keyword with the given id
