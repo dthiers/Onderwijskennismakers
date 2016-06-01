@@ -1,5 +1,5 @@
 
-module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService, $http, ResourcesService, ModalService, $localStorage, $sce, $timeout, user) {
+module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService, $http, ResourcesService, ModalService, $localStorage, $sce, $timeout, user, SearchService) {
 
     $scope.testUser = user;
 
@@ -20,7 +20,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         $scope.bottomBarStyle = {bottom: '0%'};
     };
 
-    $scope.slideUp = function () {
+    $scope.slideUp = function ( ) {
         $scope.topBarStyle = {top: '0%'};
         $scope.topContentStyle = {top: '-100%'};
         $scope.bottomBarStyle = {bottom: '100%'};
@@ -93,6 +93,75 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     $timeout(function(){
         getWebForUser(parseInt($localStorage.user.id));
     }, 1500)
+
+    // Seach
+    $scope.searchQuery = "";
+    $scope.search = function() {
+        if($scope.searchQuery != "") {
+            SearchService.search($scope.searchQuery, function (data) {
+                $scope.content = data["matched_content"];
+
+                buildSearchWeb(data["matched_keywords"])
+            });
+        } else {
+            // Reset scope to user web
+            $scope.data = {
+                "nodes": userWebNodes,
+                "edges": userWebEdges
+            };
+        }
+    };
+
+    function buildSearchWeb(data) {
+        var nodes = new VisDataSet();
+        var edges = new VisDataSet();
+
+        var nodeCounter = 1;
+        var userNodeCounter = 100;
+        var labelText = "";
+        if(data.length == 0) {
+            labelText = "No results";
+        }
+        // Create node for center user
+        nodes.add({
+            id: 0,
+            label: labelText,
+            group: 'persons',
+            shape: 'circularImage',
+            image: 'images/magnifier.png',
+            weight: 1000
+        });
+
+        // Add keywords
+        angular.forEach(data, function (value, key) {
+            nodes.add(createKeywordNode(nodeCounter, value));
+            edges.add({
+                from: 0,
+                to: nodeCounter
+            });
+
+            // Add users to keywords
+            angular.forEach(value.users, function (userValue, userKey) {
+                nodes.add(createUserNode(userNodeCounter, userValue));
+                edges.add({
+                    from: userNodeCounter,
+                    to: nodeCounter
+                });
+
+                userNodeCounter++;
+            });
+
+            nodeCounter++;
+        });
+
+        // Set data on scope
+        $scope.data = {
+            "nodes": nodes,
+            "edges": edges
+        };
+    }
+
+
 
     /**
     *   ---------------------------------------------------------------------------------------------------------------
