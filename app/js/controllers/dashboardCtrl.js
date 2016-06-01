@@ -8,7 +8,6 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     var self = this;
 
     $scope.hidePopup = true;
-    $scope.type = "content";
     $scope.breadcrumbs = new Array();
 
     // Initialize the web for the current user
@@ -35,6 +34,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         if(reloadWeb)
             getWebForUser(id);
         getUserDetails(id);
+        getUserContent(id);
         $scope.type = "person";
     };
     $scope.loadKeyword = function (id, reloadWeb) {
@@ -90,9 +90,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     //getKeyword();
     //getSchool();
 
-    $timeout(function(){
-        getWebForUser(parseInt($localStorage.user.id));
-    }, 1500)
+    getWebForUser(parseInt($localStorage.user.id));
 
     /**
     *   ---------------------------------------------------------------------------------------------------------------
@@ -143,7 +141,20 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         ProfileService.profileService.getUserDetails(id)//call to service
             .then(function (response) {
 
-                $scope.user = response.data.data[0];//set response to scope
+                $scope.user = response.data.data[0];//set response to scope               
+
+            }, function (error) {
+                $scope.status = 'Er is iets misgegaan met het laden van de gebruiker: ';
+                console.log(error.message);
+            });
+    }
+    
+    function getUserContent(id) {//based on route param
+        ProfileService.profileService.getUserContent(id)//call to service
+            .then(function (response) {
+
+                $scope.userContent = response.data.data;//set response to scope    
+                console.log($scope.userContent);           
 
             }, function (error) {
                 $scope.status = 'Er is iets misgegaan met het laden van de gebruiker: ';
@@ -285,7 +296,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         //LOAD DETAIL WINDOW
 
         //VOOR TESTEN WEGGEHAALD
-        //$scope.loadUser(id, false);
+        $scope.loadUser(id, false);
     }
 
     // Creates the web for the keyword with the given id
