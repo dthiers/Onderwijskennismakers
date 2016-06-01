@@ -42,9 +42,12 @@ module.exports = function ($scope, ResourcesService) {
             function () {
                 popupMessage("Bron succesvol toegevoegd!")
                 //todo: variables resetten en de boel closen!
+                // aanroep om service variables te resseten.
+                ResourcesService.resetValues();
                 ResourcesService.setProperty("");
             },
             function () {
+                //todo error afhandelen
                 popupMessage("Bron toevoegen is gefaald!")
                 console.log(err);
             }
@@ -52,7 +55,7 @@ module.exports = function ($scope, ResourcesService) {
     }
 
     function popupMessage(message) {
-        $scope.message = message;
+        $scope.infomessage = message;
         $(".popup_message").addClass("flash_popup");
         $timeout(function () {
             $(".popup_message").removeClass("flash_popup");

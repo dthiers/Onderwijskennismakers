@@ -3,7 +3,7 @@ module.exports = function ($http) {
 
     var type = 'undefined';
     var newRescource = { name: "", community: "", description: "", type: "", link: "" }
-    self.showPDF=false;
+    self.showPDF = false;
     self.popupStyle = { "top": "20px", "height": "250px" }
 
     self.getProperty = function () {
@@ -78,9 +78,13 @@ module.exports = function ($http) {
     }
 
     self.resetValues = function () {
-        self.newResourcePreview.name = "Naam",
-            newResourcePreview.description = "Omschrijving"
-        pdf = ""
+        self.newResourcePreview.name = "Naam";
+        self.newResourcePreview.description = "Omschrijving";
+        self.newResourcePreview.pdf = "";
+        type = 'undefined';
+        newRescource = { name: "", community: "", description: "", type: "", link: "" }
+        self.showPDF = false;
+        self.popupStyle = { "top": "20px", "height": "250px" }
     }
 
     self.newResourcePreview = { name: "Naam", description: "Omschrijving" }
