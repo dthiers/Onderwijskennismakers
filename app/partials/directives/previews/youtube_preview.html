@@ -2,6 +2,7 @@
 <div class="doc" ng-click="loadContent(preview.id)">
     <div class="type"><i class="fa fa-play"></i></div>
     <h3>{{preview.name}}</h3>
+    <p>{{preview.createdAt | datetime}}</p>
     <p>{{preview.shortDescription | limitTo: 100}}</p>
         <div class="video_thumbnail" style="background-image:url('http://img.youtube.com/vi/{{preview.link}}/maxresdefault.jpg');">
             <div class="bgOverlay">

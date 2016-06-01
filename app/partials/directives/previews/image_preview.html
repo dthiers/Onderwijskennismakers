@@ -14,6 +14,9 @@
         <div class="subtitle">
             {{ preview.shortDescription }}
         </div>
+        <div class="subtitle">
+          {{ preview.createdAt | datetime }}
+        </div>
     </div>
 
     <div class="stars" ng-if="preview.rating">
