@@ -24,6 +24,20 @@ module.exports = function(app) {
   })
 
   /**
+  * Return time format only as HH:mm:ss
+  **/
+  app.filter('timeonly', function($filter) {
+
+    return function(input) {
+      if(input == null) { return ""; }
+
+      var _time = $filter('date')(new Date(input), 'HH:mm:ss');
+
+      return _time;
+    }
+  })
+
+  /**
   * Return dateTime format as dd-mm-yyyy HH:mm
   **/
   app.filter('datetime', function($filter) {
