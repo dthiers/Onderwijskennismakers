@@ -1,5 +1,5 @@
 
-module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService, $http, ResourcesService, ModalService, $localStorage, $sce, $timeout, user) {
+module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService, $http, ResourcesService, ModalService, $localStorage, $sce, $timeout, user, SearchService) {
 
     $scope.testUser = user;
 
@@ -10,6 +10,10 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     $scope.hidePopup = true;
     $scope.breadcrumbs = new Array();
 
+    var lastUserWebNodes;
+    var lastUserWebEdges;
+    var lastUserContent;
+
     // Initialize the web for the current user
     //getWebForUser(1);
 
@@ -19,7 +23,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         $scope.bottomBarStyle = {bottom: '0%'};
     };
 
-    $scope.slideUp = function () {
+    $scope.slideUp = function ( ) {
         $scope.topBarStyle = {top: '0%'};
         $scope.topContentStyle = {top: '-100%'};
         $scope.bottomBarStyle = {bottom: '100%'};
@@ -92,6 +96,76 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
     getWebForUser(parseInt($localStorage.user.id));
 
+    // Seach
+    $scope.searchQuery = "";
+    $scope.search = function() {
+        if($scope.searchQuery != "") {
+            SearchService.search($scope.searchQuery, function (data) {
+                $scope.content = data["matched_content"];
+
+                buildSearchWeb(data["matched_keywords"])
+            });
+        } else {
+            // Reset content
+            $scope.content = lastUserContent;
+
+            // Reset scope to user web
+            $scope.data = {
+                "nodes": lastUserWebNodes,
+                "edges": lastUserWebEdges
+            };
+        }
+    };
+
+    function buildSearchWeb(data) {
+        var nodes = new VisDataSet();
+        var edges = new VisDataSet();
+
+        var nodeCounter = 1;
+        var userNodeCounter = 100;
+        var labelText = "";
+        if(data.length == 0) {
+            labelText = "No results";
+        }
+        // Create node for center user
+        nodes.add({
+            id: 0,
+            label: labelText,
+            group: 'persons',
+            shape: 'circularImage',
+            image: 'images/magnifier.png',
+            weight: 1000
+        });
+
+        // Add keywords
+        angular.forEach(data, function (value, key) {
+            nodes.add(createKeywordNode(nodeCounter, value));
+            edges.add({
+                from: 0,
+                to: nodeCounter
+            });
+
+            // Add users to keywords
+            angular.forEach(value.users, function (userValue, userKey) {
+                nodes.add(createUserNode(userNodeCounter, userValue));
+                edges.add({
+                    from: userNodeCounter,
+                    to: nodeCounter
+                });
+
+                userNodeCounter++;
+            });
+
+            nodeCounter++;
+        });
+
+        // Set data on scope
+        $scope.data = {
+            "nodes": nodes,
+            "edges": edges
+        };
+    }
+
     /**
     *   ---------------------------------------------------------------------------------------------------------------
     *   POPUP DIE JE KUNT AANROEPEN MET EEN MESSAGE ERIN
@@ -153,9 +227,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         ProfileService.profileService.getUserContent(id)//call to service
             .then(function (response) {
 
-                $scope.userContent = response.data.data;//set response to scope    
-                console.log($scope.userContent);           
-
+                $scope.userContent = response.data.data;//set response to scope
             }, function (error) {
                 $scope.status = 'Er is iets misgegaan met het laden van de gebruiker: ';
                 console.log(error.message);
@@ -284,9 +356,11 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
                 "edges": edges
             };
 
-            $scope.content = data.content;
+            lastUserWebNodes = nodes;
+            lastUserWebEdges = edges;
 
-            console.log($scope.content);
+            $scope.content = data.content;
+            lastUserContent = $scope.content;
         }, function (error) {
             alert("Error loading user web");
             console.log(error);
@@ -343,6 +417,8 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
             
             $scope.content = data.content;
             
+            lastUserWebNodes = nodes;
+            lastUserWebEdges = edges;
         }, function (error) {
             alert("Error loading keyword web");
             console.log(error);
