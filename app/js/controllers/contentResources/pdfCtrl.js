@@ -28,7 +28,7 @@ module.exports = function ($scope, ResourcesService, $sce, $timeout) {
         if (check === ".pdf") {
             ResourcesService.popupStyle = { "left": " calc(25% - 250px)", "top": "20px", "height": "500px" };
 
-            ResourcesService.setPDF($sce.trustAsResourceUrl(url));
+            ResourcesService.setLink($sce.trustAsResourceUrl(url));
             ResourcesService.showPDF = true;
             $scope.$parent.type = "addDetails";
         } else {

@@ -8,5 +8,5 @@
        <img src="{{image}}" id="imgPreview" />
 
   <img src="../images/loading.gif" id="imgLoadingPreview" ng-hide="imgLoadingPreviewHidden" />
-  <button ng-click="setResourceLink(image)" data-ng-hide="!image" id="btnAddImage">Toevoegen</button>
+  <button ng-click="setResourceLink(image); saveImage();" data-ng-hide="!image" id="btnAddImage">Toevoegen</button>
 </div>

@@ -14,14 +14,17 @@ module.exports = function ($scope, ResourcesService/*, close*/) {
             case "youtube":
                 $scope.type = "addYoutube";
                 ResourcesService.setResourceType("youtube");
+                ResourcesService.popupStyle = { "top": "20px", "height": "500px" }
                 break;
             case "image":
                 $scope.type = "addImage";
                 ResourcesService.setResourceType("image");
+                ResourcesService.popupStyle = { "top": "20px", "height": "500px" }
                 break;
             case "webpage":
                 $scope.type = "addWebpage";
                 ResourcesService.setResourceType("webpage");
+                ResourcesService.popupStyle = { "top": "20px", "height": "350px" }
                 break;
             case "pdf":
                 $scope.type = "addPdf";

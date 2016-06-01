@@ -76,14 +76,14 @@ module.exports = function ($http) {
         newRescource.link = link;
     }
 
-    self.setPDF = function (pdf) {
-        self.newResourcePreview.pdf = pdf
+    self.setLink = function (link) {
+        self.newResourcePreview.link = link
     }
 
     self.resetValues = function () {
         self.newResourcePreview.name = "Naam";
         self.newResourcePreview.description = "Omschrijving";
-        self.newResourcePreview.pdf = "";
+        self.newResourcePreview.link = "";
         type = 'undefined';
         newRescource = { name: "", community: "", description: "", type: "", link: "" }
         self.showPDF = false;

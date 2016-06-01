@@ -59,10 +59,7 @@ module.exports = function (app) {
 			restrict: "A",
 			scope: false,
 			templateUrl: "partials/directives/contentResources/pdf_directive.html",
-			controller: "PdfCtrl",
-			link: function (scope, elem, attr) {
-				scope.data = ResourcesService;
-			}
+			controller: "PdfCtrl"
 
 		};
 	};
@@ -107,17 +104,46 @@ module.exports = function (app) {
 		};
 	};
 
-	var youtube_preview = function () {
+	var image_preview_create = function (ResourcesService) {
 		return {
 			restrict: "A",
-			templateUrl: "partials/directives/previews/youtube_preview.html"
+			templateUrl: "partials/directives/previews/image_preview_create.html",
+			scope: false,
+			link: function (scope, elem, attr) {
+				scope.data = ResourcesService;
+			}
 		};
 	};
 
-	var pdf_preview = function () {
+
+	var youtube_preview = function (ResourcesService) {
 		return {
 			restrict: "A",
-			templateUrl: "partials/directives/previews/pdf_preview.html"
+			templateUrl: "partials/directives/previews/youtube_preview.html",
+			link: function (scope, elem, attr) {
+				scope.data = ResourcesService;
+			}
+		};
+	};
+
+	var youtube_preview_create = function (ResourcesService) {
+		return {
+			restrict: "A",
+			templateUrl: "partials/directives/previews/youtube_preview_create.html",
+			scope: false,
+			link: function (scope, elem, attr) {
+				scope.data = ResourcesService;
+			}
+		};
+	};
+
+	var pdf_preview = function (ResourcesService) {
+		return {
+			restrict: "A",
+			templateUrl: "partials/directives/previews/pdf_preview.html",
+			link: function (scope, elem, attr) {
+				scope.data = ResourcesService;
+			}
 		};
 	};
 
@@ -156,6 +182,33 @@ module.exports = function (app) {
 					};
 					// setInterval(function () { $(".btn_addDocument").focus() }, 100);
 				})
+			},
+			link: function (scope, elem, attr) {
+				scope.data = ResourcesService;
+			}
+		};
+	};
+	
+		var webpage_preview_create = function () {
+		return {
+			restrict: "A",
+			templateUrl: "partials/directives/previews/webpage_preview_create.html",
+			controller: function ($scope) {
+
+				$(window).on('load', function () {
+					// blur the iframe
+					document.getElementById("frame").blur();
+					// set focus on #foo
+					$(".btn_addDocument").focus();
+					// when iframe tries to focus, focus #foo
+					$(".btn_addDocument").onblur = function () {
+						this.focus();
+					};
+					// setInterval(function () { $(".btn_addDocument").focus() }, 100);
+				})
+			},
+			link: function (scope, elem, attr) {
+				scope.data = ResourcesService;
 			}
 		};
 	};
@@ -177,7 +230,6 @@ module.exports = function (app) {
 	app.directive('schoolDirective', school_directive);
 	app.directive('keywordDirective', keyword_directive);
 	app.directive('contentDirective', content_directive);
-
 	app.directive('registerDirective', register_directive);
 	app.directive('resourceOverviewDirective', resource_overview_directive);
 	app.directive('resourceYoutubeDirective', resource_youtube_directive);
@@ -186,11 +238,14 @@ module.exports = function (app) {
 	app.directive('resourceWebpageDirective', resource_webpage_directive);
 	app.directive('resourceDetailsDirective', resource_details_directive);
 	app.directive('imagePreview', image_preview);
+	app.directive('imagePreviewCreate', image_preview_create);
 	app.directive('youtubePreview', youtube_preview);
+	app.directive('youtubePreviewCreate', youtube_preview_create);
 	app.directive('pdfPreview', pdf_preview);
 	app.directive('pdfPreviewCreate', pdf_preview_create);
 	app.directive('textPreview', text_preview);
 	app.directive('webpagePreview', webpage_preview);
+	app.directive('webpagePreviewCreate', webpage_preview_create);
 
 	app.directive('ngFileSelect', image_select);
 

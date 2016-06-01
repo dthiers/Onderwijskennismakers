@@ -1,0 +1,25 @@
+<!-- Doc -->
+<div class="item" style="background-image:url('{{data.newResourcePreview.link}}');">
+ <div class="bgOverlay">
+
+    </div>
+    <div class="type"><i class="fa fa-picture-o"></i></div>
+    <div class="title">
+        {{data.newResourcePreview.name}}
+    </div>
+
+
+    <div class="popover">
+
+        <div class="subtitle">
+            {{data.newResourcePreview.description}}
+        </div>
+    </div>
+
+    <div class="stars" ng-if="preview.rating">
+        <img ng-repeat="i in getTimes(getSteppedRating(preview.rating)) track by $index" src="images/star-filled.png"></img>
+        <img ng-if="steppendRatingIsFull(preview.rating) == false" src="images/star-half-filled.png"></img>
+
+        {{getSteppedRating(preview.rating)}}
+    </div>
+</div>
