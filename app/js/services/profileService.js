@@ -3,9 +3,14 @@ module.exports = function ($http) {
     
     var urlBase = 'https://onderwijskennismakers.herokuapp.com/';
 
-    //get Tags
+    //get Details
     profileService.getUserDetails = function(id){
         return $http.get(urlBase + 'user/' + id + '/details');
+    }
+    
+    //get Content
+    profileService.getUserContent = function(id){
+        return $http.get(urlBase + 'user/' + id + '/content');
     }
     
     return {
