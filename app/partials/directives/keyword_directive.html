@@ -48,53 +48,18 @@
 
         <div id="profile_docs_container">
             <div class="header">
-                <p class="title">Recente bronnen</p>
+                <p class="title">Bronnen</p>
             </div>
 
             <div class="documents">
+                <span ng-repeat="preview in content">
+                    <div ng-if="preview.Type === 'internal'" data-content="preview" text_preview></div>
+                    <div ng-if="preview.Type === 'youtube'" data-content="preview" youtube_preview></div>
+                    <div ng-if="preview.Type === 'webpage'" data-content="preview" webpage_preview></div>
+                    <div ng-if="preview.Type === 'pdf'" data-content="preview" pdf_preview></div>
+                    <div ng-if="preview.Type === 'image'" data-content="preview" image_preview></div>
 
-                <!-- DOCUMENT -->
-                <div class="doc">
-                    <h3>Samenleving document</h3>
-                    <p>22-04-2016</p>
-                    <span>Auteur:</span><span>Kristian</span>
-                    <div class="rating_container">
-                        <img src="./images/star-filled.png"/>
-                        <img src="./images/star-filled.png"/>
-                        <img src="./images/star-filled.png"/>
-                        <img src="./images/star-half-filled.png"/>
-                        <img src="./images/star-empty.png"/>
-                    </div>
-                </div>
-
-                <!-- DOCUMENT -->
-                <div class="doc">
-                    <h3>Samenleving document</h3>
-                    <p>22-04-2016</p>
-                    <span>Auteur:</span><span>Kristian</span>
-                    <div class="rating_container">
-                        <img src="./images/star-filled.png"/>
-                        <img src="./images/star-filled.png"/>
-                        <img src="./images/star-filled.png"/>
-                        <img src="./images/star-half-filled.png"/>
-                        <img src="./images/star-empty.png"/>
-                    </div>
-                </div>
-
-                <!-- DOCUMENT -->
-                <div class="doc">
-                    <h3>Samenleving document</h3>
-                    <p>22-04-2016</p>
-                    <span>Auteur:</span><span>Kristian</span>
-                    <div class="rating_container">
-                        <img src="./images/star-filled.png"/>
-                        <img src="./images/star-filled.png"/>
-                        <img src="./images/star-filled.png"/>
-                        <img src="./images/star-half-filled.png"/>
-                        <img src="./images/star-empty.png"/>
-                    </div>
-                </div>
-
+                </span>
 
             </div>
         </div>

@@ -340,6 +340,9 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
                 "nodes": nodes,
                 "edges": edges
             };
+            
+            $scope.content = data.content;
+            
         }, function (error) {
             alert("Error loading keyword web");
             console.log(error);
