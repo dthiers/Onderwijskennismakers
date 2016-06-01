@@ -87,6 +87,9 @@ module.exports = function ($http) {
         type = 'undefined';
         newRescource = { name: "", community: "", description: "", type: "", link: "" }
         self.showPDF = false;
+        self.showYoutube = false;
+        self.showWebpage = false;
+        self.showImage= false;
         self.popupStyle = { "top": "20px", "height": "250px" }
     }
 
