@@ -8,12 +8,13 @@ module.exports = function ($scope, AuthService, $timeout, $state, $localStorage)
 
         AuthService.loginServer({ email: email, password: password}, {
             onSuccess: function(result){
-                $localStorage.user = result.data.data[0].id;
+                console.log(result.data.data[0]);
+                $localStorage.user = result.data.data[0];
                 // Go To dashboard
                 $state.go('dashboard');
             },
             onError: function(err){
-                popupMessage(err.data);
+                popupMessage("Er is iets misgegaan bij het inloggen");
             }
         })
     }

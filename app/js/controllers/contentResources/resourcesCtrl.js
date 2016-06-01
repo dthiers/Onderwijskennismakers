@@ -1,3 +1,4 @@
+
 module.exports = function ($scope, ResourcesService/*, close*/) {
 
     $scope.type = "";

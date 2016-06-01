@@ -6,26 +6,20 @@ module.exports = function (app) {
         })
 
         // This is run when Angular is bootstrapped
-        .run(function ($rootScope, $templateCache, $state, $localStorage) {
+        .run(function ($rootScope, $templateCache, $state, $localStorage, $timeout) {
             // TODO: remove when out of development
             $rootScope.$on('$viewContentLoaded', function () {
                 $templateCache.removeAll();
             });
 
             // On every stateChange
-            $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams) {
+            $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options) {
 
-                //$localStorage.user = "Ryan Tietjes";
-
-                if(($localStorage.user === undefined || $localStorage.user === null)) {
-                    var toLogin = toState === 'login';
-                    if(toLogin) {
-                        return;
+                if(toState.name != 'login'){
+                    if(($localStorage.user === undefined || $localStorage.user === null) ) {
+                         event.preventDefault();
+                        $state.go('login');
                     }
-
-                    event.preventDefault();
-
-                    $state.go('login');
                 }
             })
         })

@@ -1,11 +1,18 @@
 
-module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService, $http, ResourcesService, ModalService, $localStorage, $sce) {
+module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService, $http, ResourcesService, ModalService, $localStorage, $sce, $timeout, user, SearchService) {
+
+    $scope.testUser = user;
+
+    console.log($scope.testUser);
 
     var self = this;
 
     $scope.hidePopup = true;
-    $scope.type = "person";
     $scope.breadcrumbs = new Array();
+
+    var lastUserWebNodes;
+    var lastUserWebEdges;
+    var lastUserContent;
 
     // Initialize the web for the current user
     //getWebForUser(1);
@@ -13,11 +20,13 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     $scope.slideDown = function () {
         $scope.topBarStyle = {top: '100%'};
         $scope.topContentStyle = {top: '0%'};
+        $scope.bottomBarStyle = {bottom: '0%'};
     };
 
-    $scope.slideUp = function () {
+    $scope.slideUp = function ( ) {
         $scope.topBarStyle = {top: '0%'};
         $scope.topContentStyle = {top: '-100%'};
+        $scope.bottomBarStyle = {bottom: '100%'};
     };
 
     //LOAD DIRECTIVES
@@ -29,6 +38,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         if(reloadWeb)
             getWebForUser(id);
         getUserDetails(id);
+        getUserContent(id);
         $scope.type = "person";
     };
     $scope.loadKeyword = function (id, reloadWeb) {
@@ -84,7 +94,77 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     //getKeyword();
     //getSchool();
 
-    getWebForUser(parseInt($localStorage.user));
+    getWebForUser(parseInt($localStorage.user.id));
+
+    // Seach
+    $scope.searchQuery = "";
+    $scope.search = function() {
+        if($scope.searchQuery != "") {
+            SearchService.search($scope.searchQuery, function (data) {
+                $scope.content = data["matched_content"];
+
+                buildSearchWeb(data["matched_keywords"])
+            });
+        } else {
+            // Reset content
+            $scope.content = lastUserContent;
+
+            // Reset scope to user web
+            $scope.data = {
+                "nodes": lastUserWebNodes,
+                "edges": lastUserWebEdges
+            };
+        }
+    };
+
+    function buildSearchWeb(data) {
+        var nodes = new VisDataSet();
+        var edges = new VisDataSet();
+
+        var nodeCounter = 1;
+        var userNodeCounter = 100;
+        var labelText = "";
+        if(data.length == 0) {
+            labelText = "No results";
+        }
+        // Create node for center user
+        nodes.add({
+            id: 0,
+            label: labelText,
+            group: 'persons',
+            shape: 'circularImage',
+            image: 'images/magnifier.png',
+            weight: 1000
+        });
+
+        // Add keywords
+        angular.forEach(data, function (value, key) {
+            nodes.add(createKeywordNode(nodeCounter, value));
+            edges.add({
+                from: 0,
+                to: nodeCounter
+            });
+
+            // Add users to keywords
+            angular.forEach(value.users, function (userValue, userKey) {
+                nodes.add(createUserNode(userNodeCounter, userValue));
+                edges.add({
+                    from: userNodeCounter,
+                    to: nodeCounter
+                });
+
+                userNodeCounter++;
+            });
+
+            nodeCounter++;
+        });
+
+        // Set data on scope
+        $scope.data = {
+            "nodes": nodes,
+            "edges": edges
+        };
+    }
 
     /**
     *   ---------------------------------------------------------------------------------------------------------------
@@ -135,8 +215,19 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         ProfileService.profileService.getUserDetails(id)//call to service
             .then(function (response) {
 
-                $scope.user = response.data.data[0];//set response to scope
+                $scope.user = response.data.data[0];//set response to scope               
 
+            }, function (error) {
+                $scope.status = 'Er is iets misgegaan met het laden van de gebruiker: ';
+                console.log(error.message);
+            });
+    }
+    
+    function getUserContent(id) {//based on route param
+        ProfileService.profileService.getUserContent(id)//call to service
+            .then(function (response) {
+
+                $scope.userContent = response.data.data;//set response to scope
             }, function (error) {
                 $scope.status = 'Er is iets misgegaan met het laden van de gebruiker: ';
                 console.log(error.message);
@@ -207,7 +298,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     // Creates the web for the user with the given id
     function getWebForUser(id) {
 
-
+        console.log('Were in getWebForUser');
         $scope.hidePopup = true;
         $http.get('https://onderwijskennismakers.herokuapp.com/user/' + id + '/web').then(function (response) {
             var nodes = new VisDataSet();
@@ -265,9 +356,11 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
                 "edges": edges
             };
 
-            $scope.content = data.content;
+            lastUserWebNodes = nodes;
+            lastUserWebEdges = edges;
 
-            console.log($scope.content);
+            $scope.content = data.content;
+            lastUserContent = $scope.content;
         }, function (error) {
             alert("Error loading user web");
             console.log(error);
@@ -275,6 +368,8 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
 
         //LOAD DETAIL WINDOW
+
+        //VOOR TESTEN WEGGEHAALD
         $scope.loadUser(id, false);
     }
 
@@ -319,6 +414,9 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
                 "nodes": nodes,
                 "edges": edges
             };
+
+            lastUserWebNodes = nodes;
+            lastUserWebEdges = edges;
         }, function (error) {
             alert("Error loading keyword web");
             console.log(error);
@@ -394,9 +492,9 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
             $(".web_popup").css("top", click.pointer.DOM.y + 50);
             if (click.pointer.DOM.x < xMid) {
-                $(".web_popup").css("left", click.pointer.DOM.x - 160);
+                $(".web_popup").css("left", click.pointer.DOM.x - 140);
             } else {
-                $(".web_popup").css("left", click.pointer.DOM.x + 40);
+                $(".web_popup").css("left", click.pointer.DOM.x + 90);
             }
             $scope.hidePopup = false;
 

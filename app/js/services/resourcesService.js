@@ -1,3 +1,4 @@
+
 module.exports = function ($http) {
     var self = this;
 
@@ -28,6 +29,7 @@ module.exports = function ($http) {
             headers: {
                 Authorization: 'Client-ID b7fc74a624c38ac'
             }, data: img
+
         }
 
         $http(req).then(
@@ -48,17 +50,18 @@ module.exports = function ($http) {
             name: newRescource.name,
             content: "",
             link: newRescource.link,
-            User_id: 3,
+            User_id: newRescource.id,
             Community_id: newRescource.community,
             shortDescription: newRescource.description,
             isFrozen: 0
         }).then(func1, func2);
     }
 
-    self.setResourceDetails = function (name, community, description) {
+    self.setResourceDetails = function (name, community, description, id) {
         newRescource.name = name;
         newRescource.community = community;
         newRescource.description = description;
+        newRescource.id = id;
     }
 
     self.setResourceType = function (type) {

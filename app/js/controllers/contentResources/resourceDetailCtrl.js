@@ -5,7 +5,8 @@
 *
 **/
 
-module.exports = function ($scope, ResourcesService) {
+
+module.exports = function ($scope, $localStorage, ResourcesService, $timeout) {
     console.log('Were in resourceDetailCtrl');
 
     /**
@@ -36,7 +37,9 @@ module.exports = function ($scope, ResourcesService) {
     * @param: name, description, community
     **/
     $scope.saveResource = function () {
-        ResourcesService.setResourceDetails($scope.data.newResourcePreview.name, $scope.data.newResourcePreview.community, $scope.data.newResourcePreview.description);
+
+        ResourcesService.setResourceDetails($scope.data.newResourcePreview.name, $scope.data.newResourcePreview.community, $scope.data.newResourcePreview.description, parseInt($localStorage.user.id));
+
 
         ResourcesService.addResource(
             function () {

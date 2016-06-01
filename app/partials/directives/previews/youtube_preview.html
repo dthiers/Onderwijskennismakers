@@ -2,7 +2,7 @@
 <div class="doc">
     <div class="type"><i class="fa fa-play"></i></div>
     <h3>{{preview.name}}</h3>
-    <p>{{preview.shortDescription}}</p>
+    <p>{{preview.shortDescription | limitTo: 100}}</p>
     <a href="https://www.youtube.com/watch?v={{preview.link}}" target="top">
         <div class="video_thumbnail" style="background-image:url('http://img.youtube.com/vi/{{preview.link}}/maxresdefault.jpg');">
             <div class="bgOverlay">
