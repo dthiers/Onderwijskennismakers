@@ -5,7 +5,7 @@
 *
 **/
 
-module.exports = function($scope, ResourcesService) {
+module.exports = function($scope, $localStorage, ResourcesService) {
     console.log('Were in resourceDetailCtrl');
 
     /**
@@ -36,6 +36,8 @@ module.exports = function($scope, ResourcesService) {
     * @param: name, description, community
     **/
     $scope.saveResource = function(newResource) {
+        // Set user id of current logged in user
+        newResource.setUserId(parseInt($localStorage.user.id));
         console.log(newResource);
         ResourcesService.setResourceDetails(newResource);
 
