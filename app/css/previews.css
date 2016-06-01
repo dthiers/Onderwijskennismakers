@@ -109,9 +109,11 @@
 
 .video_thumbnail .bgOverlay {
     background-image: url('../images/youtube_play.png');
-    width: 40%;
-    height: 40%;
-    background-size: 100% 100%;
+    width: 100%;
+    height: 100%;
+    background-size: 15%;
+    background-repeat: no-repeat;
+    background-position: center;
     position: absolute;
     top: 50%;
     left: 50%;

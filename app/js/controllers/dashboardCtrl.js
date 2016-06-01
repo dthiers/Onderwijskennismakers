@@ -1,9 +1,7 @@
 
-module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService, $http, ResourcesService, ModalService, $localStorage, $sce, $timeout, user, SearchService) {
+module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService, ContentService, ResourcesService, $http, ModalService, $localStorage, $sce, $timeout, user, SearchService) {
 
     $scope.testUser = user;
-
-    console.log($scope.testUser);
 
     var self = this;
 
@@ -44,15 +42,17 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     $scope.loadKeyword = function (id, reloadWeb) {
         if(reloadWeb)
             getWebForKeyword(id);
-
         getKeyword(id);
         $scope.type = "keyword";
+    };
+    $scope.loadContent = function(id){
+        getContent(id);
+        $scope.type = "content";
     };
 
     $scope.openResources = function(){
       ResourcesService.setProperty("addResource");
     }
-
     /**
     *
     * Function to trust source.
@@ -90,9 +90,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         return new Array(round);
     }
 
-    //getUser(1);
-    //getKeyword();
-    //getSchool();
+    //GET WEB FOR CURRENT USER
 
     getWebForUser(parseInt($localStorage.user.id));
 
@@ -293,6 +291,20 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
             });
     }
 
+    function getContent(id) {//based on route param
+        console.log("GET CONTENT WITH ID " + id);
+        ContentService.contentService.getById(id)//call to service
+            .then(function (response) {
+
+                $scope.content = response.data.data[0];//set response to scope
+                getUser($scope.content.User_id);
+
+            }, function (error) {
+                $scope.status = 'Er is iets misgegaan met het laden van de content: ';
+                console.log(error.message);
+            });
+    }
+
     /* Web Creation */
 
     // Creates the web for the user with the given id
@@ -414,7 +426,9 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
                 "nodes": nodes,
                 "edges": edges
             };
-
+            
+            $scope.content = data.content;
+            
             lastUserWebNodes = nodes;
             lastUserWebEdges = edges;
         }, function (error) {
