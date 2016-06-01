@@ -298,6 +298,8 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
                 $scope.content = response.data.data[0];//set response to scope
                 getUser($scope.content.User_id);
+                $scope.slideDown();
+
 
             }, function (error) {
                 $scope.status = 'Er is iets misgegaan met het laden van de content: ';
