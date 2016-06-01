@@ -296,8 +296,8 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         ContentService.contentService.getById(id)//call to service
             .then(function (response) {
 
-                $scope.content = response.data.data[0];//set response to scope
-                getUser($scope.content.User_id);
+                $scope.singleContent = response.data.data[0];//set response to scope
+                getUser($scope.singleContent.User_id);
                 $scope.slideDown();
 
 

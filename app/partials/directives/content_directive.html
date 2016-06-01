@@ -1,6 +1,6 @@
 <div class="divTopBar" ng-style="topBarStyle" ng-click="slideDown()">
     <div class="divTopBarContent">
-        {{content.name}}
+        {{singleContent.name}}
     </div>
     <img src="./images/arrow_down.png" class="imgTopBarArrow" />
 </div>
@@ -11,52 +11,52 @@
     <div class="content_wrapper">
         <div class="content_directive">
         	<div class="header_content">
-        	    <h1 class="title">{{content.name}}</h1>
+        	    <h1 class="title">{{singleContent.name}}</h1>
 
                 <div class="subtitle">
             	    <div class="color_block"></div>
-            	    <span class="head">Aangemaakt op: </span><span>{{content.createdAt}}</span>
+            	    <span class="head">Aangemaakt op: </span><span>{{singleContent.createdAt}}</span>
             	    <span class="head">Aangemaakt door: </span><span>{{user.firstName}} {{user.lastName}}</span>
                 </div>
             </div>	
 
             <div class="custom_content">
                 <!-- CUSTOM CONTENT -->
-                <div ng-if="content.Type == 'internal'">
+                <div ng-if="singleContent.Type == 'internal'">
                 	<p class="content">
-                		{{content.content}}
+                		{{singleContent.content}}
                 	</p>
                 </div>
 
                 <!-- YOUTUBE -->
-                <div ng-if="content.Type == 'youtube'">
+                <div ng-if="singleContent.Type == 'youtube'">
                     <div class="videoContainer">
-                	   <iframe class="youtubeFrame" width="100%" height="400" src="{{trustSrc('http://www.youtube.com/embed/' + content.link)}}"></iframe>
+                	   <iframe class="youtubeFrame" width="100%" height="400" src="{{trustSrc('http://www.youtube.com/embed/' + singleContent.link)}}"></iframe>
                     </div>
                 </div>
 
                 <!-- PDF -->
-                <div ng-if="content.Type == 'pdf'">
+                <div ng-if="singleContent.Type == 'pdf'">
                     <div class="pdf">
-                        <h3>{{ content.name }}</h3>
-                        <p>{{ content.author }}</p>
-                        <p>{{ content.shortDescription }}</p>
+                        <h3>{{ singleContent.name }}</h3>
+                        <p>{{ singleContent.author }}</p>
+                        <p>{{ singleContent.shortDescription }}</p>
                         <div class="pdfcontainer">
-                            <iframe class="pdfFrame" width="100%" height="600px" src="{{trustSrc(content.link)}}"></iframe>
+                            <iframe class="pdfFrame" width="100%" height="600px" src="{{trustSrc(singleContent.link)}}"></iframe>
                         </div>
                     </div>
                 </div>
 
                 <!-- WEBSITE -->
-                <div ng-if="content.Type == 'website'">
+                <div ng-if="singleContent.Type == 'website'">
 
                 	<a href="" target="top"></a>
                     <div class="website">
-                        <h3>{{ content.name }}</h3>
-                        <p>{{ content.shortDescription }}</p>
+                        <h3>{{ singleContent.name }}</h3>
+                        <p>{{ singleContent.shortDescription }}</p>
 
                         <div id="websiteContainer">
-                            <iframe class="websiteFrame" width="100%" ng-src="{{ trustSrc(content.link) }}" onfocus="parent.document.focus();"></iframe>
+                            <iframe class="websiteFrame" width="100%" ng-src="{{ trustSrc(singleContent.link) }}" onfocus="parent.document.focus();"></iframe>
                         </div>
                     </div>
                     
@@ -64,9 +64,9 @@
                 </div>
 
                 <!-- IMAGE -->
-                <div ng-if="content.Type == 'image'">
+                <div ng-if="singleContent.Type == 'image'">
                     <div class="image">
-                        <img src="{{content.link}}"/>
+                        <img src="{{singleContent.link}}"/>
                     </div>
                 	
                 </div>
