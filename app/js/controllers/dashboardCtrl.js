@@ -10,6 +10,10 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     $scope.hidePopup = true;
     $scope.breadcrumbs = new Array();
 
+    var lastUserWebNodes;
+    var lastUserWebEdges;
+    var lastUserContent;
+
     // Initialize the web for the current user
     //getWebForUser(1);
 
@@ -102,10 +106,13 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
                 buildSearchWeb(data["matched_keywords"])
             });
         } else {
+            // Reset content
+            $scope.content = lastUserContent;
+
             // Reset scope to user web
             $scope.data = {
-                "nodes": userWebNodes,
-                "edges": userWebEdges
+                "nodes": lastUserWebNodes,
+                "edges": lastUserWebEdges
             };
         }
     };
@@ -158,8 +165,6 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
             "edges": edges
         };
     }
-
-
 
     /**
     *   ---------------------------------------------------------------------------------------------------------------
@@ -222,9 +227,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         ProfileService.profileService.getUserContent(id)//call to service
             .then(function (response) {
 
-                $scope.userContent = response.data.data;//set response to scope    
-                console.log($scope.userContent);           
-
+                $scope.userContent = response.data.data;//set response to scope
             }, function (error) {
                 $scope.status = 'Er is iets misgegaan met het laden van de gebruiker: ';
                 console.log(error.message);
@@ -353,9 +356,11 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
                 "edges": edges
             };
 
-            $scope.content = data.content;
+            lastUserWebNodes = nodes;
+            lastUserWebEdges = edges;
 
-            console.log($scope.content);
+            $scope.content = data.content;
+            lastUserContent = $scope.content;
         }, function (error) {
             alert("Error loading user web");
             console.log(error);
@@ -409,6 +414,9 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
                 "nodes": nodes,
                 "edges": edges
             };
+
+            lastUserWebNodes = nodes;
+            lastUserWebEdges = edges;
         }, function (error) {
             alert("Error loading keyword web");
             console.log(error);
