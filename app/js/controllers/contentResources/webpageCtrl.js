@@ -19,11 +19,12 @@ module.exports = function ($scope, ResourcesService, $sce) {
     * TODO: check for authentic link to webpage;
     *
     **/
-    $scope.setResourceLink = function (webUrl) {
-        var url = webUrl;
+    $scope.setResourceLink = function () {
+        debugger;
+        var url = $scope.webUrl;
         ResourcesService.popupStyle = { "left": " calc(25% - 250px)", "top": "20px", "height": "500px" };
         ResourcesService.showWebpage = true;
-        ResourcesService.setLink(url);
+        ResourcesService.setLink($sce.trustAsResourceUrl(url));
 
         // TODO: load the detail directive
         $scope.$parent.type = "addDetails";
