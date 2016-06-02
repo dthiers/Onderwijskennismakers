@@ -1,4 +1,4 @@
-module.exports = function ($scope, AuthService, $timeout, $state, $localStorage) {
+module.exports = function ($scope, AuthService, $timeout, $state, $localStorage, ResourcesService) {
 
     $("#divLogin").addClass("show");
 
@@ -57,8 +57,15 @@ module.exports = function ($scope, AuthService, $timeout, $state, $localStorage)
         var firstName = $scope.register.firstName;
         var lastName = $scope.register.lastName;
         var job = $scope.register.job;
-        var image = $scope.register.image;
+        var image = $scope.image;
         var validate = true;
+
+        console.log(image);
+        console.log(firstName);
+        console.log(lastName);
+        console.log(email);
+        console.log(password);
+        console.log(job);
         
         if (password2 != password) {
             popupMessage("De wachtwoorden komen niet overeen");
@@ -81,10 +88,14 @@ module.exports = function ($scope, AuthService, $timeout, $state, $localStorage)
             }, {    
                     onSuccess: function (result) {
                         // Go To dashboard
+                        console.log(result);
+                        console.log(result.config.data);
+                        $localStorage.user = result.config.data;
                         $state.go('dashboard');
                     },
                     onError: function (err) {
-                        popupMessage(err.data);
+                        console.log(err);
+                        popupMessage("Er is iets misgegaan met het registreren");
                     }
                 })
         }
