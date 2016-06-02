@@ -17,7 +17,6 @@ module.exports = function ($scope, TagsService, close, id, type) {
     $scope.addNewTag = function(){
         TagsService.addTag($scope.txtNewTag, {
             onSuccess: function(result){
-                alert("oke");
                 loadTags();
             },
             onError: function(err){
@@ -29,7 +28,6 @@ module.exports = function ($scope, TagsService, close, id, type) {
     $scope.deleteTag = function(id){
         TagsService.deleteTag(id, {
             onSuccess: function(result){
-                alert("oke");
                 loadTags();
             },
             onError: function(err){
