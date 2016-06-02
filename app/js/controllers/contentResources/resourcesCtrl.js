@@ -4,7 +4,7 @@ module.exports = function ($scope, ResourcesService, close) {
 
   console.log("Were in resourcesCtrl");
 
-    $scope.addResource = function(type, link = ""){
+    $scope.addResource = function(type){
       $scope.popupStyle = { "top":"20px", "height":"500px" }
       $scope.wrapperStyle = { "margin-top":"20px" }
       $scope.imgLoadingPreviewHidden = true;

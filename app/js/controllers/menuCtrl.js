@@ -1,4 +1,4 @@
-module.exports = function ($scope, ResourcesService, ModalService, $timeout) {
+module.exports = function ($scope, ResourcesService, ModalService, $timeout, $state) {
     var isLeft = true;
     $scope.moveMenu = function(){
         if(isLeft){
@@ -19,6 +19,10 @@ module.exports = function ($scope, ResourcesService, ModalService, $timeout) {
     // $scope.openResources = function(){
     //   ResourcesService.setProperty("addResource");
     // }
+    
+    $scope.logout = function(){
+        $state.go('logout');
+    }
 
     $scope.openResources = function(){
         ModalService.showModal({

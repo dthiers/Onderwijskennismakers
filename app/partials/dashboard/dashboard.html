@@ -1,6 +1,7 @@
 <div class="dynamic_content" ng-if="type == 'person'" data-content="user" user_directive></div>
 <div class="dynamic_content" ng-if="type == 'school'" data-content="school" school_directive></div>
 <div class="dynamic_content" ng-if="type == 'keyword'" data-content="keyword" keyword_directive></div>
+<div class="dynamic_content" ng-if="type == 'content'" data-content="content" content_directive></div>
 
 <!-- DASHBOARD -->
 <div class="dashboard_container">
@@ -27,8 +28,13 @@
                 <span>School</span>
                 <span>Samenleving</span>
             </div>
-            <input class="search_bar" type="text" placeholder="School en samenleving" autofocus></input>
-            <button class="search_button"></button>
+            <input class="search_bar" type="text"
+              ng-model="searchQuery"
+              ng-model-options="{ debounce: 800 }"
+              ng-change="search(searchQuery)"
+              placeholder="Zoeken naar trefwoorden" autofocus
+            />
+            <button class="search_button" ng-click="search(searchQuery)"></button>
         </div>
     </div>
 
@@ -43,23 +49,13 @@
 
                 <!-- DOCUMENTS -->
                 <div class="documents">
-
                   <span ng-repeat="preview in content">
                     <div ng-if="preview.Type === 'internal'" data-content="preview" text_preview></div>
                     <div ng-if="preview.Type === 'youtube'" data-content="preview" youtube_preview></div>
                     <div ng-if="preview.Type === 'webpage'" data-content="preview" webpage_preview></div>
                     <div ng-if="preview.Type === 'pdf'" data-content="preview" pdf_preview></div>
                     <div ng-if="preview.Type === 'image'" data-content="preview" image_preview></div>
-
                   </span>
-
-                    <!-- <div text_preview></div>
-                    <div image_preview></div>
-                    <div youtube_preview></div>
-                    <div webpage_preview></div>
-                    <div pdf_preview></div> -->
-
-
                 </div>
             </div>
         </div>

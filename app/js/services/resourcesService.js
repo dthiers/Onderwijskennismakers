@@ -1,7 +1,6 @@
-module.exports = function ($http) {
-
+module.exports = function ($http, $localStorage) {
     var type = 'undefined';
-    var newRescource = { name: "", community: "", description: "", type: "", link: "" }
+    var newRescource = {userId: "", name: "", community: "", description: "", type: "", link: "" }
     return {
         getProperty: function () {
             return type;
@@ -39,7 +38,7 @@ module.exports = function ($http) {
                 name: newRescource.name,
                 content: "",
                 link: newRescource.link,
-                User_id: 3,
+                User_id: newRescource.userId,
                 Community_id: newRescource.community,
                 shortDescription: newRescource.description,
                 isFrozen: 0
@@ -61,5 +60,8 @@ module.exports = function ($http) {
                 options.onSuccess, options.onError
             );
         },
+        setUserId: function(id) {
+            newRescource.userId = id;
+        }
     };
 }
