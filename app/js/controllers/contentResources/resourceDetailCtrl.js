@@ -5,7 +5,7 @@
 *
 **/
 
-module.exports = function($scope, ResourcesService) {
+module.exports = function($scope, ResourcesService, ModalService) {
     console.log('Were in resourceDetailCtrl');
 
     /**
@@ -42,6 +42,28 @@ module.exports = function($scope, ResourcesService) {
         ResourcesService.addResource({
             onSuccess:function(result){
                 ResourcesService.setProperty("");
+
+                ResourcesService.getLatestResource({
+                    onSuccess: function(result){
+                        var latestId = result.data.data.pop().id;
+
+                        ModalService.showModal({
+                            templateUrl: "../partials/directives/tags/tags_directive.html",
+                            controller: "TagsCtrl",
+                            inputs: {
+                                id: latestId,
+                                type: "content"
+                              }
+                        }).then(function(modal) {
+                            modal.close.then(function(result) {
+                                console.log(result);
+                            });
+                        });
+                    },
+                    onError: function(err){
+                        console.log(err);
+                    }
+                });
             },
             onError:function(err){
                 console.log(err);
