@@ -5,5 +5,6 @@ module.exports = function (app) {
     app.factory('ContentService', require('../services/contentService'));
     app.factory('AuthService', require('../services/authService'));
     app.factory('ResourcesService', require('../services/resourcesService'));
+    app.factory('TagsService', require('../services/tagsService'));
     app.factory('SearchService', require('../services/searchService'));
 }

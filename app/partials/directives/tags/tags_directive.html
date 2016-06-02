@@ -1,0 +1,14 @@
+<div id="divTagPopup">
+    <img src="./images/close.png" id="imgCloseResourcesPopup" ng-click="closeResources('Cancel')" />
+    <b><h1>Tags voor {{currentObject.keyword}}{{currentObject.name}}</h1></b>
+    <div id="divAddTag">
+        <h2>Nieuwe tag toevoegen</h2>
+        <input type="text" id="txtNewTag" placeholder="tag" ng-model="txtNewTag" /><button ng-hide="!txtNewTag" ng-click="addNewTag()" id="btnAddTag">Toevoegen</button>
+        <div id="divAutoCompletionWrapper">
+
+        </div>
+    </div>
+    <div id="divTags">
+        <div class="divTag" ng-repeat="(key, value) in tags">{{value.name}} <i class="fa fa-times" aria-hidden="true" ng-click="deleteTag(value.id)"></i></div>
+    </div>
+</div>

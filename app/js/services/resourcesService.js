@@ -55,6 +55,11 @@ module.exports = function ($http, $localStorage) {
         setResourceLink: function(link) {
             newRescource.link = link;
         },
+        getLatestResource: function(options){
+            $http.get("http://onderwijskennismakers.herokuapp.com/content").then(
+                options.onSuccess, options.onError
+            );
+        },
         setUserId: function(id) {
             newRescource.userId = id;
         }
