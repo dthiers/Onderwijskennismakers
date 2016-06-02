@@ -1,21 +1,20 @@
-<!-- Doc -->
-<a href="https://www.leraar24.nl/dossier/5987/ict-toepassingen-in-de-les#tab=0" target="top">
-    <div class="doc">
-        <div class="type"><i class="fa fa-globe"></i></div>
-        <h3>{{ preview.name }}</h3>
-        <p>{{ preview.shortDescription }}</p>
 
-        <div class="websitecontainer">
-            <div id="iContainer">
-                <iframe class="frame" ng-src="{{ trustSrc(preview.link) }}" onfocus="parent.document.focus();"></iframe>
-                <div id="protector"></div>
-            </div>
-        </div>
-        <div class="stars" ng-if="preview.rating">
-            <img ng-repeat="i in getTimes(getSteppedRating(preview.rating)) track by $index" src="images/star-filled.png"></img>
-            <img ng-if="steppendRatingIsFull(preview.rating) == false" src="images/star-half-filled.png"></img>
+<div class="doc" ng-click="loadContent(preview.id)">
+    <div class="type"><i class="fa fa-globe"></i></div>
+    <h3>{{ preview.name }}</h3>
+    <p>{{ preview.shortDescription }}</p>
 
-            {{getSteppedRating(preview.rating)}}
+    <div class="websitecontainer">
+        <div id="iContainer">
+            <iframe class="frame" ng-src="{{ trustSrc(preview.link) }}" onfocus="parent.document.focus();"></iframe>
+            <div id="protector"></div>
         </div>
     </div>
-</a>
+    <div class="stars" ng-if="preview.rating">
+        <img ng-repeat="i in getTimes(getSteppedRating(preview.rating)) track by $index" src="images/star-filled.png"></img>
+        <img ng-if="steppendRatingIsFull(preview.rating) == false" src="images/star-half-filled.png"></img>
+
+        {{getSteppedRating(preview.rating)}}
+    </div>
+</div>
+

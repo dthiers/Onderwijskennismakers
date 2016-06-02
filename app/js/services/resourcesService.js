@@ -3,7 +3,7 @@ module.exports = function ($http) {
     var self = this;
 
     var type = 'undefined';
-    var newRescource = { name: "", community: "", description: "", type: "", link: "" }
+    var newRescource = { userId: "", name: "", community: "", description: "", type: "", link: "" }
     self.showPDF = false;
     self.popupStyle = { "top": "20px", "height": "250px" }
 
@@ -29,12 +29,7 @@ module.exports = function ($http) {
             headers: {
                 Authorization: 'Client-ID b7fc74a624c38ac'
             }, data: img
-
         }
-
-        $http(req).then(
-            options.onSuccess, options.onError
-        )
     }
 
     self.getCommunities = function (options) {
@@ -85,13 +80,24 @@ module.exports = function ($http) {
         self.newResourcePreview.description = "Omschrijving";
         self.newResourcePreview.link = "";
         type = 'undefined';
-        newRescource = { name: "", community: "", description: "", type: "", link: "" }
+        newRescource = { userId: "", name: "", community: "", description: "", type: "", link: "" }
         self.showPDF = false;
         self.showYoutube = false;
         self.showWebpage = false;
-        self.showImage= false;
+        self.showImage = false;
         self.popupStyle = { "top": "20px", "height": "250px" }
     }
+    
+    self.getLatestResource= function(options) {
+        $http.get("http://onderwijskennismakers.herokuapp.com/content").then(
+            options.onSuccess, options.onError
+        );
+    }
+    
+    self.setUserId= function(id) {
+        newRescource.userId = id;
+    }
+
 
     self.newResourcePreview = { name: "Naam", description: "Omschrijving" }
 

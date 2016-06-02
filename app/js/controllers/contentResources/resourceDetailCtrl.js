@@ -6,7 +6,7 @@
 **/
 
 
-module.exports = function ($scope, $localStorage, ResourcesService, $timeout) {
+module.exports = function($scope, $localStorage, ResourcesService, ModalService, $timeout) {
     console.log('Were in resourceDetailCtrl');
 
     /**
@@ -48,6 +48,28 @@ module.exports = function ($scope, $localStorage, ResourcesService, $timeout) {
                 // aanroep om service variables te resseten.
                 ResourcesService.resetValues();
                 ResourcesService.setProperty("");
+
+                ResourcesService.getLatestResource({
+                    onSuccess: function(result){
+                        var latestId = result.data.data.pop().id;
+
+                        ModalService.showModal({
+                            templateUrl: "../partials/directives/tags/tags_directive.html",
+                            controller: "TagsCtrl",
+                            inputs: {
+                                id: latestId,
+                                type: "content"
+                              }
+                        }).then(function(modal) {
+                            modal.close.then(function(result) {
+                                console.log(result);
+                            });
+                        });
+                    },
+                    onError: function(err){
+                        console.log(err);
+                    }
+                });
             },
             function () {
                 //todo error afhandelen

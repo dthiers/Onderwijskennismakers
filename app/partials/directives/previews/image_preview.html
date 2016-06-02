@@ -1,5 +1,5 @@
 <!-- Doc -->
-<div class="item" style="background-image:url('{{preview.link}}');">
+<div class="item" style="background-image:url('{{preview.link}}');" ng-click="loadContent(preview.id)">
  <div class="bgOverlay">
 
     </div>
@@ -13,6 +13,9 @@
 
         <div class="subtitle">
             {{ preview.shortDescription }}
+        </div>
+        <div class="subtitle">
+          {{ preview.createdAt | datetime }}
         </div>
     </div>
 

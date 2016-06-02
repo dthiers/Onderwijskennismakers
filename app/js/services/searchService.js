@@ -1,5 +1,5 @@
 module.exports = function ($http) {
-    var urlBase = 'http://127.0.0.1:3000/';
+    var urlBase = 'https://onderwijskennismakers.herokuapp.com/';
 
     return {
         search: function (query, callback) {

@@ -1,9 +1,7 @@
 
-module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService, $http, ResourcesService, ModalService, $localStorage, $sce, $timeout, user, SearchService) {
+module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, SchoolService, ContentService, ResourcesService, $http, ModalService, $localStorage, $sce, $timeout, user, SearchService, $q) {
 
     $scope.testUser = user;
-
-    console.log($scope.testUser);
 
     var self = this;
 
@@ -44,15 +42,17 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     $scope.loadKeyword = function (id, reloadWeb) {
         if(reloadWeb)
             getWebForKeyword(id);
-
         getKeyword(id);
         $scope.type = "keyword";
+    };
+    $scope.loadContent = function(id){
+        getContent(id);
+        $scope.type = "content";
     };
 
     $scope.openResources = function(){
       ResourcesService.setProperty("addResource");
     }
-
     /**
     *
     * Function to trust source.
@@ -90,17 +90,16 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         return new Array(round);
     }
 
-    //getUser(1);
-    //getKeyword();
-    //getSchool();
+    //GET WEB FOR CURRENT USER
+    if($localStorage.user) {
+      getWebForUser(parseInt($localStorage.user.id));
+    }
 
-    getWebForUser(parseInt($localStorage.user.id));
-
-    // Seach
-    $scope.searchQuery = "";
-    $scope.search = function() {
-        if($scope.searchQuery != "") {
-            SearchService.search($scope.searchQuery, function (data) {
+    // Search with a debounce of 800ms
+    $scope.search = function(query) {
+        console.log("I'm doing my business");
+        if(query !== "") {
+            SearchService.search(query, function (data) {
                 $scope.content = data["matched_content"];
 
                 buildSearchWeb(data["matched_keywords"])
@@ -169,17 +168,17 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     /**
     *   ---------------------------------------------------------------------------------------------------------------
     *   POPUP DIE JE KUNT AANROEPEN MET EEN MESSAGE ERIN
-    *   HTML CODE: 
+    *   HTML CODE:
     *
     *   <div class="popup_message">{{message}}</div>
     *   ---------------------------------------------------------------------------------------------------------------
     **/
     function popupMessage(message){
         $scope.message = message;
-        $(".popup_message").addClass("flash_popup"); 
+        $(".popup_message").addClass("flash_popup");
         $timeout(function(){
-            $(".popup_message").removeClass("flash_popup"); 
-        }, 3000);  
+            $(".popup_message").removeClass("flash_popup");
+        }, 3000);
     }
 
     $scope.loadFromBreadcrumbs = function(type, id){
@@ -215,14 +214,14 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         ProfileService.profileService.getUserDetails(id)//call to service
             .then(function (response) {
 
-                $scope.user = response.data.data[0];//set response to scope               
+                $scope.user = response.data.data[0];//set response to scope
 
             }, function (error) {
                 $scope.status = 'Er is iets misgegaan met het laden van de gebruiker: ';
                 console.log(error.message);
             });
     }
-    
+
     function getUserContent(id) {//based on route param
         ProfileService.profileService.getUserContent(id)//call to service
             .then(function (response) {
@@ -293,6 +292,44 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
             });
     }
 
+    function getContent(id) {//based on route param
+        console.log("GET CONTENT WITH ID " + id);
+        ContentService.contentService.getById(id)//call to service
+            .then(function (response) {
+
+                $scope.singleContent = response.data.data[0];//set response to scope
+                getUser($scope.singleContent.User_id);
+                $scope.slideDown();
+
+
+            }, function (error) {
+                $scope.status = 'Er is iets misgegaan met het laden van de content: ';
+                console.log(error.message);
+            });
+    }
+
+    /**
+    *
+    * Check whether an image exists or not and returns the src if true, or a default image when false
+    *
+    * TODO: Deze methode zou gebruikt moeten worden tijdens het creeeren van het web, maar ik krijg het niet ingebouwd.
+    *
+    **/
+    function isImage(src) {
+        var defer = $q.defer();
+
+        var image = new Image();
+        image.onerror = function() {
+            defer.resolve("images/personen/no_image.png");
+        };
+        image.onload = function() {
+            defer.resolve(src);
+        };
+        image.src = src;
+
+        return defer.promise;
+    }
+
     /* Web Creation */
 
     // Creates the web for the user with the given id
@@ -301,6 +338,8 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         console.log('Were in getWebForUser');
         $scope.hidePopup = true;
         $http.get('https://onderwijskennismakers.herokuapp.com/user/' + id + '/web').then(function (response) {
+
+
             var nodes = new VisDataSet();
             var edges = new VisDataSet();
 
@@ -318,16 +357,35 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
             if(add)
                 $scope.breadcrumbs.push({id: data.user.id, name: data.user.name, type: "user"});
 
+            /**
+            *
+            * CENTER USER
+            *
+            **/
             // Create node for center user
-            nodes.add({
-                id: 0,
-                label: data.user.name,
-                group: 'mainPerson',
-                shape: 'circularImage',
-                image: data.user.profileImage,
-                userId: data.user.id
-            });
 
+            // Check if isImage
+            isImage(data.user.profileImage).then(function(src) {
+              console.log(src);
+              nodes.add({
+                  id: 0,
+                  label: data.user.name,
+                  group: 'mainPerson',
+                  shape: 'circularImage',
+                  image: src,
+                  userId: data.user.id
+              });
+            /**
+            *
+            * CENTER USER
+            *
+            **/
+
+            /**
+            *
+            * KEYWORD TO CENTER USER
+            *
+            **/
             // Add keywords
             angular.forEach(data.keywords, function (value, key) {
                 nodes.add(createKeywordNode(nodeCounter, value));
@@ -338,6 +396,24 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
                 // Add users to keywords
                 angular.forEach(value.users, function (userValue, userKey) {
+                  /**
+                  *
+                  * DIT MOET WERKEND GEKREGEN WORDEN ZODAT ER EEN DEFAULT IMAGE GELADEN KAN WORDEN ALS DE
+                  * IMAGE LINK IN DE userValue NIET BESTAAT
+                  *
+                  **/
+                    // isImage(userValue.profileImage).then(function(src) {
+                    //   userValue.profileImage = src;
+                    //
+                    //   nodes.add(createUserNode(userNodeCounter, userValue));
+                    //   edges.add({
+                    //       from: userNodeCounter,
+                    //       to: nodeCounter
+                    //   });
+                    //
+                    //   userNodeCounter++;
+                    // })
+
                     nodes.add(createUserNode(userNodeCounter, userValue));
                     edges.add({
                         from: userNodeCounter,
@@ -350,6 +426,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
                 nodeCounter++;
             });
 
+
             // Set data on scope
             $scope.data = {
                 "nodes": nodes,
@@ -361,16 +438,18 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
             $scope.content = data.content;
             lastUserContent = $scope.content;
+          });
         }, function (error) {
             alert("Error loading user web");
             console.log(error);
-        });
+
 
 
         //LOAD DETAIL WINDOW
 
         //VOOR TESTEN WEGGEHAALD
         $scope.loadUser(id, false);
+      })
     }
 
     // Creates the web for the keyword with the given id
@@ -393,7 +472,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
             if(add)
                 $scope.breadcrumbs.push({id: data.keyword.id, name: data.keyword.keyword, type: "keyword"});
 
-            
+
 
             // Create node for center keyword
             nodes.add(createKeywordNode(0, data.keyword));
@@ -415,6 +494,8 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
                 "edges": edges
             };
 
+            $scope.content = data.content;
+
             lastUserWebNodes = nodes;
             lastUserWebEdges = edges;
         }, function (error) {
@@ -427,15 +508,21 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     }
 
     // Creates a user node
+    /**
+    *
+    * TODO: Should use isImage(data.profileImage) to check whether an image exists. Can't get it to work.
+    *
+    **/
     function createUserNode(id, data) {
-        return {
-            id: id,
-            label: data.name,
-            group: 'persons',
-            shape: 'circularImage',
-            image: data.profileImage,
-            userId: data.id
-        }
+      return {
+          id: id,
+          label: data.name,
+          group: 'persons',
+          shape: 'circularImage',
+          // image: data.profileImage,
+          image: data.profileImage === null ? "images/personen/no_image.png" : data.profileImage, // TODO: dit wil je zo niet doen
+          userId: data.id
+      }
     }
 
     // Creates a keyword node
@@ -448,35 +535,6 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
             keywordId: data.id
         }
     }
-
-
-    //SELECT NODE NEW
-    // $scope.events.selectNode = function (click) {
-    //     $scope.selectClick = true;
-    //     var xMid = window.innerWidth * 0.83 / 2;
-
-    //     var profile = ProfileService.getProfile(click.nodes);
-
-    //     if (profile == null) {
-    //         console.log("Profile not found");
-    //         $("#divInfoPopup").css("display", "none");
-    //         return;
-    //     }
-
-    //     $("#divInfoPopup").css("top", click.pointer.DOM.y - 30);
-
-    //     if (click.pointer.DOM.x < xMid) {
-    //         $("#divInfoPopup").css("left", click.pointer.DOM.x - 160);
-    //     } else {
-    //         $("#divInfoPopup").css("left", click.pointer.DOM.x + 40);
-    //     }
-
-    //     $("#infoName").text(profile.first_name + " " + profile.last_name);
-    //     $("#infoTitle1").text(profile.titles[0]);
-    //     $("#infoTitle2").text(profile.titles[1]);
-
-    //     $("#divInfoPopup").css("display", "block");
-    // };
 
     /* Web events */
     $scope.events = {};

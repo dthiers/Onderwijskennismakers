@@ -26,3 +26,6 @@ require('./config/controller.js')(app);
 
 // Include all Services
 require('./config/service.js')(app);
+
+// Include all filters
+require('./config/filter.js')(app);

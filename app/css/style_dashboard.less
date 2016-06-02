@@ -187,6 +187,7 @@ html,body{
   position: fixed;
   bottom: 100%;
   left: 0px;
+  z-index: 99999;
   width: 100%;
   height: 60px;
   -webkit-transition: bottom 1000ms cubic-bezier(0.695, 0.010, 0.225, 0.985); 
@@ -763,5 +764,108 @@ html,body{
     }
   }
   
+}
+
+.content_directive{
+  .header_content{
+    h1{
+      font-family: Lato-Light;
+      font-size: 34px;
+      color: #73A1EE;
+      margin-bottom: 17px;
+      float: left;  
+    }
+    .subtitle{
+      float: right;
+      span{
+          float: left;
+          color: #B3B3B3;
+          font-size: 16px;
+          margin-bottom: 7px;
+          margin-right: 10px;
+          &.head{
+            clear: both;
+            /* font-weight: bold; */
+            /* font-size: 14px; */
+            margin-right: 10px;
+            width: 137px;
+          } 
+          &.user{
+              cursor: pointer;
+              border-bottom: 1px solid #EFEFEF;
+              padding-bottom: 2px;
+          }
+      }
+    }
+    .short_description{
+        clear: both;
+        float: left;
+        width: 60%;
+        color: #9E9E9E;
+        line-height: 22px;
+        margin-top: 10px;
+    }
+    .description_title{
+      clear: both;
+      float: left;
+      display: flex;
+      align-items: center;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #EFEFEF;
+
+      .color_block{
+        width: 15px;
+        height: 15px;
+        background: @color_main1_light;
+        margin-right: 15px;
+        float: left;
+      }
+      h2{
+        font-size: 20px;
+        color: #A2A2A2;
+      }
+    }
+    
+  }
+  .custom_content{
+    margin-top: 30px;
+    p{
+      font-size: 15px;
+      line-height: 24px;
+      color: #A0A0A0;
+    }
+  }
+
+  .videoContainer{
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+    .youtubeFrame{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .pdf{
+    .pdfcontainer{
+      height: 600px !important;
+    }
+  }
+  .website{
+    .websiteFrame{
+      height: 600px !important;
+    }
+  }
+  .image{
+    width: 100%;
+    img{
+      width: auto;
+      height: auto;
+    }
+  }
 }
 // END DASHBOARD ====================================================================================================
