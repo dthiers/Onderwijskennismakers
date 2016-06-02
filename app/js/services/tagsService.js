@@ -23,6 +23,11 @@ module.exports = function ($http) {
             $http.delete("http://onderwijskennismakers.herokuapp.com/tag", {
                 id: id
             } ).then( options.onSuccess, options.onError );
-        }
+        },
+        linkTag: function(objId, objType, tagId, options){
+            $http.post("http://onderwijskennismakers.herokuapp.com/" + objType + "/" + objId + "/tags", {
+                Tag_id: tagId
+            } ).then( options.onSuccess, options.onError );
+        },
     };
 }

@@ -17,7 +17,22 @@ module.exports = function ($scope, TagsService, close, id, type) {
     $scope.addNewTag = function(){
         TagsService.addTag($scope.txtNewTag, {
             onSuccess: function(result){
-                loadTags();
+                TagsService.getTags({
+                    onSuccess: function(result){
+                        var latestTagId = result.data.data.pop().id;
+                        TagsService.linkTag($scope.currentObjectId, $scope.currentObjectType, latestTagId, {
+                            onSuccess: function(result){
+                                loadTags();
+                            },
+                            onError: function(err){
+                                console.log(err);
+                            }
+                        });
+                    },
+                    onError: function(err){
+                        console.log(err);
+                    }
+                });
             },
             onError: function(err){
                 console.log(err);
