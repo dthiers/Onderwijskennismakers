@@ -86,15 +86,16 @@ module.exports = function ($http) {
         self.showWebpage = false;
         self.showImage = false;
         self.popupStyle = { "top": "20px", "height": "250px" }
+        self.newResourcePreview = { name: "Naam", description: "Omschrijving" }
     }
-    
-    self.getLatestResource= function(options) {
+
+    self.getLatestResource = function (options) {
         $http.get("http://onderwijskennismakers.herokuapp.com/content").then(
             options.onSuccess, options.onError
         );
     }
-    
-    self.setUserId= function(id) {
+
+    self.setUserId = function (id) {
         newRescource.userId = id;
     }
 

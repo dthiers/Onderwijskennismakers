@@ -1,5 +1,5 @@
 
-module.exports = function ($scope, ResourcesService/*, close*/) {
+module.exports = function ($scope, ResourcesService, close) {
 
     $scope.type = "";
     $scope.showPDF = true;
@@ -44,7 +44,8 @@ module.exports = function ($scope, ResourcesService/*, close*/) {
     *
     **/
     $scope.closeResources = function (result) {
-        // close(result, 200);
+        ResourcesService.resetValues();
+        close(result, 200);
     }
 
     /**
