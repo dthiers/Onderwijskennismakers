@@ -9,7 +9,7 @@ module.exports = function (app) {
         $stateProvider
             .state('dashboard', {
                 url: '/dashboard',
-                templateUrl: '../partials/dashboard/dashboard.html',
+                templateUrl: 'partials/dashboard/dashboard.html',
                 controller: 'DashboardCtrl',
                 data: {
                     requireLogin: true
@@ -31,7 +31,7 @@ module.exports = function (app) {
             })
             .state('login', {
                 url: '/login',
-                templateUrl: '../partials/login/full-login.html',
+                templateUrl: 'partials/login/full-login.html',
                 controller: 'LoginCtrl'
                 // data: {
                 //     requireLogin: false
