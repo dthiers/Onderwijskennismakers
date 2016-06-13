@@ -91,9 +91,8 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     }
 
     //GET WEB FOR CURRENT USER
-    if($localStorage.user) {
-      getWebForUser(parseInt($localStorage.user.id));
-    }
+    getWebForUser(parseInt($localStorage.user.id));
+
 
     // Search with a debounce of 800ms
     $scope.search = function(query) {
@@ -443,13 +442,10 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
             alert("Error loading user web");
             console.log(error);
 
-
-
         //LOAD DETAIL WINDOW
-
+      })
         //VOOR TESTEN WEGGEHAALD
         $scope.loadUser(id, false);
-      })
     }
 
     // Creates the web for the keyword with the given id
