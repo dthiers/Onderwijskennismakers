@@ -39,7 +39,6 @@ module.exports = function ($http) {
     }
 
     self.addResource = function (func1, func2) {
-        debugger;
         $http.post("http://onderwijskennismakers.herokuapp.com/content", {
             Type: newRescource.type,
             name: newRescource.name,

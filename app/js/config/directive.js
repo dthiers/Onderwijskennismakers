@@ -165,7 +165,7 @@ module.exports = function (app) {
 		};
 	};
 
-	var webpage_preview = function () {
+	var webpage_preview = function (ResourcesService) {
 		return {
 			restrict: "A",
 			templateUrl: "partials/directives/previews/webpage_preview.html",
@@ -189,7 +189,7 @@ module.exports = function (app) {
 		};
 	};
 	
-		var webpage_preview_create = function () {
+		var webpage_preview_create = function (ResourcesService) {
 		return {
 			restrict: "A",
 			templateUrl: "partials/directives/previews/webpage_preview_create.html",
