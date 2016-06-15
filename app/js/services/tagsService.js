@@ -25,9 +25,7 @@ module.exports = function ($http) {
             }).then(options.onSuccess, options.onError);
         },
         deleteTag: function (id, options) {
-            $http.delete("http://onderwijskennismakers.herokuapp.com/tag", {
-                id: id
-            }).then(options.onSuccess, options.onError);
+            $http.delete("http://onderwijskennismakers.herokuapp.com/tag/"+id).then(options.onSuccess, options.onError);
         },
         linkTag: function (objId, objType, tagId, options) {
             debugger;

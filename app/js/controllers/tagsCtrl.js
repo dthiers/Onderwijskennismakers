@@ -1,4 +1,4 @@
-module.exports = function ($scope, TagsService, close, id, type) {
+module.exports = function ($scope, TagsService, close, id, type, $timeout) {
 
     $scope.currentObjectId = id;
     $scope.currentObjectType = type;
@@ -12,28 +12,30 @@ module.exports = function ($scope, TagsService, close, id, type) {
         }
     })
 
-    loadTags();
+    loadAllTags();
 
     $scope.addNewTag = function () {
         TagsService.addTag($scope.txtNewTag, {
             onSuccess: function (result) {
-                TagsService.getAll({
-                    onSuccess: function (result) {
-                        debugger;
-                        var latestTagId = result.data.data.pop().id;
-                        TagsService.linkTag($scope.currentObjectId, $scope.currentObjectType, latestTagId, {
-                            onSuccess: function (result) {
-                                loadTags();
-                            },
-                            onError: function (err) {
-                                console.log(err);
-                            }
-                        });
-                    },
-                    onError: function (err) {
-                        console.log(err);
-                    }
-                });
+
+                popupMessage("Tag " + $scope.txtNewTag + "Added.");
+                loadAllTags();
+                // TagsService.getAll({
+                //     onSuccess: function (result) {
+                //         var latestTagId = result.data.data.pop().id;
+                //         // TagsService.linkTag($scope.currentObjectId, $scope.currentObjectType, latestTagId, {
+                //         //     onSuccess: function (result) {
+                //         //         loadAllTags();
+                //         //     },
+                //         //     onError: function (err) {
+                //         //         console.log(err);
+                //         //     }
+                //         // });
+                //     },
+                //     onError: function (err) {
+                //         console.log(err);
+                //     }
+                // });
             },
             onError: function (err) {
                 console.log(err);
@@ -44,7 +46,8 @@ module.exports = function ($scope, TagsService, close, id, type) {
     $scope.deleteTag = function (id) {
         TagsService.deleteTag(id, {
             onSuccess: function (result) {
-                loadTags();
+                loadAllTags();
+                popupMessage("Tag deleted.");
             },
             onError: function (err) {
                 console.log(err);
@@ -65,5 +68,27 @@ module.exports = function ($scope, TagsService, close, id, type) {
                 console.log(err);
             }
         })
+    }
+
+    function loadAllTags() {
+        TagsService.getAll({
+            onSuccess: function (result) {
+                $scope.tags = result.data.data;
+                $scope.txtNewTag="";
+                $scope.search="";
+            },
+            onError: function (err) {
+                console.log(err);
+            }
+        })
+    }
+
+    function popupMessage(message) {
+        $scope.message = message;
+        $(".popup_message").addClass("flash_popup");
+        $timeout(function () {
+            $(".popup_message").removeClass("flash_popup");
+        }, 3000);
+
     }
 };
