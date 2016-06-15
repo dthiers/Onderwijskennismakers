@@ -49,6 +49,8 @@ module.exports = function($scope, $localStorage, ResourcesService, ModalService,
                 ResourcesService.resetValues();
                 ResourcesService.setProperty("");
 
+                $scope.closeResources();
+
                 ResourcesService.getLatestResource({
                     onSuccess: function(result){
                         var latestId = result.data.data.pop().id;
