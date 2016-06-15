@@ -1,0 +1,33 @@
+<div class="popup_message">
+    {{message}}
+</div>
+
+<div id="myTags">
+    <b><h1>Tags voor {{currentObjectName}}</h1></b>
+
+    <div id="divAddTag">
+        <input type="text" id="txtNewTag" placeholder="Zoeken in tags" ng-model="searchMy" />
+    </div>
+
+    <div class="hidden_scrollContainer">
+        <div id="divTags">
+            <div class="divTag" ng-repeat="(key, value) in myTags| filter:searchMy">{{value.name}} <i class="fa fa-minus" aria-hidden="true" ng-click="unlinkTag(value.id)"></i></div>
+        </div>
+        <div ng-show="!myTags[0]">Nog geen tags toegevoegd.</div>
+    </div>
+</div>
+
+<div id="divTagAddPopup">
+    <img src="./images/close.png" id="imgCloseResourcesPopup" ng-click="closeResources('Cancel')" />
+    <b><h1>Tags Toevoegen aan Bron</h1></b>
+
+    <div id="divAddTag">
+        <input type="text" id="txtNewTag" placeholder="Zoeken in tags" ng-model="search" />
+    </div>
+
+    <div class="hidden_scrollContainer">
+        <div id="divTags">
+            <div class="divTag" ng-repeat="(key, value) in tags| filter:search">{{value.name}} <i class="fa fa-plus" aria-hidden="true" ng-click="linkTag(value.id)"></i></div>
+        </div>
+    </div>
+</div>

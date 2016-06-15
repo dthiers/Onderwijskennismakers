@@ -1,7 +1,10 @@
-module.exports = function ($scope, TagsService, close, id, type, $timeout) {
+module.exports = function ($scope, TagsService, close, id, type, name, $timeout) {
 
     $scope.currentObjectId = id;
     $scope.currentObjectType = type;
+    $scope.currentObjectName = name;
+    $scope.myTags = [];
+
 
     TagsService.getDetails($scope.currentObjectId, $scope.currentObjectType, {
         onSuccess: function (result) {
@@ -20,27 +23,37 @@ module.exports = function ($scope, TagsService, close, id, type, $timeout) {
 
                 popupMessage("Tag " + $scope.txtNewTag + "Added.");
                 loadAllTags();
-                // TagsService.getAll({
-                //     onSuccess: function (result) {
-                //         var latestTagId = result.data.data.pop().id;
-                //         // TagsService.linkTag($scope.currentObjectId, $scope.currentObjectType, latestTagId, {
-                //         //     onSuccess: function (result) {
-                //         //         loadAllTags();
-                //         //     },
-                //         //     onError: function (err) {
-                //         //         console.log(err);
-                //         //     }
-                //         // });
-                //     },
-                //     onError: function (err) {
-                //         console.log(err);
-                //     }
-                // });
             },
             onError: function (err) {
                 console.log(err);
             }
         });
+    };
+
+    $scope.linkTag = function (id) {
+
+        TagsService.linkTag($scope.currentObjectId, $scope.currentObjectType, id, {
+            onSuccess: function (result) {
+                loadMyTags();
+            },
+            onError: function (err) {
+                console.log(err);
+            }
+        });
+
+    }
+
+    $scope.unlinkTag = function (id) {
+
+        TagsService.unlinkTag($scope.currentObjectId, $scope.currentObjectType, id, {
+            onSuccess: function (result) {
+                loadMyTags();
+            },
+            onError: function (err) {
+                console.log(err);
+            }
+        });
+
     }
 
     $scope.deleteTag = function (id) {
@@ -74,13 +87,35 @@ module.exports = function ($scope, TagsService, close, id, type, $timeout) {
         TagsService.getAll({
             onSuccess: function (result) {
                 $scope.tags = result.data.data;
-                $scope.txtNewTag="";
-                $scope.search="";
+                $scope.txtNewTag = "";
+                $scope.search = "";
             },
             onError: function (err) {
                 console.log(err);
             }
         })
+    }
+
+    function loadMyTags() {
+
+        TagsService.getMyTags($scope.currentObjectId, $scope.currentObjectType, {
+            onSuccess: function (result) {
+                $scope.myTags = result.data.data;
+            },
+            onError: function (err) {
+                console.log(err);
+            }
+        })
+
+        TagsService.getMyList($scope.currentObjectId, $scope.currentObjectType, {
+            onSuccess: function (result) {
+                $scope.tags = result.data.data;
+            },
+            onError: function (err) {
+                console.log(err);
+            }
+        })
+
     }
 
     function popupMessage(message) {

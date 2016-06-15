@@ -6,7 +6,7 @@
 **/
 
 
-module.exports = function($scope, $localStorage, ResourcesService, ModalService, $timeout) {
+module.exports = function ($scope, $localStorage, ResourcesService, ModalService, $timeout) {
     console.log('Were in resourceDetailCtrl');
 
     /**
@@ -43,32 +43,31 @@ module.exports = function($scope, $localStorage, ResourcesService, ModalService,
 
         ResourcesService.addResource(
             function () {
-                popupMessage("Bron succesvol toegevoegd!")
-                //todo: variables resetten en de boel closen!
-                // aanroep om service variables te resseten.
-                ResourcesService.resetValues();
-                ResourcesService.setProperty("");
-
-                $scope.closeResources();
-
                 ResourcesService.getLatestResource({
-                    onSuccess: function(result){
+                    onSuccess: function (result) {
                         var latestId = result.data.data.pop().id;
-
                         ModalService.showModal({
-                            templateUrl: "../partials/directives/tags/tags_directive.html",
+                            templateUrl: "../partials/directives/tags/tags_add_directive.html",
                             controller: "TagsCtrl",
                             inputs: {
                                 id: latestId,
-                                type: "content"
-                              }
-                        }).then(function(modal) {
-                            modal.close.then(function(result) {
+                                type: "content",
+                                name: $scope.data.newResourcePreview.name
+                            }
+                        }).then(function (modal) {
+                            modal.close.then(function (result) {
                                 console.log(result);
                             });
                         });
+                        popupMessage("Bron succesvol toegevoegd!")
+                        //todo: variables resetten en de boel closen!
+                        // aanroep om service variables te resseten.
+                        ResourcesService.resetValues();
+                        ResourcesService.setProperty("");
+
+                        $scope.closeResources();
                     },
-                    onError: function(err){
+                    onError: function (err) {
                         console.log(err);
                     }
                 });

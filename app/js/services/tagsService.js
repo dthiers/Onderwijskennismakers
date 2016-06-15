@@ -25,13 +25,21 @@ module.exports = function ($http) {
             }).then(options.onSuccess, options.onError);
         },
         deleteTag: function (id, options) {
-            $http.delete("http://onderwijskennismakers.herokuapp.com/tag/"+id).then(options.onSuccess, options.onError);
+            $http.delete("http://onderwijskennismakers.herokuapp.com/tag/" + id).then(options.onSuccess, options.onError);
         },
         linkTag: function (objId, objType, tagId, options) {
-            debugger;
             $http.post("http://onderwijskennismakers.herokuapp.com/" + objType + "/" + objId + "/tags", {
                 "Tag_id": tagId
             }).then(options.onSuccess, options.onError);
+        },
+        unlinkTag: function (objId, objType, tagId, options) {
+            $http.delete("http://onderwijskennismakers.herokuapp.com/" + objType + "/" + objId + "/tags/" + tagId).then(options.onSuccess, options.onError);
+        },
+        getMyTags: function (objId, objType, options) {
+            $http.get("http://onderwijskennismakers.herokuapp.com/" + objType + "/" + objId + "/tags/?linked=true").then(options.onSuccess, options.onError);
+        },
+        getMyList: function (objId, objType, options) {
+            $http.get("http://onderwijskennismakers.herokuapp.com/" + objType + "/" + objId + "/tags/?linked=false").then(options.onSuccess, options.onError);
         },
     };
 }
