@@ -1,4 +1,4 @@
-.exports = function (app) {
+module.exports = function (app) {
 
 	var user_directive = function () {
 		return {
