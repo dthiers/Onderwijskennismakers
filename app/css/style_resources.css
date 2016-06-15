@@ -3,14 +3,23 @@
   width: 500px;
   height: 250px;
   background: #FFFFFF;
-  box-shadow: 0px 0px 20px #dcdcdc;
+  box-shadow: 5px 5px 15px 0px #9c9c9c;
   z-index: 9999999;
   top: 100px;
   left: calc(50% - 250px);
-  padding: 20px;
+  padding: 30px;
   box-sizing: border-box;
   -webkit-transition: all 0.8s;
   transition: all 0.8s;
+  border-radius: 5px;
+}
+.divResourcesPopup b {
+  color: #bfbfbf;
+  width: 100%;
+  text-align: center;
+  display: block;
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 #imgResourceWrapper {
   position: relative;
@@ -21,9 +30,10 @@
   transition: all 0.8s;
 }
 .imgResource {
-  width: 95px;
+  width: 90px;
   background: #B1B5BD;
   padding: 20px;
+  border-radius: 5px;
   box-sizing: border-box;
   float: left;
   margin: 10px;
@@ -32,28 +42,36 @@
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
 }
+#imgResourceYoutube {
+  background: #ec4c44;
+}
 #imgResourceYoutube:hover {
   background: #E62117;
-  margin-top: 5px;
+}
+#imgResourceImage {
+  background: #f9e45a;
 }
 #imgResourceImage:hover {
-  background: #FCDF19;
-  margin-top: 5px;
+  background: #f7dc29;
+}
+#imgResourcePdf {
+  background: #87adeb;
 }
 #imgResourcePdf:hover {
   background: #5B8FE4;
-  margin-top: 5px;
+}
+#imgResourceWebsite {
+  background: #b0e231;
 }
 #imgResourceWebsite:hover {
   background: #95C41C;
-  margin-top: 5px;
 }
 .divResourcesPopup .dynamic_content {
   width: 100%;
   margin-top: 10px;
   text-align: left;
   float: left;
-  border-top: 2px solid #B1B5BD;
+  border-top: 1px solid #efefef;
   padding-top: 20px;
   box-sizing: border-box;
 }
@@ -170,7 +188,7 @@
 }
 #imgCloseResourcesPopup {
   position: absolute;
-  width: 40px;
+  width: 20px;
   cursor: pointer;
   top: 20px;
   right: 20px;

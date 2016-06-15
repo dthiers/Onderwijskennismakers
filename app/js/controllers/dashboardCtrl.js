@@ -443,6 +443,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
             lastUserWebEdges = edges;
 
             $scope.content = data.content;
+            console.log($scope.content);
             lastUserContent = $scope.content;
           });
         }, function (error) {
