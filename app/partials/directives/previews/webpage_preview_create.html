@@ -1,0 +1,21 @@
+<!-- Doc -->
+<a href="{{data.newResourcePreview.link}}" target="top">
+    <div class="doc">
+        <div class="type"><i class="fa fa-globe"></i></div>
+        <h3>{{data.newResourcePreview.name}}</h3>
+        <p>{{data.newResourcePreview.description}}</p>
+
+        <div class="websitecontainer">
+            <div id="iContainer">
+                <iframe class="frame" ng-src="{{ trustSrc(data.newResourcePreview.link) }}" onfocus="parent.document.focus();"></iframe>
+                <div id="protector"></div>
+            </div>
+        </div>
+        <div class="stars" ng-if="preview.rating">
+            <img ng-repeat="i in getTimes(getSteppedRating(preview.rating)) track by $index" src="images/star-filled.png"></img>
+            <img ng-if="steppendRatingIsFull(preview.rating) == false" src="images/star-half-filled.png"></img>
+
+            {{getSteppedRating(preview.rating)}}
+        </div>
+    </div>
+</a>
