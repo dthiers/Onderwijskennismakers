@@ -14,7 +14,7 @@ module.exports = function ($scope, AuthService, $timeout, $state, $localStorage,
                 $state.go('dashboard');
             },
             onError: function(err){
-                popupMessage("Er is iets misgegaan bij het inloggen");
+                popupMessage(err.statusText);
             }
         })
     }

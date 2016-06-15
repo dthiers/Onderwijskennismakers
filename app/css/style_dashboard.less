@@ -131,6 +131,7 @@ html,body{
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   font-size: 20px;
+  box-shadow: 0px 3px 10px 0px #eaeaea;
 }
 
 .imgTopBarArrow{
@@ -789,12 +790,35 @@ html,body{
             /* font-size: 14px; */
             margin-right: 10px;
             width: 137px;
+
           } 
           &.user{
               cursor: pointer;
               border-bottom: 1px solid #EFEFEF;
               padding-bottom: 2px;
           }
+          &:first-child{
+              margin-bottom: 30px;
+          }
+      }
+
+      .profile_image{
+          cursor: pointer;
+          overflow: hidden;
+          float: left;
+          margin-right: 10px;
+          border-radius: 100px;
+          width: 60px;
+          height: 60px;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-color: gray;
+          -webkit-transition: all 0.2s ease;
+          -moz-transition: all 0.2s ease;
+          -o-transition: all 0.2s ease;
+          transition: all 0.2s ease;
+          margin-top: -21px;
       }
     }
     .short_description{
