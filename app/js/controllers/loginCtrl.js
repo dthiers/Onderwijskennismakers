@@ -8,7 +8,7 @@ module.exports = function ($scope, AuthService, $timeout, $state, $localStorage,
 
         AuthService.loginServer({ email: email, password: password}, {
             onSuccess: function(result){
-                console.log(result.data.data[0]);
+                console.log(result.data);
                 $localStorage.user = result.data.data[0];
                 // Go To dashboard
                 $state.go('dashboard');

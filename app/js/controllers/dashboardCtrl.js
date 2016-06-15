@@ -51,7 +51,14 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     };
 
     $scope.openResources = function(){
-      ResourcesService.setProperty("addResource");
+        ModalService.showModal({
+            templateUrl: "../partials/directives/resource_overview_directive.html",
+            controller: "ResourcesCtrl"
+        }).then(function(modal) {
+            modal.close.then(function(result) {
+                console.log(result);
+            });
+        });
     }
     /**
     *
@@ -131,7 +138,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
             label: labelText,
             group: 'persons',
             shape: 'circularImage',
-            image: 'images/magnifier.png',
+            image: 'images/magnifier_search.png',
             weight: 1000
         });
 

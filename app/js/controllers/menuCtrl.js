@@ -29,9 +29,6 @@ module.exports = function ($scope, ResourcesService, ModalService, $timeout, $st
             templateUrl: "../partials/directives/resource_overview_directive.html",
             controller: "ResourcesCtrl"
         }).then(function(modal) {
-            //   modal.close.then(function(result) {
-            //     $scope.message = result ? "You said Yes" : "You said No";
-            //   });
             modal.close.then(function(result) {
                 console.log(result);
             });
