@@ -75,7 +75,6 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     * Function to convert score to 0.5 steps.
     *
     **/
-
     $scope.getSteppedRating = function(rating){
       var stepped;
 

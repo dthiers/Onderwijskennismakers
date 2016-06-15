@@ -686,11 +686,16 @@ html,body{
         .search_button{
             height: ~'calc(100% - 30px)';
             width: 50px;
-            background-color: #B1B5BD;
+            cursor: pointer;
+            background-color: #5b8fe4;
             background-image: url('../images/magnifier.png');
             background-size: 50%;
             background-position: center;
             background-repeat: no-repeat;
+
+            &:hover{
+              background-color: lighten(#5b8fe4, 10%);
+            }
         }
     }
   }
@@ -717,6 +722,7 @@ html,body{
               float: left;
               line-height: 40px;
               padding-left: 20px;
+              color: #c7c7c7;
               font-size: 14px;
               margin-right: 5px;
               box-sizing: border-box;
@@ -730,6 +736,10 @@ html,body{
             cursor: pointer;
             height: 40px;
 
+            &:hover{
+              background-color: lighten(@color_main1, 10%);
+            }
+
               i{
                 margin-left: 5px;
                 display: inline-block;
@@ -742,7 +752,7 @@ html,body{
               width: 100%;
               float: left;
               background-color: #fff;
-              padding: 4%;
+              padding: 20px;
               box-sizing: border-box;
               margin-bottom: 4px;
 
@@ -759,6 +769,21 @@ html,body{
                 img{
                   width: 20px;
                 }
+              }
+
+              .profile_image{
+                cursor: pointer;
+                overflow: hidden;
+                float: right;
+                //margin-right: 10px;
+                border-radius: 100px;
+                width: 50px;
+                height: 50px;
+                margin-bottom: 10px;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-color: gray;
               }
           }
       }
