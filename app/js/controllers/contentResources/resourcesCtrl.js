@@ -1,61 +1,67 @@
+
 module.exports = function ($scope, ResourcesService, close) {
 
-  $scope.type = "";
+    $scope.type = "";
+    $scope.showPDF = true;
+    $scope.resourcesService = ResourcesService;
+    console.log("Were in resourcesCtrl");
 
-  console.log("Were in resourcesCtrl");
+    $scope.addResource = function (type, link = "") {
+        $scope.wrapperStyle = { "margin-top": "20px" }
+        $scope.imgLoadingPreviewHidden = true;
 
-    $scope.addResource = function(type){
-      $scope.popupStyle = { "top":"20px", "height":"500px" }
-      $scope.wrapperStyle = { "margin-top":"20px" }
-      $scope.imgLoadingPreviewHidden = true;
+        switch (type) {
+            case "youtube":
+                $scope.type = "addYoutube";
+                ResourcesService.setResourceType("youtube");
+                ResourcesService.popupStyle = { "top": "20px", "height": "500px" }
+                break;
+            case "image":
+                $scope.type = "addImage";
+                ResourcesService.setResourceType("image");
+                ResourcesService.popupStyle = { "top": "20px", "height": "500px" }
+                break;
+            case "webpage":
+                $scope.type = "addWebpage";
+                ResourcesService.setResourceType("webpage");
+                ResourcesService.popupStyle = { "top": "20px", "height": "350px" }
+                break;
+            case "pdf":
+                $scope.type = "addPdf";
+                ResourcesService.setResourceType("pdf");
+                ResourcesService.popupStyle = { "top": "20px", "height": "350px" }
+                break;
+            case "details":
+                ResourcesService.setResourceLink(link);
 
-      switch(type) {
-          case "youtube":
-              $scope.type = "addYoutube";
-              ResourcesService.setResourceType("youtube");
-              break;
-          case "image":
-              $scope.type = "addImage";
-              ResourcesService.setResourceType("image");
-              break;
-          case "webpage":
-              $scope.type = "addWebpage";
-              ResourcesService.setResourceType("webpage");
-              break;
-          case "pdf":
-              $scope.type = "addPdf";
-              ResourcesService.setResourceType("pdf");
-              break;
-          case "details":
-              ResourcesService.setResourceLink(link);
+                break;
+        }
+    }
 
-              break;
-          }
-      }
+    /**
+    *
+    * Modal service
+    *
+    **/
+    $scope.closeResources = function (result) {
+        ResourcesService.resetValues();
+        close(result, 200);
+    }
 
-      /**
-      *
-      * Modal service
-      *
-      **/
-      $scope.closeResources = function(result){
-          close(result, 200);
-      }
+    /**
+    *
+    * Modal service
+    *
+    **/
 
-      /**
-      *
-      * Modal service
-      *
-      **/
+    $scope.savePdf = function () {
+        debugger;
+        $scope.showPdf = true;
+    };
 
-      $scope.savePdf = function(){
-          var url = $scope.inputPDF;
-          alert(url);
-      };
-
-      $scope.$watch(function () { return ResourcesService.getProperty() }, function (newVal, oldVal) {
-          $scope.type = ResourcesService.getProperty();
-      });
+    $scope.$watch(function () { return ResourcesService.getProperty() }, function (newVal, oldVal) {
+        $scope.type = ResourcesService.getProperty();
+    });
 
 
 }

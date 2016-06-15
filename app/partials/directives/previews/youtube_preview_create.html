@@ -1,0 +1,21 @@
+<!-- Doc -->
+<div class="doc">
+    <div class="type"><i class="fa fa-play"></i></div>
+    <h3>{{data.newResourcePreview.name}}</h3>
+    <p>{{data.newResourcePreview.description | limitTo: 100}}</p>
+    <a href="https://www.youtube.com/watch?v={{preview.link}}" target="top">
+        <div class="video_thumbnail" style="background-image:url('http://img.youtube.com/vi/{{data.newResourcePreview.link}}/maxresdefault.jpg');">
+            <div class="bgOverlay">
+              <!-- Youtube Icon -->
+            </div>
+        </div>
+    </a>
+    <!-- TODO: beoordelingen dynamisch inladen -->
+
+    <div class="stars" ng-if="preview.rating">
+        <img ng-repeat="i in getTimes(getSteppedRating(preview.rating)) track by $index" src="images/star-filled.png"></img>
+        <img ng-if="steppendRatingIsFull(preview.rating) == false" src="images/star-half-filled.png"></img>
+
+        {{getSteppedRating(preview.rating)}}
+    </div>
+</div>
