@@ -15,7 +15,7 @@
 
                 <div class="subtitle">
             	    <span class="head">Aangemaakt op: </span><span>{{singleContent.createdAt}}</span>
-            	    <span class="head">Aangemaakt door: </span><span class="user" ng-click="loadUser(user.id, true)">{{user.firstName}} {{user.lastName}}</span>
+            	    <span class="head">Aangemaakt door: </span><div class="profile_image" ng-click="loadUser(user.id, true)" style="background-image: url('{{user.profileImage}}');"></div><!--<span class="user" ng-click="loadUser(user.id, true)">{{user.firstName}} {{user.lastName}}</span>-->
                     <div style="clear: both"></div>
                 </div>
                 <div class="description_title">
