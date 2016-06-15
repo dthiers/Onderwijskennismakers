@@ -28,7 +28,10 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     };
 
     //LOAD DIRECTIVES
-    $scope.loadSchool = function (id) {
+    $scope.loadSchool = function (id, reloadWeb) {
+        if(reloadWeb) {
+            getWebForSchool(id);
+        }
         getSchool(id);
         $scope.type = "school";
     };
@@ -223,6 +226,8 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         console.log($scope.breadcrumbs);
         if (type == "keyword") {
             $scope.loadKeyword(id, true);
+        } else if(type == "school") {
+            $scope.loadSchool(id, true);
         }
         else {
             $scope.loadUser(id, true);
@@ -450,7 +455,6 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
             //LOAD DETAIL WINDOW
         });
-        //VOOR TESTEN WEGGEHAALD
         $scope.loadUser(id, false);
     }
 
@@ -507,6 +511,67 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         $scope.loadKeyword(id, false);
     }
 
+    // Creates the web for the keyword with the given id
+    function getWebForSchool(id) {
+        $scope.hidePopup = true;
+        $http.get('https://onderwijskennismakers.herokuapp.com/school/' + id + '/web').then(function (response) {
+            var nodes = new VisDataSet();
+            var edges = new VisDataSet();
+
+            var nodeCounter = 1;
+            var data = response.data.data;
+
+            console.log(data);
+            var add = true;
+            for (var i = 0; i < $scope.breadcrumbs.length; i++) {
+                if ($scope.breadcrumbs[i].id == data.school.id) {
+                    $scope.breadcrumbs.splice(i + 1, $scope.breadcrumbs.length - i);
+                    add = false;
+                }
+            }
+            if (add)
+                $scope.breadcrumbs.push({id: data.school.id, name: data.school.name, type: "school"});
+
+            // Create node for center keyword
+            nodes.add({
+                id: 0,
+                label: data.school.name,
+                group: 'mainPerson',
+                shape: 'circularImage',
+                image: data.school.logo,
+                userId: data.school.id
+            });
+
+            // Add users for keyword
+            angular.forEach(data.users, function (value, key) {
+                nodes.add(createUserNode(nodeCounter, value));
+                edges.add({
+                    from: 0,
+                    to: nodeCounter
+                });
+
+                nodeCounter++;
+            });
+
+            // Set data on scope
+            $scope.data = {
+                "nodes": nodes,
+                "edges": edges
+            };
+
+            // $scope.content = data.content;
+
+            lastUserWebNodes = nodes;
+            lastUserWebEdges = edges;
+        }, function (error) {
+            alert("Error loading keyword web");
+            console.log(error);
+        });
+
+        //LOAD DETAIL WINDOW
+        $scope.loadSchool(id, false);
+    }
+
     // Creates an user node
     function createUserNode(id, data) {
         return {
@@ -514,7 +579,6 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
             label: data.name,
             group: 'persons',
             shape: 'circularImage',
-            // image: data.profileImage,
             image: data.profileImage,
             userId: data.id
         }
@@ -522,13 +586,11 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
     // Creates a school node
     function createSchoolNode(id, data) {
-        alert(data.id);
         return {
             id: id,
             label: data.name,
             group: 'schools',
             shape: 'circularImage',
-            // image: data.profileImage,
             image: data.logo,
             schoolId: data.id
         }
@@ -569,7 +631,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
             getWebForKeyword(node.keywordId)
         } else if (node.group == 'schools') {
             $scope.hidePopup = true;
-            $scope.loadSchool(node.schoolId);
+            getWebForSchool(node.schoolId);
         }
     };
 
