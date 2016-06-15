@@ -706,6 +706,7 @@ body {
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 15px;
+  color: #b3b3b3;
 }
 .dashboard_container .side_content_scrollWrapper .side_content .documents_container .doc p {
   font-size: 13px;

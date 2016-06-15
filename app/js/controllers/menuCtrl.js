@@ -41,7 +41,8 @@ module.exports = function ($scope, ResourcesService, ModalService, $timeout, $st
             controller: "TagsCtrl",
             inputs: {
                 id: "1",
-                type: "keyword"
+                type: "keyword",
+                name:""
               }
         }).then(function(modal) {
             modal.close.then(function(result) {

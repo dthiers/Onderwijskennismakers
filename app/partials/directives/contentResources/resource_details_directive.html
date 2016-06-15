@@ -1,14 +1,15 @@
 <div>
+    <div class="popup_message">{{infomessage}}</div>
     <form name="resourceDetailForm">
       <b>Maak uw bron compleet</b>
-      <input type="text" placeholder="Naam" id="txtName" ng-model="newResource.name" required/>
+      <input type="text" placeholder="Naam" id="txtName" ng-model="data.newResourcePreview.name" required/>
       <div data-ng-hide="!communities">
-        <select id="selectComunity" ng-model="newResource.community" required>
+        <select id="selectComunity" ng-model="data.newResourcePreview.community" required>
           <option value="{{c.id}}" ng-repeat="c in communities">{{c.name}}</option>
         </select>
       </div>
-      <textarea maxlength="512" placeholder="Omschrijving" id="txtDescription" ng-model="newResource.description" required></textarea>
+      <textarea maxlength="512" placeholder="Omschrijving" id="txtDescription" ng-model="data.newResourcePreview.description" required></textarea>
       <p id="pMessage">{{message}}</p>
-      <button ng-disabled="resourceDetailForm.$invalid"  ng-class=" resourceDetailForm.$invalid ? '' : ''" id="btnSave" ng-click="saveResource(newResource)">Opslaan</button>
+      <button ng-disabled="resourceDetailForm.$invalid"  ng-class=" resourceDetailForm.$invalid ? '' : ''" id="btnSave" ng-click="saveResource()">Opslaan</button>
   </form>
 </div>

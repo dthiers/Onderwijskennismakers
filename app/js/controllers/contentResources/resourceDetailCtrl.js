@@ -5,7 +5,8 @@
 *
 **/
 
-module.exports = function($scope, $localStorage, ResourcesService, ModalService) {
+
+module.exports = function ($scope, $localStorage, ResourcesService, ModalService, $timeout) {
     console.log('Were in resourceDetailCtrl');
 
     /**
@@ -21,10 +22,10 @@ module.exports = function($scope, $localStorage, ResourcesService, ModalService)
     * Load available communities on $scope
     **/
     ResourcesService.getCommunities({
-        onSuccess:function(result){
+        onSuccess: function (result) {
             $scope.communities = result.data.data;
         },
-        onError:function(err){
+        onError: function (err) {
             console.log(err);
         }
     });
@@ -35,41 +36,56 @@ module.exports = function($scope, $localStorage, ResourcesService, ModalService)
     *
     * @param: name, description, community
     **/
-    $scope.saveResource = function(newResource) {
-        // Set user id of current logged in user
-        newResource.setUserId(parseInt($localStorage.user.id));
-        console.log(newResource);
-        ResourcesService.setResourceDetails(newResource);
+    $scope.saveResource = function () {
 
-        ResourcesService.addResource({
-            onSuccess:function(result){
-                ResourcesService.setProperty("");
+        ResourcesService.setResourceDetails($scope.data.newResourcePreview.name, $scope.data.newResourcePreview.community, $scope.data.newResourcePreview.description, parseInt($localStorage.user.id));
 
+
+        ResourcesService.addResource(
+            function () {
                 ResourcesService.getLatestResource({
-                    onSuccess: function(result){
+                    onSuccess: function (result) {
                         var latestId = result.data.data.pop().id;
-
                         ModalService.showModal({
-                            templateUrl: "../partials/directives/tags/tags_directive.html",
+                            templateUrl: "../partials/directives/tags/tags_add_directive.html",
                             controller: "TagsCtrl",
                             inputs: {
                                 id: latestId,
-                                type: "content"
-                              }
-                        }).then(function(modal) {
-                            modal.close.then(function(result) {
+                                type: "content",
+                                name: $scope.data.newResourcePreview.name
+                            }
+                        }).then(function (modal) {
+                            modal.close.then(function (result) {
                                 console.log(result);
                             });
                         });
+                        popupMessage("Bron succesvol toegevoegd!")
+                        //todo: variables resetten en de boel closen!
+                        // aanroep om service variables te resseten.
+                        ResourcesService.resetValues();
+                        ResourcesService.setProperty("");
+
+                        $scope.closeResources();
                     },
-                    onError: function(err){
+                    onError: function (err) {
                         console.log(err);
                     }
                 });
             },
-            onError:function(err){
+            function () {
+                //todo error afhandelen
+                popupMessage("Bron toevoegen is gefaald!")
                 console.log(err);
             }
-        });
+        );
+    }
+
+    function popupMessage(message) {
+        $scope.infomessage = message;
+        $(".popup_message").addClass("flash_popup");
+        $timeout(function () {
+            $(".popup_message").removeClass("flash_popup");
+        }, 3000);
+
     }
 }
