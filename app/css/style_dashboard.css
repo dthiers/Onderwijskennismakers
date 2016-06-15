@@ -231,7 +231,7 @@ body {
 }
 #person_container {
   float: left;
-  width: calc(100% - 260px);
+  width: calc(100% - 360px);
   height: auto;
 }
 #person_container .profileInfo_container {
@@ -352,7 +352,7 @@ body {
 #profile_docs_container {
   position: relative;
   right: 0px;
-  width: 260px;
+  width: 360px;
   height: auto;
   text-align: right;
   max-height: 90%;
@@ -493,7 +493,7 @@ body {
 #profile_docs_container {
   position: relative;
   right: 0px;
-  width: 260px;
+  width: 360px;
   height: auto;
   text-align: right;
   max-height: 90%;
@@ -601,7 +601,6 @@ body {
   width: 100%;
   height: 80px;
   margin-bottom: 15px;
-  padding-bottom: 30px;
   border-bottom: 1px solid #E8E8E8;
 }
 .dashboard_container .search_side_content .search_container .tag_container {
@@ -677,6 +676,7 @@ body {
   background-color: #5b8fe4;
   font-size: 14px;
   color: #fff;
+  cursor: pointer;
   height: 40px;
 }
 .dashboard_container .side_content_scrollWrapper .side_content .documents_container .btn_addDocument i {
@@ -733,6 +733,27 @@ body {
   cursor: pointer;
   border-bottom: 1px solid #EFEFEF;
   padding-bottom: 2px;
+}
+.content_directive .header_content .subtitle span:first-child {
+  margin-bottom: 30px;
+}
+.content_directive .header_content .subtitle .profile_image {
+  cursor: pointer;
+  overflow: hidden;
+  float: left;
+  margin-right: 10px;
+  border-radius: 100px;
+  width: 60px;
+  height: 60px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: gray;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  margin-top: -21px;
 }
 .content_directive .header_content .short_description {
   clear: both;

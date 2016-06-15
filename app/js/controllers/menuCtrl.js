@@ -1,4 +1,4 @@
-module.exports = function ($scope, ResourcesService, ModalService, $timeout, $state) {
+module.exports = function ($scope, ResourcesService, ModalService, $timeout, $state, CommunityService, $localStorage) {
     var isLeft = true;
     $scope.moveMenu = function(){
         if(isLeft){
@@ -29,9 +29,6 @@ module.exports = function ($scope, ResourcesService, ModalService, $timeout, $st
             templateUrl: "../partials/directives/resource_overview_directive.html",
             controller: "ResourcesCtrl"
         }).then(function(modal) {
-            //   modal.close.then(function(result) {
-            //     $scope.message = result ? "You said Yes" : "You said No";
-            //   });
             modal.close.then(function(result) {
                 console.log(result);
             });
@@ -53,4 +50,26 @@ module.exports = function ($scope, ResourcesService, ModalService, $timeout, $st
             });
         });
     }
+    
+    $scope.getModeratorId = function(id){
+        CommunityService.communityService.getModerator(id)//call to service
+            .then(function (response) {
+                
+                if(response.data.data[0].User_id == parseInt($localStorage.user.id)){
+                    console.log("true");
+                    $scope.isModerator = true;
+                }
+                else{
+                    console.log("false");
+                    $scope.isModerator = false;
+                }
+                
+
+            }, function (error) {
+                $scope.status = 'Er is iets misgegaan met het laden van de content: ';
+                console.log(error);
+            });
+    }
+    
+    $scope.getModeratorId(1);
 };
