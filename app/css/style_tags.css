@@ -3,12 +3,17 @@
   height: 400px;
   background: #FFFFFF;
   position: absolute;
-  left: calc(50% - 300px);
-  box-shadow: 0px 0px 50px #dcdcdc;
+  left: calc(50% - 250px);
+  box-shadow: 5px 5px 15px 0px #9c9c9c;
   z-index: 9999999999999;
   top: 10%;
-  padding: 20px;
+  padding: 30px;
   box-sizing: border-box;
+}
+#divTagPopup h1 {
+  font-size: 20px;
+  color: #a2a2a2;
+  margin-bottom: 10px;
 }
 #divTagPopup #divAddTag {
   width: 100%;
@@ -46,12 +51,15 @@
   color: #ffffff;
   height: 35px;
   cursor: pointer;
+  border-radius: 5px;
+  margin-left: 5px;
+  padding: 10px;
 }
 #divTagPopup .hidden_scrollContainer {
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 230px;
+  height: 210px;
 }
 #divTagPopup .hidden_scrollContainer #divTags {
   width: 105%;
@@ -59,14 +67,14 @@
   margin-top: 10px;
   box-sizing: border-box;
   overflow-y: auto;
-  height: 230px;
+  height: 210px;
   display: block;
   padding-right: 10px;
 }
 #divTagPopup .hidden_scrollContainer #divTags .divTag {
   height: 15px;
-  margin-right: 10px;
-  margin-bottom: 10px;
+  margin-right: 4px;
+  margin-bottom: 7px;
   background: #5b8fe4;
   color: #FFFFFF;
   float: left;
@@ -89,10 +97,10 @@
   background: #FFFFFF;
   position: absolute;
   left: calc(75% - 250px);
-  box-shadow: 0px 0px 50px #dcdcdc;
+  box-shadow: 5px 5px 15px 0px #9c9c9c;
   z-index: 9999999999999;
   top: 10%;
-  padding: 20px;
+  padding: 30px;
   box-sizing: border-box;
 }
 #divTagAddPopup #divAddTag {
@@ -105,6 +113,7 @@
   height: 35px;
   background: #ffffff;
   border: none;
+  padding: 20px;
   padding-left: 10px;
   padding-right: 10px;
   box-sizing: border-box;
@@ -113,6 +122,7 @@
   outline: 0;
   width: 50%;
   min-width: 302px;
+  color: gray;
 }
 #divTagAddPopup #divAddTag #divAutoCompletionWrapper {
   width: 50%;
@@ -135,8 +145,8 @@
 #divTagAddPopup .hidden_scrollContainer {
   position: relative;
   overflow: hidden;
-  width: 105%;
-  height: 230px;
+  width: 100%;
+  height: 275px;
 }
 #divTagAddPopup .hidden_scrollContainer #divTags {
   width: 105%;
@@ -144,7 +154,7 @@
   margin-top: 10px;
   box-sizing: border-box;
   overflow-y: auto;
-  height: 230px;
+  height: 210px;
   display: block;
   padding-right: 10px;
 }
@@ -173,11 +183,11 @@
   height: 400px;
   background: #FFFFFF;
   position: absolute;
-  left: calc(34% - 250px);
-  box-shadow: 0px 0px 50px #dcdcdc;
+  left: calc(50% - 310px);
+  box-shadow: 5px 5px 15px 0px #9c9c9c;
   z-index: 9999999999999;
   top: 10%;
-  padding: 20px;
+  padding: 30px;
   box-sizing: border-box;
 }
 #myTags #divAddTag {
@@ -221,7 +231,7 @@
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 230px;
+  height: 210px;
 }
 #myTags .hidden_scrollContainer #divTags {
   width: 105%;
@@ -229,7 +239,7 @@
   margin-top: 10px;
   box-sizing: border-box;
   overflow-y: auto;
-  height: 230px;
+  height: 210px;
   display: block;
   padding-right: 10px;
 }

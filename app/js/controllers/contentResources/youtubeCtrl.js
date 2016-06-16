@@ -34,7 +34,7 @@ module.exports = function ($scope, ResourcesService) {
     **/
     $scope.setResourceLink = function (videoId) {
         $scope.link = videoId;
-        ResourcesService.popupStyle = { "left": " calc(25% - 250px)", "top": "20px", "height": "500px" };
+        ResourcesService.popupStyle = { "left": " calc(50% - 550px)", "top": "20px", "height": "500px" };
         ResourcesService.showYoutube = true;
         ResourcesService.setResourceLink(videoId);
         ResourcesService.setLink(videoId);
