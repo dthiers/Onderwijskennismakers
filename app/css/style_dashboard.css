@@ -184,6 +184,7 @@ body {
   animation: fadein 0.3s forwards;
   margin: 0 auto;
   width: 60%;
+  height: 100%;
 }
 @media screen and (max-width: 1500px) {
   .divTopContent .content_wrapper {
@@ -354,10 +355,9 @@ body {
   position: relative;
   right: 0px;
   width: 360px;
-  height: auto;
+  height: 100%;
   text-align: right;
-  max-height: 90%;
-  overflow: hidden;
+  overflow: auto;
 }
 #profile_docs_container .header {
   width: 100%;
@@ -495,10 +495,9 @@ body {
   position: relative;
   right: 0px;
   width: 360px;
-  height: auto;
+  height: 100%;
   text-align: right;
-  max-height: 90%;
-  overflow: hidden;
+  overflow: auto;
 }
 #profile_docs_container .header {
   width: 100%;
