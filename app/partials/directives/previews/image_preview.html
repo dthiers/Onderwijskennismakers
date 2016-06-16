@@ -3,7 +3,7 @@
  <div class="bgOverlay">
 
     </div>
-    <div class="type"><i class="fa fa-picture-o"></i></div>
+    <div class="profile_image" style="background-image: url('{{preview.profileImage}}');"></div>
     <div class="title">
         {{ preview.name }}
     </div>
@@ -22,7 +22,5 @@
     <div class="stars" ng-if="preview.rating">
         <img ng-repeat="i in getTimes(getSteppedRating(preview.rating)) track by $index" src="images/star-filled.png"></img>
         <img ng-if="steppendRatingIsFull(preview.rating) == false" src="images/star-half-filled.png"></img>
-
-        {{getSteppedRating(preview.rating)}}
     </div>
 </div>

@@ -141,6 +141,7 @@ body {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   font-size: 20px;
+  box-shadow: 0px 3px 10px 0px #eaeaea;
 }
 .imgTopBarArrow {
   position: absolute;
@@ -183,6 +184,7 @@ body {
   animation: fadein 0.3s forwards;
   margin: 0 auto;
   width: 60%;
+  height: 100%;
 }
 @media screen and (max-width: 1500px) {
   .divTopContent .content_wrapper {
@@ -353,10 +355,9 @@ body {
   position: relative;
   right: 0px;
   width: 360px;
-  height: auto;
+  height: 100%;
   text-align: right;
-  max-height: 90%;
-  overflow: hidden;
+  overflow: auto;
 }
 #profile_docs_container .header {
   width: 100%;
@@ -494,10 +495,9 @@ body {
   position: relative;
   right: 0px;
   width: 360px;
-  height: auto;
+  height: 100%;
   text-align: right;
-  max-height: 90%;
-  overflow: hidden;
+  overflow: auto;
 }
 #profile_docs_container .header {
   width: 100%;
@@ -637,11 +637,15 @@ body {
 .dashboard_container .search_side_content .search_container .search_button {
   height: calc(100% - 30px);
   width: 50px;
-  background-color: #B1B5BD;
+  cursor: pointer;
+  background-color: #5b8fe4;
   background-image: url('../images/magnifier.png');
   background-size: 50%;
   background-position: center;
   background-repeat: no-repeat;
+}
+.dashboard_container .search_side_content .search_container .search_button:hover {
+  background-color: #87adeb;
 }
 .dashboard_container .side_content_scrollWrapper {
   width: 30%;
@@ -666,6 +670,7 @@ body {
   float: left;
   line-height: 40px;
   padding-left: 20px;
+  color: #c7c7c7;
   font-size: 14px;
   margin-right: 5px;
   box-sizing: border-box;
@@ -679,6 +684,9 @@ body {
   cursor: pointer;
   height: 40px;
 }
+.dashboard_container .side_content_scrollWrapper .side_content .documents_container .btn_addDocument:hover {
+  background-color: #87adeb;
+}
 .dashboard_container .side_content_scrollWrapper .side_content .documents_container .btn_addDocument i {
   margin-left: 5px;
   display: inline-block;
@@ -689,7 +697,7 @@ body {
   width: 100%;
   float: left;
   background-color: #fff;
-  padding: 4%;
+  padding: 20px;
   box-sizing: border-box;
   margin-bottom: 4px;
 }
@@ -697,6 +705,7 @@ body {
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 15px;
+  color: #b3b3b3;
 }
 .dashboard_container .side_content_scrollWrapper .side_content .documents_container .doc p {
   font-size: 13px;
@@ -704,6 +713,19 @@ body {
 }
 .dashboard_container .side_content_scrollWrapper .side_content .documents_container .doc .stars img {
   width: 20px;
+}
+.dashboard_container .side_content_scrollWrapper .side_content .documents_container .doc .profile_image {
+  cursor: pointer;
+  overflow: hidden;
+  float: right;
+  border-radius: 100px;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: gray;
 }
 .content_directive .header_content h1 {
   font-family: Lato-Light;
