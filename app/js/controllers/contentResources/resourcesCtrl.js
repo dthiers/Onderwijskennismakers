@@ -5,8 +5,8 @@ module.exports = function ($scope, ResourcesService, close) {
     $scope.showPDF = true;
     $scope.resourcesService = ResourcesService;
     console.log("Were in resourcesCtrl");
-
-    $scope.addResource = function (type, link = "") {
+    
+    $scope.addResource = function (type, link) {
         $scope.wrapperStyle = { "margin-top": "20px" }
         $scope.imgLoadingPreviewHidden = true;
 
