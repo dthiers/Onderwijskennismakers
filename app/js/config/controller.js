@@ -3,8 +3,15 @@ module.exports = function (app) {
 	app.controller('MenuCtrl', require('../controllers/menuCtrl'));
 	app.controller('LoginCtrl', require('../controllers/loginCtrl'));
 
-	app.controller('AdminCtrl', require('../controllers/adminCtrl'));
-	//app.controller('RegisterCtrl', require('../controllers/registerCtrl'));
+	/**
+	* Admin
+	**/
+	app.controller('AdminCtrl', require('../controllers/admin/adminCtrl'));
+	app.controller('PersonalContentCtrl', require('../controllers/admin/personalContentCtrl'));
+	app.controller('KeywordsCtrl', require('../controllers/admin/keywordsCtrl'));
+	app.controller('TagsCtrl', require('../controllers/admin/tagsCtrl'));
+	app.controller('ProfileCtrl', require('../controllers/admin/profileCtrl'));
+
 	/**
 	* Resources
 	**/
@@ -15,7 +22,6 @@ module.exports = function (app) {
 	app.controller('WebpageCtrl', require('../controllers/contentResources/webpageCtrl'));
 	app.controller('ResourceDetailCtrl', require('../controllers/contentResources/resourceDetailCtrl'));
 
-	app.controller('TagsCtrl', require('../controllers/tagsCtrl'));
 	/**
 	* Resources
 	**/

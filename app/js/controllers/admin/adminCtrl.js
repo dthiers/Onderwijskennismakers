@@ -4,6 +4,9 @@ module.exports = function ($scope, user) {
 
     $scope.user = user;
 
+    //default tab
+    $scope.tab = 'personalContent';
+
     function popupMessage(message){
         $scope.message = message;
         $(".popup_message").addClass("flash_popup"); 

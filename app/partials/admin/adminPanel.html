@@ -6,10 +6,10 @@
 		</div>
 	 	
 	 	<!-- MENU -->
-		<li ng-click="tab = 'mijnBronnen'">Mijn bronnen</li>
-		<li ng-click="tab = 'trefwoorden'">Trefwoorden</li>
+		<li ng-click="tab = 'personalContent'">Mijn bronnen</li>
+		<li ng-click="tab = 'keywords'">Trefwoorden</li>
 		<li ng-click="tab = 'tags'">Tags</li>
-		<li ng-click="tab = 'mijnProfiel'">Mijn profiel</li>
+		<li ng-click="tab = 'myProfile'">Mijn profiel</li>
 
 	</div>
 
@@ -19,25 +19,12 @@
 
 	<div class="adminPanel_container">
 
-		<!-- 
-
-		PLAATS HIER DE DYNAMISCHE CONTENT 
-
-		-->
-
-		<!-- example -->
-		<div class="mijn_bronnen" ng-show="tab == 'mijnBronnen'">
-			<h1>Mijn bronnen</h1>
-		</div>
-		<div class="mijn_bronnen" ng-show="tab == 'trefwoorden'">
-			<h1>Trefwoorden</h1>
-		</div>
-		<div class="mijn_bronnen" ng-show="tab == 'tags'">
-			<h1>Tags</h1>
-		</div>
-		<div class="mijn_bronnen" ng-show="tab == 'mijnProfiel'">
-			<h1>Mijn profiel</h1>
-		</div>
+		
+		<!-- Hier worden verschillende tabs ingeladen, deze kun je vinden onder partials/admin/*-->
+		<div ui-view="personalContent" ng-if="tab == 'personalContent'"></div>
+		<div ui-view="keywords" ng-if="tab == 'keywords'"></div>
+		<div ui-view="tags" ng-if="tab == 'tags'"></div>
+		<div ui-view="profile" ng-if="tab == 'myProfile'"></div>
 
 
 		
