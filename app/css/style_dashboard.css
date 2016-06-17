@@ -624,6 +624,7 @@ body {
   float: left;
   margin: 0px;
   padding: 0px;
+  border-radius: 5px;
   border: 0px;
   font-size: 16px;
   color: #9C9C9C;
@@ -638,6 +639,7 @@ body {
   height: calc(100% - 30px);
   width: 50px;
   cursor: pointer;
+  border-radius: 5px;
   background-color: #5b8fe4;
   background-image: url('../images/magnifier.png');
   background-size: 50%;
@@ -682,6 +684,7 @@ body {
   font-size: 14px;
   color: #fff;
   cursor: pointer;
+  border-radius: 5px;
   height: 40px;
 }
 .dashboard_container .side_content_scrollWrapper .side_content .documents_container .btn_addDocument:hover {
@@ -695,6 +698,7 @@ body {
   cursor: pointer;
   color: #A5A5A5;
   width: 100%;
+  border-radius: 5px;
   float: left;
   background-color: #fff;
   padding: 20px;

@@ -1,0 +1,93 @@
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+.background_wrapper {
+  background-color: #e8e8e8;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  top: 0px;
+  left: 0px;
+}
+.admin_menu {
+  height: 100%;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  background-color: #f9f9f9;
+  width: 150px;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 10px 0px #d0d0d0;
+}
+.admin_menu .profile_image_container {
+  width: 100%;
+  height: auto;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  background-color: #fff;
+}
+.admin_menu .profile_image_container .profile_image {
+  width: 100px;
+  height: 100px;
+  box-sizing: border-box;
+  background-position: center;
+  background-size: cover;
+  border-radius: 500px;
+  margin: 0 auto;
+}
+.admin_menu li {
+  width: 100%;
+  height: auto;
+  text-align: left;
+  display: block;
+  box-sizing: border-box;
+  padding: 30px 0px 30px 20px;
+  color: #bbbbbb;
+  font-weight: 700;
+  border-: 2px solid transparent;
+}
+.admin_menu li:nth-child(odd) {
+  background: #fff;
+}
+.admin_menu li:hover {
+  cursor: pointer;
+  border-right: 2px solid #5b8fe4;
+}
+.top_bar_container {
+  width: calc(100% - 150px);
+  background-color: #efefef;
+  left: 150px;
+  position: absolute;
+  padding: 20px;
+  height: 77px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+.top_bar_container a.dashboard_link {
+  padding: 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  background-color: #5b8fe4;
+  color: #fff;
+}
+.top_bar_container a.dashboard_link:hover {
+  background-color: #87adeb;
+}
+.adminPanel_container {
+  width: calc(100% - 150px);
+  position: absolute;
+  top: 77px;
+  left: 150px;
+  padding: 30px;
+  box-sizing: border-box;
+}
+.adminPanel_container h1 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #a7a7a7;
+}

@@ -1,0 +1,46 @@
+<div class="background_wrapper">
+
+	<div class="admin_menu">
+		<div class="profile_image_container">
+			<div class="profile_image" style="background-image: url('{{user.profileImage}}');"></div>
+		</div>
+	 	
+	 	<!-- MENU -->
+		<li ng-click="tab = 'mijnBronnen'">Mijn bronnen</li>
+		<li ng-click="tab = 'trefwoorden'">Trefwoorden</li>
+		<li ng-click="tab = 'tags'">Tags</li>
+		<li ng-click="tab = 'mijnProfiel'">Mijn profiel</li>
+
+	</div>
+
+	<div class="top_bar_container">
+		<a ui-sref="dashboard" class="dashboard_link">Terug naar dashboard</a>
+	</div>
+
+	<div class="adminPanel_container">
+
+		<!-- 
+
+		PLAATS HIER DE DYNAMISCHE CONTENT 
+
+		-->
+
+		<!-- example -->
+		<div class="mijn_bronnen" ng-show="tab == 'mijnBronnen'">
+			<h1>Mijn bronnen</h1>
+		</div>
+		<div class="mijn_bronnen" ng-show="tab == 'trefwoorden'">
+			<h1>Trefwoorden</h1>
+		</div>
+		<div class="mijn_bronnen" ng-show="tab == 'tags'">
+			<h1>Tags</h1>
+		</div>
+		<div class="mijn_bronnen" ng-show="tab == 'mijnProfiel'">
+			<h1>Mijn profiel</h1>
+		</div>
+
+
+		
+	</div>
+
+</div>

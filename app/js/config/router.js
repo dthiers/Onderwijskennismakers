@@ -29,6 +29,27 @@ module.exports = function (app) {
                     }
                 }
             })
+            .state('administratiepaneel', {
+                url: '/administratiepaneel',
+                templateUrl: 'partials/admin/adminPanel.html',
+                controller: 'AdminCtrl',
+                data: {
+                    requireLogin: true
+                },
+                resolve: {
+                    user: function($q, $localStorage){
+                        var defer;
+
+                        defer = $q.defer();
+
+                        console.log($localStorage.user)
+
+                        defer.resolve($localStorage.user);
+
+                        return defer.promise;
+                    }
+                }
+            })
             .state('login', {
                 url: '/login',
                 templateUrl: 'partials/login/full-login.html',
