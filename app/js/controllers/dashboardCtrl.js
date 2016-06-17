@@ -277,13 +277,21 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     }
 
     function getKeyword(id) {//based on route param
+        var keywordLoaded = false;
+        var tagsLoaded = false;
+
         KeywordService.keywordService.getById(id)//call to service
             .then(function (response) {
                 $scope.keyword = response.data.data[0];//set response to scope
-                console.log($scope.keyword);
+
                 ProfileService.profileService.getById($scope.keyword.User_id)//call to service
                     .then(function (response) {
                         $scope.editor = response.data.data[0];//set response to scope
+
+                        keywordLoaded = true;
+                        if(tagsLoaded) {
+                            generateKeywordWeb($scope.tags);
+                        }
                     }, function (error) {
                         $scope.status = 'Er is iets misgegaan met het laden van de gebruiker';
                         console.log(error.message);
@@ -295,14 +303,42 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
         KeywordService.keywordService.getTagsByKeyword(id)//call to service
             .then(function (response) {
-
                 $scope.tags = response.data.data;//set response to scope
-                console.log($scope.tags);
+
+                tagsLoaded = true;
+                if(keywordLoaded) {
+                    generateKeywordWeb($scope.tags);
+                }
 
             }, function (error) {
                 $scope.status = 'Er is iets misgegaan met het laden van de tags ';
                 console.log(error.message);
             });
+    }
+
+    function generateKeywordWeb(tags) {
+        var nodes = new VisDataSet();
+        var edges = new VisDataSet();
+
+        var nodeCounter = 1;
+
+        console.log($scope.keyword);
+        nodes.add(createKeywordWebKeywordNode(0, {keyword: $scope.keyword.keyword}));
+
+        angular.forEach(tags, function (value) {
+            nodes.add(createKeywordWebTagNode(nodeCounter, value));
+            edges.add({
+                from: 0,
+                to: nodeCounter
+            });
+            nodeCounter++;
+        });
+
+        // Set data on scope
+        $scope.keywordData = {
+            "nodes": nodes,
+            "edges": edges
+        };
     }
 
     function getSchool(id) {//based on route param
@@ -607,6 +643,27 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         }
     }
 
+    function createKeywordWebKeywordNode(id, data) {
+        return {
+            id: id,
+            label: data.keyword,
+            group: 'keywords',
+            shape: 'box',
+            keywordId: data.id
+        }
+    }
+
+    // Creates a tag node
+    function createKeywordWebTagNode(id, data) {
+        return {
+            id: id,
+            label: data.name,
+            group: 'tags',
+            shape: 'box',
+            tagId: data.id
+        }
+    }
+
     /* Web events */
     $scope.events = {};
     $scope.events.selectNode = function (click) {
@@ -769,6 +826,97 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         },
         edges: {
             length: 100,
+            color: '#d3d3d3'
+        }
+    };
+
+    /* Web events */
+    $scope.keywordEvents = {};
+    $scope.keywordEvents.selectNode = function (click) {
+
+    };
+
+    $scope.keywordOptions = {
+        width: '30%',
+        height: '60%',
+        layout: {
+            randomSeed: 1 //zorgt ervoor dat er geen random web wordt gegenereerd
+
+        },
+        physics: {
+            solver: 'forceAtlas2Based',
+            maxVelocity: 1000,
+            forceAtlas2Based: {
+                springLength: 150
+            }
+        },
+        interaction: {
+            dragNodes: false,
+            dragView: true
+        },
+        groups: {
+            //Keywords
+            keywords: {
+                labelHighlightBold: false,
+                borderWidth: 10,
+                borderWidthSelected: 10,
+                shadow: {
+                    enabled: true,
+                    color: 'rgba(0,0,0,0.5)',
+                    size: 7,
+                    x: 5,
+                    y: 5
+                },
+                color: {
+                    border: '#73a1ee',
+                    background: '#73a1ee',
+                    highlight: {
+                        border: '#73a1ee'
+                    }
+                },
+                font: {
+                    color: '#ffffff',
+                    size: 12, // px
+                    face: 'arial',
+                    background: 'none'
+                }
+            },
+            //Keywords
+            tags: {
+                labelHighlightBold: false,
+                borderWidth: 10,
+                borderWidthSelected: 10,
+                shadow: {
+                    enabled: true,
+                    color: 'rgba(0,0,0,0.5)',
+                    size: 7,
+                    x: 5,
+                    y: 5
+                },
+                color: {
+                    border: '#73a1ee',
+                    background: '#73a1ee',
+                    highlight: {
+                        border: '#73a1ee'
+                    }
+                },
+                font: {
+                    color: '#ffffff',
+                    size: 10, // px
+                    face: 'arial',
+                    background: 'none'
+                }
+            }
+        },
+        nodes: {
+            hidden: false,
+            level: undefined,
+            mass: 1,
+            physics: true
+        },
+        edges: {
+            // length: 100,
+            length: 20,
             color: '#d3d3d3'
         }
     };
