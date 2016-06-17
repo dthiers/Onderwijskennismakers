@@ -17,11 +17,7 @@ module.exports = function (app) {
                 resolve: {
                     user: function($q, $localStorage){
                         var defer;
-
                         defer = $q.defer();
-
-                        console.log($localStorage.user)
-
                         defer.resolve($localStorage.user);
 
                         return defer.promise;
@@ -29,27 +25,50 @@ module.exports = function (app) {
                     }
                 }
             })
+
             .state('administratiepaneel', {
                 url: '/administratiepaneel',
-                templateUrl: 'partials/admin/adminPanel.html',
-                controller: 'AdminCtrl',
                 data: {
                     requireLogin: true
                 },
                 resolve: {
                     user: function($q, $localStorage){
                         var defer;
-
                         defer = $q.defer();
-
-                        console.log($localStorage.user)
-
                         defer.resolve($localStorage.user);
 
                         return defer.promise;
                     }
+                },
+                views: {
+
+                    '': { 
+                        templateUrl: 'partials/admin/adminPanel.html',
+                        controller: 'AdminCtrl'
+                    },
+
+                    'personalContent@administratiepaneel': {
+                        templateUrl: 'partials/admin/personalContent.html',
+                        controller: 'PersonalContentCtrl'
+                    },
+
+                    'keywords@administratiepaneel': {
+                        templateUrl: 'partials/admin/keywords.html',
+                        controller: 'KeywordsCtrl'
+                    },
+
+                    'tags@administratiepaneel': {
+                        templateUrl: 'partials/admin/tags.html',
+                        controller: 'TagsCtrl'
+                    },
+
+                    'profile@administratiepaneel': {
+                        templateUrl: 'partials/admin/profile.html',
+                        controller: 'ProfileCtrl'
+                    }
                 }
             })
+
             .state('login', {
                 url: '/login',
                 templateUrl: 'partials/login/full-login.html',
@@ -73,22 +92,7 @@ module.exports = function (app) {
                 }
             })
 
-            // .state('register', {
-            //     url: '/register',
-            //     views: {
-
-            //         '': { templateUrl: '../partials/home.html' },
-
-            //         'dashboard@register': {
-            //             templateUrl: '../partials/dashboard/dashboard.html',
-            //             controller: 'DashboardCtrl'
-            //         },
-            //         'register@register': {
-            //             templateUrl: '../partials/login/register.html',
-            //             controller: 'RegisterCtrl'
-            //         }
-            //     }
-            // })
+            
 
             // .state('login', {
             //     url: '/login',
