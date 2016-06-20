@@ -2,6 +2,7 @@ module.exports = function ($scope, user, KeywordsService, $timeout) {
 
     var self = this;
     $scope.currentObjectType = "keyword";
+    $scope.confirm = "yes";
     $scope.user = user;
 
     loadAllKeywords();
@@ -37,6 +38,8 @@ module.exports = function ($scope, user, KeywordsService, $timeout) {
         });
 
         $scope.keyword = keyword;
+        $scope.delete = "";
+        $scope.confirm = "yes";
     }
 
     $scope.addNewKeyword = function () {
@@ -82,7 +85,7 @@ module.exports = function ($scope, user, KeywordsService, $timeout) {
         });
     };
 
-        $scope.unlinkKeyword = function (id) {
+    $scope.unlinkKeyword = function (id) {
         KeywordsService.unlinktag($scope.keyword.id, $scope.currentObjectType, id, {
             onSuccess: function (result) {
                 //reload data after linking
@@ -93,6 +96,22 @@ module.exports = function ($scope, user, KeywordsService, $timeout) {
             }
         });
     };
+
+    $scope.deleteKeyword = function () {
+        $scope.delete = "yes";
+        $scope.confirm = "";
+    }
+
+    $scope.deleteKeywordConfirm = function () {
+        KeywordsService.deletekeyword($scope.keyword.id, {
+            onSuccess: function (result) {
+                popupMessage("Het trefwoord " + $scope.keyword.keyword + " is succesvol verwijderd.");
+                $scope.keyword = null;
+                loadAllKeywords();
+            },
+            onError: function (err) { }
+        })
+    }
 
     function popupMessage(message) {
         $scope.message = message;
