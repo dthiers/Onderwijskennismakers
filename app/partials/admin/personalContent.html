@@ -1,1 +1,39 @@
+<div class="popup_message">
+    {{message}}
+</div>
+
 <h1>Mijn bronnen</h1>
+<i class="fa fa-plus" ng-click="openResources()" id="iAddContent" aria-hidden="true"></i>
+
+<div class="divAdminTableWrapper">
+    <table>
+        <tr>
+            <td></td>
+            <td>Naam</td>
+            <td>Link</td>
+            <td>Aangemaakt</td>
+        </tr>
+        <tr ng-repeat="content in userContent" ng-click="setSelected( content.id )">
+            <td><i class="{{ content.Type | resourceType }}"></i></td>
+            <td>{{ content.name }}</td>
+            <td>{{ content.link }}</td>
+            <td>{{ content.createdAt | datetime }}</td>
+        </tr>
+    </table>
+</div>
+
+<div class="divAdminResourcesDetail" ng-show="selectedContent != null">
+    <h2>Naam</h2>
+    <input type="text" value="{{ selectedContent.name }}" />
+
+    <h2 ng-hide="selectedContent.Type != 'internal'">Content</h2>
+    <textarea ng-hide="selectedContent.Type != 'internal'" type="text">{{ selectedContent.content }}</textarea>
+
+    <h2 ng-show="selectedContent.Type != 'internal'">Link</h2>
+    <input ng-show="selectedContent.Type != 'internal'" type="text" value="{{ selectedContent.link }}" />
+
+    <h2>Omschrijving</h2>
+    <textarea type="text">{{ selectedContent.shortDescription }}</textarea>
+
+    <button>Opslaan</button>
+</div>

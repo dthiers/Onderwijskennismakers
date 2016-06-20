@@ -6,9 +6,9 @@
     <img src="./images/pdf.png" id="imgResourcePdf" class="imgResource" ng-click="addResource('pdf')" />
     <img src="./images/image.png" id="imgResourceImage" class="imgResource" ng-click="addResource('image')" />
     <img src="./images/youtube.png" id="imgResourceYoutube" class="imgResource" ng-click="addResource('youtube')" />
-    <img src="./images/website.png" id="imgResourceWebsite" class="imgResource" />
+    <img src="./images/website.png" id="imgResourceWebsite" class="imgResource" ng-click="addResource('webpage')" />
   </div>
-  
+
   <div class="dynamic_content" ng-if="type == 'addYoutube'" resource_youtube_directive></div>
   <div class="dynamic_content" ng-if="type == 'addImage'" resource_image_directive></div>
   <div class="dynamic_content" ng-if="type == 'addDetails'" resource_details_directive></div>
