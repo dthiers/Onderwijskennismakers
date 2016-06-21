@@ -14,10 +14,8 @@ module.exports = function ($scope, user, UserService, ResourcesService) {
             var photofile = element.files[0];
             var reader = new FileReader();
             reader.onload = function (e) {
-                alert('call');
                 ResourcesService.postImage(photofile, {
                     onSuccess: function (result) {
-                        alert('a')
                         $scope.user.profileImage = result.data.data.link;
                         $scope.saveButtonPressed();
                     },

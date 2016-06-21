@@ -1,7 +1,7 @@
 
 // param:service = name of the database routes
 module.exports = function (service, http) {
-    var urlBase = 'http://127.0.0.1:3000/';
+    var urlBase = 'https://onderwijskennismakers.herokuapp.com/';
 
     var baseService = {
         // get all function
