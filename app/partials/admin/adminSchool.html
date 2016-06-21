@@ -1,4 +1,4 @@
-<div class="add_school">
+<div class="add_school" ng-if="progress = 'addSchool'">
 	<h1>School toevoegen</h1>
 
 	<form name="addSchool_form">
@@ -20,23 +20,32 @@
 
 </div>
 
-<div class="school_list">
-	<ul>
-		<lh>
-			<span>Naam</span>
-			<span>Beschrijving</span>
-			<span>Aangemaakt op</span>
-		</lh>
-		<li ng-repeat="school in schools">
-			<span>{{school.name}}</span>
-			<span>{{school.description | limitTo: 10}}</span>
-			<span>{{school.createdAt}}</span>
-		</li>
-	</ul>
+<div class="school_list" ng-if="progress = 'schoolList'">
+	<h1>Scholen</h1>
+	<table>
+		<tr>
+			<td>Naam</td>
+			<td>Beschrijving</td>
+			<td>Aangemaakt op</td>
+			<td></td>
+		</tr>
+		<tr ng-repeat="school in schools" ng-click="progress = 'schoolUsers'">
+			<td>{{school.name}}</td>
+			<td>{{school.description | limitTo: 10}}</td>
+			<td>{{school.createdAt}}</td>
+			<td>
+				<span class="fa fa-pencil" aria-hidden="true" ng-click="progress = 'editSchool'"></span>
+				<span class="fa fa-trash-o" aria-hidden="true" ng-click="deleteSchool"></span>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div class="edit_school" ng-if="progress = 'editSchool'">
 	
 </div>
 
-<div class="user_list">
+<div class="user_list" ng-if="progress = 'schoolUsers'">
 	<span ng-repeat="user in users">{{user.firstName}}</span>
 </div>
 

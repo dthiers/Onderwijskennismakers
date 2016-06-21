@@ -4,6 +4,8 @@ module.exports = function ($scope, user, ResourcesService, SchoolService, $timeo
 
     $scope.user = user;
 
+    $scope.progress = "schoolList";
+
     self.getUsers = function(){
     	ProfileService.profileService.getAll()
 	        .then(function (result) {
