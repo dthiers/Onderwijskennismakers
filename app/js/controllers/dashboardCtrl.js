@@ -325,7 +325,6 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
         var nodeCounter = 1;
 
-        console.log($scope.keyword);
         nodes.add(createKeywordWebKeywordNode(0, {keyword: $scope.keyword.keyword}));
 
         angular.forEach(tags, function (value) {
@@ -364,7 +363,6 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
 
     function getContent(id) {//based on route param
-        console.log("GET CONTENT WITH ID " + id);
         ContentService.contentService.getById(id)//call to service
             .then(function (response) {
                 $scope.singleContent = response.data.data[0];//set response to scope
@@ -402,12 +400,8 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
     // Creates the web for the user with the given id
     function getWebForUser(id) {
-
-        console.log('Were in getWebForUser');
         $scope.hidePopup = true;
         $http.get('https://onderwijskennismakers.herokuapp.com/user/' + id + '/web').then(function (response) {
-
-
             var nodes = new VisDataSet();
             var edges = new VisDataSet();
 
@@ -425,70 +419,49 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
             if (add)
                 $scope.breadcrumbs.push({id: data.user.id, name: data.user.name, type: "user"});
 
-            /**
-             *
-             * CENTER USER
-             *
-             **/
             // Create node for center user
+            nodes.add({
+                id: 0,
+                label: data.user.name,
+                group: 'mainPerson',
+                shape: 'circularImage',
+                image: data.user.profileImage,
+                userId: data.user.id
+            });
 
-            // Check if isImage
-            isImage(data.user.profileImage).then(function (src) {
-                console.log(src);
-                nodes.add({
-                    id: 0,
-                    label: data.user.name,
-                    group: 'mainPerson',
-                    shape: 'circularImage',
-                    image: src,
-                    userId: data.user.id
+            // Add keywords
+            angular.forEach(data.keywords, function (value, key) {
+                nodes.add(createKeywordNode(nodeCounter, value));
+                edges.add({
+                    from: 0,
+                    to: nodeCounter
                 });
-                /**
-                 *
-                 * CENTER USER
-                 *
-                 **/
 
-                /**
-                 *
-                 * KEYWORD TO CENTER USER
-                 *
-                 **/
-                // Add keywords
-                angular.forEach(data.keywords, function (value, key) {
-                    nodes.add(createKeywordNode(nodeCounter, value));
+                // Add users to keywords
+                angular.forEach(value.users, function (userValue, userKey) {
+                    nodes.add(createUserNode(userNodeCounter, userValue));
                     edges.add({
-                        from: 0,
+                        from: userNodeCounter,
                         to: nodeCounter
                     });
 
-                    // Add users to keywords
-                    angular.forEach(value.users, function (userValue, userKey) {
-                        nodes.add(createUserNode(userNodeCounter, userValue));
-                        edges.add({
-                            from: userNodeCounter,
-                            to: nodeCounter
-                        });
-
-                        userNodeCounter++;
-                    });
-
-                    nodeCounter++;
+                    userNodeCounter++;
                 });
 
-
-                // Set data on scope
-                $scope.data = {
-                    "nodes": nodes,
-                    "edges": edges
-                };
-
-                lastUserWebNodes = nodes;
-                lastUserWebEdges = edges;
-
-                $scope.content = data.content;
-                lastUserContent = $scope.content;
+                nodeCounter++;
             });
+
+            // Set data on scope
+            $scope.data = {
+                "nodes": nodes,
+                "edges": edges
+            };
+
+            lastUserWebNodes = nodes;
+            lastUserWebEdges = edges;
+
+            $scope.content = data.content;
+            lastUserContent = $scope.content;
         }, function (error) {
             alert("Error loading user web");
             console.log(error);
