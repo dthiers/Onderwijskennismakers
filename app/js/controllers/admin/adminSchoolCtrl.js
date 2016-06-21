@@ -9,19 +9,19 @@ module.exports = function ($scope, user, ResourcesService, SchoolService, $timeo
     this.firstClick = true;
 
     self.getUsers = function(){
-    	ProfileService.profileService.getAll()
-	        .then(function (result) {
-				$scope.users = result.data.data;
-	        }, function (error) {
-	            console.log(err);
-	        });
+        ProfileService.profileService.getAll()
+            .then(function (result) {
+                $scope.users = result.data.data;
+            }, function (err) {
+                console.log(err);
+            });
     }
 
     self.getSchools = function(){
         SchoolService.schoolService.getAll()
             .then(function (result) {
                 $scope.schools = result.data.data;
-            }, function (error) {
+            }, function (err) {
                 console.log(err);
             });
     }
@@ -30,7 +30,7 @@ module.exports = function ($scope, user, ResourcesService, SchoolService, $timeo
         SchoolService.schoolService.getExpertsBySchool(id)
             .then(function (result) {
                 $scope.schoolUsers = result.data.data;
-            }, function (error) {
+            }, function (err) {
                 console.log(err);
             });
     }
@@ -39,7 +39,7 @@ module.exports = function ($scope, user, ResourcesService, SchoolService, $timeo
         SchoolService.schoolService.getById(id)
             .then(function (result) {
                 $scope.school = result.data.data[0];
-            }, function (error) {
+            }, function (err) {
                 console.log(err);
             });
     }
@@ -73,13 +73,13 @@ module.exports = function ($scope, user, ResourcesService, SchoolService, $timeo
         });
     };
 
-  	$scope.registerSchool = function(newSchool){
-  		if($scope.newSchool.logo == null){
-  			popupMessage("Voeg een logo toe!");
-  			return;
-  		}
+    $scope.registerSchool = function(newSchool){
+        if($scope.newSchool.logo == null){
+            popupMessage("Voeg een logo toe!");
+            return;
+        }
         SchoolService.schoolService.addSchool(newSchool, {//call to service
-        	onSuccess: function (result) {
+            onSuccess: function (result) {
                 popupMessage($scope.newSchool.name + " is succesvol geregistreerd");
                 self.getSchools();
                 $scope.progress = "schoolList";
@@ -90,7 +90,7 @@ module.exports = function ($scope, user, ResourcesService, SchoolService, $timeo
                 console.log(err.message);
             }
         });
-  	}
+    }
 
     $scope.deleteSchool = function(school){
 
@@ -98,17 +98,14 @@ module.exports = function ($scope, user, ResourcesService, SchoolService, $timeo
             return;
         }
 
-        SchoolService.schoolService.deleteSchool(school.id, {//call to service
-            onSuccess: function (result) {
-                console.log(result);
+        SchoolService.schoolService.deleteById(school.id)
+            .then(function (result) {
                 popupMessage("School is succesvol verwijderd");
                 self.getSchools();
-            },
-            onError: function (err) {
+            }, function (error) {
                 popupMessage("Er is iets misgegaan bij het verwijderen van de school");
                 console.log(err.message);
-            }
-        });
+            });
     }
 
     $scope.addUserToSchool = function(user){
@@ -124,6 +121,7 @@ module.exports = function ($scope, user, ResourcesService, SchoolService, $timeo
         });
     }
 
+    //filter
     $scope.alreadyInSchool = function(user) {
 
         var result = true;
@@ -137,7 +135,7 @@ module.exports = function ($scope, user, ResourcesService, SchoolService, $timeo
         return result;
     };
 
-  	function popupMessage(message){
+    function popupMessage(message){
         $scope.message = message;
         $(".popup_message").addClass("flash_popup"); 
         $timeout(function(){

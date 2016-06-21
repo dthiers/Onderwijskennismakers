@@ -3,7 +3,6 @@
 </div>
 
 <h1>Mijn bronnen</h1>
-<i class="fa fa-plus" ng-click="openResources()" id="iAddContent" aria-hidden="true"></i>
 
 <div class="divAdminTableWrapper">
     <table>
@@ -12,7 +11,7 @@
             <td>Naam</td>
             <td>Link</td>
             <td>Aangemaakt</td>
-            <td></td>
+            <td><i class="fa fa-plus" ng-click="openResources()" id="iAddContent" aria-hidden="true"></i></td>
         </tr>
         <tr ng-show="userContent.length == 0">
             <td colspan="5" style="text-align: center;">Geen bronnen gevonden</td>

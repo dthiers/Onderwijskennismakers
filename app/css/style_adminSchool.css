@@ -21,6 +21,7 @@
   clear: both;
   margin-top: 20px;
   float: left;
+  border-radius: 5px;
   background-color: #fff;
 }
 .add_school form span {
@@ -129,8 +130,10 @@
 .school_list table tr:first-of-type td {
   background: #5b8fe4;
   height: 40px;
+  font-weight: bold;
+  font-size: 14px;
   vertical-align: middle;
-  color: #FFFFFF;
+  color: #e0ecff;
 }
 .school_list table tr:first-of-type:hover {
   border-right: none;
@@ -249,8 +252,10 @@
 .user_list table.schoolUsers_table tr:first-of-type td {
   background: #5b8fe4;
   height: 40px;
+  font-weight: bold;
+  font-size: 14px;
   vertical-align: middle;
-  color: #FFFFFF;
+  color: #e0ecff;
 }
 .user_list table.allUsers_table tr:first-of-type:hover,
 .user_list table.schoolUsers_table tr:first-of-type:hover {
