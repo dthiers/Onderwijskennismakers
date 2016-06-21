@@ -1,1 +1,60 @@
-<h1>Trefwoorden</h1>
+<div class="popup_message">
+    {{message}}
+</div>
+
+<div id="divKeywordList">
+    <b><h1>Trefwoorden Beheren</h1></b>
+    
+    <b><h2>Trefwoorden toevoegen</h2></b>
+
+    <div id="divAddKeyword">
+        <input type="text" id="txtNewKeyword" placeholder="Trefwoord naam" ng-model="txtNewKeyword" /><button ng-hide="!txtNewKeyword || !descriptionNewKeyword"
+            ng-click="addNewKeyword()" id="btnAddKeyword">Toevoegen</button>
+    </div>
+
+    <div id="divAddKeyword">
+        <input type="text" id="txtNewKeyword" placeholder="Trefwoord omschrijving" ng-model="descriptionNewKeyword" />
+    </div>
+
+    <div id="divAddKeyword">
+        <input type="text" id="txtNewKeyword" placeholder="Zoeken in Trefwoorden" ng-model="search" />
+    </div>
+
+    <div class="hidden_scrollContainer">
+        <div id="divKeywords">
+            <div class="divKeyword" ng-repeat="(key, value) in keywords| filter:search" ng-click="setKeyword(value)">{{value.keyword}} </div>
+        </div>
+    </div>
+</div>
+
+<div id="divKeywordList" ng-show="keyword">
+    <b><h1>{{keyword.keyword}}</h1></b>
+    <b><h2>Selecteer tags om te verwijderen van {{keyword.keyword}}</h2></b>
+
+    <div id="divAddKeyword">
+        <input type="text" id="txtNewKeyword" placeholder="Zoeken in gekoppelde tags" ng-model="searchKeywordTags" />
+        <button ng-hide="!confirm" ng-click="deleteKeyword()" id="btnAddKeyword">Verwijder</button>
+        <button ng-hide="!delete" ng-click="deleteKeywordConfirm()" id="btnAddKeyword">Zeker?</button>
+    </div>
+
+    <div class="hidden_scrollContainer">
+        <div id="divKeywords">
+            <div class="divKeyword" ng-repeat="(key, value) in keywordTagList| filter:searchKeywordTags" ng-click="unlinkKeyword(value.id)">{{value.name}} </div>
+        </div>
+    </div>
+</div>
+
+<div id="divKeywordList" ng-show="keyword">
+    <b><h1>Taglijst</h1></b>
+    <b><h2>Selecteer tags om toe te voegen aan {{keyword.keyword}}</h2></b>
+
+    <div id="divAddKeyword">
+        <input type="text" id="txtNewKeyword" placeholder="Zoeken in tag lijst" ng-model="searchTags" />
+    </div>
+
+    <div class="hidden_scrollContainer">
+        <div id="divKeywords">
+            <div class="divKeyword" ng-repeat="(key, value) in tagList| filter:searchTags" ng-click="linkKeyword(value.id)">{{value.name}} </div>
+        </div>
+    </div>
+</div>

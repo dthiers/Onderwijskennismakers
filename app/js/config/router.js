@@ -65,6 +65,11 @@ module.exports = function (app) {
                     'profile@administratiepaneel': {
                         templateUrl: 'partials/admin/profile.html',
                         controller: 'ProfileCtrl'
+                    },
+
+                    'school@administratiepaneel': {
+                        templateUrl: 'partials/admin/adminSchool.html',
+                        controller: 'AdminSchoolCtrl'
                     }
                 }
             })

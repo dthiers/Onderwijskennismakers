@@ -259,10 +259,20 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
             .then(function (response) {
                 $scope.userContent = response.data.data;//set response to scope
             }, function (error) {
-                $scope.status = 'Er is iets misgegaan met het laden van de gebruiker: ';
+                $scope.status = 'Er is iets misgegaan met het laden van de gebruiker content: ';
                 console.log(error.message);
             });
     }
+
+    // function getSchoolContent(id) {//based on route param
+    //     SchoolService.schoolService.getSchoolContent(id)//call to service
+    //         .then(function (response) {
+    //             $scope.schoolContent = response.data.data;//set response to scope
+    //         }, function (error) {
+    //             $scope.status = 'Er is iets misgegaan met het laden van de school content: ';
+    //             console.log(error.message);
+    //         });
+    // }
 
     function getPopupDetails(id) {//based on route param
         ProfileService.profileService.getUserDetails(id)//call to service
@@ -358,6 +368,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
                 console.log(error.message);
             });
     }
+
 
     function getContent(id) {//based on route param
         console.log("GET CONTENT WITH ID " + id);
@@ -557,7 +568,9 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
             var nodeCounter = 1;
             var data = response.data.data;
 
-            console.log(data);
+            $scope.schoolContent = data.content;
+
+
             var add = true;
             for (var i = 0; i < $scope.breadcrumbs.length; i++) {
                 if ($scope.breadcrumbs[i].id == data.school.id) {

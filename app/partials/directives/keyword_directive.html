@@ -46,22 +46,23 @@
         </div>
 
         
+        <div class="hidden_container">
+            <div id="profile_docs_container">
+                <div class="header">
+                    <p class="title">Bronnen</p>
+                </div>
 
-        <div id="profile_docs_container">
-            <div class="header">
-                <p class="title">Bronnen</p>
-            </div>
+                <div class="documents">
+                    <span ng-repeat="preview in content">
+                        <div ng-if="preview.Type === 'internal'" data-content="preview" text_preview></div>
+                        <div ng-if="preview.Type === 'youtube'" data-content="preview" youtube_preview></div>
+                        <div ng-if="preview.Type === 'webpage'" data-content="preview" webpage_preview></div>
+                        <div ng-if="preview.Type === 'pdf'" data-content="preview" pdf_preview></div>
+                        <div ng-if="preview.Type === 'image'" data-content="preview" image_preview></div>
 
-            <div class="documents">
-                <span ng-repeat="preview in content">
-                    <div ng-if="preview.Type === 'internal'" data-content="preview" text_preview></div>
-                    <div ng-if="preview.Type === 'youtube'" data-content="preview" youtube_preview></div>
-                    <div ng-if="preview.Type === 'webpage'" data-content="preview" webpage_preview></div>
-                    <div ng-if="preview.Type === 'pdf'" data-content="preview" pdf_preview></div>
-                    <div ng-if="preview.Type === 'image'" data-content="preview" image_preview></div>
+                    </span>
 
-                </span>
-
+                </div>
             </div>
         </div>
 

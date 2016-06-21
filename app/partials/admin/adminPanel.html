@@ -1,7 +1,7 @@
 <div class="background_wrapper">
 
 	<div class="admin_menu">
-		<div class="profile_image_container">
+		<div class="profile_image_container" ng-click="tab = 'myProfile'">
 			<div class="profile_image" style="background-image: url('{{user.profileImage}}');"></div>
 		</div>
 	 	
@@ -10,6 +10,7 @@
 		<li ng-click="tab = 'keywords'">Trefwoorden</li>
 		<li ng-click="tab = 'tags'">Tags</li>
 		<li ng-click="tab = 'myProfile'">Mijn profiel</li>
+		<li ng-click="tab = 'school'">Scholen</li>
 
 	</div>
 
@@ -25,6 +26,7 @@
 		<div ui-view="keywords" ng-if="tab == 'keywords'"></div>
 		<div ui-view="tags" ng-if="tab == 'tags'"></div>
 		<div ui-view="profile" ng-if="tab == 'myProfile'"></div>
+		<div ui-view="school" ng-if="tab == 'school'"></div>
 
 
 		
