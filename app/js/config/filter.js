@@ -52,4 +52,32 @@ module.exports = function(app) {
 
   })
 
+  /**
+  * Return image link for type
+  **/
+  app.filter('resourceType', function($filter) {
+
+    return function(input) {
+      if(input == null) { return ""; }
+
+      switch (input) {
+          case "youtube":
+            return "fa fa-play";
+            break;
+          case "image":
+            return "fa fa-file-image-o";
+            break;
+          case "pdf":
+            return "fa fa-file-text-o";
+            break;
+          case "website":
+            return "fa fa-globe";
+            break;
+          default:
+            return "fa fa-file-o";
+      }
+    }
+
+  })
+
 }
