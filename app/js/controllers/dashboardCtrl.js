@@ -11,10 +11,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     var lastUserWebNodes;
     var lastUserWebEdges;
     var lastUserContent;
-
-    // Initialize the web for the current user
-    //getWebForUser(1);
-
+    
     $scope.slideDown = function () {
         $scope.topBarStyle = {top: '100%'};
         $scope.topContentStyle = {top: '0%'};
