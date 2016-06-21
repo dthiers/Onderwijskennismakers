@@ -4,9 +4,22 @@
     A set of useful LESS mixins
     More info at: http://lesselements.com
   ---------------------------------------------------*/
+.back_button {
+  padding: 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  background-color: #b8bdc5;
+  color: #fff;
+  float: left;
+  cursor: pointer;
+}
+.back_button:hover {
+  background-color: #c6cad0;
+}
 .add_school {
-  display: none;
   padding: 40px;
+  clear: both;
+  margin-top: 20px;
   float: left;
   background-color: #fff;
 }
@@ -98,7 +111,7 @@
   background-color: transparent;
   position: relative;
   height: auto;
-  width: 60%;
+  width: 600px;
   margin-top: 20px;
   font-family: "Open Sans";
   color: #a5a5a5;
@@ -137,22 +150,146 @@
   font-size: 15px;
   overflow: hidden;
 }
+.school_list table tr span {
+  font-size: 19px;
+}
+.school_list table tr span.fa.fa-users {
+  margin-right: 10px;
+}
+.school_list table tr span.fa.fa-users:hover {
+  color: #5b8fe4;
+}
+.school_list table tr span.fa.fa-pencil {
+  margin-right: 10px;
+}
+.school_list table tr span.fa.fa-pencil:hover {
+  color: #5b8fe4;
+}
+.school_list table tr span.fa.fa-trash-o:hover {
+  color: #e45b5b;
+}
+.school_list table tr span.fa.fa-plus {
+  margin-left: 62px;
+  margin-top: -11px;
+  position: absolute;
+  font-size: 25px;
+}
+.school_list table tr span.fa.fa-plus:hover {
+  color: #d2ddef;
+}
 .school_list table tr:hover {
   border-right: 2px solid #5b8fe4;
 }
 .school_list table tr:nth-child(odd) {
   background: #F9F9F9;
 }
-#iAddContent {
-  cursor: pointer;
-  font-size: 30px;
-  margin-top: -30px;
-  margin-left: -25px;
-  color: #B1B1B1;
-}
 .popup_message {
   margin-top: -80px;
 }
 .user_list {
-  display: none;
+  font-family: "Open Sans";
+  color: #a5a5a5;
+  position: absolute;
+  margin-top: 40px;
+}
+.user_list .schoolUsers_container,
+.user_list .allUsers_container {
+  position: absolute;
+  margin-right: 20px;
+  margin-bottom: 40px;
+  margin-top: 35px;
+  width: 100%;
+  padding: 0px;
+  box-sizing: border-box;
+}
+.user_list .allUsers_container {
+  margin-left: 530px;
+}
+.user_list .allUsers_container input {
+  padding: 15px;
+  width: 250px;
+  margin-bottom: 10px;
+  margin-left: 225px;
+  border: 0px;
+  border-radius: 5px;
+}
+.user_list .allUsers_container h1 {
+  width: 220px;
+  font-size: 18px;
+  text-align: left;
+  font-weight: bold;
+  color: #a5a5a5;
+  /* float: left; */
+  /* float: left; */
+  position: absolute;
+  font-weight: 600;
+  margin-top: 11px;
+  /* margin-bottom: 25px; */
+  display: block;
+}
+.user_list .schoolUsers_container {
+  margin-top: 48px;
+}
+.user_list .schoolUsers_container h1 {
+  font-size: 18px;
+  text-align: left;
+  width: 500px;
+  font-weight: bold;
+  color: #a7a7a7;
+  /* float: left; */
+  font-weight: 600;
+  margin-bottom: 25px;
+  display: block;
+}
+.user_list table.allUsers_table tr:first-of-type td:first-of-type,
+.user_list table.schoolUsers_table tr:first-of-type td:first-of-type {
+  width: 50px;
+}
+.user_list table.allUsers_table tr:first-of-type td,
+.user_list table.schoolUsers_table tr:first-of-type td {
+  background: #5b8fe4;
+  height: 40px;
+  vertical-align: middle;
+  color: #FFFFFF;
+}
+.user_list table.allUsers_table tr:first-of-type:hover,
+.user_list table.schoolUsers_table tr:first-of-type:hover {
+  border-right: none;
+}
+.user_list table.allUsers_table tr,
+.user_list table.schoolUsers_table tr {
+  height: 50px;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+.user_list table.allUsers_table tr td,
+.user_list table.schoolUsers_table tr td {
+  padding: 10px;
+  padding-left: 20px;
+  box-sizing: border-box;
+  vertical-align: middle;
+  max-width: 200px;
+  line-height: 25px;
+  font-size: 15px;
+  overflow: hidden;
+}
+.user_list table.allUsers_table tr:hover,
+.user_list table.schoolUsers_table tr:hover {
+  border-right: 2px solid #5b8fe4;
+}
+.user_list table.allUsers_table tr:nth-child(odd),
+.user_list table.schoolUsers_table tr:nth-child(odd) {
+  background: #F9F9F9;
+}
+.user_list table.schoolUsers_table tr:last-of-type {
+  background-color: #b5c1d4;
+  text-align: center;
+}
+.user_list table.schoolUsers_table tr:last-of-type td {
+  font-weight: 500;
+  font-size: 14px;
+  color: #fff;
+}
+.user_list table.schoolUsers_table tr:last-of-type:hover {
+  border-right: none;
 }

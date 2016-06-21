@@ -1,52 +1,98 @@
-<div class="add_school" ng-if="progress = 'addSchool'">
+<div class="popup_message">
+    {{message}}
+</div>
+
+<button ng-click="switchProgress('schoolList', null)" class="back_button" ng-if="progress != 'schoolList'">Terug naar schooloverzicht</button>
+
+<div class="add_school" ng-if="progress == 'addSchool'">
 	<h1>School toevoegen</h1>
 
 	<form name="addSchool_form">
 
 		<span>Schoolnaam</span>
-		<input ng-model="school.name" type="text" placeholder="Schoolnaam" required></input>
+		<input ng-model="newSchool.name" type="text" placeholder="Schoolnaam" required></input>
 
 		<!-- FOTO -->
 		<span>Voeg een foto toe</span>
 	    <input onchange="angular.element(this).scope().file_changed(this)" type="file" accept="image/*" class="input_file" required/>
 
 		<span>Geef hier een beschrijving van de school</span>
-		<textarea ng-model="school.description" placeholder="Geef hier een beschrijving van de school" required></textarea>
+		<textarea ng-model="newSchool.description" placeholder="Geef hier een beschrijving van de school" required></textarea>
 
 	    <!-- TOEVOEGEN -->
-		<button ng-disabled="addSchool_form.$invalid" ng-click="registerSchool(school)">School toevoegen</button>
+		<button ng-disabled="addSchool_form.$invalid" ng-click="registerSchool(newSchool)">School toevoegen</button>
 
 	</form>
 
 </div>
 
-<div class="school_list" ng-if="progress = 'schoolList'">
+<div class="school_list" ng-if="progress == 'schoolList'">
 	<h1>Scholen</h1>
 	<table>
 		<tr>
 			<td>Naam</td>
 			<td>Beschrijving</td>
 			<td>Aangemaakt op</td>
-			<td></td>
+			<td><span class="fa fa-plus" aria-hidden="true" ng-click="switchProgress('addSchool', null)"></span></td>
 		</tr>
-		<tr ng-repeat="school in schools" ng-click="progress = 'schoolUsers'">
+		<tr ng-repeat="school in schools">
 			<td>{{school.name}}</td>
 			<td>{{school.description | limitTo: 10}}</td>
 			<td>{{school.createdAt}}</td>
 			<td>
-				<span class="fa fa-pencil" aria-hidden="true" ng-click="progress = 'editSchool'"></span>
-				<span class="fa fa-trash-o" aria-hidden="true" ng-click="deleteSchool"></span>
+				<span class="fa fa-users" aria-hidden="true" ng-click="switchProgress('schoolUsers', school.id)"></span>
+				<span class="fa fa-pencil" aria-hidden="true" ng-click="switchProgress('editSchool', school.id)"></span>
+				<span class="fa fa-trash-o" aria-hidden="true" ng-click="deleteSchool(school, $event)"></span>
 			</td>
 		</tr>
 	</table>
 </div>
 
-<div class="edit_school" ng-if="progress = 'editSchool'">
+<div class="edit_school" ng-if="progress == 'editSchool'">
 	
 </div>
 
-<div class="user_list" ng-if="progress = 'schoolUsers'">
-	<span ng-repeat="user in users">{{user.firstName}}</span>
+<div class="user_list" ng-if="progress == 'schoolUsers'">
+
+	<div class="schoolUsers_container">
+		<h1>{{school.name}} Experts</h1>
+		<table class="schoolUsers_table">
+			<tr>
+				<td>Voornaam</td>
+				<td>Achternaam</td>
+				<td>Email</td>
+				<td>Beschrijving</td>
+			</tr>
+			<tr ng-repeat="user in schoolUsers">
+				<td>{{user.firstName}}</td>
+				<td>{{user.lastName}}</td>
+				<td>{{user.email | limitTo: 15}}</td>
+				<td>{{user.functionDescription | limitTo: 15}}</td>
+			</tr>
+			<tr><td colspan="4">Klik op een Expert aan de rechterkant om diegene toe te voegen aan de school</td></tr>
+		</table>
+	</div>
+	
+
+	<div class="allUsers_container">
+		<h1 class="second">Experts beschikbaar</h1>
+		<input type="text" placeholder="Zoeken op experts" ng-model="searchFilter"></input>
+		<table class="allUsers_table">
+			<tr>
+				<td>Voornaam</td>
+				<td>Achternaam</td>
+				<td>Email</td>
+				<td>Beschrijving</td>
+			</tr>
+			<tr ng-repeat="user in users | filter: searchFilter | filter:alreadyInSchool" ng-click="addUserToSchool(user)">
+				<td>{{user.firstName}}</td>
+				<td>{{user.lastName}}</td>
+				<td>{{user.email | limitTo: 15}}</td>
+				<td>{{user.functionDescription | limitTo: 15}}</td>
+			</tr>
+		</table>
+	</div>
+	
 </div>
 
 

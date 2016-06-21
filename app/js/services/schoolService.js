@@ -15,6 +15,12 @@ module.exports = function ($http) {
             "description" : school.description 
         }).then(options.onSuccess, options.onError);
     }
+
+    schoolService.addExpert = function(schoolId, userId, options){
+        return $http.post(urlBase + 'school/' + schoolId + '/experts', {
+            "User_id" : userId
+        }).then(options.onSuccess, options.onError);
+    }
     
     return {
         schoolService
