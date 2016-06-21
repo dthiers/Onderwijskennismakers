@@ -2,11 +2,26 @@
 @import "resources/elements.less";
 @import "resources/variables.less";
 
+.back_button{
+	padding: 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    background-color: #b8bdc5;
+    color: #fff;
+    float: left;
+    cursor: pointer;
+
+    &:hover{
+    	background-color: lighten(#b8bdc5, 5%);
+    }
+}
+
 .add_school{
-	display: none;
 	padding: 40px;
-	float: left;
-	background-color: #fff;
+    clear: both;
+    margin-top: 20px;
+    float: left;
+    background-color: #fff;
 	form{
 		span{
 			font-size: 15px;
@@ -106,7 +121,7 @@
     background-color: transparent;
     position: relative;
     height: auto;
-    width: 60%;
+    width: 600px;
     margin-top: 20px;
     font-family: "Open Sans";
     color: #a5a5a5;
@@ -154,6 +169,35 @@
 
              
             }
+            span{
+            	font-size: 19px;
+            	&.fa.fa-users{
+            		margin-right: 10px;
+            		&:hover{
+            			color: #5b8fe4;
+            		}
+            	}
+            	&.fa.fa-pencil{
+            		margin-right: 10px;
+            		&:hover{
+            			color: #5b8fe4;
+            		}
+            	}
+            	&.fa.fa-trash-o{
+            		&:hover{
+            			color: #e45b5b;
+            		}
+            	}
+            	&.fa.fa-plus{
+            		margin-left: 62px;
+				    margin-top: -11px;
+				    position: absolute;
+				    font-size: 25px;
+				    &:hover{
+            			color: #d2ddef;
+            		}
+            	}
+            }
         }
 
         tr:hover{
@@ -166,19 +210,131 @@
     }
 }
 
-#iAddContent{
-    cursor: pointer;
-    font-size: 30px;
-    margin-top: -30px;
-    margin-left: -25px;
-    color: #B1B1B1;
-}
-
 .popup_message{
     margin-top: -80px;
 }
 
 
 .user_list{
-	display: none;
+    font-family: "Open Sans";
+    color: #a5a5a5;
+    position: absolute;
+    margin-top: 40px;
+
+    .schoolUsers_container, .allUsers_container{
+		//margin-top: 40px;
+	    position: absolute;
+	    margin-right: 20px;
+	    margin-bottom: 40px;
+	    margin-top: 35px;
+	    width: 100%;
+	    padding: 0px;
+	    box-sizing: border-box;
+    }
+    .allUsers_container{
+    	margin-left: 530px;
+    	input{
+    		padding: 15px;
+		    width: 250px;
+		    margin-bottom: 10px;
+		    margin-left: 225px;
+		    border: 0px;
+		    border-radius: 5px;
+    	}
+
+    	h1{
+    		width: 220px;
+    		font-size: 18px;
+		    text-align: left;
+		    
+		    font-weight: bold;
+		    color: #a5a5a5;
+		    /* float: left; */
+		    /* float: left; */
+		    position: absolute;
+		    font-weight: 600;
+		    margin-top: 11px;
+		    /* margin-bottom: 25px; */
+		    display: block;
+    	}
+    }
+
+    .schoolUsers_container{
+    	margin-top: 48px;
+
+    	 h1{
+	    	font-size: 18px;
+		    text-align: left;
+		    width: 500px;
+		    font-weight: bold;
+		    color: #a7a7a7;
+		    /* float: left; */
+		    font-weight: 600;
+		    margin-bottom: 25px;
+		    //position: absolute;
+		    display: block;
+	    }
+    }
+
+	table.allUsers_table, table.schoolUsers_table{
+
+        tr:first-of-type{
+
+            td:first-of-type{
+                width: 50px;
+            }
+
+            td{
+                background: @color_main1;
+                height: 40px;
+                vertical-align: middle;
+                color: #FFFFFF;
+            }
+        }
+
+        tr:first-of-type:hover{
+            border-right: none;
+        }
+
+        tr{
+            height: 50px;
+            background: #FFFFFF;
+            cursor: pointer;
+
+            td{
+                padding: 10px;
+    			padding-left: 20px;
+                box-sizing: border-box;
+                vertical-align: middle;
+                max-width: 200px;
+                line-height: 25px;
+                font-size: 15px;
+                overflow: hidden;
+
+             
+            }
+        }
+
+        tr:hover{
+            border-right: 2px solid @color_main1;
+        }
+
+        tr:nth-child(odd){
+            background: #F9F9F9;
+        }
+	}
+	table.schoolUsers_table{
+    	tr:last-of-type{
+		    background-color: #b5c1d4;
+		    text-align: center;
+		    td{
+		    	font-weight: 500;
+		    	font-size: 14px;
+		    	color: #fff;
+		    }
+		    &:hover{
+		    	border-right: none;
+		    }
+        }
+    }
 }
