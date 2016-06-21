@@ -1,0 +1,158 @@
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+.add_school {
+  display: none;
+  padding: 40px;
+  float: left;
+  background-color: #fff;
+}
+.add_school form span {
+  font-size: 15px;
+  font-weight: bold;
+  color: #b3b3b3;
+  display: block;
+  padding-bottom: 10px;
+}
+.add_school form input,
+.add_school form textarea {
+  margin-bottom: 30px;
+  color: #8c8c8c;
+  font-family: "Open Sans";
+}
+.add_school form input[type="text"] {
+  padding: 10px 0px;
+  border: 0px;
+  width: 300px;
+  border-radius: 5px;
+  border-bottom: 2px solid #f1f1f1;
+}
+.add_school form textarea {
+  width: 600px;
+  height: 300px;
+  border: 0px;
+  border-radius: 5px;
+  padding: 20px 20px;
+  border: 1px solid #e2e2e2;
+}
+.add_school form .input_file {
+  width: 200px;
+  height: 37px;
+}
+.add_school form .input_file:before {
+  content: 'Selecteer logo';
+  display: block;
+  background: #73a1ee;
+  border-radius: 5px;
+  padding: 12px;
+  box-sizing: border-box;
+  text-align: center;
+  outline: none;
+  color: #FFFFFF;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-weight: 200;
+  font-size: 13px;
+  position: absolute;
+}
+.add_school form button {
+  display: block;
+  background: #5b8fe4;
+  border-radius: 5px;
+  padding: 12px;
+  box-sizing: border-box;
+  text-align: center;
+  outline: none;
+  color: #FFFFFF;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-weight: 200;
+  font-size: 13px;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.add_school form button:disabled {
+  opacity: 0.3;
+}
+.add_school form button:hover:enabled {
+  background-color: #719ee8;
+}
+.school_list {
+  background-color: #fff;
+  float: left;
+}
+.school_list ul li span {
+  display: block;
+  padding: 20px;
+  width: 150px;
+}
+.school_list {
+  float: left;
+  background-color: transparent;
+  position: relative;
+  height: auto;
+  width: 60%;
+  margin-top: 20px;
+  font-family: "Open Sans";
+  color: #a5a5a5;
+}
+.school_list h1 {
+  font-weight: 500;
+}
+.school_list table {
+  width: 100%;
+  height: auto;
+}
+.school_list table tr:first-of-type td:first-of-type {
+  width: 50px;
+}
+.school_list table tr:first-of-type td {
+  background: #5b8fe4;
+  height: 40px;
+  vertical-align: middle;
+  color: #FFFFFF;
+}
+.school_list table tr:first-of-type:hover {
+  border-right: none;
+}
+.school_list table tr {
+  height: 50px;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+.school_list table tr td {
+  padding: 10px;
+  padding-left: 20px;
+  box-sizing: border-box;
+  vertical-align: middle;
+  max-width: 200px;
+  line-height: 25px;
+  font-size: 15px;
+  overflow: hidden;
+}
+.school_list table tr:hover {
+  border-right: 2px solid #5b8fe4;
+}
+.school_list table tr:nth-child(odd) {
+  background: #F9F9F9;
+}
+#iAddContent {
+  cursor: pointer;
+  font-size: 30px;
+  margin-top: -30px;
+  margin-left: -25px;
+  color: #B1B1B1;
+}
+.popup_message {
+  margin-top: -80px;
+}
+.user_list {
+  display: none;
+}

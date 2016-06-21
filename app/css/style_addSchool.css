@@ -1,0 +1,77 @@
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+.school_toevoegen form span {
+  font-size: 15px;
+  font-weight: bold;
+  color: #b3b3b3;
+  display: block;
+  padding-bottom: 10px;
+}
+.school_toevoegen form input,
+.school_toevoegen form textarea {
+  margin-bottom: 30px;
+  color: #8c8c8c;
+}
+.school_toevoegen form input[type="text"] {
+  padding: 10px 10px;
+  border: 0px;
+  width: 300px;
+  border-radius: 5px;
+}
+.school_toevoegen form textarea {
+  width: 600px;
+  height: 300px;
+  border: 0px;
+  border-radius: 5px;
+  padding: 20px 20px;
+}
+.school_toevoegen form .input_file {
+  width: 200px;
+  height: 37px;
+}
+.school_toevoegen form .input_file:before {
+  content: 'Selecteer logo';
+  display: block;
+  background: #6f6f6f;
+  border-radius: 5px;
+  padding: 12px;
+  box-sizing: border-box;
+  text-align: center;
+  outline: none;
+  color: #FFFFFF;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-weight: 200;
+  font-size: 13px;
+  position: absolute;
+}
+.school_toevoegen form button {
+  display: block;
+  background: #5b8fe4;
+  border-radius: 5px;
+  padding: 12px;
+  box-sizing: border-box;
+  text-align: center;
+  outline: none;
+  color: #FFFFFF;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-weight: 200;
+  font-size: 13px;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.school_toevoegen form button:disabled {
+  opacity: 0.3;
+}
+.school_toevoegen form button:hover:enabled {
+  background-color: #719ee8;
+}
