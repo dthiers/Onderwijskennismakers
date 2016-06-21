@@ -3,6 +3,8 @@ module.exports = function ($scope, user, UserService, ResourcesService) {
 
     $scope.user = user;
 
+    console.log($scope.user);
+
     $scope.saveButtonPressed = function() {
         delete user.createdAt;
         delete user.lastUpdated;

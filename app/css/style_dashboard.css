@@ -290,6 +290,12 @@ body {
   color: #C3C3C3;
   float: left;
 }
+#person_container .flex_container .functionDescription {
+  width: auto;
+  margin-left: 30px;
+  font-style: italic;
+  margin-top: 10px;
+}
 #person_container .flex_container .experts_container h1 {
   font-size: 16px;
   /* width: 100%; */
