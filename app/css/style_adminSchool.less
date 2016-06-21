@@ -1,0 +1,105 @@
+//@import "resources/removeDefaultCss.css";
+@import "resources/elements.less";
+@import "resources/variables.less";
+
+.add_school{
+	display: none;
+	padding: 40px;
+	float: left;
+	background-color: #fff;
+	form{
+		span{
+			font-size: 15px;
+	    	font-weight: bold;
+		    color: #b3b3b3;
+		    display: block;
+		    padding-bottom: 10px;
+		}
+		input, textarea{
+			margin-bottom: 30px;
+			color: #8c8c8c;
+			font-family: "Open Sans";
+		}
+		input[type="text"]{
+			padding: 10px 0px;
+		    border: 0px;
+		    width: 300px;
+		    border-radius: 5px;
+		    border-bottom: 2px solid #f1f1f1;
+		}
+		textarea{
+			width: 600px;
+		    height: 300px;
+		    border: 0px;
+		    border-radius: 5px;
+		    padding: 20px 20px;
+		    border: 1px solid #e2e2e2;
+		}
+		.input_file{
+			width: 200px;
+			height: 37px;
+			&:before{
+				content: 'Selecteer logo';
+			    display: block;
+			    background: #73a1ee;
+			    border-radius: 5px;
+			    padding: 12px;
+			    //width: 100%;
+			    box-sizing: border-box;
+			    text-align: center;
+			    outline: none;
+			    color: #FFFFFF;
+			    white-space: nowrap;
+			    -webkit-user-select: none;
+			    cursor: pointer;
+			    font-weight: 200;
+			    font-size: 13px;
+			    position: absolute;
+			}
+		}
+		button{
+		    display: block;
+		    background: @color_main1;
+		    border-radius: 5px;
+		    padding: 12px;
+		    box-sizing: border-box;
+		    text-align: center;
+		    outline: none;
+		    color: #FFFFFF;
+		    white-space: nowrap;
+		    -webkit-user-select: none;
+		    cursor: pointer;
+		    font-weight: 200;
+		    font-size: 13px;
+		    .transition(0.2s, ease);
+		    &:disabled{
+		    	opacity: 0.3;
+		    }
+		    &:hover:enabled{
+		    	background-color: lighten(@color_main1, 5%);
+		    }
+		}
+	}
+
+}
+.school_list{
+	background-color: #fff;
+	float: left;
+	ul{
+		lh{
+			span{
+
+			}
+		}
+		li{
+			span{
+				display: block;
+				padding: 20px;
+				width: 150px;
+			}
+		}
+	}
+}
+.user_list{
+	display: none;
+}

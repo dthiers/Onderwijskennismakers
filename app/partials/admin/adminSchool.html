@@ -1,0 +1,43 @@
+<div class="add_school">
+	<h1>School toevoegen</h1>
+
+	<form name="addSchool_form">
+
+		<span>Schoolnaam</span>
+		<input ng-model="school.name" type="text" placeholder="Schoolnaam" required></input>
+
+		<!-- FOTO -->
+		<span>Voeg een foto toe</span>
+	    <input onchange="angular.element(this).scope().file_changed(this)" type="file" accept="image/*" class="input_file" required/>
+
+		<span>Geef hier een beschrijving van de school</span>
+		<textarea ng-model="school.description" placeholder="Geef hier een beschrijving van de school" required></textarea>
+
+	    <!-- TOEVOEGEN -->
+		<button ng-disabled="addSchool_form.$invalid" ng-click="registerSchool(school)">School toevoegen</button>
+
+	</form>
+
+</div>
+
+<div class="school_list">
+	<ul>
+		<lh>
+			<span>Naam</span>
+			<span>Beschrijving</span>
+			<span>Aangemaakt op</span>
+		</lh>
+		<li ng-repeat="school in schools">
+			<span>{{school.name}}</span>
+			<span>{{school.description | limitTo: 10}}</span>
+			<span>{{school.createdAt}}</span>
+		</li>
+	</ul>
+	
+</div>
+
+<div class="user_list">
+	<span ng-repeat="user in users">{{user.firstName}}</span>
+</div>
+
+
