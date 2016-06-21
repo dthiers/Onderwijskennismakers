@@ -1,4 +1,4 @@
-module.exports = function ($scope, user, ProfileService, $timeout, ModalService) {
+module.exports = function ($scope, user, ProfileService, $timeout, ModalService, ResourcesService) {
 
     var self = this;
     $scope.user = user;
@@ -12,7 +12,6 @@ module.exports = function ($scope, user, ProfileService, $timeout, ModalService)
         ProfileService.profileService.getUserContent($scope.user.id)
             .then(function (response) {
                 $scope.userContent = response.data.data;
-                popupMessage("Bronnen ingeladen.");
             }, function (error) {
                 popupMessage("Er is iets mis gegaan..");
                 console.log(error.message);
@@ -34,6 +33,36 @@ module.exports = function ($scope, user, ProfileService, $timeout, ModalService)
         angular.forEach($scope.userContent, function(value, key) {
             if(value.id == id)
                 $scope.selectedContent = value;
+        });
+    }
+
+    $scope.deleteContent = function(id){
+
+        ResourcesService.deleteContent(id,{
+            onSuccess: function (result) {
+                getUserResources();
+                popupMessage("Bron succesvol verwijderd");
+
+                if($scope.selectedContent.id == id)
+                    $scope.selectedContent = null;
+            },
+            onError: function (err) {
+                console.log(err);
+            }
+        });
+    }
+
+    $scope.updateSelected = function(){
+        ResourcesService.updateContent($scope.selectedContent,{
+            onSuccess: function (result) {
+                console.log(result);
+                getUserResources();
+                popupMessage("Bron succesvol geupdate");
+                $scope.selectedContent = null;
+            },
+            onError: function (err) {
+                console.log(err);
+            }
         });
     }
 

@@ -33,24 +33,24 @@
         tr{
             height: 50px;
             background: #FFFFFF;
-            cursor: pointer;
 
             td{
-                padding-left: 10px !important;
-                box-sizing: border-box;
                 vertical-align: middle;
                 max-width: 200px;
                 overflow: hidden;
 
-                i{
-                    margin: 0px;
-                    position: absolute;
-                    color: #BBBBBB;
-                    float: left;
-                    left: 20px;
-                    margin-top: -7px;
-                    text-align: left;
-                    padding: 0px;
+                .action{
+                    cursor: pointer;
+                }
+            }
+
+            td:first-of-type{
+                span{
+                    transform: none !important;
+                    float: inherit !important;
+                    margin: 0px !important;
+                    color: #323232;
+                    padding-left: 15px;
                 }
             }
         }
@@ -61,11 +61,6 @@
 
         tr:nth-child(odd){
             background: #F9F9F9;
-
-            i{
-                left: 10px;
-                margin-top: 0px;
-            }
         }
     }
 }
@@ -101,6 +96,15 @@
         box-sizing: border-box;
         margin-top: 5px;
         margin-bottom: 10px;
+    }
+
+    button{
+        width: 100px;
+        height: 30px;
+        color: #FFFFFF;
+        background: @color_main1;
+        cursor: pointer;
+        float: right;
     }
 }
 

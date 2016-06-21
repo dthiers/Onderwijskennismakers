@@ -51,6 +51,14 @@ module.exports = function ($http) {
         }).then(func1, func2);
     }
 
+    self.deleteContent = function (id, options) {
+        $http.delete("http://onderwijskennismakers.herokuapp.com/content/" + id).then(options.onSuccess, options.onError);
+    },
+
+    self.updateContent = function (content, options) {
+        $http.put("http://onderwijskennismakers.herokuapp.com/content/" + content.id, {"name": content.name, "link": content.link, "content": content.content, "shortDescription": content.shortDescription}).then(options.onSuccess, options.onError);
+    },
+
     self.setResourceDetails = function (name, community, description, id) {
         newRescource.name = name;
         newRescource.community = community;

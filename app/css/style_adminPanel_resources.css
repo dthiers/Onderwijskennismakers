@@ -30,34 +30,27 @@
 .divAdminTableWrapper table tr {
   height: 50px;
   background: #FFFFFF;
-  cursor: pointer;
 }
 .divAdminTableWrapper table tr td {
-  padding-left: 10px !important;
-  box-sizing: border-box;
   vertical-align: middle;
   max-width: 200px;
   overflow: hidden;
 }
-.divAdminTableWrapper table tr td i {
-  margin: 0px;
-  position: absolute;
-  color: #BBBBBB;
-  float: left;
-  left: 20px;
-  margin-top: -7px;
-  text-align: left;
-  padding: 0px;
+.divAdminTableWrapper table tr td .action {
+  cursor: pointer;
+}
+.divAdminTableWrapper table tr td:first-of-type span {
+  transform: none !important;
+  float: inherit !important;
+  margin: 0px !important;
+  color: #323232;
+  padding-left: 15px;
 }
 .divAdminTableWrapper table tr:hover {
   border-right: 2px solid #5b8fe4;
 }
 .divAdminTableWrapper table tr:nth-child(odd) {
   background: #F9F9F9;
-}
-.divAdminTableWrapper table tr:nth-child(odd) i {
-  left: 10px;
-  margin-top: 0px;
 }
 .divAdminResourcesDetail {
   width: calc(40% - 20px);
@@ -89,6 +82,14 @@
   box-sizing: border-box;
   margin-top: 5px;
   margin-bottom: 10px;
+}
+.divAdminResourcesDetail button {
+  width: 100px;
+  height: 30px;
+  color: #FFFFFF;
+  background: #5b8fe4;
+  cursor: pointer;
+  float: right;
 }
 #iAddContent {
   cursor: pointer;
