@@ -1,1 +1,21 @@
-<h1>Tags</h1>
+<div class="popup_message">
+    {{message}}
+</div>
+
+<div id="divTagPopup">
+    <b><h1>Tags beheren</h1></b>
+    <div id="divAddTag">
+        <input type="text" id="txtNewTag" placeholder="Tag toevoegen" ng-model="txtNewTag" /><button ng-hide="!txtNewTag" ng-click="addNewTag()"
+            id="btnAddTag">Toevoegen</button>
+    </div>
+
+    <div id="divAddTag">
+        <input type="text" id="txtNewTag" placeholder="Zoeken in tags" ng-model="search" />
+    </div>
+
+    <div class="hidden_scrollContainer">
+        <div id="divTags">
+            <div class="divTag" ng-repeat="(key, value) in tags| filter:search">{{value.name}} <i class="fa fa-times" aria-hidden="true" ng-click="deleteTag(value.id)"></i></div>
+        </div>
+    </div>
+</div>
