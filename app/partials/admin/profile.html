@@ -2,7 +2,7 @@
 
 <div class="divAdminProfileWrapper">
     <div class="divProfileBasics">
-        <div class="divProfileImage" style="background: url({{user.profileImage}}); background-size: contain; background-position: center;"></div>
+        <div class="divProfileImage" style="background: url({{user.profileImage}}); background-size: cover; background-position: center;"></div>
         <input onchange="angular.element(this).scope().file_changed(this)" type="file" accept="image/*" class="input_file" required/>
 
         <div class="divPersonal">
