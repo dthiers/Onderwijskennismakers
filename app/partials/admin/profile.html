@@ -7,8 +7,12 @@
     <input type="text" placeholder="Email" ng-model="user.email" required/>
     <input type="text" placeholder="Wachtwoord" ng-model="user.password" required/>
     <input type="text" placeholder="Functie" ng-model="user.functionDescription" required/>
-    <input type="text" placeholder="Profielfoto" ng-model="user.profileImage" required/>
     <input type="text" placeholder="Telefoon nummer" ng-model="user.phoneNumber" required/>
+</div>
+
+<div id="divKeywordList">
+    <img ng-src="{{user.profileImage}}">
+    <input onchange="angular.element(this).scope().file_changed(this)" type="file" accept="image/*" class="input_file" required/>
 </div>
 
 <div id="divKeywordList">
