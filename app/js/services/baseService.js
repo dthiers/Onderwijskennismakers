@@ -13,16 +13,16 @@ module.exports = function (service, http) {
             return http.get(urlBase + service + '/' + id);
         },
         // create function
-        create: function () {
-            //todo
+        create: function (data) {
+            return http.post(urlBase + service + '/', data);
         },
         // update by id
-        updateById: function (id) {
-            //todo
+        updateById: function (id, data) {
+            return http.put(urlBase + service + '/' + id, data);
         },
         // delete by id
         deleteById: function (id) {
-            //todo
+            return http.delete(urlBase + service + '/' + id);
         }
     }
 

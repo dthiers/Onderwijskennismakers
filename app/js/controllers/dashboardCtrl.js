@@ -11,10 +11,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     var lastUserWebNodes;
     var lastUserWebEdges;
     var lastUserContent;
-
-    // Initialize the web for the current user
-    //getWebForUser(1);
-
+    
     $scope.slideDown = function () {
         $scope.topBarStyle = {top: '100%'};
         $scope.topContentStyle = {top: '0%'};
@@ -105,7 +102,6 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
     // Search with a debounce of 800ms
     $scope.search = function (query) {
-        console.log("I'm doing my business");
         if (query !== "") {
             SearchService.search(query, function (data) {
                 $scope.content = data["matched_content"];
@@ -170,7 +166,6 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
         // Add matched users
         angular.forEach(data["matched_users"], function (value, key) {
-            console.log(value);
             nodes.add(createUserNode(nodeCounter, value));
             edges.add({
                 from: 0,
@@ -277,9 +272,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     function getPopupDetails(id) {//based on route param
         ProfileService.profileService.getUserDetails(id)//call to service
             .then(function (response) {
-
                 $scope.popup = response.data.data[0];//set response to scope
-
             }, function (error) {
                 $scope.status = 'Er is iets misgegaan met het laden van de gebruiker: ';
                 console.log(error.message);
