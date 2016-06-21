@@ -1,1 +1,22 @@
 <h1>Mijn profiel</h1>
+
+<div id="divKeywordList">
+    <h2>Persoonlijke gegevens</h2>
+    <input type="text" placeholder="Voornaam" ng-model="user.firstName" required/>
+    <input type="text" placeholder="Achternaam" ng-model="user.lastName" required/>
+    <input type="text" placeholder="Email" ng-model="user.email" required/>
+    <input type="text" placeholder="Wachtwoord" ng-model="user.password" required/>
+    <input type="text" placeholder="Functie" ng-model="user.functionDescription" required/>
+    <input type="text" placeholder="Profielfoto" ng-model="user.profileImage" required/>
+    <input type="text" placeholder="Telefoon nummer" ng-model="user.phoneNumber" required/>
+</div>
+
+<div id="divKeywordList">
+    <h2>Social media</h2>
+    <input type="text" placeholder="Facebook" ng-model="user.facebook" required/>
+    <input type="text" placeholder="Skype" ng-model="user.skype" required/>
+    <input type="text" placeholder="Twitter" ng-model="user.twitter" required/>
+    <input type="text" placeholder="LinkedIn" ng-model="user.linkedIn" required/>
+</div>
+
+<div ng-click="saveButtonPressed()">Save</div>

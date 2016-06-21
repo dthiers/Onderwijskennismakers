@@ -9,4 +9,5 @@ module.exports = function (app) {
     app.factory('KeywordsService', require('../services/keywordsService'));
     app.factory('SearchService', require('../services/searchService'));
     app.factory('CommunityService', require('../services/communityService'));
+    app.factory('UserService', require('../services/userService'));
 }
