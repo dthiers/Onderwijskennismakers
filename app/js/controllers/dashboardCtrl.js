@@ -650,8 +650,8 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
             $scope.hidePopup = true;
             $scope.$apply();
         }
-    };
-
+    };          
+                 
     $scope.events.selectNode = function (click) {
         var node = $scope.data.nodes.get(click.nodes[0]);
 
@@ -675,6 +675,8 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         } else if (node.group == 'schools') {
             $scope.hidePopup = true;
             getWebForSchool(node.schoolId);
+        } else {
+            $scope.hidePopup = true;
         }
     };
 
