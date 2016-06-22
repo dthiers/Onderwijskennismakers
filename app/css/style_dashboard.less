@@ -24,7 +24,6 @@ html,body{
   100% { opacity: 1; }
 }
 
-
 .breadcrumbs{
   position: absolute;
   width: auto;
@@ -545,6 +544,10 @@ html,body{
   .associated_tags{
     float: left;
     margin-top: 40px;
+    position: relative;
+    width: 500px;
+    height: 300px;
+    margin-bottom: 50px;
 
     span{
       margin-right: 6px;
@@ -959,5 +962,18 @@ html,body{
       height: auto;
     }
   }
+}
+
+.preview_content{
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    box-shadow: rgb(220, 220, 220) 0px 0px 20px;
+    z-index: 9999999;
+    box-sizing: border-box;
+    top: 20px;
+    left: calc(70% - 250px);
+    background: rgb(255, 255, 255);
+    transition: all 0.8s;
 }
 // END DASHBOARD ====================================================================================================
