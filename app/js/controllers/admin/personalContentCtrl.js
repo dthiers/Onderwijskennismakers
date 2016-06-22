@@ -77,4 +77,21 @@ module.exports = function ($scope, user, ProfileService, $timeout, ModalService,
         });
     }
 
+        $scope.openTags = function () {
+
+        ModalService.showModal({
+            templateUrl: "../partials/directives/tags/tags_add_directive.html",
+            controller: "TagsCtrlResources",
+            inputs: {
+                id: $scope.selectedContent.id,
+                type: "content",
+                name: $scope.selectedContent.name
+            }
+        }).then(function (modal) {
+            modal.close.then(function (result) {
+                console.log(result);
+            });
+        });
+    }
+
 };
