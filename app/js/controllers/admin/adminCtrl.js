@@ -9,11 +9,11 @@ module.exports = function ($scope, user) {
 
     function popupMessage(message){
         $scope.message = message;
-        $(".popup_message").addClass("flash_popup"); 
+        $(".popup_message").addClass("flash_popup");
         $timeout(function(){
-            $(".popup_message").removeClass("flash_popup"); 
-        }, 3000);  
-        
+            $(".popup_message").removeClass("flash_popup");
+        }, 3000);
+
     }
 
 };
