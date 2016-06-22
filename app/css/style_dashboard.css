@@ -509,6 +509,10 @@ body {
 #keyword_container .associated_tags {
   float: left;
   margin-top: 40px;
+  position: relative;
+  width: 500px;
+  height: 300px;
+  margin-bottom: 50px;
 }
 #keyword_container .associated_tags span {
   margin-right: 6px;
@@ -880,4 +884,16 @@ body {
 .content_directive .image img {
   width: auto;
   height: auto;
+}
+.preview_content {
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  box-shadow: #dcdcdc 0px 0px 20px;
+  z-index: 9999999;
+  box-sizing: border-box;
+  top: 20px;
+  left: calc(-180%);
+  background: #ffffff;
+  transition: all 0.8s;
 }

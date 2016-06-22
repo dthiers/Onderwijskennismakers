@@ -11,7 +11,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     var lastUserWebNodes;
     var lastUserWebEdges;
     var lastUserContent;
-    
+
     $scope.slideDown = function () {
         $scope.topBarStyle = {top: '100%'};
         $scope.topContentStyle = {top: '0%'};
@@ -286,7 +286,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         KeywordService.getById(id)//call to service
             .then(function (response) {
                 $scope.keyword = response.data.data[0];//set response to scope
-                
+
                 ProfileService.profileService.getById($scope.keyword.User_id)//call to service
                     .then(function (response) {
                         $scope.editor = response.data.data[0];//set response to scope
@@ -829,8 +829,8 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     };
 
     $scope.keywordOptions = {
-        width: '30%',
-        height: '60%',
+        width: '100%',
+        height: '100%',
         layout: {
             randomSeed: 1 //zorgt ervoor dat er geen random web wordt gegenereerd
 
@@ -844,7 +844,8 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         },
         interaction: {
             dragNodes: false,
-            dragView: true
+            dragView: false,
+            zoomView: false
         },
         groups: {
             //Keywords
