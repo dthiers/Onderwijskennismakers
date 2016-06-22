@@ -101,6 +101,9 @@
   background-color: #fff;
   float: left;
 }
+.school_list .popup_message {
+  margin-top: -80px;
+}
 .school_list ul li span {
   display: block;
   padding: 20px;
@@ -182,9 +185,6 @@
 }
 .school_list table tr:nth-child(odd) {
   background: #F9F9F9;
-}
-.popup_message {
-  margin-top: -80px;
 }
 .user_list {
   font-family: "Open Sans";
