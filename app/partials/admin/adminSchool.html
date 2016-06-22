@@ -38,7 +38,7 @@
 		<tr ng-repeat="school in schools">
 			<td>{{school.name}}</td>
 			<td>{{school.description | limitTo: 10}}</td>
-			<td>{{school.createdAt}}</td>
+			<td>{{school.createdAt | datetime }}</td>
 			<td>
 				<span class="fa fa-users" aria-hidden="true" ng-click="switchProgress('schoolUsers', school.id)"></span>
 				<span class="fa fa-pencil" aria-hidden="true" ng-click="switchProgress('editSchool', school.id)"></span>
@@ -49,7 +49,7 @@
 </div>
 
 <div class="edit_school" ng-if="progress == 'editSchool'">
-	
+
 </div>
 
 <div class="user_list" ng-if="progress == 'schoolUsers'">
@@ -72,7 +72,7 @@
 			<tr><td colspan="4">Klik op een Expert aan de rechterkant om diegene toe te voegen aan de school</td></tr>
 		</table>
 	</div>
-	
+
 
 	<div class="allUsers_container">
 		<h1 class="second">Experts beschikbaar</h1>
@@ -92,7 +92,5 @@
 			</tr>
 		</table>
 	</div>
-	
+
 </div>
-
-
