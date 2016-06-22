@@ -1,1 +1,44 @@
+<div class="popup_message">
+    {{message}}
+</div>
+
 <h1>Mijn bronnen</h1>
+<i class="fa fa-plus" ng-click="openResources()" id="iAddContent" aria-hidden="true"></i>
+
+<div class="divAdminTableWrapper">
+    <table>
+        <tr>
+            <td></td>
+            <td>Naam</td>
+            <td>Link</td>
+            <td>Aangemaakt</td>
+            <td></td>
+        </tr>
+        <tr ng-show="userContent.length == 0">
+            <td colspan="5" style="text-align: center;">Geen bronnen gevonden</td>
+        </tr>
+        <tr ng-repeat="content in userContent">
+            <td><span class="{{ content.Type | resourceType }}"></span></td>
+            <td>{{ content.name }}</td>
+            <td>{{ content.link }}</td>
+            <td>{{ content.createdAt | datetime }}</td>
+            <td><span class="action fa fa-pencil" aria-hidden="true" ng-click="setSelected( content.id )"></span> <span class="action fa fa-trash-o" aria-hidden="true" ng-click="deleteContent( content.id )"></span></td>
+        </tr>
+    </table>
+</div>
+
+<div class="divAdminResourcesDetail" ng-show="selectedContent != null">
+    <h2>Naam</h2>
+    <input type="text" ng-model="selectedContent.name" value="{{ selectedContent.name }}" />
+
+    <h2 ng-hide="selectedContent.Type != 'internal'">Content</h2>
+    <textarea ng-hide="selectedContent.Type != 'internal'" ng-model="selectedContent.content" type="text">{{ selectedContent.content }}</textarea>
+
+    <h2 ng-show="selectedContent.Type != 'internal'">Link</h2>
+    <input ng-show="selectedContent.Type != 'internal'" ng-model="selectedContent.link" type="text" value="{{ selectedContent.link }}" />
+
+    <h2>Omschrijving</h2>
+    <textarea ng-model="selectedContent.shortDescription" type="text">{{ selectedContent.shortDescription }}</textarea>
+
+    <button ng-click="updateSelected()">Opslaan</button>
+</div>

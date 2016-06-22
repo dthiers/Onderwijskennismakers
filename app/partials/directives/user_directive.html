@@ -3,7 +3,7 @@
         {{user.firstName}} {{user.lastName}}
     </div>
     <img src="./images/arrow_down.png" class="imgTopBarArrow" />
-    <div class="divUserImage" style="background-image: url('./{{user.profileImage}}');"></div>
+    <div class="divUserImage" style="background-image: url('{{user.profileImage}}');"></div>
 </div>
 
 <!-- PROFILE -->
@@ -14,7 +14,7 @@
         <div id="person_container">
             <div class="personInfo_container">
                 <!-- PROFILE IMAGE -->
-                <img src="./{{user.profileImage}}" class="profile_image person" />
+                <img ng-src="{{user.profileImage}}" class="profile_image person" />
 
                 <div class="flex_container">
                     <div class="nameRatingSchool_container">
@@ -31,39 +31,40 @@
                         </div>
                         <div class="school_flex_container">
                             <div class="school_block"></div>
-                            <p class="schoolName" ng-click="loadSchool(user.School_id)">{{user.name}}</p>
+                            <p class="schoolName" ng-click="loadSchool(user.School_id, true)">{{user.name}}</p><br/>
                         </div>
+                        <p class="functionDescription">{{ user.functionDescription }}</p>
                     </div>
                 </div>
-                
+
             </div>
 
             <div class="aboutMe_container">
                 <p class="title">Over mij</p>
                 <p class="description">
-                    {{user.functionDescription}}
+                    {{user.description}}
                 </p>
             </div>
 
         </div>
 
-        
 
-        <div id="profile_docs_container">
-            <div class="header">
-                <p class="title">Bronnen</p>
-            </div>
+        <div class="hidden_container">
+            <div id="profile_docs_container">
+                <div class="header">
+                    <p class="title">Bronnen</p>
+                </div>
 
-            <div class="documents">
-                <span ng-repeat="preview in userContent">
-                    <div ng-if="preview.Type === 'internal'" data-content="preview" text_preview></div>
-                    <div ng-if="preview.Type === 'youtube'" data-content="preview" youtube_preview></div>
-                    <div ng-if="preview.Type === 'webpage'" data-content="preview" webpage_preview></div>
-                    <div ng-if="preview.Type === 'pdf'" data-content="preview" pdf_preview></div>
-                    <div ng-if="preview.Type === 'image'" data-content="preview" image_preview></div>
+                <div class="documents">
+                    <span ng-repeat="preview in userContent">
+                        <div ng-if="preview.Type === 'internal'" data-content="preview" text_preview></div>
+                        <div ng-if="preview.Type === 'youtube'" data-content="preview" youtube_preview></div>
+                        <div ng-if="preview.Type === 'webpage'" data-content="preview" webpage_preview></div>
+                        <div ng-if="preview.Type === 'pdf'" data-content="preview" pdf_preview></div>
+                        <div ng-if="preview.Type === 'image'" data-content="preview" image_preview></div>
+                    </span>
 
-                </span>
-
+                </div>
             </div>
         </div>
 

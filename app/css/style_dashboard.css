@@ -290,6 +290,12 @@ body {
   color: #C3C3C3;
   float: left;
 }
+#person_container .flex_container .functionDescription {
+  width: auto;
+  margin-left: 30px;
+  font-style: italic;
+  margin-top: 10px;
+}
 #person_container .flex_container .experts_container h1 {
   font-size: 16px;
   /* width: 100%; */
@@ -351,12 +357,19 @@ body {
   color: #a0a0a0;
   line-height: 24px;
 }
+.hidden_container {
+  position: relative;
+  overflow: hidden;
+  width: 360px;
+  height: 100%;
+}
 #profile_docs_container {
   position: relative;
   right: 0px;
-  width: 360px;
+  width: 100%;
   height: 100%;
   text-align: right;
+  padding-right: 40px;
   overflow: auto;
 }
 #profile_docs_container .header {
@@ -372,31 +385,40 @@ body {
 }
 #profile_docs_container .doc {
   cursor: pointer;
-  background-color: #F7F7F7;
-  padding: 30px;
-  text-align: left;
-  margin-bottom: 5px;
+  color: #A5A5A5;
+  width: 100%;
+  border-radius: 5px;
+  float: left;
+  background-color: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-bottom: 4px;
 }
 #profile_docs_container .doc h3 {
-  color: #9C9C9C;
+  font-size: 16px;
+  font-weight: bold;
   margin-bottom: 15px;
-  font-size: 17px;
-  font-family: Lato-Regular;
+  color: #b3b3b3;
 }
 #profile_docs_container .doc p {
-  color: #A0A0A0;
+  font-size: 13px;
   margin-bottom: 15px;
-  display: block;
-  font-size: 15px;
-  font-family: Lato-light-italic;
 }
-#profile_docs_container .doc span {
-  display: inline-block;
-  color: #A0A0A0;
+#profile_docs_container .doc .stars img {
+  width: 20px;
+}
+#profile_docs_container .doc .profile_image {
+  cursor: pointer;
+  overflow: hidden;
+  float: right;
+  border-radius: 100px;
+  width: 50px;
+  height: 50px;
   margin-bottom: 10px;
-  font-size: 15px;
-  font-family: Lato-light-italic;
-  margin-right: 5px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: gray;
 }
 #profile_docs_container .rating_container img {
   height: 20px;
@@ -404,7 +426,7 @@ body {
 }
 #keyword_container {
   float: left;
-  width: calc(100% - 260px);
+  width: calc(100% - 360px);
   height: auto;
 }
 #keyword_container .profile_image {
@@ -490,6 +512,12 @@ body {
   color: #90A2BF;
   font-size: 14px;
   background-color: #D7E4F9;
+}
+.hidden_container {
+  position: relative;
+  overflow: hidden;
+  width: 360px;
+  height: 100%;
 }
 #profile_docs_container {
   position: relative;
@@ -713,7 +741,7 @@ body {
 }
 .dashboard_container .side_content_scrollWrapper .side_content .documents_container .doc p {
   font-size: 13px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 .dashboard_container .side_content_scrollWrapper .side_content .documents_container .doc .stars img {
   width: 20px;

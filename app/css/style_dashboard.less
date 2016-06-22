@@ -36,7 +36,7 @@ html,body{
     box-shadow: 1px 1px 4px 0px #A0A0A0;
     /* font-weight: bold; */
     padding: 8px;
-    margin-bottom: 10px;  
+    margin-bottom: 10px;
     background-color: #73A1EE;
     color: #fff;
     border-radius: 5px;
@@ -44,7 +44,7 @@ html,body{
     float: left;
     &:last-child{
       &:after{
-        display: none;  
+        display: none;
       }
     }
     &:first-child{
@@ -90,9 +90,9 @@ html,body{
   height: 70px;
   background: #FFFFFF;
   cursor: pointer;
-  -webkit-transition: top 1000ms cubic-bezier(0.695, 0.010, 0.225, 0.985); 
-   -moz-transition: top 1000ms cubic-bezier(0.695, 0.010, 0.225, 0.985); 
-     -o-transition: top 1000ms cubic-bezier(0.695, 0.010, 0.225, 0.985); 
+  -webkit-transition: top 1000ms cubic-bezier(0.695, 0.010, 0.225, 0.985);
+   -moz-transition: top 1000ms cubic-bezier(0.695, 0.010, 0.225, 0.985);
+     -o-transition: top 1000ms cubic-bezier(0.695, 0.010, 0.225, 0.985);
         transition: top 1000ms cubic-bezierf(0.695, 0.010, 0.225, 0.985); /* custom */
   z-index: 999;
 }
@@ -151,9 +151,9 @@ html,body{
   background: #FFFFFF;
   top: -100%;
   z-index: 998;
-  -webkit-transition: top 1000ms cubic-bezier(0.695, 0.010, 0.225, 0.985); 
-   -moz-transition: top 1000ms cubic-bezier(0.695, 0.010, 0.225, 0.985); 
-     -o-transition: top 1000ms cubic-bezier(0.695, 0.010, 0.225, 0.985); 
+  -webkit-transition: top 1000ms cubic-bezier(0.695, 0.010, 0.225, 0.985);
+   -moz-transition: top 1000ms cubic-bezier(0.695, 0.010, 0.225, 0.985);
+     -o-transition: top 1000ms cubic-bezier(0.695, 0.010, 0.225, 0.985);
         transition: top 1000ms cubic-bezier(0.695, 0.010, 0.225, 0.985); /* custom */
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -192,9 +192,9 @@ html,body{
   z-index: 99999;
   width: 100%;
   height: 60px;
-  -webkit-transition: bottom 1000ms cubic-bezier(0.695, 0.010, 0.225, 0.985); 
-   -moz-transition: bottom 1000ms cubic-bezier(0.695, 0.010, 0.225, 0.985); 
-     -o-transition: bottom 1000ms cubic-bezier(0.695, 0.010, 0.225, 0.985); 
+  -webkit-transition: bottom 1000ms cubic-bezier(0.695, 0.010, 0.225, 0.985);
+   -moz-transition: bottom 1000ms cubic-bezier(0.695, 0.010, 0.225, 0.985);
+     -o-transition: bottom 1000ms cubic-bezier(0.695, 0.010, 0.225, 0.985);
         transition: bottom 1000ms cubic-bezierf(0.695, 0.010, 0.225, 0.985); /* custom */
 }
 
@@ -273,7 +273,7 @@ html,body{
         }
       }
     }
-    
+
     .school_flex_container{
       display: flex;
       align-items: center;
@@ -291,6 +291,13 @@ html,body{
         color: #C3C3C3;
         float: left;
       }
+    }
+
+    .functionDescription{
+        width: auto;
+        margin-left: 30px;
+        font-style: italic;
+        margin-top: 10px;
     }
 
     .experts_container{
@@ -361,13 +368,19 @@ html,body{
 }
 
 
-
+.hidden_container{
+  position: relative;
+  overflow: hidden;
+  width: 360px;
+  height: 100%;
+}
 #profile_docs_container{
   position: relative;
   right: 0px;
-  width: 360px;
+  width: 100%;
   height: 100%;
   text-align: right;
+  padding-right:40px;
   overflow: auto;
   //overflow: hidden;
 
@@ -384,34 +397,46 @@ html,body{
   }
 
   .doc{
-    cursor: pointer;
-    background-color: #F7F7F7;
-    padding: 30px;
-    text-align: left;
-    margin-bottom: 5px;
+      cursor: pointer;
+      color: #A5A5A5;
+      width: 100%;
+      border-radius: 5px;
+      float: left;
+      background-color: #fff;
+      padding: 20px;
+      box-sizing: border-box;
+      margin-bottom: 4px;
 
-    h3{
-      //font-weight: bold;
-      color: #9C9C9C;
-      margin-bottom: 15px;
-      font-size: 17px;
-      font-family: Lato-Regular;
-    }
-    p{
-      color: #A0A0A0;
-      margin-bottom: 15px;
-      display: block;
-      font-size: 15px;
-      font-family: Lato-light-italic;
-    }
-    span{
-      display: inline-block;
-      color: #A0A0A0;
-      margin-bottom: 10px;
-      font-size: 15px;
-      font-family: Lato-light-italic;
-      margin-right: 5px;
-    }
+      h3{
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #b3b3b3;
+      }
+      p{
+        font-size: 13px;
+        margin-bottom: 15px;
+      }
+      .stars{
+        img{
+          width: 20px;
+        }
+      }
+
+      .profile_image{
+        cursor: pointer;
+        overflow: hidden;
+        float: right;
+        //margin-right: 10px;
+        border-radius: 100px;
+        width: 50px;
+        height: 50px;
+        margin-bottom: 10px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: gray;
+      }
   }
 
   .rating_container{
@@ -426,7 +451,7 @@ html,body{
 // KEYWORD DIRECTIVE ====================================================================================================
 #keyword_container{
   float: left;
-  width: ~'calc(100% - 260px)';
+  width: ~'calc(100% - 360px)';
   height: auto;
 
   .profile_image{
@@ -459,7 +484,7 @@ html,body{
         float: left;
       }
     }
-    
+
     .editor_flex_container{
       display: flex;
       align-items: center;
@@ -526,8 +551,12 @@ html,body{
   }
 }
 
-
-
+.hidden_container{
+  position: relative;
+  overflow: hidden;
+  width: 360px;
+  height: 100%;
+}
 #profile_docs_container{
   position: relative;
   right: 0px;
@@ -670,7 +699,7 @@ html,body{
         .search_bar{
             width: ~'calc(100% - 55px)';
             height: ~'calc(100% - 30px)';
-            float: left; 
+            float: left;
             margin: 0px;
             padding: 0px;
             border-radius: 5px;
@@ -701,7 +730,7 @@ html,body{
         }
     }
   }
-  
+
 
   .side_content_scrollWrapper{
       width: 30%;
@@ -768,7 +797,7 @@ html,body{
               }
               p{
                 font-size: 13px;
-                margin-bottom: 10px;
+                margin-bottom: 15px;
               }
               .stars{
                 img{
@@ -794,7 +823,7 @@ html,body{
       }
     }
   }
-  
+
 }
 
 .content_directive{
@@ -804,7 +833,7 @@ html,body{
       font-size: 34px;
       color: #73A1EE;
       margin-bottom: 17px;
-      float: left;  
+      float: left;
     }
     .subtitle{
       float: right;
@@ -821,7 +850,7 @@ html,body{
             margin-right: 10px;
             width: 137px;
 
-          } 
+          }
           &.user{
               cursor: pointer;
               border-bottom: 1px solid #EFEFEF;
@@ -879,7 +908,7 @@ html,body{
         color: #A2A2A2;
       }
     }
-    
+
   }
   .custom_content{
     margin-top: 30px;

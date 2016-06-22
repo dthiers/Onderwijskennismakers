@@ -7,6 +7,20 @@ module.exports = function ($http) {
     schoolService.getExpertsBySchool = function(id){
         return $http.get(urlBase + 'school/' + id + '/experts');
     }
+
+    schoolService.addSchool = function(school, options){
+        return $http.post(urlBase + 'school', {
+            "name" : school.name,
+            "logo" : school.logo,
+            "description" : school.description 
+        }).then(options.onSuccess, options.onError);
+    }
+
+    schoolService.addExpert = function(schoolId, userId, options){
+        return $http.post(urlBase + 'school/' + schoolId + '/experts', {
+            "User_id" : userId
+        }).then(options.onSuccess, options.onError);
+    }
     
     return {
         schoolService

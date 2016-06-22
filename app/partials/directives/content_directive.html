@@ -14,7 +14,7 @@
         	    <h1 class="title">{{singleContent.name}}</h1>
 
                 <div class="subtitle">
-            	    <span class="head">Aangemaakt op: </span><span>{{singleContent.createdAt}}</span>
+            	    <span class="head">Aangemaakt op: </span><span>{{singleContent.createdAt | datetime}}</span>
             	    <span class="head">Aangemaakt door: </span><div class="profile_image" ng-click="loadUser(user.id, true)" style="background-image: url('{{user.profileImage}}');"></div><!--<span class="user" ng-click="loadUser(user.id, true)">{{user.firstName}} {{user.lastName}}</span>-->
                     <div style="clear: both"></div>
                 </div>
@@ -26,7 +26,7 @@
                     {{singleContent.shortDescription}}
                 </p>
                 <div style="clear: both"></div>
-            </div>	
+            </div>
 
             <div class="custom_content">
                 <!-- CUSTOM CONTENT -->
@@ -61,7 +61,7 @@
                             <iframe class="websiteFrame" width="100%" ng-src="{{ trustSrc(singleContent.link) }}" onfocus="parent.document.focus();"></iframe>
                         </div>
                     </div>
-                    
+
 
                 </div>
 
@@ -70,7 +70,7 @@
                     <div class="image">
                         <img src="{{singleContent.link}}"/>
                     </div>
-                	
+
                 </div>
 
             </div>

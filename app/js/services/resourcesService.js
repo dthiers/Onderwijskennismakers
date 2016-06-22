@@ -22,7 +22,6 @@ module.exports = function ($http) {
     }
 
     self.postImage = function (img, options) {
-
         var req = {
             method: 'POST',
             url: 'https://api.imgur.com/3/image.json',
@@ -30,6 +29,7 @@ module.exports = function ($http) {
                 Authorization: 'Client-ID b7fc74a624c38ac'
             }, data: img
         }
+        $http(req).then(options.onSuccess, options.onError);
     }
 
     self.getCommunities = function (options) {
@@ -50,6 +50,14 @@ module.exports = function ($http) {
             isFrozen: 0
         }).then(func1, func2);
     }
+
+    self.deleteContent = function (id, options) {
+        $http.delete("http://onderwijskennismakers.herokuapp.com/content/" + id).then(options.onSuccess, options.onError);
+    },
+
+    self.updateContent = function (content, options) {
+        $http.put("http://onderwijskennismakers.herokuapp.com/content/" + content.id, {"name": content.name, "link": content.link, "content": content.content, "shortDescription": content.shortDescription}).then(options.onSuccess, options.onError);
+    },
 
     self.setResourceDetails = function (name, community, description, id) {
         newRescource.name = name;

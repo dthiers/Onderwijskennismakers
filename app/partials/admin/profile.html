@@ -1,1 +1,35 @@
 <h1>Mijn profiel</h1>
+
+<div class="divAdminProfileWrapper">
+    <div class="divProfileBasics">
+        <div class="divProfileImage" style="background: url({{user.profileImage}}); background-size: cover; background-position: center;"></div>
+        <input onchange="angular.element(this).scope().file_changed(this)" type="file" accept="image/*" class="input_file" required/>
+
+        <div class="divPersonal">
+            <table>
+                <tr>
+                    <td>
+                        <h2>Persoonlijke gegevens</h2>
+                        <input type="text" placeholder="Voornaam" ng-model="user.firstName" required/>
+                        <input type="text" placeholder="Achternaam" ng-model="user.lastName" required/>
+                        <input type="text" placeholder="Email" ng-model="user.email" required/>
+                        <input type="text" placeholder="Functie omschrijving" ng-model="user.functionDescription" required/>
+                        <textarea placeholder="Omschrijving" ng-model="user.description" required></textarea>
+                        <input type="text" placeholder="Telefoon nummer" ng-model="user.phoneNumber" required/>
+                    </td>
+                    <td>
+                        <h2>Social media</h2>
+                        <input type="text" placeholder="Facebook" ng-model="user.facebook" required/>
+                        <input type="text" placeholder="Skype" ng-model="user.skype" required/>
+                        <input type="text" placeholder="Twitter" ng-model="user.twitter" required/>
+                        <input type="text" placeholder="LinkedIn" ng-model="user.linkedIn" required/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button ng-click="saveButtonPressed()">Opslaan</button></td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>

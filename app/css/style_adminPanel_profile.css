@@ -1,0 +1,69 @@
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+.divAdminProfileWrapper {
+  position: absolute;
+  float: left;
+  min-height: 500px;
+  height: auto;
+  background: #FFFFFF;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-bottom: 50px;
+}
+.divAdminProfileWrapper .divProfileBasics {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  float: left;
+}
+.divAdminProfileWrapper .divProfileBasics .divProfileImage {
+  width: 150px;
+  height: 150px;
+  background: #dcdcdc;
+  border-radius: 75px;
+}
+.divAdminProfileWrapper .divProfileBasics .input_file {
+  margin-top: 20px;
+}
+.divAdminProfileWrapper .divProfileBasics .divPersonal {
+  width: 100%;
+  margin-top: 30px;
+}
+.divAdminProfileWrapper .divProfileBasics .divPersonal table {
+  width: 100%;
+  height: 100%;
+}
+.divAdminProfileWrapper .divProfileBasics .divPersonal table tr td:first-of-type {
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+.divAdminProfileWrapper .divProfileBasics .divPersonal table tr td input,
+.divAdminProfileWrapper .divProfileBasics .divPersonal table tr td textarea {
+  width: 100%;
+  height: 40px;
+  background: #EFEFEF;
+  border: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-sizing: border-box;
+  float: left;
+  margin-top: 5px;
+}
+.divAdminProfileWrapper .divProfileBasics .divPersonal table tr td textarea {
+  height: 150px;
+  resize: none;
+  padding: 10px;
+}
+.divAdminProfileWrapper .divProfileBasics .divPersonal table tr td button {
+  width: 100px;
+  height: 30px;
+  color: #FFFFFF;
+  background: #5b8fe4;
+  cursor: pointer;
+  float: right;
+  margin-top: 10px;
+}

@@ -1,0 +1,340 @@
+//@import "resources/removeDefaultCss.css";
+@import "resources/elements.less";
+@import "resources/variables.less";
+
+.back_button{
+	padding: 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    background-color: #b8bdc5;
+    color: #fff;
+    float: left;
+    cursor: pointer;
+
+    &:hover{
+    	background-color: lighten(#b8bdc5, 5%);
+    }
+}
+
+.add_school{
+	padding: 40px;
+    clear: both;
+    margin-top: 20px;
+    float: left;
+    background-color: #fff;
+	form{
+		span{
+			font-size: 15px;
+	    	font-weight: bold;
+		    color: #b3b3b3;
+		    display: block;
+		    padding-bottom: 10px;
+		}
+		input, textarea{
+			margin-bottom: 30px;
+			color: #8c8c8c;
+			font-family: "Open Sans";
+		}
+		input[type="text"]{
+			padding: 10px 0px;
+		    border: 0px;
+		    width: 300px;
+		    border-radius: 5px;
+		    border-bottom: 2px solid #f1f1f1;
+		}
+		textarea{
+			width: 600px;
+		    height: 300px;
+		    border: 0px;
+		    border-radius: 5px;
+		    padding: 20px 20px;
+		    border: 1px solid #e2e2e2;
+		}
+		.input_file{
+			width: 200px;
+			height: 37px;
+			&:before{
+				content: 'Selecteer logo';
+			    display: block;
+			    background: #73a1ee;
+			    border-radius: 5px;
+			    padding: 12px;
+			    //width: 100%;
+			    box-sizing: border-box;
+			    text-align: center;
+			    outline: none;
+			    color: #FFFFFF;
+			    white-space: nowrap;
+			    -webkit-user-select: none;
+			    cursor: pointer;
+			    font-weight: 200;
+			    font-size: 13px;
+			    position: absolute;
+			}
+		}
+		button{
+		    display: block;
+		    background: @color_main1;
+		    border-radius: 5px;
+		    padding: 12px;
+		    box-sizing: border-box;
+		    text-align: center;
+		    outline: none;
+		    color: #FFFFFF;
+		    white-space: nowrap;
+		    -webkit-user-select: none;
+		    cursor: pointer;
+		    font-weight: 200;
+		    font-size: 13px;
+		    .transition(0.2s, ease);
+		    &:disabled{
+		    	opacity: 0.3;
+		    }
+		    &:hover:enabled{
+		    	background-color: lighten(@color_main1, 5%);
+		    }
+		}
+	}
+
+}
+.school_list{
+	background-color: #fff;
+	float: left;
+	ul{
+		lh{
+			span{
+
+			}
+		}
+		li{
+			span{
+				display: block;
+				padding: 20px;
+				width: 150px;
+			}
+		}
+	}
+}
+
+.school_list{
+    float: left;
+    background-color: transparent;
+    position: relative;
+    height: auto;
+    width: 600px;
+    margin-top: 20px;
+    font-family: "Open Sans";
+    color: #a5a5a5;
+
+    h1{
+    	font-weight: 500;
+    }
+
+    table{
+        width: 100%;
+        height: auto;
+
+        tr:first-of-type{
+
+            td:first-of-type{
+                width: 50px;
+            }
+
+            td{
+                background: @color_main1;
+                height: 40px;
+                vertical-align: middle;
+                color: #FFFFFF;
+            }
+        }
+
+        tr:first-of-type:hover{
+            border-right: none;
+        }
+
+        tr{
+            height: 50px;
+            background: #FFFFFF;
+            cursor: pointer;
+
+            td{
+                padding: 10px;
+    			padding-left: 20px;
+                box-sizing: border-box;
+                vertical-align: middle;
+                max-width: 200px;
+                line-height: 25px;
+                font-size: 15px;
+                overflow: hidden;
+
+             
+            }
+            span{
+            	font-size: 19px;
+            	&.fa.fa-users{
+            		margin-right: 10px;
+            		&:hover{
+            			color: #5b8fe4;
+            		}
+            	}
+            	&.fa.fa-pencil{
+            		margin-right: 10px;
+            		&:hover{
+            			color: #5b8fe4;
+            		}
+            	}
+            	&.fa.fa-trash-o{
+            		&:hover{
+            			color: #e45b5b;
+            		}
+            	}
+            	&.fa.fa-plus{
+            		margin-left: 62px;
+				    margin-top: -11px;
+				    position: absolute;
+				    font-size: 25px;
+				    &:hover{
+            			color: #d2ddef;
+            		}
+            	}
+            }
+        }
+
+        tr:hover{
+            border-right: 2px solid @color_main1;
+        }
+
+        tr:nth-child(odd){
+            background: #F9F9F9;
+        }
+    }
+}
+
+.popup_message{
+    margin-top: -80px;
+}
+
+
+.user_list{
+    font-family: "Open Sans";
+    color: #a5a5a5;
+    position: absolute;
+    margin-top: 40px;
+
+    .schoolUsers_container, .allUsers_container{
+		//margin-top: 40px;
+	    position: absolute;
+	    margin-right: 20px;
+	    margin-bottom: 40px;
+	    margin-top: 35px;
+	    width: 100%;
+	    padding: 0px;
+	    box-sizing: border-box;
+    }
+    .allUsers_container{
+    	margin-left: 530px;
+    	input{
+    		padding: 15px;
+		    width: 250px;
+		    margin-bottom: 10px;
+		    margin-left: 225px;
+		    border: 0px;
+		    border-radius: 5px;
+    	}
+
+    	h1{
+    		width: 220px;
+    		font-size: 18px;
+		    text-align: left;
+		    
+		    font-weight: bold;
+		    color: #a5a5a5;
+		    /* float: left; */
+		    /* float: left; */
+		    position: absolute;
+		    font-weight: 600;
+		    margin-top: 11px;
+		    /* margin-bottom: 25px; */
+		    display: block;
+    	}
+    }
+
+    .schoolUsers_container{
+    	margin-top: 48px;
+
+    	 h1{
+	    	font-size: 18px;
+		    text-align: left;
+		    width: 500px;
+		    font-weight: bold;
+		    color: #a7a7a7;
+		    /* float: left; */
+		    font-weight: 600;
+		    margin-bottom: 25px;
+		    //position: absolute;
+		    display: block;
+	    }
+    }
+
+	table.allUsers_table, table.schoolUsers_table{
+
+        tr:first-of-type{
+
+            td:first-of-type{
+                width: 50px;
+            }
+
+            td{
+                background: @color_main1;
+                height: 40px;
+                vertical-align: middle;
+                color: #FFFFFF;
+            }
+        }
+
+        tr:first-of-type:hover{
+            border-right: none;
+        }
+
+        tr{
+            height: 50px;
+            background: #FFFFFF;
+            cursor: pointer;
+
+            td{
+                padding: 10px;
+    			padding-left: 20px;
+                box-sizing: border-box;
+                vertical-align: middle;
+                max-width: 200px;
+                line-height: 25px;
+                font-size: 15px;
+                overflow: hidden;
+
+             
+            }
+        }
+
+        tr:hover{
+            border-right: 2px solid @color_main1;
+        }
+
+        tr:nth-child(odd){
+            background: #F9F9F9;
+        }
+	}
+	table.schoolUsers_table{
+    	tr:last-of-type{
+		    background-color: #b5c1d4;
+		    text-align: center;
+		    td{
+		    	font-weight: 500;
+		    	font-size: 14px;
+		    	color: #fff;
+		    }
+		    &:hover{
+		    	border-right: none;
+		    }
+        }
+    }
+}
