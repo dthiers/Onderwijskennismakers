@@ -1,12 +1,12 @@
 <!-- Doc -->
-<a href="https://ec.europa.eu/digital-single-market/sites/digital-agenda/files/KK-31-13-401-EN-N.pdf" target="top">
-    <div class="doc">
-        <div class="type"><i class="fa fa-file-pdf-o"></i></div>
+<div class="doc" >
         <h3>{{data.newResourcePreview.name}}</h3>
-        <p>{{data.newResourcePreview.description}}
-        </p>
-        <div class="pdfcontainer2">
+        <p>{{data.newResourcePreview.description}}</p>
+        <div class="pdf_container2">
             <iframe class="frame" src="{{data.newResourcePreview.link}}" ></iframe>
         </div>
+    <div class="stars" ng-if="preview.rating">
+        <img ng-repeat="i in getTimes(getSteppedRating(preview.rating)) track by $index" src="images/star-filled.png"></img>
+        <img ng-if="steppendRatingIsFull(preview.rating) == false" src="images/star-half-filled.png"></img>
     </div>
-</a>
+</div>

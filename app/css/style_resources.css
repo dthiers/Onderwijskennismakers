@@ -193,3 +193,43 @@
   top: 20px;
   right: 20px;
 }
+.doc {
+  cursor: pointer;
+  color: #A5A5A5;
+  width: 100%;
+  border-radius: 5px;
+  float: left;
+  background-color: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-bottom: 4px;
+}
+.doc h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #b3b3b3;
+}
+.doc p {
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+.doc .pdf_container2 {
+  height: 200px;
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  margin: 10px 0px;
+  background-size: auto 100%;
+  background-position: center center;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.doc .pdf_container2 iframe {
+  width: 80%;
+  height: 100%;
+  margin: 0% 10%;
+}
