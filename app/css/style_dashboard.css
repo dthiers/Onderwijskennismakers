@@ -759,6 +759,9 @@ body {
   background-position: center;
   background-color: gray;
 }
+.content_directive {
+  margin-bottom: 100px;
+}
 .content_directive .header_content h1 {
   font-family: Lato-Light;
   font-size: 34px;
