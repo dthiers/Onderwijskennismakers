@@ -9,6 +9,8 @@
 
 	<form name="addSchool_form">
 
+		<img ng-src="{{school.logo}}" class="logo"></img>
+
 		<span>Schoolnaam</span>
 		<input ng-model="newSchool.name" type="text" placeholder="Schoolnaam" required></input>
 
@@ -21,6 +23,30 @@
 
 	    <!-- TOEVOEGEN -->
 		<button ng-disabled="addSchool_form.$invalid" ng-click="registerSchool(newSchool)">School toevoegen</button>
+
+	</form>
+
+</div>
+
+<div class="edit_school" ng-if="progress == 'editSchool'">
+	<h1>School toevoegen</h1>
+
+	<form name="editSchool_form">
+
+		<img ng-src="{{school.logo}}" class="logo"></img>
+
+		<span>Schoolnaam</span>
+		<input ng-model="school.name" type="text" placeholder="Schoolnaam" required></input>
+
+		<!-- FOTO -->
+		<span>Voeg een foto toe</span>
+	    <input onchange="angular.element(this).scope().file_changed(this)" type="file" accept="image/*" class="input_file" required/>
+
+		<span>Geef hier een beschrijving van de school</span>
+		<textarea ng-model="school.description" placeholder="Geef hier een beschrijving van de school" required></textarea>
+
+	    <!-- TOEVOEGEN -->
+		<button ng-disabled="editSchool_form.$invalid" ng-click="editSchool(school)">School aanpassen</button>
 
 	</form>
 
@@ -48,10 +74,6 @@
 	</table>
 </div>
 
-<div class="edit_school" ng-if="progress == 'editSchool'">
-
-</div>
-
 <div class="user_list" ng-if="progress == 'schoolUsers'">
 
 	<div class="schoolUsers_container">
@@ -63,7 +85,7 @@
 				<td>Email</td>
 				<td>Beschrijving</td>
 			</tr>
-			<tr ng-repeat="user in schoolUsers">
+			<tr ng-repeat="user in schoolUsers" ng-click="removeUserFromSchool(user)">
 				<td>{{user.firstName}}</td>
 				<td>{{user.lastName}}</td>
 				<td>{{user.email | limitTo: 15}}</td>

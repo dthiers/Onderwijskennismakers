@@ -4,9 +4,12 @@
        onchange="angular.element(this).scope().file_changed(this)"
        type="file" accept="image/*" id="inputImage" /> -->
 
-       <input type="file" ng-file-select="onFileSelect($files)" />
-       <img src="{{image}}" id="imgPreview" />
+       <!-- <input type="file" ng-file-select="onFileSelect($files)" /> -->
+
+       <input onchange="angular.element(this).scope().file_changed(this)" type="file" accept="image/*" class="input_file" required/>
+
+       <img ng-src="{{imageLink}}" id="imgPreview" />
 
   <img src="../images/loading.gif" id="imgLoadingPreview" ng-hide="imgLoadingPreviewHidden" />
-  <button ng-click="setResourceLink(image); saveImage();" data-ng-hide="!image" id="btnAddImage">Toevoegen</button>
+  <button ng-click="saveImage(imageLink);" data-ng-hide="!imageLink" id="btnAddImage">Toevoegen</button>
 </div>

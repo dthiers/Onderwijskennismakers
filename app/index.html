@@ -3,6 +3,7 @@
 <head>
     <title>DEV-Onderwijskennismakers</title>
 
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,300italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="js/custom/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/fonts.css">
 
@@ -20,13 +21,13 @@
 </head>
 
 <body>
+
 <!-- Menu -->
 <div id="divMenu" ng-style="menuStyle" ng-controller="MenuCtrl">
   <span class="spanHamburger"></span>
   <ul class="divMenuSelected" ng-style="subMenuStyle">
     <li ng-style="subMenuChildrenStyle" ng-click="moveMenu()"><i id="spanMoveMenu" ng-style="arrowStyle" class="fa fa-arrow-right" aria-hidden="true"></i></li>
     <li ng-style="subMenuChildrenStyle" ng-click="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i> Uitloggen</li>
-    <li ng-style="subMenuChildrenStyle"><i class="fa fa-building" aria-hidden="true"></i> School aanmelden</li>
     <li ng-style="subMenuChildrenStyle" ng-click="openResources()" ><i class="fa fa-file-o" aria-hidden="true"></i> Bijdragen</li>
     <a ui-sref="administratiepaneel"><li ng-style="subMenuChildrenStyle"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Administratiepaneel</li></a>
   </ul>

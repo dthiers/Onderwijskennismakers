@@ -14,19 +14,19 @@
         <div id="person_container">
             <div class="profileInfo_container">
                 <!-- PROFILE IMAGE -->
-                <img src="./{{school.logo}}" class="profile_image" />
+                <img src="{{school.logo}}" class="profile_image" />
 
                 <div class="flex_container school">
                     <div class="experts_container">
                         <h1>Directeur:</h1>
                         <h1>Onze experts:</h1>
                         <div class="experts">
-                            <div ng-repeat="expert in experts" ng-if="expert.isPrincipal ==1" class="expert director" ng-click="loadUser(expert.id, true)" style="background-image: url('../{{expert.profileImage}}');"></div>
-                            <div ng-repeat="expert in experts" ng-if="expert.isPrincipal !=1" class="expert" ng-click="loadUser(expert.id, true)" style="background-image: url('../{{expert.profileImage}}');"></div>
+                            <div ng-repeat="expert in experts" ng-if="expert.isPrincipal ==1" class="expert director" ng-click="loadUser(expert.id, true)" style="background-image: url('{{expert.profileImage}}');"></div>
+                            <div ng-repeat="expert in experts" ng-if="expert.isPrincipal !=1" class="expert" ng-click="loadUser(expert.id, true)" style="background-image: url('{{expert.profileImage}}');"></div>
                         </div>
                     </div>
                 </div>
-                
+
             </div>
 
             <div class="aboutMe_container school">
@@ -38,7 +38,7 @@
 
         </div>
 
-        
+
         <div class="hidden_container">
             <div id="profile_docs_container">
                 <div class="header">

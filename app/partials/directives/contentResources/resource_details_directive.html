@@ -10,6 +10,10 @@
       </div>
       <textarea maxlength="512" placeholder="Omschrijving" id="txtDescription" ng-model="data.newResourcePreview.description" required></textarea>
       <p id="pMessage">{{message}}</p>
+      <label for="isPublic">Publiceer bron?:
+        <input type="checkbox" ng-model="data.newResourcePreview.isPublic" ng-true-value="1" ng-false-value="0"/>
+        {{data.newRescourcePreview.isPublic = "1"}}
+      </label>
       <button ng-disabled="resourceDetailForm.$invalid"  ng-class=" resourceDetailForm.$invalid ? '' : ''" id="btnSave" ng-click="saveResource()">Opslaan</button>
   </form>
 </div>

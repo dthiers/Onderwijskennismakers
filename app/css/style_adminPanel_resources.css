@@ -10,6 +10,9 @@
   height: auto;
   width: 60%;
   margin-top: 20px;
+  font-family: "Open Sans";
+  color: #a5a5a5;
+  font-size: 14px;
 }
 .divAdminTableWrapper .popup_message {
   margin-top: -80px;
@@ -24,8 +27,13 @@
 .divAdminTableWrapper table tr:first-of-type td {
   background: #5b8fe4;
   height: 40px;
+  font-weight: bold;
+  font-size: 14px;
   vertical-align: middle;
-  color: #FFFFFF;
+  color: #e0ecff;
+}
+.divAdminTableWrapper table tr:first-of-type td .fa.fa-plus {
+  position: absolute;
 }
 .divAdminTableWrapper table tr:first-of-type:hover {
   border-right: none;
@@ -39,6 +47,14 @@
   max-width: 200px;
   overflow: hidden;
 }
+.divAdminTableWrapper table tr td:last-child {
+  width: 70px;
+}
+.divAdminTableWrapper table tr td span {
+  color: #9a9a9a;
+  font-size: 19px;
+  margin-right: 10px;
+}
 .divAdminTableWrapper table tr td .action {
   cursor: pointer;
 }
@@ -46,7 +62,7 @@
   transform: none !important;
   float: inherit !important;
   margin: 0px !important;
-  color: #323232;
+  color: #c5c5c5;
   padding-left: 15px;
 }
 .divAdminTableWrapper table tr:hover {
@@ -96,8 +112,11 @@
 }
 #iAddContent {
   cursor: pointer;
-  font-size: 30px;
-  margin-top: -30px;
-  margin-left: -25px;
-  color: #B1B1B1;
+  font-size: 28px;
+  margin-top: -12px;
+  margin-left: 26px;
+  color: #ffffff;
+}
+#iAddContent:hover {
+  color: #d6e3f9;
 }

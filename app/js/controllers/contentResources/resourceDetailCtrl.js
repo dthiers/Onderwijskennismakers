@@ -38,7 +38,13 @@ module.exports = function ($scope, $localStorage, ResourcesService, ModalService
     **/
     $scope.saveResource = function () {
 
-        ResourcesService.setResourceDetails($scope.data.newResourcePreview.name, $scope.data.newResourcePreview.community, $scope.data.newResourcePreview.description, parseInt($localStorage.user.id));
+        ResourcesService.setResourceDetails(
+          $scope.data.newResourcePreview.name,
+          $scope.data.newResourcePreview.community,
+          $scope.data.newResourcePreview.description,
+          parseInt($localStorage.user.id),
+          $scope.data.newRescourcePreview.isPublic
+        );
 
 
         ResourcesService.addResource(
@@ -72,7 +78,7 @@ module.exports = function ($scope, $localStorage, ResourcesService, ModalService
                     }
                 });
             },
-            function () {
+            function (err) {
                 //todo error afhandelen
                 popupMessage("Bron toevoegen is gefaald!")
                 console.log(err);
