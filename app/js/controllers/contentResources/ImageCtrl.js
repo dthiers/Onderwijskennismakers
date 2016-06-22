@@ -26,7 +26,11 @@ module.exports = function ($scope, ResourcesService, $timeout, $sce) {
     //         $scope.image = reader.result;
     //     }, 1000);
     // }
+    $scope.trustLink = function(webLink) {
+        $sce.trustAsResourceUrl(webLink);
 
+        return webLink;
+    }
 
     $scope.saveImage = function (imageLink) {
         ResourcesService.popupStyle = { "left": " calc(25% - 250px)", "top": "20px", "height": "500px" };
@@ -54,7 +58,8 @@ module.exports = function ($scope, ResourcesService, $timeout, $sce) {
                       /**
                       *
                       **/
-                        ResourcesService.setResourceLink(result.data.data.link);
+                        ResourcesService.setLink($sce.trustAsResourceUrl(result.data.data.link));
+                        //ResourcesService.setLink(result.data.data.link);
                       /**
                       *
                       **/

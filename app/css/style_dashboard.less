@@ -963,13 +963,14 @@ html,body{
 .preview_content{
     position: fixed;
     width: 500px;
-    height: 500px;
+    //height: 500px;
     box-shadow: rgb(220, 220, 220) 0px 0px 20px;
     z-index: 9999999;
     box-sizing: border-box;
+    border-radius: 5px;
     top: 20px;
-    left: calc(70% - 250px);
-    background: rgb(255, 255, 255);
-    transition: all 0.8s;
+    left: ~'calc(70% - 250px)';
+    background-color: #fff;
+    .transition(0.8s, ease);
 }
 // END DASHBOARD ====================================================================================================

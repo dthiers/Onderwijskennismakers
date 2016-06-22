@@ -5,19 +5,21 @@
 <div id="divKeywordList">
     <b><h1>Trefwoorden Beheren</h1></b>
 
-    <b><h2>Trefwoorden toevoegen</h2></b>
+    <div class="add_keywords_container">
+        <h2>Trefwoorden toevoegen</h2>
 
-    <div id="divAddKeyword">
-        <input type="text" id="txtNewKeyword" placeholder="Trefwoord naam" ng-model="txtNewKeyword" /><button ng-hide="!txtNewKeyword || !descriptionNewKeyword"
-            ng-click="addNewKeyword()" id="btnAddKeyword">Toevoegen</button>
+        <div id="divAddKeyword">
+            <input type="text" id="txtNewKeyword" placeholder="Trefwoord naam" ng-model="txtNewKeyword" />
+            <button ng-hide="!txtNewKeyword || !descriptionNewKeyword" ng-click="addNewKeyword()" id="btnAddKeyword">Toevoegen</button>
+        </div>
+
+        <div id="divAddKeyword">
+            <input type="text" id="txtNewKeyword" placeholder="Trefwoord omschrijving" ng-model="descriptionNewKeyword" />
+        </div>
     </div>
 
     <div id="divAddKeyword">
-        <input type="text" id="txtNewKeyword" placeholder="Trefwoord omschrijving" ng-model="descriptionNewKeyword" />
-    </div>
-
-    <div id="divAddKeyword">
-        <input type="text" id="txtNewKeyword" placeholder="Zoeken in Trefwoorden" ng-model="search" />
+        <input type="text" id="search_bar" placeholder="Zoeken in Trefwoorden" ng-model="search" />
     </div>
 
     <div class="hidden_scrollContainer">

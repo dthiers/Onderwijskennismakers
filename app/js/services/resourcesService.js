@@ -3,7 +3,7 @@ module.exports = function ($http) {
     var self = this;
 
     var type = 'undefined';
-    var newRescource = { userId: "", name: "", community: "", description: "", type: "", link: "" }
+    var newResource = { userId: "", name: "", community: "", description: "", type: "", link: "" }
     self.showPDF = false;
     self.popupStyle = { "top": "20px", "height": "250px" }
 
@@ -40,15 +40,15 @@ module.exports = function ($http) {
 
     self.addResource = function (func1, func2) {
         $http.post("http://onderwijskennismakers.herokuapp.com/content", {
-            Type: newRescource.type,
-            name: newRescource.name,
+            Type: newResource.type,
+            name: newResource.name,
             content: "",
-            link: newRescource.link,
-            User_id: newRescource.id,
-            Community_id: newRescource.community,
-            shortDescription: newRescource.description,
+            link: newResource.link,
+            User_id: newResource.id,
+            Community_id: newResource.community,
+            shortDescription: newResource.description,
             isFrozen: 0,
-            isPublic: newRescource.isPublic
+            isPublic: newResource.isPublic
         }).then(func1, func2);
     }
 
@@ -61,25 +61,23 @@ module.exports = function ($http) {
     },
 
     self.setResourceDetails = function (name, community, description, id, isPublic) {
-        newRescource.name = name;
-        newRescource.community = community;
-        newRescource.description = description;
-        newRescource.id = id;
-        newRescource.isPublic = 0;
+        newResource.name = name;
+        newResource.community = community;
+        newResource.description = description;
+        newResource.id = id;
+        newResource.isPublic = isPublic;
     }
 
     self.setResourceType = function (type) {
-        newRescource.type = type;
+        newResource.type = type;
     }
 
     self.getResourceType = function (type) {
-        return newRescource.type;
+        return newResource.type;
     }
 
     self.setResourceLink = function (link) {
-      console.log("Were in resourcesService.setResourceLink");
-        newRescource.link = link;
-        console.log(newRescource);
+        newResource.link = link;
     }
 
     self.setLink = function (link) {
@@ -91,7 +89,7 @@ module.exports = function ($http) {
         self.newResourcePreview.description = "Omschrijving";
         self.newResourcePreview.link = "";
         type = 'undefined';
-        newRescource = { userId: "", name: "", community: "", description: "", type: "", link: "" }
+        newResource = { userId: "", name: "", community: "", description: "", type: "", link: "" }
         self.showPDF = false;
         self.showYoutube = false;
         self.showWebpage = false;
@@ -107,7 +105,7 @@ module.exports = function ($http) {
     }
 
     self.setUserId = function (id) {
-        newRescource.userId = id;
+        newResource.userId = id;
     }
 
 
