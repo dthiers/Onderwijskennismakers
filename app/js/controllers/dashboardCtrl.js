@@ -645,6 +645,13 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
 
     /* Web events */
     $scope.events = {};
+    $scope.events.click = function (click) {
+        if(click.nodes.length == 0) {
+            $scope.hidePopup = true;
+            $scope.$apply();
+        }
+    };
+
     $scope.events.selectNode = function (click) {
         var node = $scope.data.nodes.get(click.nodes[0]);
 
