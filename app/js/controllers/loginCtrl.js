@@ -10,6 +10,7 @@ module.exports = function ($scope, AuthService, $timeout, $state, $localStorage,
             onSuccess: function(result){
                 console.log(result.data);
                 $localStorage.user = result.data.data[0];
+                $localStorage.token = result.data.token;
                 // Go To dashboard
                 $state.go('dashboard');
             },
@@ -44,10 +45,10 @@ module.exports = function ($scope, AuthService, $timeout, $state, $localStorage,
     $scope.openRegister = function(){
          $scope.type = "register";
          $("#divLogin").addClass("toLeft");
-         setTimeout(function(){ 
+         setTimeout(function(){
             $("#divRegister").addClass("show");
         }, 300);
-         
+
     }
 
     $scope.register = function () {
@@ -66,7 +67,7 @@ module.exports = function ($scope, AuthService, $timeout, $state, $localStorage,
         console.log(email);
         console.log(password);
         console.log(job);
-        
+
         if (password2 != password) {
             popupMessage("De wachtwoorden komen niet overeen");
             validate = false;
@@ -85,7 +86,7 @@ module.exports = function ($scope, AuthService, $timeout, $state, $localStorage,
                 "phoneNumber": null,
                 "twitter": null,
                 "linkedIn": null
-            }, {    
+            }, {
                     onSuccess: function (result) {
                         // Go To dashboard
                         console.log(result);
@@ -103,11 +104,11 @@ module.exports = function ($scope, AuthService, $timeout, $state, $localStorage,
 
     function popupMessage(message){
         $scope.message = message;
-        $(".popup_message").addClass("flash_popup"); 
+        $(".popup_message").addClass("flash_popup");
         $timeout(function(){
-            $(".popup_message").removeClass("flash_popup"); 
-        }, 3000);  
-        
+            $(".popup_message").removeClass("flash_popup");
+        }, 3000);
+
     }
 
 };

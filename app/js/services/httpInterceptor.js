@@ -9,9 +9,8 @@ module.exports = function ($rootScope, $localStorage, $q) {
 
   service.request = function (config) {
     // Set the token on the header on authorization
-    if ($localStorage.user.email && $localStorage.user.password) {
-      config.headers['x-email'] = $localStorage.user.email;
-      config.headers['x-password'] = $localStorage.user.password;
+    if($localStorage.token){
+      config.headers['authorization'] = $localStorage.token;
     }
     return config;
   };

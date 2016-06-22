@@ -86,6 +86,7 @@ module.exports = function (app) {
                 url: '/logout',
                 controller: function($localStorage, $state){
                     delete $localStorage.user;
+                    delete $localStorage.user;
 
                     $state.go('login');
                 }

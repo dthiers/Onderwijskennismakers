@@ -1,4 +1,4 @@
-module.exports = function ($scope, ResourcesService, ModalService, $timeout, $state, CommunityService, $localStorage) {
+module.exports = function ($scope, ResourcesService, ModalService, $timeout, $state, CommunityService, $localStorage, AuthService) {
     var isLeft = true;
     $scope.moveMenu = function(){
         if(isLeft){
@@ -19,9 +19,21 @@ module.exports = function ($scope, ResourcesService, ModalService, $timeout, $st
     // $scope.openResources = function(){
     //   ResourcesService.setProperty("addResource");
     // }
-    
+
     $scope.logout = function(){
         $state.go('logout');
+    }
+
+    $scope.testAuth = function(){
+      AuthService.testAuth({
+        onSuccess: function(result) {
+          alert(result.data);
+          console.log(result.data);
+        },
+        onError: function(err) {
+          console.log(err);
+        }
+      })
     }
 
     $scope.openResources = function(){
@@ -50,11 +62,11 @@ module.exports = function ($scope, ResourcesService, ModalService, $timeout, $st
             });
         });
     }
-    
+
     $scope.getModeratorId = function(id){
         CommunityService.communityService.getModerator(id)//call to service
             .then(function (response) {
-                
+
                 if(response.data.data[0].User_id == parseInt($localStorage.user.id)){
                     console.log("true");
                     $scope.isModerator = true;
@@ -63,13 +75,13 @@ module.exports = function ($scope, ResourcesService, ModalService, $timeout, $st
                     console.log("false");
                     $scope.isModerator = false;
                 }
-                
+
 
             }, function (error) {
                 $scope.status = 'Er is iets misgegaan met het laden van de content: ';
                 console.log(error);
             });
     }
-    
+
     $scope.getModeratorId(1);
 };
