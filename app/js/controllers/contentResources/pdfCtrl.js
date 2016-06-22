@@ -10,6 +10,8 @@ module.exports = function ($scope, ResourcesService, $sce, $timeout) {
     $scope.resourcesService = ResourcesService;
     ResourcesService.setResourceType("pdf");
 
+    $scope.pdfLink = "";
+
     /**
     * Set resource link;
     *

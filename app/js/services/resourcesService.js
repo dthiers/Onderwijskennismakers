@@ -47,7 +47,8 @@ module.exports = function ($http) {
             User_id: newRescource.id,
             Community_id: newRescource.community,
             shortDescription: newRescource.description,
-            isFrozen: 0
+            isFrozen: 0,
+            isPublic: newRescource.isPublic
         }).then(func1, func2);
     }
 
@@ -59,11 +60,12 @@ module.exports = function ($http) {
         $http.put("http://onderwijskennismakers.herokuapp.com/content/" + content.id, {"name": content.name, "link": content.link, "content": content.content, "shortDescription": content.shortDescription}).then(options.onSuccess, options.onError);
     },
 
-    self.setResourceDetails = function (name, community, description, id) {
+    self.setResourceDetails = function (name, community, description, id, isPublic) {
         newRescource.name = name;
         newRescource.community = community;
         newRescource.description = description;
         newRescource.id = id;
+        newRescource.isPublic = 0;
     }
 
     self.setResourceType = function (type) {
@@ -75,7 +77,9 @@ module.exports = function ($http) {
     }
 
     self.setResourceLink = function (link) {
+      console.log("Were in resourcesService.setResourceLink");
         newRescource.link = link;
+        console.log(newRescource);
     }
 
     self.setLink = function (link) {
