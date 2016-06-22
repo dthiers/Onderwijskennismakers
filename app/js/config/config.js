@@ -17,9 +17,14 @@ module.exports = function (app) {
 
                 if(toState.name !== 'login'){
                     if(($localStorage.user === undefined || $localStorage.user === null) ) {
-                         event.preventDefault();
+                        event.preventDefault();
                         $state.go('login');
                     }
+                }
+                
+                if($localStorage.user && toState.name === 'login'){
+                    event.preventDefault();
+                    $state.go('dashboard');
                 }
             })
         })
