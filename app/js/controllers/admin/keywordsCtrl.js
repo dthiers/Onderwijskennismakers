@@ -74,7 +74,7 @@ module.exports = function ($scope, user, KeywordService, $timeout) {
     };
 
     $scope.linkKeyword = function (id) {
-        KeywordService.linkTag($scope.keyword.id, $scope.currentObjectType, id, {
+        KeywordService.linkTag($scope.keyword.id, id, {
             onSuccess: function (result) {
                 //reload data after linking
                 $scope.setKeyword($scope.keyword);
@@ -86,7 +86,7 @@ module.exports = function ($scope, user, KeywordService, $timeout) {
     };
 
     $scope.unlinkKeyword = function (id) {
-        KeywordService.unlinkTag($scope.keyword.id, $scope.currentObjectType, id, {
+        KeywordService.unlinkTag($scope.keyword.id, id, {
             onSuccess: function (result) {
                 //reload data after linking
                 $scope.setKeyword($scope.keyword);

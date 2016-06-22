@@ -20,13 +20,13 @@ module.exports = function ($http) {
         deleteTag: function (id, options) {
             $http.delete(urlBase + "keywords/" + id).then(options.onSuccess, options.onError);
         },
-        linkTag: function (objId, objType, tagId, options) {
-            $http.post(urlBase + objType + "/" + objId + "/keywords", {
-                "Keyword_id": tagId
+        linkTag: function(keywordId, tagId, options) {
+            $http.post(urlBase + "keyword/" + keywordId + "/tags", {
+                "Tag_id": tagId
             }).then(options.onSuccess, options.onError);
         },
-        unlinkTag: function (objId, objType, tagId, options) {
-            $http.delete(urlBase + objType + "/" + objId + "/keywords/" + tagId).then(options.onSuccess, options.onError);
+        unlinkTag: function(keywordId, tagId, options) {
+            $http.delete(urlBase + "keyword/" + keywordId + "/tags/" + tagId).then(options.onSuccess, options.onError);
         },
         getMyTags: function (objId, objType, options) {
             $http.get(urlBase + objType + "/" + objId + "/keywords/?linked=true").then(options.onSuccess, options.onError);
