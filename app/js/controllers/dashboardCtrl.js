@@ -657,6 +657,10 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     $scope.events.selectNode = function (click) {
         var node = $scope.data.nodes.get(click.nodes[0]);
 
+        // Prevent clicking the center node
+        if(node.id == 0)
+            return;
+
         if (node.group == 'persons') {
             //getWebForUser(node.userId);
 
