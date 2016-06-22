@@ -7,9 +7,33 @@
     min-height: 500px;
     height: auto;
     background: #FFFFFF;
-    padding: 20px;
+    padding: 30px;
+    border-radius: 5px;
     box-sizing: border-box;
     margin-bottom: 50px;
+
+    input{
+        color: gray;
+    }
+    h1{
+        color: gray;
+    }
+    h2{
+        font-weight: bold;
+        font-size: 15px;
+        margin-bottom: 10px;
+        color: #a7a7a7;
+    }
+    textarea{
+        width: ~'calc(100% - 240px)';
+        height: 300px;
+        padding: 20px;
+        color: #9a9a9a;
+        border: 1px solid #f1f1f1;
+    }
+    button{
+        border-radius: 5px;
+    }
 
     .divProfileBasics{
         width: 100%;
@@ -17,7 +41,32 @@
         height: auto;
         float: left;
 
+        input[type="file"]{
+            width: 144px;
+            height: 37px;
+            clear: both;
+            float: right;
+            &:before{
+                content: 'Selecteer profielfoto';
+                display: block;
+                background: #73a1ee;
+                border-radius: 5px;
+                padding: 11px;
+                box-sizing: border-box;
+                text-align: center;
+                outline: none;
+                color: #FFFFFF;
+                white-space: nowrap;
+                -webkit-user-select: none;
+                cursor: pointer;
+                font-weight: 200;
+                font-size: 13px;
+                position: absolute;
+            }
+        }
+
         .divProfileImage{
+            float: right;
             width: 150px;
             height: 150px;
             background: #dcdcdc;

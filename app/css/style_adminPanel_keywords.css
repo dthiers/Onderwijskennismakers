@@ -111,11 +111,12 @@
   position: relative;
   overflow: hidden;
   width: 100%;
+  margin-top: 35px;
 }
 #divKeywordList .hidden_scrollContainer #divKeywords {
-  width: 107%;
+  width: calc(100% + 20px);
   text-align: left;
-  margin-top: 28px;
+  margin-top: 0px;
   box-sizing: border-box;
   overflow-y: auto;
   max-height: 45vh;
