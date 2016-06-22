@@ -14,12 +14,16 @@ module.exports = function (app) {
 
             // On every stateChange
             $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options) {
-
+              console.log(event);
                 if(toState.name !== 'login'){
                     if(($localStorage.user === undefined || $localStorage.user === null) ) {
                          event.preventDefault();
                         $state.go('login');
                     }
+                }
+                if($localStorage.user && toState.name === 'login') {
+                  event.preventDefault();
+                  $state.go('dashboard');
                 }
             })
         })

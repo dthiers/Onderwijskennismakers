@@ -10,4 +10,7 @@ module.exports = function (app) {
     app.factory('SearchService', require('../services/searchService'));
     app.factory('CommunityService', require('../services/communityService'));
     app.factory('UserService', require('../services/userService'));
+
+    // HTTP inteceptor
+    app.factory('HttpInterceptor', require('../services/HttpInterceptor'));
 }

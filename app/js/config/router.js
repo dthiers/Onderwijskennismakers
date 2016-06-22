@@ -1,7 +1,7 @@
 module.exports = function (app) {
 
-    app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
-
+    app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+        $httpProvider.interceptors.push('HttpInterceptor');
         //$urlRouterProvider.otherwise('/login');
 
         //$locationProvider.html5Mode(true);
@@ -42,7 +42,7 @@ module.exports = function (app) {
                 },
                 views: {
 
-                    '': { 
+                    '': {
                         templateUrl: 'partials/admin/adminPanel.html',
                         controller: 'AdminCtrl'
                     },
@@ -97,7 +97,7 @@ module.exports = function (app) {
                 }
             })
 
-            
+
 
             // .state('login', {
             //     url: '/login',
