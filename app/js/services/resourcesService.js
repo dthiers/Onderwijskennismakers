@@ -29,7 +29,6 @@ module.exports = function ($http) {
                 Authorization: 'Client-ID b7fc74a624c38ac'
             }, data: img
         }
-        
         $http(req).then(options.onSuccess, options.onError);
     }
 
