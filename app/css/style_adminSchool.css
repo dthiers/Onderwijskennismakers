@@ -16,7 +16,8 @@
 .back_button:hover {
   background-color: #c6cad0;
 }
-.add_school {
+.add_school,
+.edit_school {
   padding: 40px;
   clear: both;
   margin-top: 20px;
@@ -24,7 +25,14 @@
   border-radius: 5px;
   background-color: #fff;
 }
-.add_school form span {
+.add_school form .logo,
+.edit_school form .logo {
+  float: right;
+  margin-top: -47px;
+  width: 180px;
+}
+.add_school form span,
+.edit_school form span {
   font-size: 15px;
   font-weight: bold;
   color: #b3b3b3;
@@ -32,19 +40,23 @@
   padding-bottom: 10px;
 }
 .add_school form input,
-.add_school form textarea {
+.edit_school form input,
+.add_school form textarea,
+.edit_school form textarea {
   margin-bottom: 30px;
   color: #8c8c8c;
   font-family: "Open Sans";
 }
-.add_school form input[type="text"] {
+.add_school form input[type="text"],
+.edit_school form input[type="text"] {
   padding: 10px 0px;
   border: 0px;
   width: 300px;
   border-radius: 5px;
   border-bottom: 2px solid #f1f1f1;
 }
-.add_school form textarea {
+.add_school form textarea,
+.edit_school form textarea {
   width: 600px;
   height: 300px;
   border: 0px;
@@ -52,11 +64,13 @@
   padding: 20px 20px;
   border: 1px solid #e2e2e2;
 }
-.add_school form .input_file {
+.add_school form .input_file,
+.edit_school form .input_file {
   width: 200px;
   height: 37px;
 }
-.add_school form .input_file:before {
+.add_school form .input_file:before,
+.edit_school form .input_file:before {
   content: 'Selecteer logo';
   display: block;
   background: #73a1ee;
@@ -73,7 +87,8 @@
   font-size: 13px;
   position: absolute;
 }
-.add_school form button {
+.add_school form button,
+.edit_school form button {
   display: block;
   background: #5b8fe4;
   border-radius: 5px;
@@ -92,10 +107,12 @@
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
-.add_school form button:disabled {
+.add_school form button:disabled,
+.edit_school form button:disabled {
   opacity: 0.3;
 }
-.add_school form button:hover:enabled {
+.add_school form button:hover:enabled,
+.edit_school form button:hover:enabled {
   background-color: #719ee8;
 }
 .school_list {
@@ -210,7 +227,7 @@
 }
 .user_list .allUsers_container input {
   padding: 15px;
-  width: 250px;
+  width: 243px;
   margin-bottom: 10px;
   margin-left: 225px;
   border: 0px;

@@ -6,6 +6,8 @@ module.exports = function ($scope, user, ResourcesService, SchoolService, $timeo
 
     $scope.progress = "schoolList";
     $scope.newSchool = {};
+    $scope.school = {};
+
     this.firstClick = true;
 
     self.getUsers = function(){
@@ -46,6 +48,8 @@ module.exports = function ($scope, user, ResourcesService, SchoolService, $timeo
 
     $scope.switchProgress = function(state, id){
         $scope.progress = state;
+        $scope.school = {};
+        $scope.newSchool = {};
 
         if(id !== null){
             self.getUsersInSchool(id);
@@ -92,6 +96,25 @@ module.exports = function ($scope, user, ResourcesService, SchoolService, $timeo
         });
     }
 
+    $scope.editSchool = function(school){
+        if($scope.school.logo == null){
+            popupMessage("Voeg een logo toe!");
+            return;
+        }
+        SchoolService.schoolService.editSchool(school, {//call to service
+            onSuccess: function (result) {
+                popupMessage($scope.school.name + " is succesvol aangepast");
+                self.getSchools();
+                $scope.progress = "schoolList";
+
+            },
+            onError: function (err) {
+                popupMessage("Er is iets misgegaan bij het wijzigen van de school");
+                console.log(err.message);
+            }
+        });
+    }
+
     $scope.deleteSchool = function(school){
 
         if(!confirm("Weet je zeker dat je deze school wilt verwijderen?")){
@@ -116,6 +139,20 @@ module.exports = function ($scope, user, ResourcesService, SchoolService, $timeo
             },
             onError: function (err) {
                 popupMessage("Er is iets misgegaan bij het toevoegen van de expert");
+                console.log(err);
+            }
+        });
+    }
+
+    $scope.removeUserFromSchool = function(user){
+        SchoolService.schoolService.removeExpert($scope.school.id, user.id, {//call to service
+            onSuccess: function (result) {
+                self.getUsersInSchool($scope.school.id);
+                self.getSchools();
+                popupMessage("Succesvol verwijderd van school");
+            },
+            onError: function (err) {
+                popupMessage("Er is iets misgegaan bij het verwijderen van de expert uit de school");
                 console.log(err);
             }
         });
