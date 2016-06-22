@@ -77,4 +77,5 @@ module.exports = function ($scope, TagsService, $timeout) {
         }, 3000);
 
     }
+
 };

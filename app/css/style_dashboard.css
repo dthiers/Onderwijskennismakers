@@ -122,7 +122,7 @@ body {
   background: #f5f5f5;
   border-radius: 30px;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   overflow: hidden;
 }
@@ -248,6 +248,13 @@ body {
 }
 #person_container .profile_image.person {
   border-radius: 300px;
+}
+#person_container .divPersonImage {
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+  float: left;
+  margin-right: 30px;
 }
 #person_container .flex_container {
   height: 150px;
@@ -758,6 +765,9 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-color: gray;
+}
+.content_directive {
+  margin-bottom: 100px;
 }
 .content_directive .header_content h1 {
   font-family: Lato-Light;

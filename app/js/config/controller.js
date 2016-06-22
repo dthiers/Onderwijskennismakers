@@ -22,4 +22,5 @@ module.exports = function (app) {
 	app.controller('ImageCtrl', require('../controllers/contentResources/imageCtrl'));
 	app.controller('WebpageCtrl', require('../controllers/contentResources/webpageCtrl'));
 	app.controller('ResourceDetailCtrl', require('../controllers/contentResources/resourceDetailCtrl'));
+	app.controller('TagsCtrlResources', require('../controllers/admin/BACKUP_tagsCtrl'));
 }

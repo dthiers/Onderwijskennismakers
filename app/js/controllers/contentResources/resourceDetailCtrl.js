@@ -48,7 +48,7 @@ module.exports = function ($scope, $localStorage, ResourcesService, ModalService
                         var latestId = result.data.data.pop().id;
                         ModalService.showModal({
                             templateUrl: "../partials/directives/tags/tags_add_directive.html",
-                            controller: "TagsCtrl",
+                            controller: "TagsCtrlResources",
                             inputs: {
                                 id: latestId,
                                 type: "content",

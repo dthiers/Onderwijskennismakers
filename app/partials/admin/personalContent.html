@@ -21,7 +21,8 @@
             <td>{{ content.name }}</td>
             <td>{{ content.link }}</td>
             <td>{{ content.createdAt | datetime }}</td>
-            <td><span class="action fa fa-pencil" aria-hidden="true" ng-click="setSelected( content.id )"></span> <span class="action fa fa-trash-o" aria-hidden="true" ng-click="deleteContent( content.id )"></span></td>
+            <td><span class="action fa fa-pencil" aria-hidden="true" ng-click="setSelected( content.id )"></span> <span class="action fa fa-trash-o"
+                    aria-hidden="true" ng-click="deleteContent( content.id )"></span></td>
         </tr>
     </table>
 </div>
@@ -34,10 +35,11 @@
     <textarea ng-hide="selectedContent.Type != 'internal'" ng-model="selectedContent.content" type="text">{{ selectedContent.content }}</textarea>
 
     <h2 ng-show="selectedContent.Type != 'internal'">Link</h2>
-    <input ng-show="selectedContent.Type != 'internal'" ng-model="selectedContent.link" type="text" value="{{ selectedContent.link }}" />
+    <input ng-show="selectedContent.Type != 'internal'" ng-model="selectedContent.link" type="text" value="{{ selectedContent.link }}"
+    />
 
     <h2>Omschrijving</h2>
     <textarea ng-model="selectedContent.shortDescription" type="text">{{ selectedContent.shortDescription }}</textarea>
-
+    <button ng-click="openTags()" style="float: left">Trefwoorden beheren</button>
     <button ng-click="updateSelected()">Opslaan</button>
 </div>
