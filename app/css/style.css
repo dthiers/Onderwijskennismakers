@@ -16,6 +16,10 @@ body {
   font-size: 100%;
   color: #4a4a4a;
 }
+input[type="text"],
+input[type="password"] {
+  line-height: 20px;
+}
 .wrapper {
   position: absolute;
   width: 100%;
