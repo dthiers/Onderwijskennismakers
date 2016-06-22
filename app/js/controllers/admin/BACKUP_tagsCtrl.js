@@ -4,10 +4,8 @@ module.exports = function ($scope, KeywordService, close, id, type, name, $timeo
     $scope.currentObjectType = type;
     $scope.currentObjectName = name;
     $scope.myTags = [];
-
-
+    
     loadMyTags();
-
 
     $scope.addNewTag = function () {
         KeywordService.addTag($scope.txtNewTag, {
@@ -23,7 +21,6 @@ module.exports = function ($scope, KeywordService, close, id, type, name, $timeo
     };
 
     $scope.linkTag = function (id) {
-        debugger;
         KeywordService.linkTag($scope.currentObjectId, $scope.currentObjectType, id, {
             onSuccess: function (result) {
                 loadMyTags();

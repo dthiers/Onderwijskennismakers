@@ -11,7 +11,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     var lastUserWebNodes;
     var lastUserWebEdges;
     var lastUserContent;
-    
+
     $scope.slideDown = function () {
         $scope.topBarStyle = {top: '100%'};
         $scope.topContentStyle = {top: '0%'};
@@ -283,7 +283,7 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         var keywordLoaded = false;
         var tagsLoaded = false;
 
-        KeywordService.keywordService.getById(id)//call to service
+        KeywordService.getById(id)//call to service
             .then(function (response) {
                 $scope.keyword = response.data.data[0];//set response to scope
 
@@ -304,19 +304,21 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
                 console.log(error.message);
             });
 
-        KeywordService.keywordService.getTagsByKeyword(id)//call to service
-            .then(function (response) {
+        KeywordService.getTags(id, 'keyword', {
+            onSuccess: function (response) {
                 $scope.tags = response.data.data;//set response to scope
 
                 tagsLoaded = true;
-                if(keywordLoaded) {
+                if (keywordLoaded) {
                     generateKeywordWeb($scope.tags);
                 }
 
-            }, function (error) {
+            },
+            onError: function (error) {
                 $scope.status = 'Er is iets misgegaan met het laden van de tags ';
                 console.log(error.message);
-            });
+            }
+        });
     }
 
     function generateKeywordWeb(tags) {
@@ -655,6 +657,10 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     $scope.events.selectNode = function (click) {
         var node = $scope.data.nodes.get(click.nodes[0]);
 
+        // Prevent clicking the center node
+        if(node.id == 0)
+            return;
+
         if (node.group == 'persons') {
             //getWebForUser(node.userId);
 
@@ -823,8 +829,8 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
     };
 
     $scope.keywordOptions = {
-        width: '30%',
-        height: '60%',
+        width: '100%',
+        height: '100%',
         layout: {
             randomSeed: 1 //zorgt ervoor dat er geen random web wordt gegenereerd
 
@@ -838,7 +844,8 @@ module.exports = function ($scope, VisDataSet, ProfileService, KeywordService, S
         },
         interaction: {
             dragNodes: false,
-            dragView: true
+            dragView: false,
+            zoomView: false
         },
         groups: {
             //Keywords

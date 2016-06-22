@@ -1,6 +1,6 @@
 
 module.exports = function ($scope, ResourcesService, close) {
-  
+
     $scope.type = "";
     $scope.showPDF = true;
     $scope.resourcesService = ResourcesService;

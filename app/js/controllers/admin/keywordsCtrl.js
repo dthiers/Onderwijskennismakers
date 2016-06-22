@@ -1,4 +1,4 @@
-module.exports = function ($scope, user, KeywordsService, $timeout) {
+module.exports = function ($scope, user, KeywordService, $timeout) {
 
     var self = this;
     $scope.currentObjectType = "keyword";
@@ -8,7 +8,7 @@ module.exports = function ($scope, user, KeywordsService, $timeout) {
     loadAllKeywords();
 
     function loadAllKeywords() {
-        KeywordsService.getAll({
+        KeywordService.getAll({
             onSuccess: function (result) {
                 $scope.keywords = result.data.data;
                 $scope.txtNewKeyword = "";
@@ -21,7 +21,7 @@ module.exports = function ($scope, user, KeywordsService, $timeout) {
     }
 
     $scope.setKeyword = function (keyword) {
-        KeywordsService.getAlltags(keyword.id, {
+        KeywordService.getAlltags(keyword.id, {
             onSuccess: function (result) {
                 $scope.tagList = result.data.data;
             },
@@ -29,7 +29,7 @@ module.exports = function ($scope, user, KeywordsService, $timeout) {
             }
         });
 
-        KeywordsService.getkeywordtags(keyword.id, {
+        KeywordService.getKeywordTags(keyword.id, {
             onSuccess: function (result) {
                 $scope.keywordTagList = result.data.data;
             },
@@ -44,12 +44,12 @@ module.exports = function ($scope, user, KeywordsService, $timeout) {
 
     $scope.addNewKeyword = function () {
         var latestId = 0;
-        KeywordsService.addkeyword($scope.txtNewKeyword, $scope.descriptionNewKeyword, user.id, {
+        KeywordService.addKeyword($scope.txtNewKeyword, $scope.descriptionNewKeyword, user.id, {
             onSuccess: function (result) {
-                KeywordsService.getAll({
+                KeywordService.getAll({
                     onSuccess: function (result) {
                         latestId = result.data.data.pop().id;
-                        KeywordsService.getDetails(latestId, {
+                        KeywordService.getDetails(latestId, {
                             onSuccess: function (result) {
                                 loadAllKeywords();
                                 $scope.setKeyword(result.data.data[0]);
@@ -74,7 +74,7 @@ module.exports = function ($scope, user, KeywordsService, $timeout) {
     };
 
     $scope.linkKeyword = function (id) {
-        KeywordsService.linktag($scope.keyword.id, $scope.currentObjectType, id, {
+        KeywordService.linkTag($scope.keyword.id, $scope.currentObjectType, id, {
             onSuccess: function (result) {
                 //reload data after linking
                 $scope.setKeyword($scope.keyword);
@@ -86,7 +86,7 @@ module.exports = function ($scope, user, KeywordsService, $timeout) {
     };
 
     $scope.unlinkKeyword = function (id) {
-        KeywordsService.unlinktag($scope.keyword.id, $scope.currentObjectType, id, {
+        KeywordService.unlinkTag($scope.keyword.id, $scope.currentObjectType, id, {
             onSuccess: function (result) {
                 //reload data after linking
                 $scope.setKeyword($scope.keyword);
@@ -103,7 +103,7 @@ module.exports = function ($scope, user, KeywordsService, $timeout) {
     }
 
     $scope.deleteKeywordConfirm = function () {
-        KeywordsService.deletekeyword($scope.keyword.id, {
+        KeywordService.deleteKeyword($scope.keyword.id, {
             onSuccess: function (result) {
                 popupMessage("Het trefwoord " + $scope.keyword.keyword + " is succesvol verwijderd.");
                 $scope.keyword = null;
