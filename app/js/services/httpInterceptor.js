@@ -9,8 +9,15 @@ module.exports = function ($rootScope, $localStorage, $q) {
 
   service.request = function (config) {
     // Set the token on the header on authorization
-    if($localStorage.token){
-      config.headers['authorization'] = $localStorage.token;
+      if(config.url === 'https://api.imgur.com/3/image.json'){
+        config.headers.authorization = 'Client-ID b7fc74a624c38ac';
+        return config;
+      }
+    else {
+      if($localStorage.token){
+        config.headers.authorization = $localStorage.token;
+        return config;
+      }
     }
     return config;
   };

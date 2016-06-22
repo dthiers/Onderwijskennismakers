@@ -3,7 +3,7 @@ module.exports = function ($http) {
     var self = this;
 
     var type = 'undefined';
-    var newResource = { userId: "", name: "", community: "", description: "", type: "", link: "" }
+    var newResource = { userId: "", name: "", community: "", description: "", type: "", link: "", isPublic: 0 }
     self.showPDF = false;
     self.popupStyle = { "top": "20px", "height": "250px" }
 
@@ -25,9 +25,7 @@ module.exports = function ($http) {
         var req = {
             method: 'POST',
             url: 'https://api.imgur.com/3/image.json',
-            headers: {
-                Authorization: 'Client-ID b7fc74a624c38ac'
-            }, data: img
+            data: img
         }
         $http(req).then(options.onSuccess, options.onError);
     }
@@ -65,7 +63,7 @@ module.exports = function ($http) {
         newResource.community = community;
         newResource.description = description;
         newResource.id = id;
-        newResource.isPublic = isPublic;
+        newResource.isPublic ? newResource.isPublic : 0;
     }
 
     self.setResourceType = function (type) {

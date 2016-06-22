@@ -15,7 +15,8 @@ module.exports = function ($scope, $localStorage, ResourcesService, ModalService
     $scope.newRescource = {
         name: "",
         community: "",
-        description: ""
+        description: "",
+        isPublic: 0
     }
 
     /**
@@ -37,13 +38,13 @@ module.exports = function ($scope, $localStorage, ResourcesService, ModalService
     * @param: name, description, community
     **/
     $scope.saveResource = function () {
-
+      console.log($scope.data.newResourcePreview.isPublic);
         ResourcesService.setResourceDetails(
           $scope.data.newResourcePreview.name,
           $scope.data.newResourcePreview.community,
           $scope.data.newResourcePreview.description,
           parseInt($localStorage.user.id),
-          $scope.data.newRescourcePreview.isPublic
+          $scope.data.newResourcePreview.isPublic
         );
 
 
