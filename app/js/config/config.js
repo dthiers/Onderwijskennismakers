@@ -21,10 +21,6 @@ module.exports = function (app) {
                         $state.go('login');
                     }
                 }
-                if($localStorage.user && toState.name === 'login') {
-                  event.preventDefault();
-                  $state.go('dashboard');
-                }
             })
         })
 }
