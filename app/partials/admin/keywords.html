@@ -18,13 +18,13 @@
         <button ng-hide="!txtNewKeyword || !descriptionNewKeyword" ng-click="addNewKeyword()" id="btnAddKeyword">Toevoegen</button>
     </div>
 
-    <div id="divAddKeyword">
-        <input type="text" id="search_bar" placeholder="Zoeken in Trefwoorden" ng-model="search" />
+    <div id="divAddKeyword" class="search_bar_container">
+        <input type="text" class="search_bar" placeholder="Zoeken in Trefwoorden" ng-model="search" />
     </div>
 
     <div class="hidden_scrollContainer">
         <div id="divKeywords">
-            <div class="divKeyword" ng-repeat="(key, value) in keywords| filter:search" ng-click="setKeyword(value)">{{value.keyword}} </div>
+            <div class="divKeyword" ng-repeat="(key, value) in keywords| filter:search" ng-click="setKeyword(value)">{{value.keyword}}<span ng-click="deleteKeyword(value)" class="fa fa-times" aria-hidden="true"></span></div>
         </div>
     </div>
 </div>
@@ -34,14 +34,12 @@
     <b><h2>Selecteer tags om te verwijderen van {{keyword.keyword}}</h2></b>
 
     <div id="divAddKeyword">
-        <input type="text" id="txtNewKeyword" placeholder="Zoeken in gekoppelde tags" ng-model="searchKeywordTags" />
-        <button ng-hide="!confirm" ng-click="deleteKeyword()" id="btnAddKeyword">Verwijder</button>
-        <button ng-hide="!delete" ng-click="deleteKeywordConfirm()" id="btnAddKeyword">Zeker?</button>
+        <input type="text" class="search_bar" placeholder="Zoeken in gekoppelde tags" ng-model="searchKeywordTags" />
     </div>
 
     <div class="hidden_scrollContainer">
         <div id="divKeywords">
-            <div class="divKeyword" ng-repeat="(key, value) in keywordTagList| filter:searchKeywordTags" ng-click="unlinkKeyword(value.id)">{{value.name}} </div>
+            <div class="divKeyword" ng-repeat="(key, value) in keywordTagList| filter:searchKeywordTags" ng-click="unlinkKeyword(value.id)">{{value.name}}</div>
         </div>
     </div>
 </div>
@@ -51,12 +49,12 @@
     <b><h2>Selecteer tags om toe te voegen aan {{keyword.keyword}}</h2></b>
 
     <div id="divAddKeyword">
-        <input type="text" id="txtNewKeyword" placeholder="Zoeken in tag lijst" ng-model="searchTags" />
+        <input type="text" class="search_bar" placeholder="Zoeken in tag lijst" ng-model="searchTags" />
     </div>
 
     <div class="hidden_scrollContainer">
         <div id="divKeywords">
-            <div class="divKeyword" ng-repeat="(key, value) in tagList| filter:searchTags" ng-click="linkKeyword(value.id)">{{value.name}} </div>
+            <div class="divKeyword" ng-repeat="(key, value) in tagList| filter:searchTags" ng-click="linkKeyword(value.id)">{{value.name}}</div>
         </div>
     </div>
 </div>

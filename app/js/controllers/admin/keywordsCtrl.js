@@ -97,15 +97,10 @@ module.exports = function ($scope, user, KeywordService, $timeout) {
         });
     };
 
-    $scope.deleteKeyword = function () {
-        $scope.delete = "yes";
-        $scope.confirm = "";
-    }
-
-    $scope.deleteKeywordConfirm = function () {
-        KeywordService.deleteKeyword($scope.keyword.id, {
+    $scope.deleteKeyword = function (keyword) {
+        KeywordService.deleteKeyword(keyword.id, {
             onSuccess: function (result) {
-                popupMessage("Het trefwoord " + $scope.keyword.keyword + " is succesvol verwijderd.");
+                popupMessage("Het trefwoord " + keyword.keyword + " is succesvol verwijderd.");
                 $scope.keyword = null;
                 loadAllKeywords();
             },
