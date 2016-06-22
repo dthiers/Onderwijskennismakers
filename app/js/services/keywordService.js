@@ -1,32 +1,68 @@
 module.exports = function ($http) {
+    var baseService = require('../services/baseService')("keyword", $http);
+    // var urlBase = "http://127.0.0.1:3000/";
+    var urlBase = 'https://onderwijskennismakers.herokuapp.com/';
 
     return {
         getAll: function (options) {
-            $http.get("http://onderwijskennismakers.herokuapp.com/keyword").then(
+            $http.get(urlBase + "keyword").then(
                 options.onSuccess, options.onError
             );
         },
+        getById: function(id) {
+            return baseService.getById(id);
+        },
         getTags: function (objId, objType, options) {
-            $http.get("http://onderwijskennismakers.herokuapp.com/" + objType + "/" + objId + "/tags").then(
+            $http.get(urlBase + objType + "/" + objId + "/tags").then(
                 options.onSuccess, options.onError
             );
         },
         deleteTag: function (id, options) {
-            $http.delete("http://onderwijskennismakers.herokuapp.com/keywords/" + id).then(options.onSuccess, options.onError);
+            $http.delete(urlBase + "keywords/" + id).then(options.onSuccess, options.onError);
         },
         linkTag: function (objId, objType, tagId, options) {
-            $http.post("http://onderwijskennismakers.herokuapp.com/" + objType + "/" + objId + "/keywords", {
+            $http.post(urlBase + objType + "/" + objId + "/keywords", {
                 "Keyword_id": tagId
             }).then(options.onSuccess, options.onError);
         },
         unlinkTag: function (objId, objType, tagId, options) {
-            $http.delete("http://onderwijskennismakers.herokuapp.com/" + objType + "/" + objId + "/keywords/" + tagId).then(options.onSuccess, options.onError);
+            $http.delete(urlBase + objType + "/" + objId + "/keywords/" + tagId).then(options.onSuccess, options.onError);
         },
         getMyTags: function (objId, objType, options) {
-            $http.get("http://onderwijskennismakers.herokuapp.com/" + objType + "/" + objId + "/keywords/?linked=true").then(options.onSuccess, options.onError);
+            $http.get(urlBase + objType + "/" + objId + "/keywords/?linked=true").then(options.onSuccess, options.onError);
         },
         getMyList: function (objId, objType, options) {
-            $http.get("http://onderwijskennismakers.herokuapp.com/" + objType + "/" + objId + "/keywords/?linked=false").then(options.onSuccess, options.onError);
+            $http.get(urlBase + objType + "/" + objId + "/keywords/?linked=false").then(options.onSuccess, options.onError);
         },
+        getKeywords: function (objId, objType, options) {
+            $http.get(urlBase + objType + "/" + objId + "/keywords").then(
+                options.onSuccess, options.onError
+            );
+        },
+        getKeywordTags: function (objId, options) {
+            $http.get(urlBase + "keyword/" + objId + "/tags").then(
+                options.onSuccess, options.onError
+            );
+        },
+        getAlltags: function (objId, options) {
+            $http.get(urlBase + "keyword/" + objId + "/tags?linked=false").then(
+                options.onSuccess, options.onError
+            );
+        },
+        getDetails: function (objId, options) {
+            $http.get(urlBase + "keyword/" + objId).then(
+                options.onSuccess, options.onError
+            );
+        },
+        addKeyword: function (name, description, userId, options) {
+            $http.post(urlBase + "keyword", {
+                "keyword": name,
+                "description": description,
+                "User_id": userId
+            }).then(options.onSuccess, options.onError);
+        },
+        deleteKeyword: function (id, options) {
+            $http.delete(urlBase + "keyword/" + id).then(options.onSuccess, options.onError);
+        }
     };
-}
+};

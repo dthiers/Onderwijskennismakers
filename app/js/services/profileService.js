@@ -1,7 +1,7 @@
 module.exports = function ($http) {
     var profileService = require('../services/baseService')("user",$http);
     
-    var urlBase = 'https://onderwijskennismakers.herokuapp.com/';
+    var urlBase = 'http://127.0.0.1:3000/';
 
     //get Details
     profileService.getUserDetails = function(id){
