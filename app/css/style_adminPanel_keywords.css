@@ -98,7 +98,7 @@
   margin-top: 28px;
   box-sizing: border-box;
   overflow-y: auto;
-  height: 45vh;
+  max-height: 45vh;
   display: block;
   padding-right: 0px;
   margin-right: 20px;
@@ -130,5 +130,5 @@
   cursor: pointer;
 }
 #divKeywordList .hidden_scrollContainer #divKeywords .divKeyword:nth-child(odd) {
-  background: #e8e8e8;
+  background: #e9ecf1;
 }

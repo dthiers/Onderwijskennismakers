@@ -42,6 +42,14 @@
   border-radius: 500px;
   margin: 0 auto;
 }
+.admin_menu .profile_image_container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #5b8fe4;
+  color: #eff5ff;
+  border-radius: 5px;
+  margin-top: 5px;
+}
 .admin_menu li {
   width: 100%;
   height: auto;
@@ -75,6 +83,7 @@
   padding: 15px;
   font-size: 14px;
   border-radius: 5px;
+  text-decoration: none;
   background-color: #5b8fe4;
   color: #fff;
 }
