@@ -21,8 +21,8 @@
                         <h1>Directeur:</h1>
                         <h1>Onze experts:</h1>
                         <div class="experts">
-                            <div ng-repeat="expert in experts" ng-if="expert.isPrincipal ==1" class="expert director" ng-click="loadUser(expert.id, true)" style="background-image: url('../{{expert.profileImage}}');"></div>
-                            <div ng-repeat="expert in experts" ng-if="expert.isPrincipal !=1" class="expert" ng-click="loadUser(expert.id, true)" style="background-image: url('../{{expert.profileImage}}');"></div>
+                            <div ng-repeat="expert in experts" ng-if="expert.isPrincipal ==1" class="expert director" ng-click="loadUser(expert.id, true)" style="background-image: url('{{expert.profileImage}}');"></div>
+                            <div ng-repeat="expert in experts" ng-if="expert.isPrincipal !=1" class="expert" ng-click="loadUser(expert.id, true)" style="background-image: url('{{expert.profileImage}}');"></div>
                         </div>
                     </div>
                 </div>
