@@ -63,6 +63,14 @@ module.exports = function ($http) {
         },
         deleteKeyword: function (id, options) {
             $http.delete(urlBase + "keyword/" + id).then(options.onSuccess, options.onError);
+        }, linkKeyword: function(id, keywordId, options) {
+            $http.post(urlBase + "content/" + id + "/keywords", {
+                "Keyword_id": keywordId
+            }).then(options.onSuccess, options.onError);
+
+        }, unlinkKeyword: function(id, keywordId, options) {
+            $http.delete(urlBase + "content/" + id + "/keywords/" + keywordId).then(options.onSuccess, options.onError);
+
         }
     };
 };

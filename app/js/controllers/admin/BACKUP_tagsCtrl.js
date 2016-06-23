@@ -1,5 +1,4 @@
 module.exports = function ($scope, KeywordService, close, id, type, name, $timeout) {
-
     $scope.currentObjectId = id;
     $scope.currentObjectType = type;
     $scope.currentObjectName = name;
@@ -21,7 +20,7 @@ module.exports = function ($scope, KeywordService, close, id, type, name, $timeo
     };
 
     $scope.linkTag = function (id) {
-        KeywordService.linkTag($scope.currentObjectId, $scope.currentObjectType, id, {
+        KeywordService.linkKeyword($scope.currentObjectId, id, {
             onSuccess: function (result) {
                 loadMyTags();
             },
@@ -33,8 +32,7 @@ module.exports = function ($scope, KeywordService, close, id, type, name, $timeo
     }
 
     $scope.unlinkTag = function (id) {
-
-        KeywordService.unlinkTag($scope.currentObjectId, $scope.currentObjectType, id, {
+        KeywordService.unlinkKeyword($scope.currentObjectId, id, {
             onSuccess: function (result) {
                 loadMyTags();
             },
