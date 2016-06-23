@@ -17,6 +17,8 @@
 }
 .divAdminProfileWrapper input {
   color: gray;
+  border-bottom: 1px solid #e2e2e2 !important;
+  background-color: #FFF !important;
 }
 .divAdminProfileWrapper h1 {
   color: gray;

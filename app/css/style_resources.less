@@ -15,6 +15,12 @@
   transition: all 0.8s;
   border-radius: 5px;
 
+  input, textarea, select{
+      border: 1px solid #d4d4d4;
+      color: #888888;
+      border-radius: 5px;
+  }
+
   b{
     color: #bfbfbf;
     width: 100%;
@@ -203,24 +209,13 @@
 }
 
 #btnSave, #btnAddImage, #btnAddPdf{
-  width: 80px;
-  height: 30px;
+  padding: 10px;
+  float: right;
   color: #FFFFFF;
+  border-radius: 5px;
   background: @color_main1;
   cursor: pointer;
   margin-top: 10px;
-}
-
-#btnAddImage{
-    position: absolute;
-    top: 210px;
-    right: 20px;
-}
-
-#btnAddPdf{
-    position: absolute;
-    top: 260px;
-    left: 20px;
 }
 
 #imgCloseResourcesPopup{
@@ -238,7 +233,7 @@
     border-radius: 5px;
     float: left;
     background-color: #fff;
-    padding: 20px;
+    padding: 30px;
     box-sizing: border-box;
     margin-bottom: 4px;
 
@@ -254,7 +249,7 @@
       }
 
     .pdf_container2 {
-        height: 200px;
+        height: 300px;
         width: 100%;
         display: block;
         overflow: hidden;
@@ -267,9 +262,9 @@
         -ms-transition: all 0.2s ease-in-out;
         transition: all 0.2s ease-in-out;
           iframe{
-            width: 80%;
+            width: 100%;
             height: 100%;
-            margin: 0% 10%;
+            margin: 0% 0%;
           }
     }
 }
