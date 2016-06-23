@@ -509,6 +509,10 @@ body {
 #keyword_container .associated_tags {
   float: left;
   margin-top: 40px;
+  position: relative;
+  width: 500px;
+  height: 300px;
+  margin-bottom: 50px;
 }
 #keyword_container .associated_tags span {
   margin-right: 6px;
@@ -884,15 +888,11 @@ body {
 .preview_content {
   position: fixed;
   width: 500px;
-  box-shadow: #dcdcdc 0px 0px 20px;
+  box-shadow: 5px 5px 15px 0px #9c9c9c;
   z-index: 9999999;
   box-sizing: border-box;
-  border-radius: 5px;
   top: 20px;
-  left: calc(70% - 250px);
-  background-color: #fff;
-  -webkit-transition: all 0.8s ease;
-  -moz-transition: all 0.8s ease;
-  -o-transition: all 0.8s ease;
-  transition: all 0.8s ease;
+  left: calc(50% + 110px);
+  background: #ffffff;
+  transition: all 0.8s;
 }

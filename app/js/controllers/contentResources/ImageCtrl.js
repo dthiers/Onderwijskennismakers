@@ -39,7 +39,10 @@ module.exports = function ($scope, ResourcesService, $timeout, $sce) {
         //ResourcesService.setResourceLink($sce.getTrustedResourceUrl($scope.image));
         //ResourcesService.setResourceLink(imageLink);
 
-        //console.log($scope.image);
+        //console.log($scope.image
+
+        ResourcesService.setResourceLink(imageLink);
+        ResourcesService.setLink(imageLink);
 
         //debugger;
         ResourcesService.showImage = true;

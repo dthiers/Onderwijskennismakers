@@ -3,7 +3,7 @@ module.exports = function ($http) {
     var self = this;
 
     var type = 'undefined';
-    var newResource = { userId: "", name: "", community: "", description: "", type: "", link: "", isPublic: 0 }
+    var newResource = { userId: "", name: "", community: "", description: "", type: "", link: "", isPublic: 1 }
     self.showPDF = false;
     self.popupStyle = { "top": "20px", "height": "250px" }
 
@@ -46,7 +46,7 @@ module.exports = function ($http) {
             Community_id: newResource.community,
             shortDescription: newResource.description,
             isFrozen: 0,
-            isPublic: newResource.isPublic
+            isPublic: 1
         }).then(func1, func2);
     }
 
@@ -63,7 +63,7 @@ module.exports = function ($http) {
         newResource.community = community;
         newResource.description = description;
         newResource.id = id;
-        newResource.isPublic ? newResource.isPublic : 0;
+        newResource.isPublic = 1;
     }
 
     self.setResourceType = function (type) {

@@ -30,7 +30,8 @@ module.exports = function ($scope, ResourcesService, $sce) {
         // TODO: not working
         //ResourcesService.setResourceLink($sce.getTrustedResourceUrl(webLink));
        ResourcesService.setLink($sce.trustAsResourceUrl(url));
-        
+       ResourcesService.setResourceLink(url);
+
         // TODO: load the detail directive
         $scope.$parent.type = "addDetails";
     }
