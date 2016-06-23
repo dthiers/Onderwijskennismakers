@@ -48,8 +48,9 @@ module.exports = function ($scope, $localStorage, ResourcesService, ModalService
         );
 
 
-        ResourcesService.addResource(
-            function () {
+        ResourcesService.addResource(function (result) {
+                    console.log("tesst");
+            console.log(result);
                 ResourcesService.getLatestResource({
                     onSuccess: function (result) {
                         var latestId = result.data.data.pop().id;
@@ -75,6 +76,7 @@ module.exports = function ($scope, $localStorage, ResourcesService, ModalService
                         $scope.closeResources();
                     },
                     onError: function (err) {
+                        debugger;
                         console.log(err);
                     }
                 });

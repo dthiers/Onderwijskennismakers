@@ -3,7 +3,7 @@ module.exports = function ($http) {
     var self = this;
 
     var type = 'undefined';
-    var newResource = { userId: "", name: "", community: "", description: "", type: "", link: "", isPublic: 0 }
+    var newResource = { userId: "", name: "", community: "", description: "", type: "", link: "", isPublic: 1 }
     self.showPDF = false;
     self.popupStyle = { "top": "20px", "height": "250px" }
 
